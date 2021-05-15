@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Sheet = () => {
+const Sheet = ({className}) => {
     return (
-        <div>
+        <div className={`${className}`}>
             <div>Hi</div>
         </div>
     );
