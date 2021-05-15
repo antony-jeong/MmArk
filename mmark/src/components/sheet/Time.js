@@ -15,7 +15,6 @@ const TimeObj = ({type, num}) => {
 
     return (
         <div>
-            {console.log(num)}
             {type === "nu" ? <div className="nu">{num}</div> : <div className="de">{num}</div>}
         </div>        
     )

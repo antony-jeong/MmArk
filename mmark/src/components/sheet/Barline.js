@@ -26,7 +26,7 @@ import React from 'react';
             // r2 - repear 2 start
             // no - none
 
-const BarlineObj = (className, barlineDecoration) => {
+const BarlineObj = ({ className, barlineDecoration }) => {
     switch (className) {
         case "b":
             return (<div className="bar">{barlineDecoration}</div>)
@@ -47,15 +47,15 @@ const BarlineObj = (className, barlineDecoration) => {
 const Barline = ({obj}) => {
     switch (obj.type) {
         case "b":
-            return (<BarlineObj className={"bar"} barlineDecoration={ obj.barlineDecoration}/>)
+            return (<BarlineObj className={"b"} barlineDecoration={ obj.barlineDecoration}/>)
         case "o":
-            return (<BarlineObj className={"open"} barlineDecoration={ obj.barlineDecoration}/>)
+            return (<BarlineObj className={"o"} barlineDecoration={ obj.barlineDecoration}/>)
         case "c":
-            return (<BarlineObj className={"close"} barlineDecoration={ obj.barlineDecoration}/>)
+            return (<BarlineObj className={"c"} barlineDecoration={ obj.barlineDecoration}/>)
         case "d":
-            return (<BarlineObj className={"double"} barlineDecoration={ obj.barlineDecoration}/>)
+            return (<BarlineObj className={"d"} barlineDecoration={ obj.barlineDecoration}/>)
         case "t":
-            return (<BarlineObj className={"terminate"} barlineDecoration={ obj.barlineDecoration}/>)
+            return (<BarlineObj className={"t"} barlineDecoration={ obj.barlineDecoration}/>)
         default:
             return (<div>Invalid Object</div>)
     }
