@@ -10,18 +10,18 @@ import React from 'react';
         // > if clef
         // treble: (boolean) true - treble, false - bass
 
-const ClefObj = (className) => {
+const ClefObj = ({className}) => {
     return (
         <div>
-            {className === "treble" ? <div className="treble">Treble</div> : <div className="bass">Bass</div>}
+            {className === "treble" ? <div className="treble">Treble</div> : <div className="bass">{className}</div>}
         </div>
     );
 }
 
-const Clef = (obj) => {
+const Clef = ({obj}) => {
     return (
         <div>
-            {obj.treble ? <ClefObj className="treble">Treble</ClefObj> : <ClefObj className="bass">Bass</ClefObj>}
+            {obj.treble ? <ClefObj className="treble"/> : <ClefObj className="bass"/>}
         </div>
     );
 };

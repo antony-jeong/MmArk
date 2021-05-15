@@ -67,27 +67,29 @@ const SheetWrapper = styled.div`
     height: 150px;
     `;
 
-const Sheet = (dataStructure, className) => {
-    const data = { dataStructure };
+const Sheet = ({dataStructure}, {className}) => {
+    const data = dataStructure;
+    const returnValue = data.map((obj) => {
+        switch (obj.objectType) {
+            case "c":
+                return (<Clef obj={obj} />)
+            case "t":
+                return (<Time obj={obj} />)
+            case "k":
+                return (<Key obj={obj} />)
+            case "b":
+                return (<Barline obj={obj} />)
+            case "n":
+                return (<Note obj={obj} />)
+            default:
+                return (<div>Invalid Object</div>)
+        }
+    });
+    { console.log(data) };
     return (
         <div className={`${className}`}>
             <SheetWrapper >
-                {data.map((obj) => {
-                    switch (obj.objectType) {
-                        case "c":
-                            return (<Clef obj={obj}/>)
-                        case "t":
-                            return (<Time obj={obj}/>)
-                        case "k":
-                            return (<Key obj={obj}/>)
-                        case "b":
-                            return (<Barline obj={obj}/>)
-                        case "n":
-                            return (<Note obj={obj}/>)
-                        default:
-                            return (<div>Invalid Object</div>)
-                    }
-                })}
+                { returnValue}
             </SheetWrapper>
         </div>
     );

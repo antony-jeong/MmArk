@@ -15,51 +15,50 @@ import React from 'react';
             // d - double bar line
             // t - terminal bar line
 
-const BarlineObj = (className) => {
-    return (
-        <div>
-            {(className) => {
-                switch (className) {
-                    case "b":
-                        return (<div className="bar">Bar</div> )
-                    case "o":
-                        return (<div className="open">Open</div>)
-                    case "c":
-                        return (<div className="close">Close</div>)
-                    case "d":
-                        return (<div className="double">Double</div>)
-                    case "t":
-                        return (<div className="terminate">Terminate</div>)
-                    default:
-                        return (<div>Invalid Object Obj</div>)
-                }
-            }}
-        </div>
-    );
+        // barlineDecoration : (string)
+            // ds - dal segno
+            // se - segno
+            // dc - da capo
+            // fi - fine
+            // fe - fermata
+            // co - coda
+            // r1 - repeat 1 start
+            // r2 - repear 2 start
+            // no - none
+
+const BarlineObj = (className, barlineDecoration) => {
+    switch (className) {
+        case "b":
+            return (<div className="bar">{barlineDecoration}</div>)
+        case "o":
+            return (<div className="open">{barlineDecoration}</div>)
+        case "c":
+            return (<div className="close">{barlineDecoration}</div>)
+        case "d":
+            return (<div className="double">{barlineDecoration}</div>)
+        case "t":
+            return (<div className="terminate">{barlineDecoration}</div>)
+        default:
+            return (<div> Invalid Object Obj</div>)
+    };
 }
 
 
-const Barline = (obj) => {
-    return (
-        <div>
-            {(obj) => {
-                switch (obj.type) {
-                    case "b":
-                        return (<BarlineObj className={"bar"} />)
-                    case "o":
-                        return (<BarlineObj className={"open"} />)
-                    case "c":
-                        return (<BarlineObj className={"close"} />)
-                    case "d":
-                        return (<BarlineObj className={"double"} />)
-                    case "t":
-                        return (<BarlineObj className={"terminate"} />)
-                    default:
-                        return (<div>Invalid Object</div>)
-                }
-            }}
-        </div>
-    );
+const Barline = ({obj}) => {
+    switch (obj.type) {
+        case "b":
+            return (<BarlineObj className={"bar"} barlineDecoration={ obj.barlineDecoration}/>)
+        case "o":
+            return (<BarlineObj className={"open"} barlineDecoration={ obj.barlineDecoration}/>)
+        case "c":
+            return (<BarlineObj className={"close"} barlineDecoration={ obj.barlineDecoration}/>)
+        case "d":
+            return (<BarlineObj className={"double"} barlineDecoration={ obj.barlineDecoration}/>)
+        case "t":
+            return (<BarlineObj className={"terminate"} barlineDecoration={ obj.barlineDecoration}/>)
+        default:
+            return (<div>Invalid Object</div>)
+    }
 };
 
 export default Barline;

@@ -11,9 +11,22 @@ import React from 'react';
         // numerator: (int) up 
         // denominator: (int) down
 
-const Time = (obj) => {
+const TimeObj = ({type, num}) => {
+
     return (
         <div>
+            {console.log(num)}
+            {type === "nu" ? <div className="nu">{num}</div> : <div className="de">{num}</div>}
+        </div>        
+    )
+}
+
+const Time = ({obj}) => {
+
+    return (
+        <div>
+            { <TimeObj type="nu" num = {obj.numerator}/>}
+            { <TimeObj type="de" num = {obj.denominator}/>}
         </div>
     );
 };
