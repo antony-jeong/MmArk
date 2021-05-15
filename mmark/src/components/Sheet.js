@@ -6,6 +6,7 @@ import Note from "./sheet/Note";
 import Key from "./sheet/Key";
 import Barline from "./sheet/Barline";
 import Clef from "./sheet/Clef";
+import Bpm from "./sheet/Bpm";
 
 // dataStructure
     // objectType: (char) 
@@ -14,6 +15,7 @@ import Clef from "./sheet/Clef";
         // k - key
         // b - barline
         // n - note
+        // p - bpm
 
         // > if clef
         // treble: (boolean) true - treble, false - bass
@@ -56,6 +58,9 @@ import Clef from "./sheet/Clef";
             // t - tenuto
             // f - fermata
 
+        // > if bpm
+        // bpm : (int) bpm
+
 
 // const dataStructure = [{objectType: "c", treble: }, {objectType: "t", numerator: "", denominator: ""}, {objectType: "k", key: }, {objectType: "b", type: , barlineDecoration: ,}, {objectType: "n", length: , extend: , rest: , height:, accidental:, triplet:, noteDecoration: ,}]
 
@@ -81,6 +86,8 @@ const Sheet = ({dataStructure}, {className}) => {
                 return (<Barline obj={obj} />)
             case "n":
                 return (<Note obj={obj} />)
+            case "p":
+                return (<Bpm obj={obj}/>)
             default:
                 return (<div>Invalid Object</div>)
         }
@@ -89,7 +96,7 @@ const Sheet = ({dataStructure}, {className}) => {
     return (
         <div className={`${className}`}>
             <SheetWrapper >
-                { returnValue}
+                {returnValue}
             </SheetWrapper>
         </div>
     );

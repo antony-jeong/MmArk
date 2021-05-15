@@ -11,8 +11,8 @@ import React from 'react';
         // length: (int) as exponent of 2; 0 - whole note
         // extend: (boolean) true - w/ point
         // rest: (boolean) true - rest note
-        // height: (int) vertical location in sheet; 0 - mi
-        // accidental : (char) s - sharp, f - flat, n - natural, x - none
+        // height: ([int]) vertical location in sheet; 0 - mi
+        // accidental : ([char]) s - sharp, f - flat, n - natural, x - none
         // triplet : (boolean) true - is triplet
         // noteDecoration : (char)
             // s - staccato
