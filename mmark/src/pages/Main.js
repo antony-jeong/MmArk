@@ -4,7 +4,7 @@ import Sheet from "../components/Sheet";
 const Main = () => {
     return (
         <div>
-          <Sheet/>  
+            <Sheet className={`Sheet`}/>
         </div>
     );
 };
