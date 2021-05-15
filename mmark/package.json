@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+<<<<<<< HEAD
     "classnames": "^2.3.1",
     "global": "^4.4.0",
     "react": "^17.0.2",
@@ -14,6 +15,11 @@
     "react-scripts": "^4.0.3",
     "styled-components": "^5.3.0",
     "tailwindcss": "^2.1.2",
+=======
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+>>>>>>> 5dd044beabe729075c49db3a018a93d9a7f10b76
     "web-vitals": "^1.0.1"
   },
   "scripts": {
