@@ -1,9 +1,10 @@
 import React from 'react';
+import Sheet from "../components/Sheet";
 
 const Main = () => {
     return (
         <div>
-          <div style={{background: "red"}}>Main Main</div>  
+          <Sheet/>  
         </div>
     );
 };
