@@ -34,7 +34,7 @@ const LearnNote = ({match, history}) => {
             <PageButton text = {'Next'} className = "LearnNote-Next" router = {`/LearnNote/${pageNum+1}`}/>
         </div>
         :
-        <InvalidPage />
+        <InvalidPage history={history}/>
     );
 };
 
