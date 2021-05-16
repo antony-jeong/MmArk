@@ -17,7 +17,7 @@ import Triplet from "./sheet/Triplet"
         // b - barline
         // n - note
         // p - bpm
-        // t - triplet
+        // r - triplet
 
         // > if clef
         // treble: (boolean) true - treble, false - bass
@@ -73,7 +73,7 @@ import Triplet from "./sheet/Triplet"
 const SheetWrapper = styled.div`
     background: royalblue;
     opacity: 50%;
-    color: white;
+    color: black;
     height: 150px;
     `;
 
@@ -93,7 +93,7 @@ const Sheet = ({dataStructure}, {className}) => {
                 return (<Note obj={obj} />)
             case "p":
                 return (<Bpm obj={obj} />)
-            case "t":
+            case "r":
                 return (<Triplet obj={obj} />)
             default:
                 return (<div>Invalid Object</div>)

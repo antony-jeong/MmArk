@@ -13,7 +13,7 @@ import React from 'react';
         // rest: (boolean) true - rest note
         // height: ([int]) vertical location in sheet; 0 - mi
         // accidental : ([char]) s - sharp, f - flat, n - natural, x - none
-        // noteDecoration : (char)
+        // noteDecoration : ([char])
             // s - staccato
             // a - accent
             // t - tenuto
@@ -21,23 +21,37 @@ import React from 'react';
             // x - none
 
 const AccidentalObj = ({ type }) => {
-    
+    return (<div>accidental : {type}</div>);
 };
 
 const NoteDecorationObj = ({ type }) => {
-    
+    return (<div>decoration : {type}</div>);
 };
 
 const IndivNoteUpObj = ({ type, height, deco, acc }) => {
-    
+    return (
+        <div className={height}>
+            height : {height}
+            <NoteDecorationObj type={deco} />
+            <div className="up"> length : {type}, up</div>
+            <AccidentalObj type={acc}/>
+        </div>
+    );
 };
 
 const IndivNoteDownObj = ({ type, height, deco, acc }) => {
-    
+        return (
+        <div className={height}>
+            height : {height}
+            <NoteDecorationObj type={deco} />
+            <div className="down"> length : {type}, down</div>
+            <AccidentalObj type={acc}/>
+        </div>
+    );
 };
 
 const NoteObj = ({ obj }) => {
-    const direction = (obj.height[0] > 3) ? "up" : "down";
+    const direction = (obj.height[0] > 3) ? "down" : "up";
     var f = (obj) => {
         switch (obj.length) {
             case 0:
@@ -67,7 +81,9 @@ const NoteObj = ({ obj }) => {
     });
 
     return (
-        { returnValue }
+        < div >
+            {returnValue}
+        </div>
     );
     
 };

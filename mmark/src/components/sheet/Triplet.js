@@ -7,15 +7,17 @@ import Note from "./Note";
         // k - key
         // b - barline
         // n - note
-        // t - triplet
+        // r - triplet
 
         // > if triplet
         // notes : ([Note]) contains Note objects which composes the notes
 
 const Triplet = ({ obj }) => {
-    const returnValue = obj.map((obj) => {
+    const returnValue = obj.notes.map((obj) => {
         return (<Note obj={obj} />);
     });
+
+    { console.log(obj) };
 
     return (
         <div>
