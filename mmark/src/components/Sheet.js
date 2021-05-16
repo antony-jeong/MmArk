@@ -75,8 +75,8 @@ const SheetWrapper = styled.div`
     background-size: contain;
     position: static;
     height: 50px;
-    margin: 50px;
-    zoom: 2;
+    margin: 50px 100px 50px 100px;
+    zoom: 1;
     `;
 
 const Sheet = ({ dataStructure, className }) => {
