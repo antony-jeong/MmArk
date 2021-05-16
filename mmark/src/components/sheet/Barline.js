@@ -26,10 +26,13 @@ import React from 'react';
             // r2 - repear 2 start
             // no - none
 
+
+import imgBarLine from "../musical_symbols_svg/barline.svg";
+
 const BarlineObj = ({ className, barlineDecoration }) => {
     switch (className) {
         case "b":
-            return (<div className="bar">{barlineDecoration}</div>)
+            return (<div className="bar"><img src = {imgBarLine} style = {{position : "relative", left: "100px",top : "-97.5px"}} height = "50px"/></div>)
         case "o":
             return (<div className="open">{barlineDecoration}</div>)
         case "c":

@@ -64,12 +64,16 @@ import Bpm from "./sheet/Bpm";
 
 // const dataStructure = [{objectType: "c", treble: }, {objectType: "t", numerator: "", denominator: ""}, {objectType: "k", key: }, {objectType: "b", type: , barlineDecoration: ,}, {objectType: "n", length: , extend: , rest: , height:, accidental:, triplet:, noteDecoration: ,}]
 
+import imgSheet from "./musical_symbols_svg/sheet.svg";
 
 const SheetWrapper = styled.div`
-    background: royalblue;
-    opacity: 50%;
-    color: white;
-    height: 150px;
+    background-image: url(${imgSheet});
+    background-attatchment: fixed;
+    background-size: contain;
+    position: static;
+    height: 50px;
+    margin: 50px;
+    zoom: 2;
     `;
 
 const Sheet = ({dataStructure}, {className}) => {
