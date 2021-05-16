@@ -64,10 +64,8 @@ import Bpm from "./sheet/Bpm";
 
 // const dataStructure = [{objectType: "c", treble: }, {objectType: "t", numerator: "", denominator: ""}, {objectType: "k", key: }, {objectType: "b", type: , barlineDecoration: ,}, {objectType: "n", length: , extend: , rest: , height:, accidental:, triplet:, noteDecoration: ,}]
 
-import imgSheet from "./musical_symbols_svg/sheet.svg";
-
 const SheetWrapper = styled.div`
-    background-image: url(${imgSheet});
+    background-image: url(${process.env.PUBLIC_URL + "/musical_symbols_svg/sheet.svg"});
     background-attatchment: fixed;
     background-size: contain;
     position: static;
@@ -102,6 +100,7 @@ const Sheet = ({dataStructure}, {className}) => {
             <SheetWrapper >
                 {returnValue}
             </SheetWrapper>
+
         </div>
     );
 };

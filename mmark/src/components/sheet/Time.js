@@ -14,8 +14,10 @@ import React from 'react';
 const TimeObj = ({type, num}) => {
 
     return (
-        <div>
-            {type === "nu" ? <div className="nu">{num}</div> : <div className="de">{num}</div>}
+        <div style = {{width: "23px", display: "inline" }}>
+            {type === "nu" 
+            ? <div className="nu" style = {{width: "23px", display: "inline" }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/numerator_" + num + ".svg"} style = {{position: "relative", top: "-56px"}} height = "23px"/></div> 
+            : <div className="de" style = {{width: "23px", display: "inline"}}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/denominator_" + num + ".svg"} style = {{position: "relative", top: "-32px", left: "-27px"}} height = "23px"/></div>}
         </div>        
     )
 }
@@ -23,10 +25,10 @@ const TimeObj = ({type, num}) => {
 const Time = ({obj}) => {
 
     return (
-        <div>
+        <div style = {{width: "23px", display: "inline"}}>
             { <TimeObj type="nu" num = {obj.numerator}/>}
             { <TimeObj type="de" num = {obj.denominator}/>}
-        </div>
+        </div >
     );
 };
 

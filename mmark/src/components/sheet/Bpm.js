@@ -12,15 +12,15 @@ import React from 'react';
 
 const BpmObj = ({className}) => {
     return (
-        <div>
-            <div className={className}>{className}</div>
+        <div style = {{width: "23px", height: "100px", display: "inline" }}>
+            <div className={className} style = {{width: "23px", display: "inline", position: "relative", top : "-100px"}}>{className}</div>
         </div>
     );
 }
 
 const Bpm = ({obj}) => {
     return (
-        <div>
+        <div style = {{width: "23px", height: "100px", display: "inline" }}>
             <BpmObj className={obj.bpm}/>
         </div>
     );
