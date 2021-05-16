@@ -77,7 +77,7 @@ const SheetWrapper = styled.div`
     height: 150px;
     `;
 
-const Sheet = ({dataStructure}, {className}) => {
+const Sheet = ({dataStructure, className}) => {
     const data = dataStructure;
     const returnValue = data.map((obj) => {
         switch (obj.objectType) {
