@@ -16,9 +16,6 @@ const Triplet = ({ obj }) => {
     const returnValue = obj.notes.map((obj) => {
         return (<Note obj={obj} />);
     });
-
-    { console.log(obj) };
-
     return (
         <div>
             <div className="tripletWrapper">Triplet Wrapper</div>

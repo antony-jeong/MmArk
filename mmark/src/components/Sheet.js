@@ -79,7 +79,8 @@ const SheetWrapper = styled.div`
     zoom: 2;
     `;
 
-const Sheet = ({dataStructure}, {className}) => {
+const Sheet = ({ dataStructure, className }) => {
+    { console.log(dataStructure) };
     const data = dataStructure;
     const returnValue = data.map((obj) => {
         switch (obj.objectType) {
