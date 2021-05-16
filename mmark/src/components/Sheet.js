@@ -7,6 +7,7 @@ import Key from "./sheet/Key";
 import Barline from "./sheet/Barline";
 import Clef from "./sheet/Clef";
 import Bpm from "./sheet/Bpm";
+import Triplet from "./sheet/Triplet"
 
 // dataStructure
     // objectType: (char) 
@@ -16,6 +17,7 @@ import Bpm from "./sheet/Bpm";
         // b - barline
         // n - note
         // p - bpm
+        // r - triplet
 
         // > if clef
         // treble: (boolean) true - treble, false - bass
@@ -49,17 +51,20 @@ import Bpm from "./sheet/Bpm";
         // length: (int) as exponent of 2; 0 - whole note
         // extend: (boolean) true - w/ point
         // rest: (boolean) true - rest note
-        // height: (int) vertical location in sheet; 0 - mi
-        // accidental : (char) s - sharp, f - flat, n - natural, x - none
-        // triplet : (boolean) true - is triplet
-        // noteDecoration : (char)
+        // height: ([int]) vertical location in sheet; 0 - mi
+        // accidental : ([char]) s - sharp, f - flat, n - natural, x - none
+        // noteDecoration : ([char])
             // s - staccato
             // a - accent
             // t - tenuto
             // f - fermata
+            // x - none
 
         // > if bpm
         // bpm : (int) bpm
+
+        // > if triplet
+        // notes : ([Note]) contains Note objects which composes the notes
 
 
 // const dataStructure = [{objectType: "c", treble: }, {objectType: "t", numerator: "", denominator: ""}, {objectType: "k", key: }, {objectType: "b", type: , barlineDecoration: ,}, {objectType: "n", length: , extend: , rest: , height:, accidental:, triplet:, noteDecoration: ,}]
@@ -89,7 +94,9 @@ const Sheet = ({dataStructure}, {className}) => {
             case "n":
                 return (<Note obj={obj} />)
             case "p":
-                return (<Bpm obj={obj}/>)
+                return (<Bpm obj={obj} />)
+            case "r":
+                return (<Triplet obj={obj} />)
             default:
                 return (<div>Invalid Object</div>)
         }
