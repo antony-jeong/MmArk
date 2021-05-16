@@ -20,7 +20,7 @@ const InvalidPage = ({history}) => {
 };
 
 InvalidPage.propTypes = {
-    
+    history: PropTypes.object.isRequired
 };
 
 export default InvalidPage;
