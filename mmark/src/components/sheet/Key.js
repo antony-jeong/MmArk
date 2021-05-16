@@ -27,7 +27,7 @@ const KeyObj = ({className}) => {
             case "s-7":
                 return (<div className="s-7">s-7</div>)
             case "0":
-                return (<div className="0">0</div>)
+                return (<div className="0" style = {{width: "23px", display: "inline" }}>0</div>)
             case "f-1":
                 return (<div className="f-1">f-1</div> )
             case "f-2":
@@ -49,7 +49,7 @@ const KeyObj = ({className}) => {
 
 const Key = (obj) => {
     return (
-        <div>
+        <div style = {{width: "23px", display: "inline" }}>
             <KeyObj className={obj.key > 0 ? `s-${obj.key}` : obj.key < 0 ? `f${obj.key}`: "0"}/>
         </div>
     );
