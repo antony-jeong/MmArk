@@ -5,8 +5,8 @@ import {Link} from 'react-router-dom';
 
 const PageButton = ({text, className, router}) => {
     return (
-        <Link to = {router} className = {`${className}`}>
-            {text}
+        <Link to = {router} className={`${className}`===undefined?'':`${className}`}>
+            {text===undefined?'':text}
         </Link>
     );
 };

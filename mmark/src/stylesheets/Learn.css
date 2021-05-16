@@ -1,0 +1,92 @@
+.LearnNote, .LearnRhythm, .LearnInterval, .LearnChord, .LearnRoadmapSign{
+    display: block;
+}
+
+.LearnNote .Logo, .LearnRhythm .Logo, .LearnInterval .Logo, .LearnChord .Logo, .LearnRoadmapSign .Logo{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 20px;
+    padding: 10px;
+    background: black;
+    color: white;
+}
+
+.LearnNote .PageNavigator,
+.LearnRhythm .PageNavigator,
+.LearnInterval .PageNavigator,
+.LearnChord .PageNavigator,
+.LearnRoadmapSign .PageNavigator{
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 20px;
+    text-align: left;
+}
+
+.LearnNote .PageNavigator input,
+.LearnRhythm .PageNavigator input,
+.LearnInterval .PageNavigator input,
+.LearnChord .PageNavigator input,
+.LearnRoadmapSign .PageNavigator input{
+    width: 1.5em;
+}
+
+.LearnNote-Page,
+.LearnRhythm-Page,
+.LearnInterval-Page,
+.LearnChord-Page,
+.LearnRoadmapSign-Page {
+    height: 90vh;
+    display: grid;
+    grid-template-rows: 1fr 1fr 2fr;
+    grid-gap: 20px;
+    margin: 0 50px;
+    text-align: center;
+}
+
+.LearnNote .Instruction,
+.LearnRhythm .Instruction,
+.LearnInterval .Instruction,
+.LearnChord .Instruction,
+.LearnRoadmapSign .Instruction {
+    padding: 10vh 0%;
+}
+
+.LearnNote .Sheet,
+.LearnRhythm .Sheet,
+.LearnInterval .Sheet,
+.LearnChord .Sheet,
+.LearnRoadmapSign .Sheet {
+    color: white;
+    background-color: lightgray;
+}
+
+.LearnNote .Keyboard,
+.LearnRhythm .Keyboard,
+.LearnInterval .Keyboard,
+.LearnChord .Keyboard,
+.LearnRoadmapSign .Keyboard {
+    color: white;
+    background-color: aquamarine;
+}
+
+
+
+.LearnNote .Next,
+.LearnRhythm .Next,
+.LearnInterval .Next,
+.LearnChord .Next,
+.LearnRoadmapSign .Next{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-align: right;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}

@@ -3,44 +3,35 @@ import PropTypes from 'prop-types';
 import Sheet from '../components/Sheet'
 import Instruction from '../components/Instruction';
 import Keyboard from '../components/Keyboard';
-import '../stylesheets/LearnNote.css';
-import PageButton from '../components/PageButton';
+import '../stylesheets/Learn.css';
 import PageNavigator from '../components/PageNavigator';
-import Logo from '../components/Logo';
-import InvalidPage from '../pages/InvalidPage'
+import LearnLayout from '../pages/LearnLayout';
 
-
-const LearnNotePages = ({className, pageNum, pageEnd, history}) => {
+const LearnNote = ({match, history}) => {
+    const pageNum = Number(match.params.pagenum);
+    const gamePage = <LearnNotePages pageNum={pageNum} pageEnd={10} history={history}/>;
+    const pageEnd = 10;
     return (
-        <div className={`${className}`}>
-            <Instruction className = "LearnNotePages-Instruction">
+        <LearnLayout gameName = {`LearnNote`} gamePage = {gamePage} pageNum = {pageNum} pageEnd = {pageEnd} history = {history}/>
+    );
+};
+
+const LearnNotePages = ({pageNum, pageEnd, history}) => {
+    return (
+        <div className={`LearnNote-Page`}>
+            <Instruction className ="Instruction">
                 This is Page #{pageNum} Instruction.
             </Instruction>
-            <Sheet className = "LearnNotePages-Sheet"/>
-            <Keyboard className = "LearnNotePages-Keyboard"/>
-            <PageNavigator className={'LearnNote-PageNavigator'} chapterName = {'LearnNote'} currentPage={pageNum} pageEnd={pageEnd} history={history}/>
+            <Sheet className = "Sheet" dataStructure={[{objectType: "p", bpm: 120}, {objectType: "c", treble: true}, {objectType: "t", numerator: 4, denominator: 4}, {objectType: "k", key: 0}, {objectType: "b", type: "b", barlineDecoration: "none",}, {objectType:"n", length:1, extend: true, rest: false, height: [3], accidental: ["s"], noteDecoration: ["s"]}, {objectType:"r", notes:[{objectType:"n", length:2, extend: true, rest: false, height: [1], accidental: ["f"], noteDecoration: ["f"]}]}]}/>
+            <Keyboard className = "Keyboard"/>
+            <PageNavigator className="PageNavigator" gameName = {'LearnNote'} pageNum={pageNum} pageEnd={pageEnd} history={history}/>
         </div>
     );
 }
 
-const LearnNote = ({match, history}) => {
-    const pageNum = Number(match.params.pagenum);
-    const pageEnd = 10;
-    return (
-        (pageNum >= 1) && (pageNum <= pageEnd)
-        ?<div>
-            <Logo className={'LearnNote-Logo'}/>
-            <LearnNotePages className={'LearnNotePages'} pageNum={pageNum} pageEnd={10} history={history}/>
-            <PageButton text = {'Next'} className = "LearnNote-Next" router = {`/LearnNote/${pageNum+1}`}/>
-        </div>
-        :
-        <InvalidPage />
-    );
-};
-
 LearnNotePages.propTypes = {
-    className: PropTypes.string,
-    pageNum: PropTypes.string.isRequired
+    pageNum: PropTypes.number.isRequired,
+    pageEnd: PropTypes.number.isRequired
 };
 
 export default LearnNote;
