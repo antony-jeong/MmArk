@@ -1,0 +1,33 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.Main-Container{
+    display: grid;
+    grid-template-rows: 20vh 80vh;
+    grid-template-columns: 20vw 20vw 20vw 20vw 20vw;
+    background-color: lightgray;
+}
+
+.Main-Logo{
+    background-color: white;
+    grid-area: 1 / 1 / 2 / 6;
+    padding: 10vh 0;
+    align-self: center;
+    text-align: center;
+}
+
+.GameSelectButton{
+    align-self: center;
+    padding: 40vh 0;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    size: 0;
+}
+
+.description{
+    display: none;
+}

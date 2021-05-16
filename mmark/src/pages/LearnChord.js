@@ -7,31 +7,31 @@ import '../stylesheets/Learn.css';
 import PageNavigator from '../components/PageNavigator';
 import LearnLayout from '../pages/LearnLayout';
 
-const LearnNote = ({match, history}) => {
+const LearnChord = ({match, history}) => {
     const pageNum = Number(match.params.pagenum);
-    const gamePage = <LearnNotePages pageNum={pageNum} pageEnd={10} history={history}/>;
+    const gamePage = <LearnChordPages pageNum={pageNum} pageEnd={10} history={history}/>;
     const pageEnd = 10;
     return (
-        <LearnLayout gameName = {`LearnNote`} gamePage = {gamePage} pageNum = {pageNum} pageEnd = {pageEnd} history = {history}/>
+        <LearnLayout gameName = {`LearnChord`} gamePage = {gamePage} pageNum = {pageNum} pageEnd = {pageEnd} history = {history}/>
     );
 };
 
-const LearnNotePages = ({pageNum, pageEnd, history}) => {
+const LearnChordPages = ({pageNum, pageEnd, history}) => {
     return (
-        <div className={`LearnNote-Page`}>
+        <div className={`LearnChord-Page`}>
             <Instruction className ="Instruction">
                 This is Page #{pageNum} Instruction.
             </Instruction>
             <Sheet className = "Sheet"/>
             <Keyboard className = "Keyboard"/>
-            <PageNavigator className="PageNavigator" gameName = {'LearnNote'} pageNum={pageNum} pageEnd={pageEnd} history={history}/>
+            <PageNavigator className="PageNavigator" gameName = {'LearnChord'} pageNum={pageNum} pageEnd={pageEnd} history={history}/>
         </div>
     );
 }
 
-LearnNotePages.propTypes = {
+LearnChordPages.propTypes = {
     pageNum: PropTypes.number.isRequired,
     pageEnd: PropTypes.number.isRequired
 };
 
-export default LearnNote;
+export default LearnChord;

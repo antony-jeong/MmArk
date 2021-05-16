@@ -7,18 +7,18 @@ import '../stylesheets/Learn.css';
 import PageNavigator from '../components/PageNavigator';
 import LearnLayout from '../pages/LearnLayout';
 
-const LearnNote = ({match, history}) => {
+const LearnRhythm = ({match, history}) => {
     const pageNum = Number(match.params.pagenum);
-    const gamePage = <LearnNotePages pageNum={pageNum} pageEnd={10} history={history}/>;
+    const gamePage = <LearnRhythmPages pageNum={pageNum} pageEnd={10} history={history}/>;
     const pageEnd = 10;
     return (
-        <LearnLayout gameName = {`LearnNote`} gamePage = {gamePage} pageNum = {pageNum} pageEnd = {pageEnd} history = {history}/>
+        <LearnLayout gameName = {`LearnRhythm`} gamePage = {gamePage} pageNum = {pageNum} pageEnd = {pageEnd} history = {history}/>
     );
 };
 
-const LearnNotePages = ({pageNum, pageEnd, history}) => {
+const LearnRhythmPages = ({pageNum, pageEnd, history}) => {
     return (
-        <div className={`LearnNote-Page`}>
+        <div className={`LearnRhythm-Page`}>
             <Instruction className ="Instruction">
                 This is Page #{pageNum} Instruction.
             </Instruction>
@@ -29,9 +29,9 @@ const LearnNotePages = ({pageNum, pageEnd, history}) => {
     );
 }
 
-LearnNotePages.propTypes = {
+LearnRhythmPages.propTypes = {
     pageNum: PropTypes.number.isRequired,
     pageEnd: PropTypes.number.isRequired
 };
 
-export default LearnNote;
+export default LearnRhythm;
