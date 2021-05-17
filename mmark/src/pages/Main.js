@@ -6,22 +6,32 @@ import '../stylesheets/Main.css';
 const Main = () => {
     return (
       <div className={'Main-Container'}>
-        <Logo className={'Main-Logo'} isLink={false}/>
-        <GameSelectButton src={'LearnNote'} name={'Notes'}>
-          Description about note
-        </GameSelectButton>
-        <GameSelectButton src={'LearnRhythm'} name={'Rhythm'}>
-          Description about note
-        </GameSelectButton>
-        <GameSelectButton src={'LearnInterval'} name={'Intervals'}>
-          Description about note
-        </GameSelectButton>
-        <GameSelectButton src={'LearnChord'} name={'Chords'}>
-          Description about note
-        </GameSelectButton>
-        <GameSelectButton src={'LearnRoadmapSign'} name={'RoadmapSigns'}>
-          Description about note
-        </GameSelectButton>
+        <div className={'Main-Logo-Container'}>
+          <Logo className={'Main-Logo'} isLink={false}/>
+          <div className={'Learn-Music-by-Games'}>Learn Music by Games</div>
+          <div className={'Made-by'}>Made by Team MmArk ∙ <a href="https://github.com/antony-jeong/MmArk" target="_blank">GitHub</a></div>
+        </div>
+        <div className={'Main-Button-Container'}>
+          <GameSelectButton src={'LearnNote'} name={'Notes'}>
+            Description about Notes <br/>
+            Description
+          </GameSelectButton>
+          <GameSelectButton src={'LearnRhythm'} name={'Rhythm'}>
+            Rhythm <br/>
+            Description about Rhythm
+          </GameSelectButton>
+          <GameSelectButton src={'LearnInterval'} name={'Intervals'}>
+            Description Intervals <br/>
+            Description about Intervals
+          </GameSelectButton>
+          <GameSelectButton src={'LearnChord'} name={'Chords'}>
+            Description about Chords <br/>
+            Description about
+          </GameSelectButton>
+          <GameSelectButton src={'LearnRoadmapSign'} name={'Roadmap Signs'}>
+            Description about <br/> Roadmap Signs
+          </GameSelectButton>
+        </div>
       </div>
     );
 };

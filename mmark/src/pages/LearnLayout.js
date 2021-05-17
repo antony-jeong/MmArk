@@ -5,6 +5,8 @@ import Logo from '../components/Logo';
 import InvalidPage from '../pages/InvalidPage'
 
 const LearnLayout = ({gameName, gamePage, pageNum, pageEnd, history}) => {
+    if (pageNum < 1) history.push(`/${gameName}/1`);
+    else if (pageNum > pageEnd) history.push(`/${gameName}/${pageEnd}`);
     return (
         (pageNum >= 1) && (pageNum <= pageEnd)
         ?<div className={`${gameName}`}>
@@ -13,7 +15,7 @@ const LearnLayout = ({gameName, gamePage, pageNum, pageEnd, history}) => {
             <PageButton text = {'Next'} className = {`Next`} router = {`/${gameName}/${pageNum+1}`}/>
         </div>
         :
-        <InvalidPage history={history}/>
+        <InvalidPage history={history} />
     );
 };
 

@@ -1,33 +1,107 @@
 html,
 body {
+    display: flex;
+    align-items: center;
+    height: 100vh;
     margin: 0;
     padding: 0;
+    background-color: #3f4454;
+    background-image: linear-gradient(135deg, #3f4454 0%, #0f0930 100%);
 }
 
+
 .Main-Container{
-    display: grid;
-    grid-template-rows: 20vh 80vh;
-    grid-template-columns: 20vw 20vw 20vw 20vw 20vw;
-    background-color: lightgray;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+.Main-Logo-Container{
+    justify-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    margin-left: 10vw;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .Main-Logo{
-    background-color: white;
-    grid-area: 1 / 1 / 2 / 6;
-    padding: 10vh 0;
-    align-self: center;
+    zoom: 0.7;
+}
+
+.Learn-Music-by-Games {
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 300;
     text-align: center;
+    color: #cdbfda;
+}
+
+.Made-by {
+    margin-top: 30px;
+    font-family: Roboto;
+    font-size: 10px;
+    text-align: left;
+    color: #ffffff;
+}
+
+.Made-by a{
+    color: #ffffff;
+}
+
+.Main-Button-Container{
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    align-items: center;
+    justify-content: center;
 }
 
 .GameSelectButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    zoom: 0.6;
+    width: 340px;
+    height: 140px;
+    margin: 0 10vw 20px 0;
+    border-radius: 10px;
+    border: solid 2px #ffffff;
     align-self: center;
-    padding: 40vh 0;
     text-align: center;
     text-decoration: none;
-    color: black;
-    size: 0;
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 30px;
+    font-weight: 300;
+}
+
+
+.Main-Button-Container:hover .GameSelectButton:hover{
+    width: 680px;
+    transition: width .4s;
+}
+
+.name{
+    width: 340px;
+    text-align: center;
 }
 
 .description{
-    display: none;
+    overflow: hidden;
+    width: 0;
+    font-size: 25px;
+    text-align: center;
+    justify-self: right;
+    letter-spacing: -15px;
+    color: rgba(100, 100, 100, 0);
+}
+
+.Main-Button-Container:hover .GameSelectButton:hover .description{
+    width: 340px;
+    letter-spacing: 0px;
+    color: rgb(165, 165, 165);
+    transition: width .4s, letter-spacing .4s, color .4s;
 }

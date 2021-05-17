@@ -1,7 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-#root {
+
+.LearnNote,
+.LearnRhythm,
+.LearnInterval,
+.LearnChord,
+.LearnRoadmapSign {
+    width: 100vw;
+    display: block;
     background: linear-gradient(to top, #eaecf1, #cac7dc);
+    overflow: auto;
 }
+
 
 .Piano {
     display: flex;
@@ -14,15 +23,6 @@
     justify-content: center;
     font-family: 'Roboto', sans-serif;
     font-size: 1.5rem;
-}
-
-.LearnNote,
-.LearnRhythm,
-.LearnInterval,
-.LearnChord,
-.LearnRoadmapSign {
-    display: block;
-    overflow: auto;
 }
 
 .LearnNote .Logo,

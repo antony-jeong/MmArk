@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom';
 
 const GameSelectButton = ({src, name, children}) => {
     return (
-        <Link to = {`/${src}/1`} className = {`GameSelectButton ${name}Button`}>
-            {name}
+        <Link to = {`/${src}/1`} className = {`GameSelectButton ${src}Button `}>
+            <div className = {'name'}> {name}</div>
             <div className = {'description'}>
                 {children}
             </div>

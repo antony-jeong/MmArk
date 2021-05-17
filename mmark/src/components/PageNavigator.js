@@ -4,8 +4,13 @@ import PageButton from '../components/PageButton';
 
 const PageNavigator = ({className, gameName, pageNum, pageEnd, history}) => {
     const MoveTo = (e) => {
-        if (e.key === "Enter")
+        if (e.key === "Enter"){
+            if (e.target.value === ""){ 
+                history.push(`/${gameName}/${pageNum}`);
+                return;
+            };
             history.push(`/${gameName}/${e.target.value}`);
+        }
     };
 
     return (
