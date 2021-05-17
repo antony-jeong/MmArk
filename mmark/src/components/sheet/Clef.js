@@ -12,15 +12,17 @@ import React from 'react';
 
 const ClefObj = ({className}) => {
     return (
-        <div>
-            {className === "treble" ? <div className="treble">Treble</div> : <div className="bass">{className}</div>}
+        <div style = {{width: "27px", display: "inline" }} >
+            {className === "treble" 
+            ? <div className="treble" style = {{width: "27px", display: "inline" }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/clef_g.svg"} style = {{position: "relative", top: "-17px"}}  height = "81px"/></div> 
+            : <div className="bass" style = {{width: "27px"}}>{className}</div>}
         </div>
     );
 }
 
 const Clef = ({obj}) => {
     return (
-        <div>
+        <div style = {{width: "27px", display: "inline" }}>
             {obj.treble ? <ClefObj className="treble"/> : <ClefObj className="bass"/>}
         </div>
     );

@@ -69,15 +69,18 @@ import Triplet from "./sheet/Triplet"
 
 // const dataStructure = [{objectType: "c", treble: }, {objectType: "t", numerator: "", denominator: ""}, {objectType: "k", key: }, {objectType: "b", type: , barlineDecoration: ,}, {objectType: "n", length: , extend: , rest: , height:, accidental:, triplet:, noteDecoration: ,}]
 
-
 const SheetWrapper = styled.div`
-    background: royalblue;
-    opacity: 50%;
-    color: black;
-    height: 150px;
+    background-image: url(${process.env.PUBLIC_URL + "/musical_symbols_svg/sheet.svg"});
+    background-attatchment: fixed;
+    background-size: contain;
+    position: static;
+    height: 50px;
+    margin: 50px 100px 50px 100px;
+    zoom: 1;
     `;
 
-const Sheet = ({dataStructure}, {className}) => {
+const Sheet = ({ dataStructure, className }) => {
+    { console.log(dataStructure) };
     const data = dataStructure;
     const returnValue = data.map((obj) => {
         switch (obj.objectType) {
@@ -105,6 +108,7 @@ const Sheet = ({dataStructure}, {className}) => {
             <SheetWrapper >
                 {returnValue}
             </SheetWrapper>
+
         </div>
     );
 };
