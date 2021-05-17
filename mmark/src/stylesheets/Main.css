@@ -5,29 +5,63 @@ body {
 }
 
 .Main-Container{
-    display: grid;
+    width: 100vw;
     grid-template-rows: 20vh 80vh;
-    grid-template-columns: 20vw 20vw 20vw 20vw 20vw;
     background-color: lightgray;
+    overflow: hidden;
 }
 
-.Main-Logo{
+.Main-Logo-Container{
+    display: flex;
+    align-items: center;
+    height: 20vh;
     background-color: white;
-    grid-area: 1 / 1 / 2 / 6;
-    padding: 10vh 0;
-    align-self: center;
-    text-align: center;
+    justify-content: center;
+}
+
+.Main-Button-Container{
+    height: 80vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
 .GameSelectButton{
+    display: inline-block;
     align-self: center;
+    width: 20vw;
     padding: 40vh 0;
     text-align: center;
     text-decoration: none;
     color: black;
-    size: 0;
+    overflow: hidden;
+    box-shadow: -2px 0 0 0 white, 2px 0 0 0 white;
+}
+
+.RoadmapSignsButton{
+    box-shadow: -2px 0 0 0 white, 0 0 0 0 white;
+}
+
+.Main-Button-Container:hover .GameSelectButton{
+    width: 17vw;
+    transition: width .3s;
+}
+
+.Main-Button-Container:hover .GameSelectButton:hover{
+    width: 32vw;
+    transition: width .3s;
+}
+
+.name{
+    text-align: center;
 }
 
 .description{
-    display: none;
+    width: 32vw;
+    text-align: center;
+    color: rgba(100, 100, 100, 0);
+}
+
+.Main-Button-Container:hover .GameSelectButton:hover .description{
+    color: rgba(100, 100, 100, 1);
 }

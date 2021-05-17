@@ -22,7 +22,7 @@ const LearnChordPages = ({pageNum, pageEnd, history}) => {
             <Instruction className ="Instruction">
                 This is Page #{pageNum} Instruction.
             </Instruction>
-            <Sheet className = "Sheet"/>
+            <Sheet className = "Sheet" dataStructure = {[]}/>
             <Keyboard className = "Keyboard"/>
             <PageNavigator className="PageNavigator" gameName = {'LearnChord'} pageNum={pageNum} pageEnd={pageEnd} history={history}/>
         </div>
