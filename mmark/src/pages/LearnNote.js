@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Piano from "../components/Piano";
 import Sheet from '../components/Sheet'
 import Instruction from '../components/Instruction';
-import Keyboard from '../components/Keyboard';
 import '../stylesheets/Learn.css';
 import PageNavigator from '../components/PageNavigator';
 import LearnLayout from '../pages/LearnLayout';
