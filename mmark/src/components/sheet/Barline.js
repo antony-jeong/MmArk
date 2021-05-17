@@ -1,4 +1,5 @@
 import React from 'react';
+import "./StyleSheet.css";
 
 // objectType: (char) 
         // c - clef
@@ -32,7 +33,7 @@ import imgBarLine from "../musical_symbols_svg/barline.svg";
 const BarlineObj = ({ className, barlineDecoration }) => {
     switch (className) {
         case "b":
-            return (<div className="bar" style = {{width: "1px", display: "inline" }}><img src = {imgBarLine} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
+            return (<div className="bar" style = {{width: "1px", display: "inline" }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
         case "o":
             return (<div className="open" style = {{width: "14px", display: "inline" }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_repeat_open.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
         case "c":
@@ -52,13 +53,13 @@ const Barline = ({obj}) => {
         case "b":
             return (<BarlineObj className={"b"} barlineDecoration={ obj.barlineDecoration} style = {{width: "1px"}}/>)
         case "o":
-            return (<BarlineObj className={"o"} barlineDecoration={ obj.barlineDecoration}/>)
+            return (<BarlineObj className={"o"} barlineDecoration={ obj.barlineDecoration} style = {{width: "14px"}}/>)
         case "c":
-            return (<BarlineObj className={"c"} barlineDecoration={ obj.barlineDecoration}/>)
+            return (<BarlineObj className={"c"} barlineDecoration={ obj.barlineDecoration} style = {{width: "14px"}}/>)
         case "d":
-            return (<BarlineObj className={"d"} barlineDecoration={ obj.barlineDecoration}/>)
+            return (<BarlineObj className={"d"} barlineDecoration={ obj.barlineDecoration} style = {{width: "3px"}}/>)
         case "t":
-            return (<BarlineObj className={"t"} barlineDecoration={ obj.barlineDecoration}/>)
+            return (<BarlineObj className={"t"} barlineDecoration={ obj.barlineDecoration} style = {{width: "6px"}}/>)
         default:
             return (<div>Invalid Object</div>)
     }

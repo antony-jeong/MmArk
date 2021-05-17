@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
 
+import "./sheet/StyleSheet.css";
+
 import Time from "./sheet/Time";
 import Note from "./sheet/Note";
 import Key from "./sheet/Key";
