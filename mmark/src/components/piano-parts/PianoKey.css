@@ -1,54 +1,64 @@
-
-
-.piano-key {
-  height: 300px;
-  width: 90px;
-  background: #efefef;
-  display: flex;
-  align-items: flex-end;
-  margin-left: 3px;
-  margin-right: 3px;
-  border: 2px solid black;
-  cursor: pointer;
-}
-
-.piano-key:active {
-  background: #bfbfbf;
-}
-
-.piano-black-key-wrapper {
-  width: 0px;
-}
-
-.piano-black-key {
-  position: relative;
-  height: 180px;
-  width: 56px;
-  transform: translateX(-50%);
-  background: #404040;
-  display: flex;
-  align-items: flex-end;
-  border: 2px solid black;
-  cursor: pointer;
-}
-
-.piano-black-key:active {
-  background: #101010;
-}
-
-.piano-key-text {
-  width: 100%;
-  text-align: center;
-  font-size: 1.5rem;
-  user-select: none;
-}
-
-.piano-key .piano-key-text {
-  color: black;
-  margin-bottom: 30px;
-}
-
-.piano-black-key .piano-key-text {
-  color: white;
-  margin-bottom: 20px;
-}
+    .piano-key {
+        height: 15.67rem;
+        width: 3.91rem;
+        display: flex;
+        align-items: flex-end;
+        margin-left: 3px;
+        margin-right: 3px;
+        border-radius: 4px;
+        border: solid 5px #ffffff;
+        cursor: pointer;
+    }
+    
+    .piano-key:hover {
+        background: linear-gradient(to top, rgba(195, 153, 199, 0.3), rgba(164, 200, 255, 0.35));
+        ;
+    }
+    
+    .piano-key:active {
+        background: linear-gradient(to top, rgba(195, 153, 199, 0.6), rgba(164, 200, 255, 0.65));
+        ;
+    }
+    
+    .piano-black-key-wrapper {
+        width: 0px;
+    }
+    
+    .piano-black-key {
+        position: relative;
+        width: 2.67rem;
+        height: 9.83rem;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: flex-end;
+        border: 2px solid black;
+        cursor: pointer;
+        border-radius: 4px;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+        background-image: linear-gradient(to top, #180f18, #373137);
+    }
+    
+    .piano-black-key:hover {
+        background: rgba(16, 16, 16, 0.9);
+    }
+    
+    .piano-black-key:active {
+        background: #101010;
+    }
+    
+    .piano-key-text {
+        width: 100%;
+        text-align: center;
+        font-size: 1.5rem;
+        user-select: none;
+    }
+    
+    .piano-key .piano-key-text {
+        color: black;
+        margin-bottom: 30px;
+    }
+    
+    .piano-black-key .piano-key-text {
+        color: white;
+        margin-bottom: 20px;
+    }

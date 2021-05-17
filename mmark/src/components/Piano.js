@@ -10,11 +10,11 @@ const allNotes = ["C3","C#3","D3","D#3","E3","F3","F#3","G3","G#3","A3","A#3","B
 const PianoWrapper = styled.div `
   display: flex;
   align-items: flex-start;
+  justify-self: center;
   justify-content: center;
   width: fit-content;
   margin: 0px;
   padding: 10px;
-  border: 5px solid pink;
 `
 
 const Piano = ({startNote, endNote}) => {
