@@ -202,6 +202,7 @@ const IndivRestObj = ({ length }) => {
 };
 
 const RestObj = ({ obj }) => {
+    { console.log(obj) };
     var f = (obj) => {
         switch (obj.length) {
             case 0:
@@ -224,8 +225,10 @@ const RestObj = ({ obj }) => {
     const returnValue = <IndivRestObj length={ length }/>;
 
     return (
+
         <div style = {{width: "5px", display: "inline" }}>{ returnValue }</div>
         
+
     );
 };
 
