@@ -1,4 +1,5 @@
 import React from 'react';
+import "./StyleSheet.css";
 
 // objectType: (char) 
         // c - clef
@@ -16,8 +17,8 @@ const TimeObj = ({type, num}) => {
     return (
         <div style = {{width: "23px", display: "inline" }}>
             {type === "nu" 
-            ? <div className="nu" style = {{width: "23px", display: "inline" }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/numerator_" + num + ".svg"} style = {{position: "relative", top: "-56px"}} height = "23px"/></div> 
-            : <div className="de" style = {{width: "23px", display: "inline"}}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/denominator_" + num + ".svg"} style = {{position: "relative", top: "-32px", left: "-27px"}} height = "23px"/></div>}
+            ? <div className="nu" style = {{width: "0px", display: "inline" }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/numerator_" + num + ".svg"} style = {{position: "relative", top: "-56px"}} height = "23px"/></div> 
+            : <div className="de" style = {{width: "0px", display: "inline-flex"}}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/denominator_" + num + ".svg"} style = {{position: "relative", top: "-32px", left: "-27px"}} height = "23px"/></div>}
         </div>        
     )
 }

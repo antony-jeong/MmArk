@@ -1,4 +1,5 @@
 import React from 'react';
+import "./StyleSheet.css";
 
 // objectType: (char) 
         // c - clef
@@ -12,15 +13,17 @@ import React from 'react';
 
 const BpmObj = ({className}) => {
     return (
-        <div style = {{width: "23px", height: "100px", display: "inline" }}>
-            <div className={className} style = {{width: "23px", display: "inline", position: "relative", top : "-100px"}}>{className}</div>
+        <div style = {{width: "0px", height: "100px", display: "inline-flex" }}>
+            <div className={className} style = {{font: "italic", width: "0px", display: "inline", position: "relative", top : "-100px"}}>
+                <font style = {{font: "italic"}}>{className}</font>
+            </div>
         </div>
     );
 }
 
 const Bpm = ({obj}) => {
     return (
-        <div style = {{width: "23px", height: "100px", display: "inline" }}>
+        <div style = {{width: "0px", height: "100px", display: "inline-flex" }}>
             <BpmObj className={obj.bpm}/>
         </div>
     );

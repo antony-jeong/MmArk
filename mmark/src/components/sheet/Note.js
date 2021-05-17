@@ -1,4 +1,5 @@
 import React from 'react';
+import "./StyleSheet.css";
 
 // objectType: (char) 
         // c - clef
@@ -20,32 +21,77 @@ import React from 'react';
             // f - fermata
             // x - none
 
-const AccidentalObj = ({ type }) => {
-    return (<div>accidental : {type}</div>);
+const AccidentalObj = ({ type, height, direction}) => {
+    var f = (direction) => {
+        switch (direction) {
+            case "up" :
+                return (<div style = {{width: "5px", display: "inline" }}>
+                    <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/accidental_" + type + ".svg"} style = {{position: "relative", top: -11.5-6.1225*(height + 1)+"px"}} height = {28+(type == "f" ? 7.2 : 0)+"px"}/>
+                </div>);
+            case "down" :
+                return (<div style = {{width: "5px", display: "inline" }}>
+                    <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/accidental_" + type + ".svg"} style = {{position: "relative", top: -11.5-6.1225*(height + 1)+"px"}} height = {28+(type == "f" ? 7.2 : 0)+"px"} />
+                </div>);
+        }
+    };
+    if (type == "x") {
+        return (<div style = {{width: "5px", display: "inline" }}></div>);
+    }
+    return f(direction);
 };
 
-const NoteDecorationObj = ({ type }) => {
-    return (<div>decoration : {type}</div>);
+const NoteDecorationObj = ({ type, height, direction }) => {
+    var f = (direction) => {
+        switch (direction) {
+            case "up" :
+                return (<div style = {{width: "0px", display: "inline-flex" }}>
+                    <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/deco_" + type + ".svg"} style = {{position: "relative", top: -14-6.1225*(height)+"px", left: "-21px"}} height = "9px"/>
+                </div>);
+            case "down" :
+                return (<div style = {{width: "0px", display: "inline-flex" }}>
+                    <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/deco_" + type + ".svg"} style = {{position: "relative", top: -40-6.1225*(height)+"px", left: "-21px"}} height = "9px"/>
+                </div>);
+        }
+    };
+
+    if (type == "f"){
+
+        if (height > 11){
+            return (<div style = {{width: "0px", display: "inline-flex" }}>
+                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/deco_" + type + ".svg"} style = {{position: "relative", top: -100-6.1225*(height)+"px", left: "-21px"}} height = "9px"/>
+            </div>);
+        }
+
+        return (<div style = {{width: "0px", display: "inline-flex" }}>
+            <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/deco_" + type + ".svg"} style = {{position: "relative", top: -100+"px", left: "-21px"}} height = "9px"/>
+        </div>);
+    }
+    if (type == "x") {
+        return (<div style = {{width: "5px", display: "inline" }}></div>);
+    }
+    return f(direction);
 };
 
 const IndivNoteUpObj = ({ type, height, deco, acc }) => {
     return (
-        <div className={height}>
-            height : {height}
-            <NoteDecorationObj type={deco} />
-            <div className="up"> length : {type}, up</div>
-            <AccidentalObj type={acc}/>
+        <div className={height} style = {{width: "0px", display: "inline" }}>
+            <AccidentalObj type={acc} height={height} direction="up"/>
+            <div className="up" style = {{width: "0px", display: "inline" }}> 
+                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/notes/" + type + ".svg"} style = {{position: "relative", top: -19-6.1225*(height + 1) + "px"}} height = "45px"/>
+            </div>
+            <NoteDecorationObj type={deco} height={height} direction="up"/>
         </div>
     );
 };
 
 const IndivNoteDownObj = ({ type, height, deco, acc }) => {
         return (
-        <div className={height}>
-            height : {height}
-            <NoteDecorationObj type={deco} />
-            <div className="down"> length : {type}, down</div>
-            <AccidentalObj type={acc}/>
+        <div className={height} style = {{width: "0px", display: "inline" }}>
+            <AccidentalObj type={acc} height={height} direction="down"/>
+            <div className="down" style = {{width: "0px", display: "inline" }}> 
+                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/notes/" + type + "_down.svg"} style = {{position: "relative", top: 14-6.1225*(height + 1) + "px"}} height = "45px"/>
+            </div>
+            <NoteDecorationObj type={deco} height={height} direction="down"/>
         </div>
     );
 };
@@ -63,7 +109,7 @@ const NoteObj = ({ obj }) => {
             case 3:
                 return (obj.extend ? 12 : 8);
             case 4:
-                return (obj.extend ? 32 : 16);
+                return (obj.extend ? 24 : 16);
             case 5:
                 return (obj.extend ? 48 : 32);
             default:
@@ -71,17 +117,25 @@ const NoteObj = ({ obj }) => {
         }
     };
     const type = f(obj);
+    console.log(obj.length);
     const objData = [];
     for (var i = 0; i < obj.height.length; i++) {
         const newObj = { height: obj.height[i], deco: obj.noteDecoration[i], acc: obj.accidental[i] };
         objData.push(newObj);
     }
     const returnValue = objData.map((obj) => {
+
         return (direction === "up" ? <IndivNoteUpObj type={ type } height={ obj.height } deco={ obj.deco } acc={ obj.acc }/> : <IndivNoteDownObj type={ type } height={ obj.height } deco={ obj.deco } acc={ obj.acc }/>);
     });
-
+    if (obj.height.length == 1) {
+        return (
+            < div style = {{width: "5px", display: "inline" }}>
+                {returnValue}
+            </div>
+        );
+    }
     return (
-        < div >
+        < div style = {{width: "3px", display: "inline-flex", "flex-shrink":"15px" }}>
             {returnValue}
         </div>
     );
@@ -92,29 +146,53 @@ const IndivRestObj = ({ length }) => {
     var f = (length) => {
         switch (length) {
             case 1:
-                return (<div className={length}>{length}</div>);
+                return (<div className={length} style = {{width: "5px", display: "inline" }}>
+                    <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/rests/" + length + ".svg"} style = {{position: "relative", top: -47.5 -12.245+ "px"}} height = "9px"/>
+                </div>);
             case 1.5:
-                return (<div className={length}>{length}</div>);
+                return (<div className={length} style = {{width: "5px", display: "inline" }}>
+                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/rests/" + length + ".svg"} style = {{position: "relative", top: -47.5 -12.245+ "px"}} height = "9px"/>
+            </div>);
             case 2:
-                return (<div className={length}>{length}</div>);
+                return (<div className={length} style = {{width: "5px", display: "inline" }}>
+                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/rests/" + length + ".svg"} style = {{position: "relative", top: -47.5 -12.245 +3.5+ "px"}} height = "9px"/>
+            </div>);
             case 3:
-                return (<div className={length}>{length}</div>);
+                return (<div className={length} style = {{width: "5px", display: "inline" }}>
+                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/rests/" + length + ".svg"} style = {{position: "relative", top: -47.5 -12.245 +3.5 + "px"}} height = "9px"/>
+            </div>);
             case 4:
-                return (<div className={length}>{length}</div>);
+                return (<div className={length} style = {{width: "5px", display: "inline" }}>
+                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/rests/" + length + ".svg"} style = {{position: "relative", top: -39 + "px"}} height = "40px"/>
+            </div>);
             case 6:
-                return (<div className={length}>{length}</div>);
+                return (<div className={length} style = {{width: "5px", display: "inline" }}>
+                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/rests/" + length + ".svg"} style = {{position: "relative", top: -39 + "px"}} height = "40px"/>
+            </div>);
             case 8:
-                return (<div className={length}>{length}</div>);
+                return (<div className={length} style = {{width: "5px", display: "inline" }}>
+                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/rests/" + length + ".svg"} style = {{position: "relative", top: -40 + "px"}} height = "27px"/>
+            </div>);
             case 12:
-                return (<div className={length}>{length}</div>);
+                return (<div className={length} style = {{width: "5px", display: "inline" }}>
+                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/rests/" + length + ".svg"} style = {{position: "relative", top: -40 + "px"}} height = "27px"/>
+            </div>);
             case 16:
-                return (<div className={length}>{length}</div>);
+                return (<div className={length} style = {{width: "5px", display: "inline" }}>
+                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/rests/" + length + ".svg"} style = {{position: "relative", top: -28 + "px"}} height = "39px"/>
+            </div>);
             case 24:
-                return (<div className={length}>{length}</div>);
+                return (<div className={length} style = {{width: "5px", display: "inline" }}>
+                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/rests/" + length + ".svg"} style = {{position: "relative", top: -28 + "px"}} height = "39px"/>
+            </div>);
             case 32:
-                return (<div className={length}>{length}</div>);
+                return (<div className={length} style = {{width: "5px", display: "inline" }}>
+                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/rests/" + length + ".svg"} style = {{position: "relative", top: -24.5 + "px"}} height = "54px"/>
+            </div>);
             case 48:
-                return (<div className={length}>{length}</div>);
+                return (<div className={length} style = {{width: "5px", display: "inline" }}>
+                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/rests/" + length + ".svg"} style = {{position: "relative", top: -24.5 + "px"}} height = "54px"/>
+            </div>);
             default:
                 return (<div>Invalid Object</div>);
         }
@@ -146,13 +224,14 @@ const RestObj = ({ obj }) => {
     const returnValue = <IndivRestObj length={ length }/>;
 
     return (
-        { returnValue }
+        <div style = {{width: "5px", display: "inline" }}>{ returnValue }</div>
+        
     );
 };
 
 const Note = ({obj}) => {
     return (
-        <div>
+        <div style = {{width: "5px", display: "inline" }}>
             {obj.rest ? <RestObj obj={obj} /> : <NoteObj obj={obj}/>}
         </div>
     );
