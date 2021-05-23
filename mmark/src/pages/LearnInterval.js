@@ -4,7 +4,6 @@ import Sheet from '../components/Sheet'
 import Instruction from '../components/Instruction';
 import Keyboard from '../components/Keyboard';
 import '../stylesheets/Learn.css';
-import PageNavigator from '../components/PageNavigator';
 import LearnLayout from '../pages/LearnLayout';
 
 const LearnInterval = ({match, history}) => {
@@ -16,7 +15,7 @@ const LearnInterval = ({match, history}) => {
     );
 };
 
-const LearnIntervalPages = ({pageNum, pageEnd, history}) => {
+const LearnIntervalPages = ({pageNum}) => {
     return (
         <div className={`LearnInterval-Page`}>
             <Instruction className ="Instruction">
@@ -24,7 +23,6 @@ const LearnIntervalPages = ({pageNum, pageEnd, history}) => {
             </Instruction>
             <Sheet className = "Sheet" dataStructure = {[]}/>
             <Keyboard className = "Keyboard"/>
-            <PageNavigator className="PageNavigator" gameName = {'LearnInterval'} pageNum={pageNum} pageEnd={pageEnd} history={history}/>
         </div>
     );
 }

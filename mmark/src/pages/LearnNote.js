@@ -4,7 +4,6 @@ import Piano from "../components/Piano";
 import Sheet from '../components/Sheet'
 import Instruction from '../components/Instruction';
 import '../stylesheets/Learn.css';
-import PageNavigator from '../components/PageNavigator';
 import LearnLayout from '../pages/LearnLayout';
 
 const LearnNote = ({match, history}) => {
@@ -16,7 +15,7 @@ const LearnNote = ({match, history}) => {
     );
 };
 
-const LearnNotePages = ({pageNum, pageEnd, history}) => {
+const LearnNotePages = ({pageNum}) => {
     return (
         <div className={`LearnNote-Page`}>
             <Instruction className="Instruction">
@@ -25,10 +24,8 @@ const LearnNotePages = ({pageNum, pageEnd, history}) => {
                 </div>
             </Instruction>
 
-            <Sheet className = "Sheet" dataStructure={[{objectType: "p", bpm: 120}, {objectType: "c", treble: true}, {objectType: "t", numerator: 4, denominator: 4}, {objectType: "k", key: 0}, {objectType: "b", type: "b", barlineDecoration: "none",}, {objectType:"n", length:1, extend: true, rest: false, height: [3], accidental: ["s"], noteDecoration: ["s"]}, {objectType:"n", length:1, extend: true, rest: true}, {objectType:"r", notes:[{objectType:"n", length:2, extend: true, rest: false, height: [1], accidental: ["f"], noteDecoration: ["f"]}]}]}/>
+            <Sheet className = "Sheet" dataStructure={[{objectType: "p", bpm: 120}, {objectType: "c", treble: true}, {objectType: "t", numerator: 4, denominator: 4}, {objectType: "k", key: 0}, {objectType: "b", type: "b", barlineDecoration: "none",}, {objectType:"n", length:1, extend: true, rest: false, height: [3], accidental: ["s"], noteDecoration: ["s"]}, {objectType:"n", length:1, extend: true, rest: true}]}/>
             <Piano className = "Piano" startNote = "C3" endNote = "B4"/>
-
-            <PageNavigator className="PageNavigator" gameName = {'LearnNote'} pageNum={pageNum} pageEnd={pageEnd} history={history}/>
         </div>
     );
 }

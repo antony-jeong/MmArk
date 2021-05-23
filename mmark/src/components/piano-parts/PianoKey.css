@@ -39,7 +39,7 @@
     }
     
     .piano-black-key:hover {
-        background: rgba(16, 16, 16, 0.9);
+        background: rgba(35, 35, 35);
     }
     
     .piano-black-key:active {
@@ -49,7 +49,7 @@
     .piano-key-text {
         width: 100%;
         text-align: center;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         user-select: none;
     }
     

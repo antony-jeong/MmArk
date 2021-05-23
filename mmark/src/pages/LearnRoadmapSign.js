@@ -4,7 +4,6 @@ import Sheet from '../components/Sheet'
 import Instruction from '../components/Instruction';
 import Keyboard from '../components/Keyboard';
 import '../stylesheets/Learn.css';
-import PageNavigator from '../components/PageNavigator';
 import LearnLayout from '../pages/LearnLayout';
 
 const LearnRoadmapSign = ({match, history}) => {
@@ -16,15 +15,14 @@ const LearnRoadmapSign = ({match, history}) => {
     );
 };
 
-const LearnRoadmapSignPages = ({pageNum, pageEnd, history}) => {
+const LearnRoadmapSignPages = ({pageNum}) => {
     return (
         <div className={`LearnRoadmapSign-Page`}>
             <Instruction className ="Instruction">
                 This is Page #{pageNum} Instruction.
             </Instruction>
-            <Sheet className = "Sheet"/>
+            <Sheet className = "Sheet" dataStructure = {[]}/>
             <Keyboard className = "Keyboard"/>
-            <PageNavigator className="PageNavigator" gameName = {'LearnRoadmapSign'} pageNum={pageNum} pageEnd={pageEnd} history={history}/>
         </div>
     );
 }
