@@ -4,7 +4,6 @@ import Sheet from '../components/Sheet'
 import Instruction from '../components/Instruction';
 import Keyboard from '../components/Keyboard';
 import '../stylesheets/Learn.css';
-import PageNavigator from '../components/PageNavigator';
 import LearnLayout from '../pages/LearnLayout';
 
 const LearnRhythm = ({match, history}) => {
@@ -16,7 +15,7 @@ const LearnRhythm = ({match, history}) => {
     );
 };
 
-const LearnRhythmPages = ({pageNum, pageEnd, history}) => {
+const LearnRhythmPages = ({pageNum}) => {
     return (
         <div className={`LearnRhythm-Page`}>
             <Instruction className ="Instruction">
@@ -24,7 +23,6 @@ const LearnRhythmPages = ({pageNum, pageEnd, history}) => {
             </Instruction>
             <Sheet className = "Sheet" dataStructure = {[]}/>
             <Keyboard className = "Keyboard"/>
-            <PageNavigator className="PageNavigator" gameName = {'LearnNote'} pageNum={pageNum} pageEnd={pageEnd} history={history}/>
         </div>
     );
 }

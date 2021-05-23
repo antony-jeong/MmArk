@@ -3,9 +3,14 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 
-const PageButton = ({text, className, router}) => {
+const PageButton = ({text, className, router, onClick}) => {
+
     return (
-        <Link to = {router} className={`${className}`===undefined?'':`${className}`}>
+        router === undefined ?
+        <span className={`${className}`===undefined?'':`${className}`} onClick={onClick}>
+            {text===undefined?'':text}
+        </span>
+        :<Link to = {router} className={`${className}`===undefined?'':`${className}`}>
             {text===undefined?'':text}
         </Link>
     );
