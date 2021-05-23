@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import PageButton from '../components/PageButton';
 import Logo from '../components/Logo';
-import InvalidPage from '../pages/InvalidPage'
+import InvalidPage from '../pages/InvalidPage';
+import PageNavigator from '../components/PageNavigator';
 
 
 const LearnLayout = ({gameName, gamePage, pageNum, pageEnd, history}) => {
