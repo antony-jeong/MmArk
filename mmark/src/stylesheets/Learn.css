@@ -73,6 +73,7 @@
     font-size: 1rem;
     overflow: hidden;
     padding: 3px;
+    box-shadow: 1px 1px 5px 0.5px rgb(188, 169, 196);
 }
 
 .PageNavigator input {
@@ -80,7 +81,7 @@
     border: none;
     border-radius: 5px;
     padding: 3px;
-    background-color: #f1f2f5;
+    background-color: rgb(237, 231, 240);
     font-size: 0.95rem;
     text-align: right;
 }

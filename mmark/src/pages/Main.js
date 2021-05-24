@@ -13,23 +13,20 @@ const Main = () => {
         </div>
         <div className={'Main-Button-Container'}>
           <GameSelectButton src={'LearnNote'} name={'Notes'}>
-            Description about Notes <br/>
-            Description
+            Can you guess <br/> this note?
           </GameSelectButton>
           <GameSelectButton src={'LearnRhythm'} name={'Rhythm'}>
-            Rhythm <br/>
-            Description about Rhythm
+            Play it to the beat!
           </GameSelectButton>
           <GameSelectButton src={'LearnInterval'} name={'Intervals'}>
-            Description Intervals <br/>
-            Description about Intervals
+            Learn the interval <br/>
+            between the two notes
           </GameSelectButton>
           <GameSelectButton src={'LearnChord'} name={'Chords'}>
-            Description about Chords <br/>
-            Description about
+            Much richer fun of music
           </GameSelectButton>
           <GameSelectButton src={'LearnRoadmapSign'} name={'Roadmap Signs'}>
-            Description about <br/> Roadmap Signs
+            Where should we go? <br/> Find a way!
           </GameSelectButton>
         </div>
       </div>

@@ -76,6 +76,7 @@ body {
     font-family: Roboto;
     font-size: 30px;
     font-weight: 300;
+    transition: width .4s;
 }
 
 
@@ -97,6 +98,7 @@ body {
     justify-self: right;
     letter-spacing: -15px;
     color: rgba(100, 100, 100, 0);
+    transition: width .4s, letter-spacing .4s, color .2s;
 }
 
 .Main-Button-Container:hover .GameSelectButton:hover .description{
