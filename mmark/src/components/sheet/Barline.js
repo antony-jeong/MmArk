@@ -28,7 +28,6 @@ import "./StyleSheet.css";
             // no - none
 
 
-import imgBarLine from "../musical_symbols_svg/barline.svg";
 
 const BarlineObj = ({ className, barlineDecoration }) => {
     switch (className) {
