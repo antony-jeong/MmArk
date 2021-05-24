@@ -711,6 +711,7 @@ const RestObj = ({ obj }) => {
   const returnValue = <IndivRestObj length={length} />;
 
   return <div style={{ width: "5px", display: "inline" }}>{returnValue}</div>;
+
 };
 
 const Note = ({ obj }) => {
