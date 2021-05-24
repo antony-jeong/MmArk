@@ -8,3 +8,15 @@
     width: 23px;
     height: 100px;
 }
+
+
+
+.black {
+    stroke: black;
+    fill: black;
+}
+
+.skyBlue {
+    stroke: skyblue;
+    fill: skyblue;
+}
