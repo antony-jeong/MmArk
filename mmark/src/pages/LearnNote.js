@@ -5,27 +5,28 @@ import Sheet from '../components/Sheet'
 import Instruction from '../components/Instruction';
 import '../stylesheets/Learn.css';
 import LearnLayout from '../pages/LearnLayout';
+import data from '../Note.json';
+
 
 const LearnNote = ({match, history}) => {
     const pageNum = Number(match.params.pagenum);
-    const pageEnd = 10;
+    const pageEnd = data.length;
     const gamePage = <LearnNotePages pageNum={pageNum} pageEnd={pageEnd} history={history}/>;
-
     return (
         <LearnLayout gameName = {`LearnNote`} gamePage = {gamePage} pageNum = {pageNum} pageEnd = {pageEnd} history = {history}/>
     );
 };
 
 const LearnNotePages = ({pageNum}) => {
+    const pageData = data[pageNum-1];
     return (
         <div className={`LearnNote-Page`}>
             <Instruction className="Instruction">
                 <div>
-                    This is Page #{pageNum} Instruction. This is Page #{pageNum} Instruction. This is Page #{pageNum} Instruction.
+                    {pageData.inst}
                 </div>
             </Instruction>
-
-            <Sheet className = "Sheet" dataStructure={[{objectType: "p", bpm: 120}, {objectType: "c", treble: true}, {objectType: "t", numerator: 4, denominator: 4}, {objectType: "k", key: 0}, {objectType: "b", type: "b", barlineDecoration: "none",}, {objectType:"n", length:1, extend: true, rest: false, height: [3], accidental: ["s"], noteDecoration: ["s"]}, {objectType:"n", length:1, extend: true, rest: true}]}/>
+            <Sheet className = "Sheet" dataStructure={pageData.ds}/>
             <Piano className = "Piano" startNote = "C3" endNote = "B4"/>
         </div>
     );

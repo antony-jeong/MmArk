@@ -17,8 +17,10 @@ const LearnLayout = ({gameName, gamePage, pageNum, pageEnd, history}) => {
         updateTimer = setTimeout(removeUpdate, 1000);
     }
     const removeUpdate = () => {
-        document.querySelector('.Instruction').classList.remove('updated');
-        document.querySelector('.Sheet').classList.remove('updated'); 
+        if (document.querySelector('.Instruction') && document.querySelector('.Sheet')){
+            document.querySelector('.Instruction').classList.remove('updated');
+            document.querySelector('.Sheet').classList.remove('updated');
+        }
     }
     const callback = (newPageNum) => {
         if (newPageNum < 1){
