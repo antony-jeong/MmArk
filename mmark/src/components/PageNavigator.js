@@ -5,7 +5,13 @@ import PageButton from '../components/PageButton';
 
 const PageNavigator = ({pageNum, className, pageEnd, parentCallback}) => {
     const [inputVal, setInput] = useState(`${pageNum}`);
-    useEffect(() => { setInput(pageNum) }, [pageNum]);
+    const [leftShow, setLeftShow] = useState(pageNum!==1);
+    const [RightShow, setRightShow] = useState(pageNum!==pageEnd);
+    useEffect(() => { 
+        setInput(pageNum);
+        setLeftShow(pageNum!==1);
+        setRightShow(pageNum!==pageEnd);
+    }, [pageNum]);
 
     const leftSvg = <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0.292893 8.70711C-0.097631 8.31658 -0.097631 7.68342 0.292893 7.29289L6.65685 0.928932C7.04738 0.538408 7.68054 0.538408 8.07107 0.928932C8.46159 1.31946 8.46159 1.95262 8.07107 2.34315L2.41421 8L8.07107 13.6569C8.46159 14.0474 8.46159 14.6805 8.07107 15.0711C7.68054 15.4616 7.04738 15.4616 6.65685 15.0711L0.292893 8.70711ZM2 9H1V7H2V9Z" fill="black"/>
@@ -22,6 +28,10 @@ const PageNavigator = ({pageNum, className, pageEnd, parentCallback}) => {
                 parentCallback(pageNum);
                 return;
             };
+            if (e.target.value < 1)
+                setInput('1');
+            if (e.target.value > pageEnd)
+                setInput(`${pageEnd}`);
             e.target.blur();
             parentCallback(Number(e.target.value));
         }
@@ -42,9 +52,9 @@ const PageNavigator = ({pageNum, className, pageEnd, parentCallback}) => {
     
     return (
         <div className={`${className}`===undefined?'':`${className}`}>
-            <PageButton text = {leftSvg} className = "GoLeft" onClick={handleLeft}/>
+            <PageButton text = {leftSvg} className = "GoLeft" onClick={handleLeft} show={leftShow}/>
             <span className = {"PageIndicator"}><input value={inputVal} onFocus={e => e.target.select()} onChange={handleChange} onKeyPress={MoveTo}/> / {pageEnd}</span>
-            <PageButton text = {rightSvg} className = "GoRight" onClick={handleRight}/>
+            <PageButton text = {rightSvg} className = "GoRight" onClick={handleRight} show={RightShow}/>
         </div>
     );
 };

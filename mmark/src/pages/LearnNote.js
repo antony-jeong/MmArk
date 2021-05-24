@@ -8,8 +8,9 @@ import LearnLayout from '../pages/LearnLayout';
 
 const LearnNote = ({match, history}) => {
     const pageNum = Number(match.params.pagenum);
-    const gamePage = <LearnNotePages pageNum={pageNum} pageEnd={10} history={history}/>;
     const pageEnd = 10;
+    const gamePage = <LearnNotePages pageNum={pageNum} pageEnd={pageEnd} history={history}/>;
+
     return (
         <LearnLayout gameName = {`LearnNote`} gamePage = {gamePage} pageNum = {pageNum} pageEnd = {pageEnd} history = {history}/>
     );

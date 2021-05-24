@@ -10,6 +10,7 @@ const LearnLayout = ({gameName, gamePage, pageNum, pageEnd, history}) => {
     let setPageNum = undefined;
     [pageNum, setPageNum] = useState(pageNum);
     let updateTimer = undefined;
+    const [NextShow, setNextShow] = useState(pageNum!==pageEnd);
     const update = () => {
         document.querySelector('.Instruction').classList.add('updated');
         document.querySelector('.Sheet').classList.add('updated');
@@ -18,7 +19,6 @@ const LearnLayout = ({gameName, gamePage, pageNum, pageEnd, history}) => {
     const removeUpdate = () => {
         document.querySelector('.Instruction').classList.remove('updated');
         document.querySelector('.Sheet').classList.remove('updated'); 
-        
     }
     const callback = (newPageNum) => {
         if (newPageNum < 1){
@@ -33,13 +33,26 @@ const LearnLayout = ({gameName, gamePage, pageNum, pageEnd, history}) => {
         if (pageNum !== newPageNum){
             clearTimeout(updateTimer);
             update();
+            document.querySelector('.Next').classList.remove('Pass');
         }
         setPageNum(newPageNum);
         history.push(`/${gameName}/${newPageNum}`);
+        setNextShow(newPageNum!==pageEnd);
     }
 
     const handleNext = () => {
-        callback(pageNum + 1);
+        let notPassTimer = undefined;
+        if (document.querySelector('.Next').classList.contains('Pass'))
+            callback(pageNum + 1);
+        else {
+            clearTimeout(notPassTimer);
+            document.querySelector('.Next').classList.add('NotPass');
+            notPassTimer = setTimeout(removeNotPass, 300);
+        }
+    }
+
+    const removeNotPass = () => {
+        document.querySelector('.Next').classList.remove('NotPass');
     }
 
     return (
@@ -48,7 +61,7 @@ const LearnLayout = ({gameName, gamePage, pageNum, pageEnd, history}) => {
             <Logo className={`Logo`} isLink={true}/>
             <PageNavigator className="PageNavigator" pageNum={pageNum} pageEnd={pageEnd} parentCallback={callback}/>
             {gamePage}
-            <PageButton text = {'Next'} className = {`Next`} onClick={handleNext}/>
+            <PageButton text = {'Next'} className = {`Next`} onClick={handleNext} show={NextShow}/>
         </div>
         :
         <InvalidPage history={history} />
