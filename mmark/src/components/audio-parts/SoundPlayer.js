@@ -9,8 +9,7 @@ const nullSoundFontPlayer = {
 const SoundPlayer = () => {
   const audioContext = AudioContext && new AudioContext();
   let soundPlayer = nullSoundFontPlayer;
-  var result = {
-    player: nullSoundFontPlayer,
+  return {
     setInstrument: (instrumentName) => {
       SoundFontPlayer.instrument(audioContext, instrumentName)
         .then(soundfontPlayer => {
@@ -27,7 +26,6 @@ const SoundPlayer = () => {
       soundPlayer.stop();
     }
   };
-  return result;
 }
 
 export default SoundPlayer;
