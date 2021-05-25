@@ -14,7 +14,7 @@ const standardLen = 0;
 
 const LearnNoteData = [{
     "pageId": 1,
-    "inst": "{Note}Do{/Note} is represented as below. Play {Note}Do{/Note}",
+    "inst": "<Note>Do</Note> is represented as below. Play <Note>Do</Note>",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
