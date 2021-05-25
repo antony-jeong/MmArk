@@ -16,7 +16,7 @@ const quarterNoteSrc = 'components/musical_symbols_svg/notes/';
 
 const LearnRhythmData = [{
 "pageId": 1,
-"inst": `A <term>half note</term>😊 is half the length of a <term>whole note<term>.<br></br>A <term>quarter note</term>😊 is half the length of a <term>half note<term>😊.<br></br>How many times a quarter note is the sum of the notes to the right of the vertical line?`,
+"inst": `A <term>half note</term>😊 is half the length of a <term>whole note</term>😊.<br></br>A <term>quarter note</term>😊 is half the length of a <term>half note</term>😊.<br></br>How many times a quarter note is the sum of the notes to the right of the vertical line?`,
 "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -90,7 +90,7 @@ const LearnRhythmData = [{
     "inputMode": "text"
 }, {
     "pageId": 2,
-    "inst": `A <term>eighth note</term>😊 is half the length of a <term>quarter note<term>.<br></br>A <term>sixteenth note</term>😊 is half the length of a <term>eighth note<term>😊.<br></br>Each tail halves the length of the note. How many times the <term>sixteenth note</term> is the sum of the notes to the right of the vertical line?`,
+    "inst": `A <term>eighth note</term>😊 is half the length of a <term>quarter note</term>.<br></br>A <term>sixteenth note</term>😊 is half the length of a <term>eighth note</term>😊.<br></br>Each tail halves the length of the note. How many times the <term>sixteenth note</term> is the sum of the notes to the right of the vertical line?`,
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -183,7 +183,7 @@ const LearnRhythmData = [{
     "inputMode": "text"
 }, {
     "pageId": 3,
-    "inst": `The vertical linea are called <term>bar line<term>. Between bar lines is called a <tern>bar</term>.<br></br>However, the first bar doesn't have a starting bar line. At the end of the sheet music, there's a <term>terminal bar line</term>😀<br></br>How many bars are there in the sheet music below?`,
+    "inst": `The vertical lines are called <term>bar line</term>. Between bar lines are called a <term>bar</term>.<br></br>However, the first bar doesn't have a starting bar line. At the end of the sheet music, there's a <term>terminal bar line</term>😀<br></br>How many bars are there in the sheet music below?`,
     "ds": [{
         "objectType": "c",
         "treble": true
