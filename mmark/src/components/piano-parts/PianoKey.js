@@ -1,14 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './PianoKey.css';
-import AudioPlayer from '../audio-parts/AudioPlayer';
 
-const PianoKey = ({note}) => {
-  const [player, setPlayer] = useState(AudioPlayer());
-  useEffect(() => {
-    player.setInstrument("acoustic_grand_piano");
-  }, []);
-  const play = () => {player.playNote(note);};
-  const stop = () => {player.stopNote();};
+const PianoKey = ({note, play, stop}) => {
   if(note.includes("#")){
     return (
       <div className={"piano-black-key-wrapper"}>
