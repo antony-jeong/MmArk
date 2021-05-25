@@ -20,7 +20,7 @@ const Img_tempo = ['♪'];
 
 const LearnRhythmData = [{
 "pageId": 1,
-"inst": `A <term>half note</term>${Img_note_arr[1]} is half the length of a <term>whole note<term>${Img_note_arr[0]}. A <term>quarter note</term>${Img_note_arr[2]} is half the length of a <term>half note<term>${Img_note_arr[0]}.<br></br>How many times a quarter note${Img_note_arr[1]} is the sum of the notes to the right of the vertical line?`,
+"inst": `A <term>half note</term>${Img_note_arr[1]} is half the length of a <term>whole note</term>${Img_note_arr[0]}. A <term>quarter note</term>${Img_note_arr[2]} is half the length of a <term>half note</term>${Img_note_arr[0]}.<br></br>How many times a quarter note${Img_note_arr[1]} is the sum of the notes to the right of the vertical line?`,
 "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -94,7 +94,7 @@ const LearnRhythmData = [{
     "inputMode": "text"
 }, {
     "pageId": 2,
-    "inst": `Each tail halves the length of the note.<br></br>A <term>eighth note</term>${Img_note_arr[3]} is half the length of a <term>quarter note<term>${Img_note_arr[2]}. A <term>sixteenth note</term>${Img_note_arr[4]} is half the length of a <term>eighth note<term>${Img_note_arr[3]}.<br></br>How many times the <term>sixteenth note</term>${Img_note_arr[4]} is the sum of the notes to the right of the vertical line?`,
+    "inst": `Each tail halves the length of the note.<br></br>A <term>eighth note</term>${Img_note_arr[3]} is half the length of a <term>quarter note</term>${Img_note_arr[2]}. A <term>sixteenth note</term>${Img_note_arr[4]} is half the length of a <term>eighth note</term>${Img_note_arr[3]}.<br></br>How many times the <term>sixteenth note</term>${Img_note_arr[4]} is the sum of the notes to the right of the vertical line?`,
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -187,7 +187,7 @@ const LearnRhythmData = [{
     "inputMode": "text"
 }, {
     "pageId": 3,
-    "inst": `The vertical lines are called <term>bar line<term>s. Between bar lines is called a <tern>bar</term>.<br></br>However, the first bar doesn't have a starting bar line. At the end of the sheet music, there's a <term>terminal bar line</term>${Img_barline_t}<br></br>How many bars are there in the sheet music below?`,
+    "inst": `The vertical lines are called <term>bar line</term>. Between bar lines are called a <term>bar</term>.<br></br>However, the first bar doesn't have a starting bar line. At the end of the sheet music, there's a <term>terminal bar line</term>${Img_barline_t}<br></br>How many bars are there in the sheet music below?`,
     "ds": [{
         "objectType": "c",
         "treble": true

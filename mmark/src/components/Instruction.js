@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Parser from '../pages/Parser';
+import "../stylesheets/Instruction.css";
 
 const Instruction = ({className, inst}) => {
     return (
