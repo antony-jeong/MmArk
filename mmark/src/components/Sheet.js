@@ -76,6 +76,7 @@ const SheetWrapper = styled.div`
     background-attatchment: fixed;
     background-size: contain;
     position: static;
+    align-items: baseline;
     height: 50px;
     margin: 50px 100px 50px 100px;
     zoom: 1;

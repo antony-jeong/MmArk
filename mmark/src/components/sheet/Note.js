@@ -21,12 +21,77 @@ import "./StyleSheet.css";
 // f - fermata
 // x - none
 
+const LineObj = ({height}) => {
+  const lineObjData = [];
+  if (height < -1) {
+    for (var i = 0; i < Math.floor((-height)/2); i++){
+      const newObj = {
+        height : -i
+      }
+      lineObjData.push(newObj)
+    }
+  }
+  else if (height > 9) {
+    for (var i = 0; i < Math.floor((height - 8)/2); i++){
+      const newObj = {
+        height : i + 1
+      }
+      lineObjData.push(newObj)
+    }
+    }
+  else { 
+    return ( <div></div> );
+  }
+
+  const returnValue = lineObjData.map((obj) => {
+		return (
+			<IndivLineObj
+				height = {obj.height}
+			/>
+		);
+  })
+
+  return (<div style={{ width: "0px", display: "inline-flex", "margin-right": "0px" }}> {returnValue} </div>);
+}
+
+const IndivLineObj = ({height}) => {
+  var newHeight = 0;
+  var prefix = 0;
+  if(height > 0) {
+    newHeight = height +3.5;
+  }
+  else{
+    newHeight = height;
+  }
+  if (height === 1 || height === -1) {
+    prefix = 3;
+  }
+  console.log("height : " + height)
+  return(
+    <div style={{ width: "0px", display: "inline-flex", "margin-right": prefix + "px" }}>
+      <img
+        src={
+          process.env.PUBLIC_URL +
+          "/musical_symbols_svg/notes/line.svg"
+        }
+        style={{
+          position: "relative",
+          top: -30.5 - 12.245 * (newHeight) + "px",
+          left: "0px",
+          display: "inline-flex"
+        }}
+        height="45px"
+      />
+    </div>
+  )
+}
+
 const AccidentalObj = ({ type, height, direction }) => {
   var f = (direction) => {
     switch (direction) {
       case "up":
         return (
-          <div style={{ width: "8px", display: "inline" }}>
+          <div style={{ width: "8px", display: "inline"}}>
             <img
               src={
                 process.env.PUBLIC_URL +
@@ -73,11 +138,12 @@ const AccidentalObj = ({ type, height, direction }) => {
 const AccidentalStackObj = ({ type, height, direction, realloc, Hori }) => {
 	const alloc = realloc ? "_alloc_1" : "_noAlloc_1" ;
 	console.log(Hori)
+ 
   var f = (direction) => {
     switch (direction) {
       case "up":
         return (
-          <div style={{ width: "60px", display: "inline" }}>
+          <div style={{ width: "60px", display: "inline" , "margin-right": "1px" }}>
             <img
               src={
                 process.env.PUBLIC_URL +
@@ -115,9 +181,7 @@ const AccidentalStackObj = ({ type, height, direction, realloc, Hori }) => {
         );
     }
   };
-  if (type == "x") {
-    return <div style={{ width: "0px", display: "inline" }}></div>;
-  }
+
   return f(direction);
 };
 
@@ -212,6 +276,9 @@ const IndivNoteUpObj = ({ type, height, deco, acc }) => {
   return (
     <div className={height} style={{ width: "0px", display: "inline" }}>
       <AccidentalObj type={acc} height={height} direction="up" />
+      <div style={{ width: "0px", display: "inline-flex", "margin-right": "0px" }}>
+          <LineObj height = {height} />
+        </div>
       <div className="up" style={{ width: "0px", display: "inline" }}>
         <img
           src={
@@ -236,6 +303,9 @@ const IndivNoteDownObj = ({ type, height, deco, acc }) => {
   return (
     <div className={height} style={{ width: "0px", display: "inline" }}>
       <AccidentalObj type={acc} height={height} direction="down" />
+      <div style={{ width: "0px", display: "inline-flex", "margin-right": "0px" }}>
+          <LineObj height = {height} />
+        </div>
       <div className="down" style={{ width: "0px", display: "inline" }}>
         <img
           src={
@@ -260,11 +330,14 @@ const IndivNoteStackObj = ({ type, realloc, accAlloc, accHori, accHoriMax, isRea
 	const realloc_type = realloc ? "_alloc" : "";
 	console.log("Hori : " +accHoriMax);
 	if (finished && isRealloc) {
-		console.log("finished && isRealloc")
+		console.log("finished && isRealloc");
 		return (
 			<div className={height} style={{ width: "32px", display: "inline" }}>
 				<AccidentalStackObj type={acc} height={height} direction="up" realloc={accAlloc} Hori={accHori}/>
-				<div className="up" style={{ width: "32px", display: "inline" }}>
+        <div style={{ width: "0px", display: "inline-flex", "margin-right": "0px" }}>
+          <LineObj height = {height} />
+        </div>
+				<div className="up" style={{ width: "32px", display: "inline"}}>
 					<img
 						src={
 							process.env.PUBLIC_URL +
@@ -288,7 +361,7 @@ const IndivNoteStackObj = ({ type, realloc, accAlloc, accHori, accHoriMax, isRea
 		return (
 			<div className={height} style={{ width: "0px", display: "inline" }}>
 				<AccidentalStackObj type={acc} height={height} direction="up" realloc={accAlloc} Hori={accHori}/>
-				<div className="up" style={{ width: "0px", display: "inline" }}>
+				<div className="up" style={{ width: "0px", display: "inline" , "margin-left": "0px" }}>
 					<img
 						src={
 							process.env.PUBLIC_URL +
@@ -309,8 +382,11 @@ const IndivNoteStackObj = ({ type, realloc, accAlloc, accHori, accHoriMax, isRea
 		);
 	}
   return (
-    <div className={height} style={{ width: "0px", display: "inline-flex" }}>
+    <div className={height} style={{ width: "0px", display: "inline-flex"}} height = "50px">
       <AccidentalStackObj type={acc} height={height} direction="up" realloc={accAlloc} Hori={accHori}/>
+      <div style={{ width: "0px", display: "inline", "margin-right": "0px" }}>
+        <LineObj height = {height} />
+      </div>
       <div className="up" style={{ width: "30px", display: "inline", fill: "blue" }}>
         <img
           src={
@@ -323,33 +399,6 @@ const IndivNoteStackObj = ({ type, realloc, accAlloc, accHori, accHoriMax, isRea
             position: "relative",
             top: -36 - 6.1225 * (height + 1) + "px",
 						left: "0px"
-          }}
-          height="45px"
-        />
-      </div>
-      <NoteDecorationObj type={deco} height={height} direction="up" />
-    </div>
-  );
-};
-
-const IndivNoteStackFinObj = ({ type, realloc, accAlloc, height, deco, acc }) => {
-	console.log(accAlloc);
-	const realloc_type = realloc ? "alloc" : "";
-  return (
-    <div className={height} style={{ width: "10px", display: "inline" }}>
-      <AccidentalStackObj type={acc} height={height} direction="up" realloc={accAlloc}/>
-      <div className="up" style={{ width: "0px", display: "inline" }}>
-        <img
-          src={
-            process.env.PUBLIC_URL +
-            "/musical_symbols_svg/notes/" +
-            type +
-            ".svg"
-          }
-          style={{
-            position: "relative",
-            top: -36 - 6.1225 * (height + 1) + "px",
-						left: "10px"
           }}
           height="45px"
         />
@@ -491,7 +540,7 @@ const NoteObj = ({ obj }) => {
   }
 
   return (
-    <div style={{ width: "10px", display: "inline",}}>
+    <div style={{ width: "10px", display: "inline",}} height = "55px">
       {stackReturnValue}
     </div>
   );

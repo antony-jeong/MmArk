@@ -3,7 +3,7 @@
 <svg version="1.1" id="svg1437" xmlns:svg="http://www.w3.org/2000/svg"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 15 45"
 	 style="enable-background:new 0 0 15 45;" xml:space="preserve">
-<path id="path3937" style="opacity:0.9;enable-background:new    ;" d="M7.1,35c-4,0.2-7.1,2.3-7.1,5c0,2.8,3.4,5,7.5,5
-	s7.5-2.2,7.5-5s-3.4-5-7.5-5C7.4,35,7.2,35,7.1,35z M5.8,36c1.1-0.2,2.3,0.4,3.4,1.6c1.6,1.8,2.2,4.2,1.3,5.5l0,0
-	c-1,1.2-3.1,0.9-4.8-0.9c-1.6-1.7-2.2-4.2-1.2-5.5C4.8,36.2,5.3,36,5.8,36z"/>
+<path id="path3937" style="opacity:0.9;enable-background:new    ;" d="M7.1,0C3.1,0.2,0,2.3,0,5c0,2.8,3.4,5,7.5,5S15,7.8,15,5
+	s-3.4-5-7.5-5C7.4,0,7.2,0,7.1,0z M5.8,1c1.1-0.2,2.3,0.4,3.4,1.6c1.6,1.8,2.2,4.2,1.3,5.5l0,0C9.5,9.3,7.4,9,5.7,7.2
+	C4.1,5.5,3.5,3,4.5,1.7C4.8,1.2,5.3,1,5.8,1z"/>
 </svg>
