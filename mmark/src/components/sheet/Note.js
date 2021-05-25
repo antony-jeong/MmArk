@@ -57,13 +57,15 @@ const LineObj = ({height}) => {
 const IndivLineObj = ({height}) => {
   var newHeight = 0;
   var prefix = 0;
+  var toptop = 0;
   if(height > 0) {
-    newHeight = height +3.5;
+    newHeight = height +5;
+    toptop = -1.3;
   }
   else{
     newHeight = height;
   }
-  if (height === 1 || height === -1) {
+  if (height === -1) {
     prefix = 3;
   }
   console.log("height : " + height)
@@ -76,7 +78,7 @@ const IndivLineObj = ({height}) => {
         }
         style={{
           position: "relative",
-          top: -30.5 - 12.245 * (newHeight) + "px",
+          top: -14.5-toptop - 12.245 * (newHeight) + "px",
           left: "0px",
           display: "inline-flex"
         }}
