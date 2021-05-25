@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PianoKey from './piano-parts/PianoKey';
 import styled from 'styled-components';
+import InstrumentAudio from './audio-parts/InstrumentAudio';
 
 // const keyNames = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 // const octaveNames = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -18,14 +19,29 @@ const PianoWrapper = styled.div `
 `
 
 const Piano = ({startNote, endNote}) => {
-  const startIndex = allNotes.indexOf(startNote);
-  const endIndex = allNotes.indexOf(endNote);
-  const existingNotes = allNotes.slice(startIndex, endIndex+1);
+  const [playingNotes, setPlayingNotes] = useState([]);
+  const playNote = (note) => setPlayingNotes([...playingNotes, note]);
+  const stopNote = (note) => setPlayingNotes(playingNotes.filter(e => e !== note));
+  const existingNotes = [];
+  let i = 0;
+  while (i < allNotes.length) {
+    if (allNotes[i] === startNote) {
+      while (i < allNotes.length) {
+        existingNotes.push(allNotes[i]);
+        if (allNotes[i] === endNote) {
+          i = allNotes.length;
+        }
+        i++;
+      }
+    }
+    i++;
+  }
   return (
     <>
       <PianoWrapper>
-        {existingNotes.map((note, index) => <PianoKey note={note} key={index}/>)}
+        {existingNotes.map((note, index) => <PianoKey note={note} play={() => playNote(note)} stop={() => stopNote(note)} key={index}/>)}
       </PianoWrapper>
+      <InstrumentAudio playingNotes={playingNotes} instrumentName={"acoustic_grand_piano"}/>
     </>
   );
 };
