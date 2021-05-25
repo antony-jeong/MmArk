@@ -5,7 +5,7 @@ import LearnLayout from '../pages/LearnLayout';
 const LearnRoadmapSign = ({match, history}) => {
     const pageNum = Number(match.params.pagenum);
     return (
-        <LearnLayout gameName = {`LearnRoadmapSign`} pageNum = {pageNum} history = {history}/>
+        <LearnLayout game = {'RoadmapSigns'}gameName = {`LearnRoadmapSign`} pageNum = {pageNum} history = {history}/>
     );
 };
 

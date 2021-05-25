@@ -17,7 +17,7 @@ import LearnChordData from '../LearnNoteData';          //
 import LearnRoadmapSignData from '../LearnNoteData';    //
 
 
-const LearnLayout = ({gameName, pageNum, history}) => {
+const LearnLayout = ({game, gameName, pageNum, history}) => {
     var data;
     switch (gameName) {
         case "LearnRhythm":
@@ -98,7 +98,10 @@ const LearnLayout = ({gameName, pageNum, history}) => {
     return (
         (pageNum >= 1) && (pageNum <= pageEnd)
         ?<div className={`${gameName}`}>
-            <Logo className={`Logo`} isLink={true}/>
+            <span className={`LogoContainer`}>
+                <Logo className={`Logo`}isLink={true}/>
+                <span className={'GameName'}>{game}</span>
+            </span>
             <PageNavigator className="PageNavigator" pageNum={pageNum} pageEnd={pageEnd} parentCallback={callback}/>
             <div className={`${gameName}-Page`}>
                 <Instruction className="Instruction">
