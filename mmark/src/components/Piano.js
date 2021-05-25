@@ -18,9 +18,14 @@ const PianoWrapper = styled.div `
   padding: 10px;
 `
 
-const Piano = ({startNote, endNote}) => {
+const Piano = ({startNote, endNote, addPlayHistory}) => {
   const [playingNotes, setPlayingNotes] = useState([]);
-  const playNote = (note) => setPlayingNotes([...playingNotes, note]);
+  const playNote = (note) => {
+    if (!playingNotes.includes(note)) {
+      addPlayHistory(note);
+      setPlayingNotes([...playingNotes, note]);
+    }
+  };
   const stopNote = (note) => setPlayingNotes(playingNotes.filter(e => e !== note));
   const existingNotes = [];
   let i = 0;
