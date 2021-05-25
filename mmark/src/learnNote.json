@@ -1,0 +1,48 @@
+[{
+    "pageId": 1,
+    "inst": "{Note}Do{/Note} is represented as below. Play {Note}Do{/Note}",
+    "ds": [{
+            "objectType": "p",
+            "bpm": 120
+        },
+        {
+            "objectType": "c",
+            "treble": true
+        }, {
+            "objectType": "k",
+            "key": 0
+        }, {
+            "objectType": "n",
+            "length": 0,
+            "extend": false,
+            "rest": false,
+            "height": [-2],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }
+    ],
+    "checkType": "play",
+    "checkAnswer": [{
+            "objectType": "p",
+            "bpm": 120
+        },
+        {
+            "objectType": "c",
+            "treble": true
+        }, {
+            "objectType": "k",
+            "key": 0
+        }, {
+            "objectType": "n",
+            "length": 0,
+            "extend": false,
+            "rest": false,
+            "height": [-2],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }
+    ],
+    "inputMode": 0
+}, {
+
+}]

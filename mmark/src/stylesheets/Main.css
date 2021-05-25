@@ -9,15 +9,19 @@ body {
     background-image: linear-gradient(135deg, #3f4454 0%, #0f0930 100%);
 }
 
+div {
+    border: blue solid 3px;
+    width: 500px;
+}
 
-.Main-Container{
+.Main-Container {
     display: flex;
     overflow: hidden;
     align-items: center;
     justify-content: center;
 }
 
-.Main-Logo-Container{
+.Main-Logo-Container {
     justify-self: flex-end;
     display: flex;
     flex-direction: column;
@@ -27,7 +31,7 @@ body {
     justify-content: flex-end;
 }
 
-.Main-Logo{
+.Main-Logo {
     zoom: 0.7;
 }
 
@@ -47,11 +51,11 @@ body {
     color: #ffffff;
 }
 
-.Made-by a{
+.Made-by a {
     color: #ffffff;
 }
 
-.Main-Button-Container{
+.Main-Button-Container {
     display: flex;
     flex-direction: column;
     width: 60vw;
@@ -59,7 +63,7 @@ body {
     justify-content: center;
 }
 
-.GameSelectButton{
+.GameSelectButton {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,18 +82,17 @@ body {
     font-weight: 300;
 }
 
-
-.Main-Button-Container:hover .GameSelectButton:hover{
+.Main-Button-Container:hover .GameSelectButton:hover {
     width: 680px;
     transition: width .4s;
 }
 
-.name{
+.name {
     width: 340px;
     text-align: center;
 }
 
-.description{
+.description {
     overflow: hidden;
     width: 0;
     font-size: 25px;
@@ -99,7 +102,7 @@ body {
     color: rgba(100, 100, 100, 0);
 }
 
-.Main-Button-Container:hover .GameSelectButton:hover .description{
+.Main-Button-Container:hover .GameSelectButton:hover .description {
     width: 340px;
     letter-spacing: 0px;
     color: rgb(165, 165, 165);
