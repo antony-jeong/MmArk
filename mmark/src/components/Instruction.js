@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Parser from '../pages/Parser';
 
-const Instruction = ({className, children}) => {
+const Instruction = ({className, inst}) => {
     return (
         <div className={`${className}`}>
-            {children}
+            <Parser desc={inst}/>
         </div>
     );
 };

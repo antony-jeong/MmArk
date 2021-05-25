@@ -104,11 +104,7 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
             </span>
             <PageNavigator className="PageNavigator" pageNum={pageNum} pageEnd={pageEnd} parentCallback={callback}/>
             <div className={`${gameName}-Page`}>
-                <Instruction className="Instruction">
-                    <div>
-                        {pageData.inst}
-                    </div>
-                </Instruction>
+                <Instruction className="Instruction" inst={pageData.inst}/>
                 <Sheet className = "Sheet" dataStructure={pageData.ds}/>
                 <Piano className = "Piano" startNote = "C3" endNote = "B4"/>
             </div>
