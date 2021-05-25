@@ -4,7 +4,7 @@ import LearnLayout from '../pages/LearnLayout';
 const LearnRhythm = ({match, history}) => {
     const pageNum = Number(match.params.pagenum);
     return (
-        <LearnLayout gameName = {`LearnRhythm`} pageNum = {pageNum} history = {history}/>
+        <LearnLayout game = {'Rhythm'}gameName = {`LearnRhythm`} pageNum = {pageNum} history = {history}/>
     );
 };
 

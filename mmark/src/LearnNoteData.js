@@ -14,7 +14,7 @@ const standardLen = 0;
 
 const LearnNoteData = [{
     "pageId": 1,
-    "inst": "{Note}Do{/Note} is represented as below. Play {Note}Do{/Note}",
+    "inst": "<Note>Do</Note> is represented as below. Play <Note>Do</Note>.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -648,7 +648,7 @@ const LearnNoteData = [{
 {
     "pageId": 7,
     "inst": 
-        "Putting a <svg>components/musical_symbols_svg/accidental_s</svg> beside a note raises the note.<br></br>Below are notes for black keys in the piano. Play the notes in given order.",
+        "Putting a <term>sharp</term>😆 beside a note raises the note.<br></br>Below are notes for black keys in the piano. Play the notes in given order.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -750,7 +750,7 @@ const LearnNoteData = [{
 {
     "pageId": 8,
     "inst": 
-        "There is no black key after <note>Mi</note> and <note>Ti</note>!<br></br><note>Mi<svg>components/musical_symbols_svg/accidental_s</svg></note> equals <note>Fa</note> and <note>Ti<svg>components/musical_symbols_svg/accidental_s</svg></note> equals <note>Do</note>.",
+        "There is no black key after <note>Mi</note> and <note>Ti</note>!<br></br><note>Mi😆</note> equals <note>Fa</note>, and <note>Ti😆</note> equals <note>Do</note>.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -836,7 +836,7 @@ const LearnNoteData = [{
 {
     "pageId": 9,
     "inst": 
-    "Putting a <svg>components/musical_symbols_svg/accidental_f</svg> beside a note lowers the note.<br></br>Below are notes for black keys in the piano. Play the notes in given order.",
+    "Putting a <term>flat</term>😂 beside a note lowers the note.<br></br>Below are notes for black keys in the piano. Play the notes in given order.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -938,7 +938,7 @@ const LearnNoteData = [{
 {
     "pageId": 10,
     "inst": 
-        "<note>Fa<svg>components/musical_symbols_svg/accidental_f</svg></note> equals <note>Mi</note> and <note>Do<svg>components/musical_symbols_svg/accidental_f</svg></note> equals <note>Ti</note>.",
+        "<note>Fa😂</note> equals <note>Mi</note> and <note>Do😂</note> equals <note>Ti</note>.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -1024,7 +1024,7 @@ const LearnNoteData = [{
 {
     "pageId": 11,
     "inst": 
-        "<note>Do<svg>components/musical_symbols_svg/accidental_s</svg></note> and <note>Re<svg>components/musical_symbols_svg/accidental_f</svg></note> are the same.",
+        "<note>Do😆</note> and <note>Re😂</note> are the same,<br></br><note>Re😆</note> and <note>Mi😂</note> are the same, and so on.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -1158,7 +1158,7 @@ const LearnNoteData = [{
 {
     "pageId": 12,
     "inst": 
-        "The note with <svg>components/musical_symbols_svg/accidental_s</svg> is a semitone higher than the original note.<br></br>The note with <svg>components/musical_symbols_svg/accidental_f</svg> is a semitone lower than the original note.<br></br>Play the two notes in the sheet music that the interval between them is a semitone.",
+        "The note with 😆 is a <term>semitone</term> higher than the original note.<br></br>The note with 😂 is a <term>semitone</term> lower than the original note.<br></br>Play the two notes in the sheet music that the interval between them is a <term>semitone</term>.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -1279,7 +1279,7 @@ const LearnNoteData = [{
 {
     "pageId": 13,
     "inst": 
-        "The effect of the <svg>components/musical_symbols_svg/accidental_s</svg> and <svg>components/musical_symbols_svg/accidental_f</svg> next to the notes is maintained within the joints.",
+        "The effect of a <term>sharp</term>😆 and a <term>flat</term>😂 next to the notes is maintained within the bar.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -1453,7 +1453,7 @@ const LearnNoteData = [{
 {
     "pageId": 14,
     "inst": 
-        "Symbol <svg>components/musical_symbols_svg/accidental_f</svg> is called <term>natural</term>. <br></br>If it is beside, the note should be played on its original note.",
+        "Symbol 😐 is called <term>natural</term>.<br></br>If it is beside, the note should be played on its original note.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -1595,7 +1595,7 @@ const LearnNoteData = [{
 {
     "pageId": 15,
     "inst": 
-        "A <term>scale</term> is a group of frequently used notes. What we're using now is C major. <br></br> The <term>musical key</term> of <Note>Do</Note>-<Note>Re</Note>-<Note>Mi</Note>-<Note>Fa</Note>-<Note>Sol</Note>-<Note>La</Note>-<Note>Ti</Note>-<Note>Do</Note> in C Major is C-D-E-F-G-A-B-C, respectively.<br></br>Play C-A-G-E.",
+        "A <term>scale</term> is a group of frequently used notes. What we're using now is <term>C major</term>.<br></br>The <term>musical key</term> of <Note>Do</Note>-<Note>Re</Note>-<Note>Mi</Note>-<Note>Fa</Note>-<Note>Sol</Note>-<Note>La</Note>-<Note>Ti</Note>-<Note>Do</Note> in C Major is C-D-E-F-G-A-B-C, respectively.<br></br>Play C-A-G-E.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,

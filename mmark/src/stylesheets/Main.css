@@ -8,6 +8,7 @@ body {
     padding: 0;
     background-color: #3f4454;
     background-image: linear-gradient(135deg, #3f4454 0%, #0f0930 100%);
+    user-select: none;
 }
 
 
@@ -82,6 +83,7 @@ body {
     font-size: 30px;
     font-weight: 300;
     transition: width .4s;
+    cursor: pointer;
 }
 
 

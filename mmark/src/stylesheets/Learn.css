@@ -33,8 +33,12 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    margin: 0 auto;
+    text-align: center;
     font-family: 'Roboto', sans-serif;
     font-size: 1.4rem;
+    user-select: text;
+    width: 80vw;
 }
 
 .updated {
@@ -50,15 +54,26 @@
 }
 
 
-.Logo {
-    display: block;
+.LogoContainer {
+    display: inline-flex;
     position: fixed;
     top: 0;
     left: 0;
-    zoom: 0.3;
-    padding: 20px 40px;
     border-radius: 100px;
-    margin: 40px;
+    padding: 20px 30px;
+    vertical-align: baseline;
+}
+
+.Logo{
+    zoom: 0.3;
+}
+
+.GameName{
+    font-size: 1rem;
+    font-weight: 300;
+    align-self: flex-end;
+    margin: 3px 5px;
+    color: rgb(118, 89, 131);
 }
 
 .PageNavigator {
@@ -141,7 +156,6 @@
     text-decoration: none;
     border: none;
     outline: none;
-    user-select: none;
 }
 
 .NotPass:not(.Hide) {

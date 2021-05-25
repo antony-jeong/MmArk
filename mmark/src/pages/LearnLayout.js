@@ -11,13 +11,13 @@ import Sheet from '../components/Sheet'
 import Instruction from '../components/Instruction';
 
 import LearnNoteData from '../LearnNoteData';
-import LearnRhythmData from '../LearnNoteData';         //Temporarily import from LearnNoteData
-import LearnIntervalData from '../LearnNoteData';       //because the corresponding json is not written yet
-import LearnChordData from '../LearnNoteData';          //
+import LearnRhythmData from '../LearnRhythmData';       
+import LearnIntervalData from '../LearnNoteData';       //Temporarily import from LearnNoteData
+import LearnChordData from '../LearnNoteData';          //because the corresponding json is not written yet
 import LearnRoadmapSignData from '../LearnNoteData';    //
 
 
-const LearnLayout = ({gameName, pageNum, history}) => {
+const LearnLayout = ({game, gameName, pageNum, history}) => {
     var data;
     switch (gameName) {
         case "LearnRhythm":
@@ -98,7 +98,10 @@ const LearnLayout = ({gameName, pageNum, history}) => {
     return (
         (pageNum >= 1) && (pageNum <= pageEnd)
         ?<div className={`${gameName}`}>
-            <Logo className={`Logo`} isLink={true}/>
+            <span className={`LogoContainer`}>
+                <Logo className={`Logo`}isLink={true}/>
+                <span className={'GameName'}>{game}</span>
+            </span>
             <PageNavigator className="PageNavigator" pageNum={pageNum} pageEnd={pageEnd} parentCallback={callback}/>
             <div className={`${gameName}-Page`}>
                 <Instruction className="Instruction" inst={pageData.inst}/>
