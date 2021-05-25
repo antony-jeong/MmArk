@@ -10,13 +10,17 @@ inputMode:
     "text" - text,
     "sheetClick" - input notes by clicking the sheet
 */
-const wholeNoteSrc = 'components/musical_symbols_svg/notes/';
-const halfNoteSrc = 'components/musical_symbols_svg/notes/';
-const quarterNoteSrc = 'components/musical_symbols_svg/notes/';
+
+const Img_barline_t = '😀';
+const Img_time_44 = '😎';
+const Img_note_arr = ['🌝', '🌕', '🌓', '🌒', '🌑'];
+const Img_dotted_note_arr = ['🌝*', '🌕*', '🌓*', '🌒*', '🌑*'];
+const Img_rest_arr = ['🌝', '🌕', '🌓', '🌒', '🌑'];
+const Img_tempo = ['♪'];
 
 const LearnRhythmData = [{
 "pageId": 1,
-"inst": `A <term>half note</term>😊 is half the length of a <term>whole note<term>.<br></br>A <term>quarter note</term>😊 is half the length of a <term>half note<term>😊.<br></br>How many times a quarter note is the sum of the notes to the right of the vertical line?`,
+"inst": `A <term>half note</term>${Img_note_arr[1]} is half the length of a <term>whole note<term>${Img_note_arr[0]}. A <term>quarter note</term>${Img_note_arr[2]} is half the length of a <term>half note<term>${Img_note_arr[0]}.<br></br>How many times a quarter note${Img_note_arr[1]} is the sum of the notes to the right of the vertical line?`,
 "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -86,11 +90,11 @@ const LearnRhythmData = [{
         }
     ],
     "checkType": "Input",
-    "checkAnswer": "9",
+    "checkAnswer": ["9"],
     "inputMode": "text"
 }, {
     "pageId": 2,
-    "inst": `A <term>eighth note</term>😊 is half the length of a <term>quarter note<term>.<br></br>A <term>sixteenth note</term>😊 is half the length of a <term>eighth note<term>😊.<br></br>Each tail halves the length of the note. How many times the <term>sixteenth note</term> is the sum of the notes to the right of the vertical line?`,
+    "inst": `Each tail halves the length of the note.<br></br>A <term>eighth note</term>${Img_note_arr[3]} is half the length of a <term>quarter note<term>${Img_note_arr[2]}. A <term>sixteenth note</term>${Img_note_arr[4]} is half the length of a <term>eighth note<term>${Img_note_arr[3]}.<br></br>How many times the <term>sixteenth note</term>${Img_note_arr[4]} is the sum of the notes to the right of the vertical line?`,
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -179,11 +183,11 @@ const LearnRhythmData = [{
         }
     ],
     "checkType": "Input",
-    "checkAnswer": "10",
+    "checkAnswer": ["10"],
     "inputMode": "text"
 }, {
     "pageId": 3,
-    "inst": `The vertical linea are called <term>bar line<term>. Between bar lines is called a <tern>bar</term>.<br></br>However, the first bar doesn't have a starting bar line. At the end of the sheet music, there's a <term>terminal bar line</term>😀<br></br>How many bars are there in the sheet music below?`,
+    "inst": `The vertical lines are called <term>bar line<term>s. Between bar lines is called a <tern>bar</term>.<br></br>However, the first bar doesn't have a starting bar line. At the end of the sheet music, there's a <term>terminal bar line</term>${Img_barline_t}<br></br>How many bars are there in the sheet music below?`,
     "ds": [{
         "objectType": "c",
         "treble": true
@@ -202,7 +206,754 @@ const LearnRhythmData = [{
         }
     ],
     "checkType": "Input",
-    "checkAnswer": "4",
+    "checkAnswer": ["4"],
+    "inputMode": "text"
+}, {
+    "pageId": 4,
+    "inst": `Things like ${Img_time_44} are attached to the sheet music. It is called a <term>time signature</term>.<br></br>A music has a standard of note length called <term>beat</term>, and the denominator represents a note that is the standard of a beat.<br></br>Which note is one beat here?`,
+    "ds": [{
+        "objectType": "c",
+        "treble": true
+        }, {
+            "objectType": "t",
+            "numerator": 4,
+            "denominator": 4
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 1,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        },  {
+            "objectType": "n",
+            "length": 1,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 0,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 1,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 3,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 3,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }
+    ],
+    "checkType": "Input",
+    "checkAnswer": ["4분음표", "quarter note", "quarter"],
+    "inputMode": "text"
+}, {
+    "pageId": 5,
+    "inst": `The numerator indicates how many <term>beat</term>s a bar has.<br></br>How many more bar lines should be drawn on this sheet music?`,
+    "ds": [{
+        "objectType": "c",
+        "treble": true
+        }, {
+            "objectType": "t",
+            "numerator": 4,
+            "denominator": 4
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 1,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        },  {
+            "objectType": "n",
+            "length": 1,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 0,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 1,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 3,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 3,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }
+    ],
+    "checkType": "Input",
+    "checkAnswer": ["3"],
+    "inputMode": "text"
+}, {
+    "pageId": 6,
+    "inst": `A dot on a note means it is 1.5 times longer.<br></br>In the sheet music below, a <term>dotted half note</term>${Img_dotted_note_arr[1]} stands for three beats, so it takes up one bar.<br></br>How many more <term>eighth note</term>s${Img_note_arr[3]} can be added to the last bar?`,
+    "ds": [{
+        "objectType": "c",
+        "treble": true
+        }, {
+            "objectType": "t",
+            "numerator": 4,
+            "denominator": 4
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 1,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        },  {
+            "objectType": "n",
+            "length": 1,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 0,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 1,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 3,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 3,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }
+    ],
+    "checkType": "Input",
+    "checkAnswer": ["3"],
+    "inputMode": "text"
+}, {
+    "pageId": 7,
+    "inst": `A <term>rest</term> means not to play that length.<br></br>How many beats does this rest ${Img_rest_arr[1]} means to rest?`,
+    "ds": [{
+        "objectType": "c",
+        "treble": true
+        }, {
+            "objectType": "t",
+            "numerator": 4,
+            "denominator": 4
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 1,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "b",
+            "type": "t"
+        }
+    ],
+    "checkType": "Input",
+    "checkAnswer": ["1"],
+    "inputMode": "text"
+}, {
+    "pageId": 8,
+    "inst": `A <term>whole rest</term>${Img_rest_arr[0]} is twice a <term>half rest</term>${Img_rest_arr[1]}, a <term>half rest</term>${Img_rest_arr[1]} is twice a <term>quarter rest</term>${Img_rest_arr[2]}, a <term>quarter rest</term>${Img_rest_arr[2]} is twice a <term>eighth rest</term>${Img_rest_arr[3]}.<br></br>From the <term>eighth rest</term>${Img_rest_arr[3]}, every head halves the length of the rest.<br></br>According to the sheet music below, how many beats in total should you <term>rest</term>?`,
+    "ds": [{
+        "objectType": "c",
+        "treble": true
+        }, {
+            "objectType": "t",
+            "numerator": 4,
+            "denominator": 4
+        }, {
+            "objectType": "n",
+            "length": 0,
+            "extend": false,
+            "rest": true,
+            "height": [1],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "b",
+            "type": "b"
+        }, {
+            "objectType": "n",
+            "length": 1,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 1,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "b",
+            "type": "b"
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "b",
+            "type": "b"
+        }, {
+            "objectType": "n",
+            "length": 4,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 4,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 4,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 4,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 4,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 4,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "b",
+            "type": "t"
+        }
+    ],
+    "checkType": "Input",
+    "checkAnswer": ["10"],
+    "inputMode": "text"
+}, {
+    "pageId": 9,
+    "inst": `<term>Rests</term> can also have dots. How many more bar lines should be drawn on the sheet music below?`,
+    "ds": [{
+        "objectType": "c",
+        "treble": true
+        }, {
+            "objectType": "t",
+            "numerator": 6,
+            "denominator": 8
+        }, {
+            "objectType": "n",
+            "length": 1,
+            "extend": true,
+            "rest": true,
+            "height": [1],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 3,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 3,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 3,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 3,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 3,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 3,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 3,
+            "extend": true,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 4,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 4,
+            "extend": false,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 3,
+            "extend": true,
+            "rest": true,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "b",
+            "type": "t"
+        }
+    ],
+    "checkType": "Input",
+    "checkAnswer": ["2"],
+    "inputMode": "text"
+}, {
+    "pageId": 10,
+    "inst": `The <term>tempo</term> notation ${Img_tempo[0]} indicates how many of the note is played in a minute.<br></br>In the case of the above, how many bars do you get to play per minute?`,
+    "ds": [{
+            "objectType": "p",
+            "bpm": 100,
+            "bpmUnit8": 2
+        }, {
+            "objectType": "c",
+            "treble": true
+        }, {
+            "objectType": "t",
+            "numerator": 3,
+            "denominator": 4
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 2,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 3,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": 3,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "b",
+            "type": "t"
+        }
+    ],
+    "checkType": "Input",
+    "checkAnswer": ["25"],
+    "inputMode": "text"
+}, {
+    "pageId": 11,
+    "inst": `Triplet`,
+    "ds": [{
+            "objectType": "c",
+            "treble": true
+        }, {
+            "objectType": "t",
+            "numerator": 2,
+            "denominator": 4
+        }, {
+            "objectType": "r",
+            "notes": [{
+                    "length": 2,
+                    "extend": false,
+                    "rest": false,
+                    "height": [0],
+                    "accidental": ["x"],
+                    "noteDecoration": ["x"]
+                }, {
+                    "length": 2,
+                    "extend": false,
+                    "rest": false,
+                    "height": [0],
+                    "accidental": ["x"],
+                    "noteDecoration": ["x"]
+                }, {
+                    "length": 2,
+                    "extend": false,
+                    "rest": false,
+                    "height": [0],
+                    "accidental": ["x"],
+                    "noteDecoration": ["x"]
+                }, 
+            ]
+        }
+    ],
+    "checkType": "Input",
+    "checkAnswer": ["3"],
+    "inputMode": "text"
+}, {
+    "pageId": 12,
+    "inst": `When the beat changes, we draw a <term>double bar line</term> and a new <term>time signature</term>.<br></br>There are no notes/rests on the sheet music below. How many <term>eighth notes</term>${Img_note_arr[3]} we should use to fill it?`,
+    "ds": [{
+            "objectType": "c",
+            "treble": true
+        }, {
+            "objectType": "t",
+            "numerator": 2,
+            "denominator": 4
+        }, {
+            "objectType": "b",
+            "type": "d"
+        }, {
+            "objectType": "t",
+            "numerator": 4,
+            "denominator": 4
+        }, {
+            "objectType": "b",
+            "type": "b"
+        }, {
+            "objectType": "b",
+            "type": "b"
+        }, {
+            "objectType": "b",
+            "type": "d"
+        }, {
+            "objectType": "t",
+            "numerator": 6,
+            "denominator": 8
+        }, {
+            "objectType": "b",
+            "type": "b"
+        }, {
+            "objectType": "b",
+            "type": "t"
+        }, 
+    ],
+    "checkType": "Input",
+    "checkAnswer": ["40"],
     "inputMode": "text"
 }
 
