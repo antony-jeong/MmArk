@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 
 import "./sheet/StyleSheet.css";
@@ -10,6 +10,9 @@ import Barline from "./sheet/Barline";
 import Clef from "./sheet/Clef";
 import Bpm from "./sheet/Bpm";
 import Triplet from "./sheet/Triplet"
+
+import SoundPlayer from "../components/audio-parts/SoundPlayer";
+import SheetPlayer from "../components/audio-parts/SheetPlayer";
 
 // dataStructure
     // objectType: (char) 
@@ -76,13 +79,37 @@ const SheetWrapper = styled.div`
     background-attatchment: fixed;
     background-size: contain;
     position: static;
+    align-items: baseline;
     height: 50px;
     margin: 50px 100px 50px 100px;
     zoom: 1;
     `;
 
 const Sheet = ({ dataStructure, className }) => {
-    { console.log(dataStructure) };
+    const [soundPlayer, setSoundPlayer] = useState(false);
+    const [player, setPlayer] = useState(false);
+    useEffect(() => {
+        if (!soundPlayer) {
+            setSoundPlayer(SoundPlayer());
+        } else if (!player) {
+            setPlayer(SheetPlayer(soundPlayer));
+        }
+    });
+    useEffect(() => {
+        if (soundPlayer) {
+            soundPlayer.setInstrument("acoustic_grand_piano");
+        }
+    }, [soundPlayer]);
+    useEffect(() => {
+        if (player) {
+            player.setSheet(dataStructure);
+        }
+    }, [player]);
+    useEffect( () => {
+        if (player) {
+            player.setSheet(dataStructure);
+        }
+    }, [dataStructure]);
     const data = dataStructure;
     const returnValue = data.map((obj) => {
         switch (obj.objectType) {
@@ -104,9 +131,10 @@ const Sheet = ({ dataStructure, className }) => {
                 return (<div>Invalid Object</div>)
         }
     });
-    { console.log(data) };
     return (
         <div className={`${className}`}>
+            <button onClick={player ? player.play : () => {}}>Play</button>
+            <button onClick={player ? player.stop : () => {}}>Stop</button>
             <SheetWrapper >
                 {returnValue}
             </SheetWrapper>
