@@ -83,6 +83,7 @@ body {
     font-size: 30px;
     font-weight: 300;
     transition: width .4s;
+    cursor: pointer;
 }
 
 

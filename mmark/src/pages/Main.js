@@ -3,6 +3,7 @@ import GameSelectButton from '../components/GameSelectButton';
 import Logo from '../components/Logo';
 import '../stylesheets/Main.css';
 
+
 const Main = () => {
     return (
       <div className={'Main-Container'}>
@@ -18,14 +19,14 @@ const Main = () => {
           <GameSelectButton src={'LearnRhythm'} name={'Rhythm'}>
             Play it to the beat!
           </GameSelectButton>
-          <GameSelectButton src={'LearnInterval'} name={'Intervals'}>
+          <GameSelectButton /*src={'LearnInterval'}*/ name={'Intervals'}>
             Learn the interval <br/>
             between the two notes
           </GameSelectButton>
-          <GameSelectButton src={'LearnChord'} name={'Chords'}>
+          <GameSelectButton /*src={'LearnChord'}*/ name={'Chords'}>
             Much richer fun of music
           </GameSelectButton>
-          <GameSelectButton src={'LearnRoadmapSign'} name={'Roadmap Signs'}>
+          <GameSelectButton /*src={'LearnRoadmapSign'}*/ name={'Roadmap Signs'}>
             Where should we go? <br/> Find a way!
           </GameSelectButton>
         </div>

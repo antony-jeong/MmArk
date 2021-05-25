@@ -11,9 +11,9 @@ import Sheet from '../components/Sheet'
 import Instruction from '../components/Instruction';
 
 import LearnNoteData from '../LearnNoteData';
-import LearnRhythmData from '../LearnNoteData';         //Temporarily import from LearnNoteData
-import LearnIntervalData from '../LearnNoteData';       //because the corresponding json is not written yet
-import LearnChordData from '../LearnNoteData';          //
+import LearnRhythmData from '../LearnRhythmData';       
+import LearnIntervalData from '../LearnNoteData';       //Temporarily import from LearnNoteData
+import LearnChordData from '../LearnNoteData';          //because the corresponding json is not written yet
 import LearnRoadmapSignData from '../LearnNoteData';    //
 
 
