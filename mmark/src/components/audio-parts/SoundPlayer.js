@@ -19,8 +19,8 @@ const SoundPlayer = () => {
           soundPlayer = nullSoundFontPlayer;
         });
     },
-    play: (note) => {
-      return soundPlayer.play(note);
+    play: (note, isLoud) => {
+      return soundPlayer.play(note, audioContext.currentTime, {gain: (isLoud ? 1 : 0.5)});
     },
     stop: () => {
       soundPlayer.stop();

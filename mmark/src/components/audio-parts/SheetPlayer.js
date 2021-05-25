@@ -354,7 +354,7 @@ const executeSequence = (soundPlayer, sequence, reservation) => {
   for(var i in sequence) {
     const {note, time, duration, isLoud} = sequence[i];
     reservation.push(setTimeout(() => {
-      var stopper = soundPlayer.play(note);
+      var stopper = soundPlayer.play(note, isLoud);
       setTimeout(stopper.stop, duration);
     }, time));
   }

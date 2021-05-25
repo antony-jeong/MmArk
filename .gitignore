@@ -1,4 +1,10 @@
 #vscode
 .vscode/
+<<<<<<< HEAD
 
 ./mmark/debug.log
+=======
+.metals/metals.h2.db
+.metals/metals.lock.db
+.metals/metals.log
+>>>>>>> master
