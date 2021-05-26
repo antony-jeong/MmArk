@@ -15,12 +15,13 @@ const Checker = ({type, input, answer}) => {
         case "Equal":
             return false;
         case "Input":
-            console.log(input);
             for (let i = 0; i < answer.length; i++) {
-                if (input[i].toLowerCase() === answer[i].toLowerCase()) {
+                console.log(input[input.length - 1].toLowerCase());
+                console.log(answer[i].toLowerCase());
+                if (input[input.length - 1].toLowerCase() === answer[i].toLowerCase()) {
                     return true;
                 }
-            }
+            }                
             return false;
         default: 
             return false;

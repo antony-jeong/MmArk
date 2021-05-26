@@ -140,7 +140,7 @@
     margin: 0 50px;
 }
 
-.Sheet{
+.Sheet {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -235,7 +235,7 @@
     opacity: 0;
 }
 
-.Complete.Pass{
+.Complete.Pass {
     opacity: 1;
 }
 
@@ -263,4 +263,19 @@
 
 .unselected {
     opacity: 50%;
+}
+
+.textInputWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 200px;
+}
+
+#textInput {
+    background: none;
+    border: solid 5px white;
+    height: 2rem;
+    margin: 20px;
+    outline: none;
 }
