@@ -11,6 +11,8 @@
         "sheetClick" - input notes by clicking the sheet
 */
 const standardLen = 0;
+const sharp = '😆';
+const flat = '😂';
 
 const LearnNoteData = [{
     "pageId": 1,
