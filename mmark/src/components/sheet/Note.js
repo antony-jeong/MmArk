@@ -151,7 +151,7 @@ const IndivLineObj = ({height}) => {
   if (height === -1) {
     prefix = 3;
   }
-  console.log("height : " + height)
+  //console.log("height : " + height)
   return(
     <div style={{ width: "0px", display: "inline-flex", "margin-right": prefix + "px" }}>
       <img
@@ -237,7 +237,7 @@ const AccidentalObj = ({ type, height, direction }) => {
 
 const AccidentalStackObj = ({ type, height, direction, realloc, Hori }) => {
 	const alloc = realloc ? "_alloc_1" : "_noAlloc_1" ;
-	console.log(Hori)
+	//console.log(Hori)
  
   var f = (direction) => {
     switch (direction) {
@@ -670,7 +670,7 @@ const NoteObj = ({ obj, isPlaying, margin }) => {
 
 	})
 
-  console.log(calcSheetObjectMargin(obj, 800));
+  //console.log(calcSheetObjectMargin(obj, 800));
   if (obj.height.length == 1) {
     return <div className = {isPlaying ? "skyBlue" : "black"} style={{ width: "5px", display: "inline", "margin-right":margin}}>{returnValue}</div>;
   }

@@ -137,6 +137,7 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
     const inputSubject = () => {
         switch (pageData.inputMode) {
             case ("text"):
+                console.log("HHH");
                 return (<div>Text</div>);
             case ("oneKey"):
                 return (<Piano className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} />);
@@ -160,7 +161,7 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
             <div className={`${gameName}-Page`}>
                 <Instruction className="Instruction" inst={i18n.language === "en" ? pageData.inst : (i18n.language === "kr"? pageData.inst_kr : "Internationalization Error")}/>
                 <Sheet className="Sheet" dataStructure={pageData.ds} />
-                {inputSubject}
+                {inputSubject()}
             </div>
             <div className={"Language-Select-Learn"}>
                 {Object.keys(lngs).map((lng) => (
