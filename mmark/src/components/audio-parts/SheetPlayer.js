@@ -1,7 +1,7 @@
 
 const sharpKeySignOrder = ["F", "C", "G", "D", "A", "E", "D"];
 const flatKeySignOrder = ["B", "E", "A", "D", "G", "C", "F"];
-const noteOrder = ["D#", "E", "F", "F", "F#", "G", "G#", "A", "A#", "B", "C", "C", "C#", "D", "D#"];
+const noteOrder = ["D#", "E", "F", "E", "F", "F#", "F#", "G", "G#", "G#", "A", "A#", "A#", "B", "C", "B", "C", "C#", "C#", "D", "D#"];
 
 const convertObjects = (ds) => {
   var returnIndex = 0;
@@ -28,14 +28,14 @@ const convertObjects = (ds) => {
       for (var accidentalIdx in accidentals) {
         var accidental = accidentals[accidentalIdx];
         if (accidental.height === height) {
-          index = index * 2 + accidental.offsetPlus1;
+          index = index * 3 + accidental.offsetPlus1;
           if (index >= 10) {
             octave += 1;
           }
           return noteOrder[index] + octave;
         }
       }
-      index = index * 2 + 1;
+      index = index * 3 + 1;
       var note = noteOrder[index];
       if (keySign.notes.indexOf(note) === -1) {
         if (index >= 10) {
@@ -59,7 +59,7 @@ const convertObjects = (ds) => {
       }
     } else {
       if (acc === "s") {
-        index = index * 2 + 2;
+        index = index * 3 + 2;
         if (index >= 10) {
           octave += 1;
         }
@@ -72,7 +72,7 @@ const convertObjects = (ds) => {
         accidentals.push({height: height, offsetPlus1: 2});
         return noteOrder[index] + octave;
       } else if (acc === "f") {
-        index = index * 2;
+        index = index * 3;
         if (index >= 10) {
           octave += 1;
         }
@@ -85,7 +85,7 @@ const convertObjects = (ds) => {
         accidentals.push({height: height, offsetPlus1: 0});
         return noteOrder[index] + octave;
       } else if (acc === "n") {
-        index = index * 2 + 1;
+        index = index * 3 + 1;
         if (index >= 10) {
           octave += 1;
         }
