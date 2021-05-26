@@ -86,7 +86,7 @@ const SheetWrapper = styled.div`
     margin: 50px 10px 50px 20px;
     zoom: 1;
     display: inline-block;
-    width: 80vw;
+    width: 1100px;
     `;
 
 const Sheet = ({ dataStructure, className }) => {
@@ -124,26 +124,29 @@ const Sheet = ({ dataStructure, className }) => {
     const [playingTripletIndex, setPlayingTripletIndex] = useState(-1);
     const changeHighlight = (index) => setPlayingIndex(index);
     const changeTripletHighlight = (tripletIndex) => setPlayingTripletIndex(tripletIndex);
-    console.log(calcSheetObjectMargin(dataStructure, 2000));
-    console.log(dataStructure);
-    const margin = calcSheetObjectMargin(dataStructure, 1450);
+
+    const [margin, setMargin] = useState(false);
+    useEffect(() => {
+        setMargin(calcSheetObjectMargin(dataStructure, 1095));
+    }, [dataStructure]);
+    //document.getElementById("sheetwrapper").clientWidth-2
     const data = dataStructure;
     const returnValue = data.map((obj, index) => {
         switch (obj.objectType) {
             case "c":
-                return (<Clef obj={obj} key={index} margin = {margin[index]}/>)
+                return (<Clef obj={obj} key={index} margin = {margin ? margin[index] : 0}/>)
             case "t":
-                return (<Time obj={obj} key={index} margin = {margin[index]}/>)
+                return (<Time obj={obj} key={index} margin = {margin ? margin[index] : 0}/>)
             case "k":
-                return (<Key obj={obj} key={index} margin = {margin[index]}/>)
+                return (<Key obj={obj} key={index} margin = {margin ? margin[index] : 0}/>)
             case "b":
-                return (<Barline obj={obj} key={index} margin = {margin[index]}/>)
+                return (<Barline obj={obj} key={index} margin = {margin ? margin[index] : 0}/>)
             case "n":
-                return (<Note obj={obj} key={index} isPlaying={index === playingIndex} margin = {margin[index]}/>)
+                return (<Note obj={obj} key={index} isPlaying={index === playingIndex} margin = {margin ? margin[index] : 0}/>)
             case "p":
-                return (<Bpm obj={obj} key={index} margin = {margin[index]}/>)
+                return (<Bpm obj={obj} key={index} margin = {margin ? margin[index] : 0}/>)
             case "r":
-                return (<Triplet obj={obj} key={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex} margin = {margin[index]}/>)
+                return (<Triplet obj={obj} key={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex} margin = {margin ? margin[index] : 0}/>)
             default:
                 return (<div key={index}>Invalid Object</div>)
         }

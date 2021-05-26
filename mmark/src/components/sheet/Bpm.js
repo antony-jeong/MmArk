@@ -43,8 +43,8 @@ const Components = [];
 
 
 Components.push(NoteIcon_8);
-Components.push(NoteIcon_6);
 Components.push(NoteIcon_4);
+Components.push(NoteIcon_6);
 Components.push(NoteIcon_2);
 Components.push(NoteIcon_1);
 Components.push(NoteIcon_1_5);
