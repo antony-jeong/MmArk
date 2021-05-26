@@ -212,3 +212,29 @@
 .Hide path {
     fill: rgba(0, 0, 0, 0.2);
 }
+
+.Language-Select-Learn {
+    position: fixed;
+    top: 23px;
+    right: 170px;
+}
+
+.Language-Select-Learn button {
+    border: none;
+    background: none;
+    color: #7147CB;
+    padding: 0px 15px 0px 15px;
+    cursor: pointer;
+}
+
+.Language-Select-Learn button+button {
+    border-left: #7147CB 1px solid;
+}
+
+.selected {
+    font-weight: bold;
+}
+
+.unselected {
+    opacity: 50%;
+}
