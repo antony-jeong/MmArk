@@ -44,6 +44,10 @@ import {ReactComponent as AccIcon_s} from "../musical_symbols_svg/accidental_s.s
 import {ReactComponent as AccIcon_f} from "../musical_symbols_svg/accidental_f.svg";
 import {ReactComponent as AccIcon_n} from "../musical_symbols_svg/accidental_n.svg";
 
+import {ReactComponent as TripIcon_3} from "../musical_symbols_svg/triplet_3.svg";
+import {ReactComponent as TripIcon_o} from "../musical_symbols_svg/triplet_open.svg";
+import {ReactComponent as TripIcon_c} from "../musical_symbols_svg/triplet_close.svg";
+
 import {ReactComponent as LineIcon} from "../musical_symbols_svg/notes1/line.svg";
 
 const noteComponents = [];
@@ -93,6 +97,9 @@ const accComponents = [];
 accComponents.push(AccIcon_s);
 accComponents.push(AccIcon_f);
 accComponents.push(AccIcon_n);
+accComponents.push(TripIcon_3);
+accComponents.push(TripIcon_o);
+accComponents.push(TripIcon_c);
 
 const LineObj = ({height}) => {
   const lineObjData = [];
@@ -163,9 +170,12 @@ const IndivLineObj = ({height}) => {
 
 const AccidentalObj = ({ type, height, direction }) => {
   var type_num = 0;
-  if (type = "s") {type_num = 0}
-  else if (type = "f") {type_num = 1}
-  else {type_num = 2}
+  if (type === "s") {type_num = 0}
+  else if (type === "f") {type_num = 1}
+  else if (type === "n") {type_num = 2}
+  else if (type === "3") {type_num = 3}
+  else if (type === "o") {type_num = 4}
+  else {type_num = 5}
 
   const NoteComponent = accComponents[type_num];
 
@@ -273,6 +283,16 @@ const AccidentalStackObj = ({ type, height, direction, realloc, Hori }) => {
 };
 
 const NoteDecorationObj = ({ type, height, direction }) => {
+  var type_num = 0;
+  if (type === "s") {type_num = 0}
+  else if (type === "f") {type_num = 1}
+  else if (type === "n") {type_num = 2}
+  else if (type === "3") {type_num = 3}
+  else if (type === "o") {type_num = 4}
+  else {type_num = 5}
+
+  const NoteComponent = accComponents[type_num];
+
   var f = (direction) => {
     switch (direction) {
       case "up":
@@ -316,40 +336,36 @@ const NoteDecorationObj = ({ type, height, direction }) => {
     }
   };
 
-  if (type == "f") {
+  if (type === "3" || type === "o" || type ===  "c") {
     if (height > 11) {
       return (
         <div style={{ width: "0px", display: "inline-flex" }}>
-          <img
-            src={
-              process.env.PUBLIC_URL +
-              "/musical_symbols_svg/deco_" +
-              type +
-              ".svg"
-            }
-            style={{
-              position: "relative",
-              top: -100 - 6.1225 * height + "px",
-              left: "-21px",
-            }}
-            height="9px"
-          />
+
+          <div style = {{width: "10px", display: "inline", position: "relative", top : -100 - 6.1225 * height + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = "9px"/>
+            </div>
         </div>
       );
     }
 
     return (
       <div style={{ width: "0px", display: "inline-flex" }}>
-        <img
+        {/* <img
           src={
             process.env.PUBLIC_URL +
             "/musical_symbols_svg/deco_" +
             type +
             ".svg"
           }
+          left: type==="3" ? "-15px" : "-21px"
           style={{ position: "relative", top: -100 + "px", left: "-21px" }}
           height="9px"
-        />
+        /> */}
+            <div style = {{width: "10px", display: "inline", position: "relative", 
+                          top : -80 - 6.1225 * height - (type ==="3" ? 4 : 0) + "px", 
+                          left: type==="3" ? "5px" : "0px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = "9px"/>
+            </div>
       </div>
     );
   }
@@ -364,7 +380,7 @@ const IndivNoteUpObj = ({ type, height, deco, acc }) => {
   return (
     <div style={{ width: "0px", display: "inline" }}>
       <AccidentalObj type={acc} height={height} direction="up" />
-
+      <NoteDecorationObj type={deco} height={height} direction="up" />
       <div style={{ width: "0px", display: "inline-flex", "margin-right": "0px" }}>
           <LineObj height = {height} />
         </div>
@@ -387,7 +403,7 @@ const IndivNoteUpObj = ({ type, height, deco, acc }) => {
         </div>
 
       </div>
-      <NoteDecorationObj type={deco} height={height} direction="up" />
+      
     </div>
   );
 };
@@ -397,6 +413,7 @@ const IndivNoteDownObj = ({ type, height, deco, acc }) => {
   return (
     <div style={{ width: "0px", display: "inline" }}>
       <AccidentalObj type={acc} height={height} direction="down" />
+      <NoteDecorationObj type={deco} height={height} direction="down" />
       <div style={{ width: "0px", display: "inline-flex", "margin-right": "0px" }}>
           <LineObj height = {height} />
         </div>
@@ -418,7 +435,6 @@ const IndivNoteDownObj = ({ type, height, deco, acc }) => {
           <NoteComponent style = {{display: "inline", position: "relative"}} height = "45px"/>
         </div>
       </div>
-      <NoteDecorationObj type={deco} height={height} direction="down" />
     </div>
   );
 };
