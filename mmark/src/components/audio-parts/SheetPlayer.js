@@ -414,6 +414,8 @@ const SheetPlayer = (soundPlayer, changeHighlight, changeTripletHighlight) => {
     });
     soundPlayer.stop();
     reservation = [];
+    changeHighlight(-1);
+    changeTripletHighlight(-1);
   };
 
   return {
