@@ -22,6 +22,6 @@
 }
 
 .skyBlue {
-    stroke: skyblue;
-    fill: skyblue;
+    stroke:  rgb(61, 147, 197);
+    fill: rgb(61, 147, 197);
 }
