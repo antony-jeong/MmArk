@@ -11,10 +11,12 @@
         "sheetClick" - input notes by clicking the sheet
 */
 const standardLen = 0;
+const sharp = '😆';
+const flat = '😂';
 
 const LearnNoteData = [{
     "pageId": 1,
-    "inst": "<Note>Do</Note> is represented as below. Play <Note>Do</Note>.",
+    "inst": "<note>Do</note> is represented as below. Play <note>Do</note>.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -60,7 +62,7 @@ const LearnNoteData = [{
     "inputMode": "oneKey"
 }, {
     "pageId": 2,
-    "inst": "<Note>Do</Note>-<Note>Re</Note>-<Note>Mi</Note>-<Note>Fa</Note>-<Note>Sol</Note>-<Note>La</Note>-<Note>Ti</Note>-<Note>Do</Note> is represented as below.<br></br>These are notes for white keys in the piano. Play the notes in given order.",
+    "inst": "<note>Do</note>-<note>Re</note>-<note>Mi</note>-<note>Fa</note>-<note>Sol</note>-<note>La</note>-<note>Ti</note>-<note>Do</note> is represented as below.<br></br>These are notes for white keys in the piano. Play the notes in given order.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -210,7 +212,7 @@ const LearnNoteData = [{
 {
     "pageId": 3,
     "inst": 
-        "Low <Note>Do</Note>-<Note>Re</Note>-<Note>Mi</Note>-<Note>Fa</Note>-<Note>Sol</Note>-<Note>La</Note>-<Note>Ti</Note>-<Note>Do</Note> is represented as below.<br></br>Play the notes in given order.",
+        "Low <note>Do</note>-<note>Re</note>-<note>Mi</note>-<note>Fa</note>-<note>Sol</note>-<note>La</note>-<note>Ti</note>-<note>Do</note> is represented as below.<br></br>Play the notes in given order.",
         "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -648,7 +650,7 @@ const LearnNoteData = [{
 {
     "pageId": 7,
     "inst": 
-        "Putting a <term>sharp</term>😆 beside a note raises the note.<br></br>Below are notes for black keys in the piano. Play the notes in given order.",
+        `Putting a <term>sharp</term>${sharp} beside a note raises the note.<br></br>Below are notes for black keys in the piano. Play the notes in given order.`,
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -750,7 +752,7 @@ const LearnNoteData = [{
 {
     "pageId": 8,
     "inst": 
-        "There is no black key after <note>Mi</note> and <note>Ti</note>!<br></br><note>Mi😆</note> equals <note>Fa</note>, and <note>Ti😆</note> equals <note>Do</note>.",
+        `There is no black key after <note>Mi</note> and <note>Ti</note>!<br></br><note>Mi${sharp}</note> equals <note>Fa</note>, and <note>Ti${sharp}</note> equals <note>Do</note>.`,
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -836,7 +838,7 @@ const LearnNoteData = [{
 {
     "pageId": 9,
     "inst": 
-    "Putting a <term>flat</term>😂 beside a note lowers the note.<br></br>Below are notes for black keys in the piano. Play the notes in given order.",
+    `Putting a <term>flat</term>${flat} beside a note lowers the note.<br></br>Below are notes for black keys in the piano. Play the notes in given order.`,
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -938,7 +940,7 @@ const LearnNoteData = [{
 {
     "pageId": 10,
     "inst": 
-        "<note>Fa😂</note> equals <note>Mi</note> and <note>Do😂</note> equals <note>Ti</note>.",
+        `<note>Fa</note>${flat} equals <note>Mi</note> and <note>Do</note>${flat} equals <note>Ti</note>.`,
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -1595,7 +1597,7 @@ const LearnNoteData = [{
 {
     "pageId": 15,
     "inst":
-        "A <term>scale</term> is a group of frequently used notes. What we're using now is <term>C major</term>.<br></br>The <term>musical key</term> of <Note>Do</Note>-<Note>Re</Note>-<Note>Mi</Note>-<Note>Fa</Note>-<Note>Sol</Note>-<Note>La</Note>-<Note>Ti</Note>-<Note>Do</Note> in C Major is <absolute>C</absolute>-<absolute>D</absolute>-<absolute>E</absolute>-<absolute>F</absolute>-<absolute>G</absolute>-<absolute>A</absolute>-<absolute>B</absolute>-<absolute>C</absolute>, respectively.<br></br>Play <absolute>C</absolute>-<absolute>A</absolute>-<absolute>G</absolute>-<absolute>E</absolute>.",
+        "A <term>scale</term> is a group of frequently used notes. What we're using now is <term>C major</term>.<br></br>The <term>musical key</term> of <note>Do</note>-<note>Re</note>-<note>Mi</note>-<note>Fa</note>-<note>Sol</note>-<note>La</note>-<note>Ti</note>-<note>Do</note> in C Major is <absolute>C</absolute>-<absolute>D</absolute>-<absolute>E</absolute>-<absolute>F</absolute>-<absolute>G</absolute>-<absolute>A</absolute>-<absolute>B</absolute>-<absolute>C</absolute>, respectively.<br></br>Play <absolute>C</absolute>-<absolute>A</absolute>-<absolute>G</absolute>-<absolute>E</absolute>.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
