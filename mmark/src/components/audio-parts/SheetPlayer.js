@@ -416,8 +416,8 @@ const SheetPlayer = (soundPlayer, changeHighlight, changeTripletHighlight, setIs
   var reservation = [];
 
   const play = () => {
-    setIsPlaying(true);
     stop();
+    setIsPlaying(true);
     executeSequence(soundPlayer, sequence, reservation, changeHighlight, changeTripletHighlight);
   };
 
