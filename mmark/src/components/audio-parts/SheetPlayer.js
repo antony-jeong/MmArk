@@ -242,7 +242,7 @@ const convertObjects = (ds) => {
   return converted;
 }
 
-const unwrapSheet = (converted) => {
+const unwrapSheet = (converted, setIsPlaying) => {
   var nowBy128 = 0;
   var baseTime = 0;
   var currentDurOf4 = 750; // useless 750
@@ -367,7 +367,8 @@ const unwrapSheet = (converted) => {
     note: null,
     time: baseTime += nowBy128 * currentDurOf4 / 32,
     id: -1,
-    tripletId: -1
+    tripletId: -1,
+    terminator: setIsPlaying
   });
   return sequence;
 };
@@ -378,13 +379,24 @@ const executeSequence = (soundPlayer, sequence, reservation, changeHighlight, ch
     const time = sequence[i].time;
     const id = sequence[i].id;
     const tripletId = sequence[i].tripletId;
+    const terminator = sequence[i].terminator;
     if (note === null) {
-      reservation.push(setTimeout(() => {
-        changeHighlight(id);
-        if (tripletId) {
-          changeTripletHighlight(tripletId);
-        }
-      }, time));
+      if (terminator) {
+        reservation.push(setTimeout(() => {
+          changeHighlight(id);
+          if (tripletId) {
+            changeTripletHighlight(tripletId);
+          }
+          terminator(false);
+        }, time));
+      } else {
+        reservation.push(setTimeout(() => {
+          changeHighlight(id);
+          if (tripletId) {
+            changeTripletHighlight(tripletId);
+          }
+        }, time));
+      }
     } else {
       const {duration, isLoud} = sequence[i];
       reservation.push(setTimeout(() => {
@@ -399,11 +411,12 @@ const executeSequence = (soundPlayer, sequence, reservation, changeHighlight, ch
   }
 };
 
-const SheetPlayer = (soundPlayer, changeHighlight, changeTripletHighlight) => {
+const SheetPlayer = (soundPlayer, changeHighlight, changeTripletHighlight, setIsPlaying) => {
   var sequence = [];
   var reservation = [];
 
   const play = () => {
+    setIsPlaying(true);
     stop();
     executeSequence(soundPlayer, sequence, reservation, changeHighlight, changeTripletHighlight);
   };
@@ -414,11 +427,14 @@ const SheetPlayer = (soundPlayer, changeHighlight, changeTripletHighlight) => {
     });
     soundPlayer.stop();
     reservation = [];
+    changeHighlight(-1);
+    changeTripletHighlight(-1);
+    setIsPlaying(false);
   };
 
   return {
     setSheet: (ds) => {
-      sequence = unwrapSheet(convertObjects(ds));
+      sequence = unwrapSheet(convertObjects(ds), setIsPlaying);
     },
     play: play,
     stop: stop
