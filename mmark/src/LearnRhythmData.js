@@ -568,7 +568,7 @@ const LearnRhythmData = [{
     "inputMode": "text"
 }, {
     "pageId": 8,
-    "inst": `A <term>whole rest</term>${Img_rest_arr[0]} is twice a <term>half rest</term>${Img_rest_arr[1]}, a <term>half rest</term>${Img_rest_arr[1]} is twice a <term>quarter rest</term>${Img_rest_arr[2]}, a <term>quarter rest</term>${Img_rest_arr[2]} is twice a <term>eighth rest</term>${Img_rest_arr[3]}.<br></br>From the <term>eighth rest</term>${Img_rest_arr[3]}, every head halves the length of the rest.<br></br>According to the sheet music below, how many beats in total should you <term>rest</term>?`,
+    "inst": `A <term>whole rest</term>${Img_rest_arr[0]} is twice a <term>half rest</term>${Img_rest_arr[1]},<br></br> a <term>half rest</term>${Img_rest_arr[1]} is twice a <term>quarter rest</term>${Img_rest_arr[2]}, a <term>quarter rest</term>${Img_rest_arr[2]} is twice a <term>eighth rest</term>${Img_rest_arr[3]}.<br></br>From the <term>eighth rest</term>${Img_rest_arr[3]}, every head halves the length of the rest.<br></br>According to the sheet music below, how many beats in total should you <term>rest</term>?`,
     "inst_kr": `<term>온쉼표</term>${Img_rest_arr[0]}는 <term>이분쉼표</term>${Img_rest_arr[1]}의 길이의 두 배이고, <term>2분쉼표</term>${Img_rest_arr[1]} 는 <term>4분쉼표</term>${Img_rest_arr[2]}의 길이의 2배이고,<br></br><term>4분쉼표</term>${Img_rest_arr[2]} 는 <term>8분쉼표</term>${Img_rest_arr[3]}의 길이의 2배입니다.<term>8분쉼표</term>${Img_rest_arr[3]}부터는 머리가 추가될 때마다 그 길이가 절반이 됩니다.<br></br> 아래의 악보의 총 <term>쉼표</term>의 길이는 얼마인가요?`,
     "ds": [{
         "objectType": "c",

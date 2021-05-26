@@ -27,11 +27,11 @@ const Main = () => {
           </div>
         </div>
         <div className={'Main-Button-Container'}>
-          <GameSelectButton src={'LearnNote'} name={t("main.name_notes")}>
-            <Trans i18nKey="main.desc_notes"/>
-          </GameSelectButton>
           <GameSelectButton src={'LearnRhythm'} name={t("main.name_rhythms")}>
             <Trans i18nKey="main.desc_rhythms"/>
+          </GameSelectButton>
+          <GameSelectButton src={'LearnNote'} name={t("main.name_notes")}>
+            <Trans i18nKey="main.desc_notes"/>
           </GameSelectButton>
           <GameSelectButton /*src={'LearnInterval'}*/ name={t("main.name_intervals")}>
             <Trans i18nKey="main.desc_intervals"/>  

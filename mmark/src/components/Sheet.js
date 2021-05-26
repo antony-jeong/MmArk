@@ -83,18 +83,22 @@ const SheetWrapper = styled.div`
     position: static;
     align-items: baseline;
     height: 50px;
-    margin: 50px 100px 50px 100px;
+    margin: 50px 10px 50px 20px;
     zoom: 1;
+    display: inline-block;
+    width: 80vw;
     `;
 
 const Sheet = ({ dataStructure, className }) => {
     const [soundPlayer, setSoundPlayer] = useState(false);
     const [player, setPlayer] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
+
     useEffect(() => {
         if (!soundPlayer) {
             setSoundPlayer(SoundPlayer());
         } else if (!player) {
-            setPlayer(SheetPlayer(soundPlayer, changeHighlight, changeTripletHighlight));
+            setPlayer(SheetPlayer(soundPlayer, changeHighlight, changeTripletHighlight, setIsPlaying));
         }
     });
     useEffect(() => {
@@ -141,14 +145,19 @@ const Sheet = ({ dataStructure, className }) => {
                 return (<div key={index}>Invalid Object</div>)
         }
     });
+
     return (
         <div className={`${className}`}>
-            <button onClick={player ? player.play : () => {}}>Play</button>
-            <button onClick={player ? player.stop : () => {}}>Stop</button>
+            {!isPlaying
+            ?<svg onClick={player ? player.play : () => {}} width="33" height="38" viewBox="0 0 33 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M31.5 16.4019C33.5 17.5566 33.5 20.4434 31.5 21.5981L4.5 37.1865C2.5 38.3412 1.98328e-06 36.8979 2.08423e-06 34.5885L3.44702e-06 3.41154C3.54796e-06 1.10214 2.5 -0.341234 4.5 0.813466L31.5 16.4019Z" fill="#977ED7"/>
+            </svg>
+            :<svg onClick={player ? player.stop : () => {}} width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="35" height="35" rx="3" fill="#D77E8E"/>
+            </svg>}
             <SheetWrapper >
                 {returnValue}
             </SheetWrapper>
-
         </div>
     );
 };
