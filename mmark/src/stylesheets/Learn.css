@@ -279,3 +279,14 @@
     margin: 20px;
     outline: none;
 }
+
+#textButton {
+    padding: 6px 15px 6px 15px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: rgb(161, 155, 161);
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 1.5rem;
+}
