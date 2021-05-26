@@ -16,6 +16,7 @@ const convertObjects = (ds) => {
   var accidentals = [];
 
   const processNote = (height, acc) => {
+    const needsIncOctave = (index) => (index > 15 || index === 14);
     if (!isTreble) {
       height = height - 12;
     }
@@ -29,7 +30,7 @@ const convertObjects = (ds) => {
         var accidental = accidentals[accidentalIdx];
         if (accidental.height === height) {
           index = index * 3 + accidental.offsetPlus1;
-          if (index >= 13) {
+          if (needsIncOctave(index)) {
             octave += 1;
           }
           return noteOrder[index] + octave;
@@ -38,20 +39,20 @@ const convertObjects = (ds) => {
       index = index * 3 + 1;
       var note = noteOrder[index];
       if (keySign.notes.indexOf(note) === -1) {
-        if (index >= 13) {
+        if (needsIncOctave(index)) {
           octave += 1;
         }
         return note + octave;
       } else {
         if (keySign.isSharp) {
           index += 1;
-          if (index >= 13) {
+          if (needsIncOctave(index)) {
             octave += 1;
           }
           return noteOrder[index] + octave;
         } else {
           index -= 1;
-          if (index >= 13) {
+          if (needsIncOctave(index)) {
             octave += 1;
           }
           return noteOrder[index] + octave;
@@ -60,7 +61,7 @@ const convertObjects = (ds) => {
     } else {
       if (acc === "s") {
         index = index * 3 + 2;
-        if (index >= 13) {
+        if (needsIncOctave(index)) {
           octave += 1;
         }
         for (let accidental in accidentals) {
@@ -73,7 +74,7 @@ const convertObjects = (ds) => {
         return noteOrder[index] + octave;
       } else if (acc === "f") {
         index = index * 3;
-        if (index >= 13) {
+        if (needsIncOctave(index)) {
           octave += 1;
         }
         for (let accidental in accidentals) {
@@ -86,7 +87,7 @@ const convertObjects = (ds) => {
         return noteOrder[index] + octave;
       } else if (acc === "n") {
         index = index * 3 + 1;
-        if (index >= 13) {
+        if (needsIncOctave(index)) {
           octave += 1;
         }
         for (let accidentalIdx in accidentals) {
