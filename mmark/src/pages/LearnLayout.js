@@ -122,11 +122,11 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
                 <Sheet className = "Sheet" dataStructure={pageData.ds}/>
                 <Piano className = "Piano" startNote = "C3" endNote = "B4"/>
             </div>
-            <div>
+            <div className={"Language-Select-Learn"}>
                 {Object.keys(lngs).map((lng) => (
-                    <button key={lng} style={{ fontWeight: i18n.language === lng ? 'bold' : 'normal' }} type="submit" onClick={() => i18n.changeLanguage(lng)}>
+                <button key={lng} className={i18n.language === lng ? "selected" : "unselected"} type="submit" onClick={() => i18n.changeLanguage(lng)}>
                     {lngs[lng].nativeName}
-                    </button>
+                </button>
                 ))}
             </div>
             <PageButton text = {'Next'} className = {`Next`} onClick={handleNext} show={NextShow}/>
