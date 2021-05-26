@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
+
 import PropTypes from 'prop-types';
 import PageButton from '../components/PageButton';
 import Logo from '../components/Logo';
@@ -16,27 +18,40 @@ import LearnIntervalData from '../LearnNoteData';       //Temporarily import fro
 import LearnChordData from '../LearnNoteData';          //because the corresponding json is not written yet
 import LearnRoadmapSignData from '../LearnNoteData';    //
 
+
 const addPlayHistory = (note) => {
     return;
 }
 
+const lngs = {
+  en: { nativeName: "English" },
+  kr: { nativeName: "Korean" }
+};
+
+
 const LearnLayout = ({game, gameName, pageNum, history}) => {
     var data;
+    var game_kor;
     switch (gameName) {
         case "LearnRhythm":
             data = LearnRhythmData;
+            game_kor = "리듬";
             break;
         case "LearnNote":
             data = LearnNoteData;
+            game_kor = "음";
             break;
         case "LearnInterval":
             data = LearnIntervalData;
+            game_kor = "음정";
             break;
         case "LearnChord":
             data = LearnChordData;
+            game_kor = "코드";
             break;
         case "LearnRoadmapSign":
             data = LearnRoadmapSignData;
+            game_kor = "로드맵";
             break;
    
         default:
@@ -98,18 +113,27 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
         document.querySelector('.Next').classList.remove('NotPass');
     }
 
+    const { t, i18n } = useTranslation();
+
     return (
         (pageNum >= 1) && (pageNum <= pageEnd)
         ?<div className={`${gameName}`}>
             <span className={`LogoContainer`}>
                 <Logo className={`Logo`}isLink={true}/>
-                <span className={'GameName'}>{game}</span>
+                <span className={'GameName'}>{i18n.language === "en" ? game : i18n.language === "kr" ? game_kor : "i18n error"}</span>
             </span>
             <PageNavigator className="PageNavigator" pageNum={pageNum} pageEnd={pageEnd} parentCallback={callback}/>
             <div className={`${gameName}-Page`}>
-                <Instruction className="Instruction" inst={pageData.inst}/>
+                <Instruction className="Instruction" inst={i18n.language === "en" ? pageData.inst : (i18n.language === "kr"? pageData.inst_kr : "Internationalization Error")}/>
                 <Sheet className = "Sheet" dataStructure={pageData.ds}/>
                 <Piano className = "Piano" startNote = "C3" endNote = "B4" addPlayHistory={addPlayHistory}/>
+            </div>
+            <div>
+                {Object.keys(lngs).map((lng) => (
+                    <button key={lng} style={{ fontWeight: i18n.language === lng ? 'bold' : 'normal' }} type="submit" onClick={() => i18n.changeLanguage(lng)}>
+                    {lngs[lng].nativeName}
+                    </button>
+                ))}
             </div>
             <PageButton text = {'Next'} className = {`Next`} onClick={handleNext} show={NextShow}/>
         </div>
