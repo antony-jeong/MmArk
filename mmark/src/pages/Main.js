@@ -18,13 +18,13 @@ const Main = () => {
           <Logo className={'Main-Logo'} isLink={false}/>
           <div className={'Learn-Music-by-Games'}>{t("main.slogan")}</div>
           <div className={'Made-by'}>{t("main.madeby")} ∙ <a href="https://github.com/antony-jeong/MmArk" target="_blank">GitHub</a></div>
-        </div>
-        <div>
-          {Object.keys(lngs).map((lng) => (
-            <button key={lng} style={{ fontWeight: i18n.language === lng ? 'bold' : 'normal' }} type="submit" onClick={() => i18n.changeLanguage(lng)}>
-              {lngs[lng].nativeName}
-            </button>
-          ))}
+          <div className={'Language-Select'}>
+            {Object.keys(lngs).map((lng) => (
+              <button key={lng} className={i18n.language === lng ? "selected" : ""} type="submit" onClick={() => i18n.changeLanguage(lng)}>
+                {lngs[lng].nativeName}
+              </button>
+            ))}
+          </div>
         </div>
         <div className={'Main-Button-Container'}>
           <GameSelectButton src={'LearnNote'} name={t("main.name_notes")}>
