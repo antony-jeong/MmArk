@@ -1,6 +1,8 @@
 import React from "react";
 import "./StyleSheet.css";
 
+import "../utils/calcSheetObjectMargin.js";
+
 import {ReactComponent as NoteIcon_1} from "../musical_symbols_svg/notes1/1.svg";
 import {ReactComponent as NoteIcon_1_down} from "../musical_symbols_svg/notes1/1_down.svg";
 import {ReactComponent as NoteIcon_1_5} from "../musical_symbols_svg/notes1/1.5.svg";
@@ -49,6 +51,7 @@ import {ReactComponent as TripIcon_o} from "../musical_symbols_svg/triplet_open.
 import {ReactComponent as TripIcon_c} from "../musical_symbols_svg/triplet_close.svg";
 
 import {ReactComponent as LineIcon} from "../musical_symbols_svg/notes1/line.svg";
+import calcSheetObjectMargin from "../utils/calcSheetObjectMargin.js";
 
 const noteComponents = [];
 noteComponents.push(NoteIcon_1);
@@ -521,7 +524,7 @@ const IndivNoteStackObj = ({ type, realloc, accAlloc, accHori, accHoriMax, isRea
   );
 };
 
-const NoteObj = ({ obj, isPlaying }) => {
+const NoteObj = ({ obj, isPlaying, margin }) => {
   const direction = obj.height[0] > 3 ? "down" : "up";
   var f1 = (obj) => {
     switch (obj.length) {
@@ -667,9 +670,9 @@ const NoteObj = ({ obj, isPlaying }) => {
 
 	})
 
-
+  console.log(calcSheetObjectMargin(obj, 800));
   if (obj.height.length == 1) {
-    return <div className = {isPlaying ? "skyBlue" : "black"} style={{ width: "5px", display: "inline" }}>{returnValue}</div>;
+    return <div className = {isPlaying ? "skyBlue" : "black"} style={{ width: "5px", display: "inline", "margin-right":margin}}>{returnValue}</div>;
   }
 
   return (
@@ -715,7 +718,7 @@ const IndivRestObj = ({ length }) => {
     switch (length) {
       case 1:
         return (
-          <div className={length} style={{ width: "5px", display: "inline" }}>
+          <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -47.5 - 12.245 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "9px"/>
             </div>
@@ -723,7 +726,7 @@ const IndivRestObj = ({ length }) => {
         );
       case 1.5:
         return (
-          <div className={length} style={{ width: "5px", display: "inline" }}>
+          <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -47.5 - 12.245 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "9px"/>
             </div>
@@ -731,7 +734,7 @@ const IndivRestObj = ({ length }) => {
         );
       case 2:
         return (
-          <div className={length} style={{ width: "5px", display: "inline" }}>
+          <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -47.5 - 12.245 + 3.5 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "9px"/>
             </div>
@@ -739,7 +742,7 @@ const IndivRestObj = ({ length }) => {
         );
       case 3:
         return (
-          <div className={length} style={{ width: "5px", display: "inline" }}>
+          <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -47.5 - 12.245 + 3.5 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "9px"/>
             </div>
@@ -747,7 +750,7 @@ const IndivRestObj = ({ length }) => {
         );
       case 4:
         return (
-          <div className={length} style={{ width: "5px", display: "inline" }}>
+          <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -39 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "40px"/>
             </div>
@@ -755,7 +758,7 @@ const IndivRestObj = ({ length }) => {
         );
       case 6:
         return (
-          <div className={length} style={{ width: "5px", display: "inline" }}>
+          <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -39 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "40px"/>
             </div>
@@ -763,7 +766,7 @@ const IndivRestObj = ({ length }) => {
         );
       case 8:
         return (
-          <div className={length} style={{ width: "5px", display: "inline" }}>
+          <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -40 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "27px"/>
             </div>
@@ -771,7 +774,7 @@ const IndivRestObj = ({ length }) => {
         );
       case 12:
         return (
-          <div className={length} style={{ width: "5px", display: "inline" }}>
+          <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -40 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "27px"/>
             </div>
@@ -779,7 +782,7 @@ const IndivRestObj = ({ length }) => {
         );
       case 16:
         return (
-          <div className={length} style={{ width: "5px", display: "inline" }}>
+          <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -28 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "39px"/>
             </div>
@@ -787,7 +790,7 @@ const IndivRestObj = ({ length }) => {
         );
       case 24:
         return (
-          <div className={length} style={{ width: "5px", display: "inline" }}>
+          <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -28 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "39px"/>
             </div>
@@ -795,7 +798,7 @@ const IndivRestObj = ({ length }) => {
         );
       case 32:
         return (
-          <div className={length} style={{ width: "5px", display: "inline" }}>
+          <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -24.5 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "54px"/>
             </div>
@@ -803,7 +806,7 @@ const IndivRestObj = ({ length }) => {
         );
       case 48:
         return (
-          <div className={length} style={{ width: "5px", display: "inline" }}>
+          <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -24.5 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "54px"/>
             </div>
@@ -817,7 +820,7 @@ const IndivRestObj = ({ length }) => {
   return f(length);
 };
 
-const RestObj = ({ obj, isPlaying }) => {
+const RestObj = ({ obj, isPlaying, margin }) => {
   var f = (obj) => {
     switch (obj.length) {
       case 0:
@@ -837,16 +840,16 @@ const RestObj = ({ obj, isPlaying }) => {
     }
   };
   const length = f(obj);
-  const returnValue = <IndivRestObj length={length} />;
+  const returnValue = <IndivRestObj length={length} margin={margin}/>;
 
-  return <div className = {isPlaying ? "skyBlue" : "black"} style={{ width: "5px", display: "inline" }}>{returnValue}</div>;
+  return <div className = {isPlaying ? "skyBlue" : "black"} style={{ width: "5px", display: "inline", "margin-right":  margin  }}>{returnValue}</div>;
 
 };
 
-const Note = ({ obj, isPlaying }) => {
+const Note = ({ obj, isPlaying, margin }) => {
   return (
     <div style={{ width: "10px", display: "inline" }}>
-      {obj.rest ? <RestObj obj={obj} isPlaying = {isPlaying}/> : <NoteObj obj={obj} isPlaying = {isPlaying}/>}
+      {obj.rest ? <RestObj obj={obj} isPlaying = {isPlaying} margin = {margin}/> : <NoteObj obj={obj} isPlaying = {isPlaying} margin = {margin}/>}
     </div>
   );
 };

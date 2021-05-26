@@ -1,0 +1,27 @@
+.inlined{
+    display: inline;
+
+}
+
+.inlined_bpm{
+    display: inline;
+    width: 23px;
+    height: 100px;
+}
+
+.horiLine{
+    width: 20px;
+    height: 0px;
+    border-top: 2px solid black;
+    display:inline-flex;
+}
+
+.black {
+    stroke: black;
+    fill: black;
+}
+
+.skyBlue {
+    stroke:  rgb(61, 147, 197);
+    fill: rgb(61, 147, 197);
+}
