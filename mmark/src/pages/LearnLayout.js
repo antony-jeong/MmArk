@@ -122,7 +122,6 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
         return;
     }
     useEffect(()=>{
-        console.log(inputArr);
         if (Checker({type: pageData.checkType, input: inputArr, answer: pageData.checkAnswer})){
             if (pageNum===pageEnd) document.querySelector('.Complete').classList.add('Pass');
             else document.querySelector('.Next').classList.add('Pass');
