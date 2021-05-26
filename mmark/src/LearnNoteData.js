@@ -11,6 +11,8 @@
         "sheetClick" - input notes by clicking the sheet
 */
 const standardLen = 0;
+const sharp = '😆';
+const flat = '😂';
 
 const LearnNoteData = [{
     "pageId": 1,
@@ -649,8 +651,8 @@ const LearnNoteData = [{
 
 {
     "pageId": 7,
-    "inst": "Putting a <term>sharp</term>😆 beside a note raises the note.<br></br>Below are notes for black keys in the piano. Play the notes in given order.",
-    "inst_kr": "<term>샤프</term>😆를 음표 옆에 붙이면 반음이 올라갑니다.<br></br>아래의 음표들은 검은 건반의 것들입니다. 주어진 순서대로 연주하십시오.",
+    "inst": `Putting a <term>sharp</term>${sharp} beside a note raises the note.<br></br>Below are notes for black keys in the piano. Play the notes in given order.`,
+    "inst_kr": `<term>샤프</term>${sharp}를 음표 옆에 붙이면 반음이 올라갑니다.<br></br>아래의 음표들은 검은 건반의 것들입니다. 주어진 순서대로 연주하십시오.`,
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -751,8 +753,8 @@ const LearnNoteData = [{
 
 {
     "pageId": 8,
-    "inst": "There is no black key after <note>Mi</note> and <note>Ti</note>!<br></br><note>Mi😆</note> equals <note>Fa</note>, and <note>Ti😆</note> equals <note>Do</note>.",
-    "inst_kr": "<note>미</note>와 <note>시</note> 뒤에는 검은 건반이 없습니다!<br></br><note>미샤프</note>는 <note>파</note>와, <note>시샤프</note>는 <note>도</note>와 같습니다.",
+    "inst": `There is no black key after <note>Mi</note> and <note>Ti</note>!<br></br><note>Mi</note>${sharp} equals <note>Fa</note>, and <note>Ti</note>${sharp} equals <note>Do</note>.`,
+    "inst_kr": `<note>미</note>와 <note>시</note> 뒤에는 검은 건반이 없습니다!<br></br><note>미</note>${sharp}는 <note>파</note>와, <note>시</note>${sharp}는 <note>도</note>와 같습니다.`,
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -837,8 +839,8 @@ const LearnNoteData = [{
 
 {
     "pageId": 9,
-    "inst": "Putting a <term>flat</term>😂 beside a note lowers the note.<br></br>Below are notes for black keys in the piano. Play the notes in given order.",
-    "inst_kr": "<term>플랫</term>😂을 음표 옆에 붙이면 반음이 낮아집니다.<br></br> 주어진 음표들을 순서대로 연주해보세요.",
+    "inst": `Putting a <term>flat</term>${flat} beside a note lowers the note.<br></br>Below are notes for black keys in the piano. Play the notes in given order.`,
+    "inst_kr": `<term>플랫</term>${flat}을 음표 옆에 붙이면 반음이 낮아집니다.<br></br> 주어진 음표들을 순서대로 연주해보세요.`,
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -939,8 +941,8 @@ const LearnNoteData = [{
 
 {
     "pageId": 10,
-    "inst": "<note>Fa😂</note> equals <note>Mi</note> and <note>Do😂</note> equals <note>Ti</note>.",
-    "inst_kr": "<note>파플랫😂</note>은 <note>미</note>와, <note>도플랫😂</note>은 <note>시</note>와 같습니다.",
+    "inst": `<note>Fa</note>${flat} equals <note>Mi</note> and <note>Do</note>${flat} equals <note>Ti</note>.`,
+    "inst_kr": `<note>파</note>${flat}은 <note>미</note>와, <note>도</note>${flat}은 <note>시</note>와 같습니다.`,
     "ds": [{
             "objectType": "p",
             "bpm": 360,
