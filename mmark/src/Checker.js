@@ -3,7 +3,7 @@ const Checker = ({type, input, answer}) => {
     switch (type) {
         case "Play":
             if (input.length >= answer.length) {
-                inputSuffix = input.slice(input.length-answer.length,input.length)
+                var inputSuffix = input.slice(input.length-answer.length,input.length)
                 for (let i = 0; i < answer.length; i++) {
                     if (inputSuffix[i] !== answer[i]) {
                         return false;

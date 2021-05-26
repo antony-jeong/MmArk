@@ -903,21 +903,21 @@ const LearnRhythmData = [{
                     "rest": false,
                     "height": [0],
                     "accidental": ["x"],
-                    "noteDecoration": ["x"]
+                    "noteDecoration": ["o"]
                 }, {
                     "length": 2,
                     "extend": false,
                     "rest": false,
                     "height": [0],
                     "accidental": ["x"],
-                    "noteDecoration": ["x"]
+                    "noteDecoration": ["3"]
                 }, {
                     "length": 2,
                     "extend": false,
                     "rest": false,
                     "height": [0],
                     "accidental": ["x"],
-                    "noteDecoration": ["x"]
+                    "noteDecoration": ["c"]
                 }, 
             ]
         }

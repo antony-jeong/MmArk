@@ -39,27 +39,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": [{
-            "objectType": "p",
-            "bpm": 90,
-            "bpmUnit8": 2
-        },
-        {
-            "objectType": "c",
-            "treble": true
-        }, {
-            "objectType": "k",
-            "key": 0
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [-2],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }
-    ],
+    "checkAnswer": ["C4"],
     "inputMode": "oneKey"
 }, {
     "pageId": 2,
@@ -142,72 +122,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": [{
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [-2],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [-1],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [1],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [2],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [3],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [4],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [5],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }
-    ],
+    "checkAnswer": ["C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5"],
     "inputMode": "whiteKeys"
 }, 
 
@@ -356,75 +271,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": [{
-            "objectType": "c",
-            "treble": false
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [3],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [4],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [5],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [6],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [7],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [8],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [9],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [10],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }
-    ],
+    "checkAnswer": ["C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4", "C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5"],
     "inputMode": "whiteKeys"
 }, 
 
@@ -469,75 +316,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": [{
-            "objectType": "c",
-            "treble": false
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [3],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [4],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [5],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [6],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [7],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [8],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [9],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [10],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }
-    ],
+    "checkAnswer": ["F4", "A4", "B3"],
     "inputMode": "whiteKeys"
 },
 
@@ -561,6 +340,9 @@ const LearnNoteData = [{
             "accidental": ["x"],
             "noteDecoration": ["x"]
         }, {
+            "objectType": "c",
+            "treble": false
+        }, {
             "objectType": "n",
             "length": standardLen,
             "extend": false,
@@ -579,35 +361,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": [{
-            "objectType": "c",
-            "treble": true
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [-3],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend": false,
-            "rest": false,
-            "height": [10],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend": false,
-            "rest": false,
-            "height": [12],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }
-    ],
+    "checkAnswer": ["B3", "C4", "E4"],
     "inputMode": "whiteKeys"
 },
 
@@ -703,59 +457,16 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": [{
-            "objectType": "c",
-            "treble": true
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [-2],
-            "accidental": ["s"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [-1],
-            "accidental": ["s"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [1],
-            "accidental": ["s"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [2],
-            "accidental": ["s"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [3],
-            "accidental": ["s"],
-            "noteDecoration": ["x"]
-        }
-    ],
+    "checkAnswer": ["C#4", "D#4", "F#4", "G#4", "A#4"],
     "inputMode": "allKeys"
 },
 
 {
     "pageId": 8,
-    "inst": `There is no black key after <note>Mi</note> and <note>Ti</note>!<br></br><note>Mi</note>${sharp} equals <note>Fa</note>, and <note>Ti</note>${sharp} equals <note>Do</note>.`,
-    "inst_kr": `<note>미</note>와 <note>시</note> 뒤에는 검은 건반이 없습니다!<br></br><note>미</note>${sharp}는 <note>파</note>와, <note>시</note>${sharp}는 <note>도</note>와 같습니다.`,
-    "ds": [{
+    "inst": 
+        `There is no black key after <note>Mi</note> and <note>Ti</note>!<br></br><note>Mi${sharp}</note> equals <note>Fa</note>, and <note>Ti${sharp}</note> equals <note>Do</note>.`,
+        "inst_kr": `<note>미</note>와 <note>시</note> 뒤에는 검은 건반이 없습니다!<br></br><note>미</note>${sharp}는 <note>파</note>와, <note>시</note>${sharp}는 <note>도</note>와 같습니다.`,
+        "ds": [{
             "objectType": "p",
             "bpm": 360,
             "bpmUnit8": 2
@@ -797,43 +508,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": [{
-            "objectType": "c",
-            "treble": true
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["s"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [1],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [4],
-            "accidental": ["s"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [5],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }
-    ],
+    "checkAnswer": ["F4", "F4", "C5", "C5"],
     "inputMode": "allKeys"
 },
 
@@ -891,51 +566,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": [{
-            "objectType": "c",
-            "treble": true
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [-1],
-            "accidental": ["f"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["f"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [2],
-            "accidental": ["f"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [3],
-            "accidental": ["f"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [4],
-            "accidental": ["f"],
-            "noteDecoration": ["x"]
-        }
-    ],
+    "checkAnswer": ["C#4", "D#4", "F#4", "G#4", "A#4"],
     "inputMode": "allKeys"
 },
 
@@ -985,50 +616,15 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": [{
-            "objectType": "c",
-            "treble": true
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [1],
-            "accidental": ["f"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [5],
-            "accidental": ["f"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [4],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }
-    ],
+    "checkAnswer": ["E4", "E4", "B4", "B4"],
     "inputMode": "allKeys"
 },
 
 {
     "pageId": 11,
-    "inst": "<note>Do😆</note> and <note>Re😂</note> are the same,<br></br><note>Re😆</note> and <note>Mi😂</note> are the same, and so on.",
-    "inst_kr": "<note>도샤프😆</note>와 <note>레플랫😂</note>은 같은 음을 가리키고,<br></br><note>레샤프😆</note> 와 <note>미플랫😂</note>도 서로 같습니다.",    
+    "inst": 
+        "<note>Do😆</note> and <note>Re😂</note> are the same,<br></br><note>Re😆</note> and <note>Mi😂</note> are the same, and so on.",
+    "inst_kr": "😆을 가지는 음표는 <term>반음</term>이 더 높고, <br></br>😂을 가지는 음표는 <term>반음</term>이 더 낮습니다.<br></br> 아래 음표에서 <term>반음</term> 차이 나는 두 음을 찾아 연주해보세요.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -1119,51 +715,16 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": [{
-            "objectType": "c",
-            "treble": true
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [1],
-            "accidental": ["f"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [5],
-            "accidental": ["f"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [4],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }
-    ],
+    "checkAnswer": ["C#4", "C#4", "D#4", "D#4", "F#4", "F#4", "G#4", "G#4", "A#4", "A#4"],
     "inputMode": "allKeys"
 },
 
 {
     "pageId": 12,
-    "inst": "The note with 😆 is a <term>semitone</term> higher than the original note.<br></br>The note with 😂 is a <term>semitone</term> lower than the original note.<br></br>Play the two notes in the sheet music that the interval between them is a <term>semitone</term>.",
-    "inst_kr": "😆을 가지는 음표는 <term>반음</term>이 더 높고, <br></br>😂을 가지는 음표는 <term>반음</term>이 더 낮습니다.<br></br> 아래 음표에서 <term>반음</term> 차이 나는 두 음을 찾아 연주해보세요.",
-    "ds": [{
+    "inst": 
+        "The note with 😆 is a <term>semitone</term> higher than the original note.<br></br>The note with 😂 is a <term>semitone</term> lower than the original note.<br></br>Play the two notes in the sheet music that the interval between them is a <term>semitone</term>.",
+    "inst_kr": "<term>샤프</term>😆와 <term>플랫</term>😂은 해당 마디가 끝날 때까지 유효합니다.",
+        "ds": [{
             "objectType": "p",
             "bpm": 360,
             "bpmUnit8": 2
@@ -1240,50 +801,14 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": [{
-            "objectType": "c",
-            "treble": true
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [1],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [4],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": standardLen,
-            "extend":false,
-            "rest": false,
-            "height": [5],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }
-    ],
+    "checkAnswer": ["E4", "F4"],
     "inputMode": "allKeys"
 },
 
 {
     "pageId": 13,
-    "inst": "The effect of a <term>sharp</term>😆 and a <term>flat</term>😂 next to the notes is maintained within the bar.",
-    "inst_kr": "<term>샤프</term>😆와 <term>플랫</term>😂은 해당 마디가 끝날 때까지 유효합니다.",
+    "inst": 
+        "The effect of a <term>sharp</term>😆 and a <term>flat</term>😂 next to the notes is maintained within the bar.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -1368,89 +893,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": [{
-            "objectType": "p",
-            "bpm": 360,
-            "bpmUnit8": 2
-        }, {
-            "objectType": "c",
-            "treble": true
-        }, {
-            "objectType": "t",
-            "numerator": 4,
-            "denominator": 4
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [-2],
-            "accidental": ["s"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [-1],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [-2],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [-1],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "b",
-            "type": "b"
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [-2],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [-1],
-            "accidental": ["s"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [-2],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [-1],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "b",
-            "type": "t"
-        }
-    ],
+    "checkAnswer": ["C#4", "D4", "C#4", "D4", "C4", "D#4", "C4", "D#4"],
     "inputMode": "allKeys"
 },
 
@@ -1526,73 +969,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": [{
-            "objectType": "p",
-            "bpm": 360,
-            "bpmUnit8": 2
-        }, {
-            "objectType": "c",
-            "treble": true
-        }, {
-            "objectType": "t",
-            "numerator": 3,
-            "denominator": 4
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [-2],
-            "accidental": ["s"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [-2],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [-2],
-            "accidental": ["n"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "b",
-            "type": "b"
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["f"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["n"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "b",
-            "type": "t"
-        }
-    ],
+    "checkAnswer": ["C#4", "C#4", "C4", "D#4", "D#4", "E4"],
     "inputMode": "allKeys"
 },
 
@@ -1747,47 +1124,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": [{
-            "objectType": "p",
-            "bpm": 360,
-            "bpmUnit8": 2
-        }, {
-            "objectType": "c",
-            "treble": true
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [-2],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [-4],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [2],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }
-    ],
+    "checkAnswer": ["C4", "A4", "G4", "E4"],
     "inputMode": "allKeys"
 }
 
