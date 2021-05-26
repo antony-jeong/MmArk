@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
 import PropTypes from 'prop-types';
@@ -17,11 +17,9 @@ import LearnRhythmData from '../LearnRhythmData';
 import LearnIntervalData from '../LearnNoteData';       //Temporarily import from LearnNoteData
 import LearnChordData from '../LearnNoteData';          //because the corresponding json is not written yet
 import LearnRoadmapSignData from '../LearnNoteData';    //
+import Checker from '../Checker';
 
 
-const addPlayHistory = (note) => {
-    return;
-}
 
 const lngs = {
   en: { nativeName: "English" },
@@ -62,7 +60,6 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
     var setPageNum;
     [pageNum, setPageNum] = useState(pageNum);
     var updateTimer;
-    const [NextShow, setNextShow] = useState(pageNum!==pageEnd);
 
     const update = () => {
 
@@ -91,21 +88,25 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
         if (pageNum !== newPageNum){
             clearTimeout(updateTimer);
             update();
-            document.querySelector('.Next').classList.remove('Pass');
+            if (document.querySelector('.Next'))
+                document.querySelector('.Next').classList.remove('Pass');
         }
         setPageNum(newPageNum);
         history.push(`/${gameName}/${newPageNum}`);
-        setNextShow(newPageNum!==pageEnd);
     }
 
     const handleNext = () => {
         let notPassTimer = undefined;
-        if (document.querySelector('.Next').classList.contains('Pass'))
-            callback(pageNum + 1);
-        else {
-            clearTimeout(notPassTimer);
-            document.querySelector('.Next').classList.add('NotPass');
-            notPassTimer = setTimeout(removeNotPass, 300);
+        if (pageNum < pageEnd){
+            if (document.querySelector('.Next').classList.contains('Pass'))
+                callback(pageNum + 1);
+            else {
+                clearTimeout(notPassTimer);
+                document.querySelector('.Next').classList.add('NotPass');
+                notPassTimer = setTimeout(removeNotPass, 300);
+        }}else{
+            if (document.querySelector('.Complete').classList.contains('Pass'))
+                history.push(`/`);
         }
     }
 
@@ -114,6 +115,23 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
     }
 
     const { t, i18n } = useTranslation();
+
+    const [inputArr, setInputArr] = useState(Array(pageData.checkAnswer.length).fill(""));
+    const addPlayHistory = (note) => {
+        setInputArr(inputArr.concat([note]).slice(-pageData.checkAnswer.length));
+        return;
+    }
+    useEffect(()=>{
+        console.log(inputArr);
+        if (Checker({type: pageData.checkType, input: inputArr, answer: pageData.checkAnswer})){
+            if (pageNum===pageEnd) document.querySelector('.Complete').classList.add('Pass');
+            else document.querySelector('.Next').classList.add('Pass');
+        }
+    }, [inputArr]);
+
+    useEffect(()=>{
+        setInputArr(Array(pageData.checkAnswer.length).fill(""));
+    }, [pageNum]);
 
     return (
         (pageNum >= 1) && (pageNum <= pageEnd)
@@ -126,7 +144,7 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
             <div className={`${gameName}-Page`}>
                 <Instruction className="Instruction" inst={i18n.language === "en" ? pageData.inst : (i18n.language === "kr"? pageData.inst_kr : "Internationalization Error")}/>
                 <Sheet className = "Sheet" dataStructure={pageData.ds}/>
-                <Piano className = "Piano" startNote = "C3" endNote = "B4" addPlayHistory={addPlayHistory}/>
+                <Piano className = "Piano" startNote = "C3" endNote = "C5" addPlayHistory={addPlayHistory}/>
             </div>
             <div>
                 {Object.keys(lngs).map((lng) => (
@@ -135,7 +153,11 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
                     </button>
                 ))}
             </div>
-            <PageButton text = {'Next'} className = {`Next`} onClick={handleNext} show={NextShow}/>
+            {
+            pageNum===pageEnd
+            ?<PageButton text = {'Complete'} className = {`Complete`} onClick={handleNext}/>
+            :<PageButton text = {'Next'} className = {`Next`} onClick={handleNext}/>
+            }
         </div>
         :
         <InvalidPage history={history} />
