@@ -129,8 +129,25 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
     }, [inputArr]);
 
     useEffect(()=>{
-        setInputArr(Array(pageData.checkAnswer.length).fill(""));
+        setInputArr(Array(pageData.checkAnswer.length).fill(" "));
     }, [pageNum]);
+
+
+
+    const inputSubject = () => {
+        switch (pageData.inputMode) {
+            case ("text"):
+                return (<div>Text</div>);
+            case ("oneKey"):
+                return (<Piano className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} />);
+            case ("whiteKeys"):
+                return (<Piano className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} />);
+            case ("allKeys"):
+                return (<Piano className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} />);
+            default:
+                return (<div>inputMode Error</div>)
+        }
+    }
 
     return (
         (pageNum >= 1) && (pageNum <= pageEnd)
@@ -142,8 +159,8 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
             <PageNavigator className="PageNavigator" pageNum={pageNum} pageEnd={pageEnd} parentCallback={callback}/>
             <div className={`${gameName}-Page`}>
                 <Instruction className="Instruction" inst={i18n.language === "en" ? pageData.inst : (i18n.language === "kr"? pageData.inst_kr : "Internationalization Error")}/>
-                <Sheet className = "Sheet" dataStructure={pageData.ds}/>
-                <Piano className = "Piano" startNote = "C3" endNote = "C5" addPlayHistory={addPlayHistory}/>
+                <Sheet className="Sheet" dataStructure={pageData.ds} />
+                {inputSubject}
             </div>
             <div className={"Language-Select-Learn"}>
                 {Object.keys(lngs).map((lng) => (
