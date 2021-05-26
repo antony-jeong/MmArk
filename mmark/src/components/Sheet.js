@@ -96,7 +96,6 @@ const Sheet = ({ dataStructure, className }) => {
     const getState = (playState) => {
         setIsPlaying(playState);
     };
-    console.log(isPlaying);
     useEffect(() => {
         if (!soundPlayer) {
             setSoundPlayer(SoundPlayer());
@@ -151,7 +150,6 @@ const Sheet = ({ dataStructure, className }) => {
                 return (<div key={index}>Invalid Object</div>)
         }
     });
-    console.log(isPlaying);
     return (
         <div className={`${className}`}>
             {!isPlaying

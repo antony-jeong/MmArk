@@ -316,7 +316,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": ["F4", "A4", "B3"],
+    "checkAnswer": ["D4", "F4", "B3"],
     "inputMode": "whiteKeys"
 },
 
