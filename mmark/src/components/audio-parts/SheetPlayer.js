@@ -189,7 +189,7 @@ const convertObjects = (ds) => {
           lenBy128 *= 3;
         }
         if (o.rest) {
-          converted.push({type: "rest", lenBy128: lenBy128, durOf4: durOf4});
+          converted.push({type: "rest", lenBy128: lenBy128, durOf4: durOf4, id: oidx});
         } else {
           var notes = [];
           for (var i = 0; i < o.height.length; i++) {
@@ -197,10 +197,10 @@ const convertObjects = (ds) => {
           }
           if (o.noteDecoration === "s") {
             lenBy128 /= 2;
-            converted.push({type: "note", notes: notes, lenBy128: lenBy128, durOf4: durOf4, isLoud: false});
-            converted.push({type: "rest", lenBy128: lenBy128, durOf4: durOf4});
+            converted.push({type: "note", notes: notes, lenBy128: lenBy128, durOf4: durOf4, isLoud: false, id: oidx});
+            converted.push({type: "rest", lenBy128: lenBy128, durOf4: durOf4, id: -1});
           } else {
-            converted.push({type: "note", notes: notes, lenBy128: lenBy128, durOf4: durOf4, isLoud: o.noteDecoration === "a"});
+            converted.push({type: "note", notes: notes, lenBy128: lenBy128, durOf4: durOf4, isLoud: o.noteDecoration === "a", id: oidx});
           }
         }
         break;
@@ -219,7 +219,7 @@ const convertObjects = (ds) => {
             lenBy128 *= 3;
           }
           if (note.rest) {
-            tripletNotes.push({type: "rest", lenBy128: lenBy128});
+            tripletNotes.push({type: "rest", lenBy128: lenBy128, id: noteIdx});
           } else {
             var notes = [];
             for (var i = 0; i < note.height.length; i++) {
@@ -227,14 +227,14 @@ const convertObjects = (ds) => {
             }
             if (note.noteDecoration === "s") {
               lenBy128 /= 2;
-              tripletNotes.push({type: "note", notes: notes, lenBy128: lenBy128, isLoud: false});
-              tripletNotes.push({type: "rest", lenBy128: lenBy128});
+              tripletNotes.push({type: "note", notes: notes, lenBy128: lenBy128, isLoud: false, id: noteIdx});
+              tripletNotes.push({type: "rest", lenBy128: lenBy128, id: -1});
             } else {
-              tripletNotes.push({type: "note", notes: notes, lenBy128: lenBy128, isLoud: note.noteDecoration === "a"});
+              tripletNotes.push({type: "note", notes: notes, lenBy128: lenBy128, isLoud: note.noteDecoration === "a", id: noteIdx});
             }
           }
         }
-        converted.push({type: "triplet", tripletNotes: tripletNotes, durOf4: durOf4});
+        converted.push({type: "triplet", tripletNotes: tripletNotes, durOf4: durOf4, id: oidx});
         break;
     }
   }
@@ -256,6 +256,11 @@ const unwrapSheet = (converted) => {
           nowBy128 = 0;
           currentDurOf4 = converted[i].durOf4;
         }
+        sequence.push({
+          note: null,
+          time: baseTime + nowBy128 * currentDurOf4 / 32,
+          id: converted[i].id
+        });
         nowBy128 += converted[i].lenBy128;
         i++;
         break;
@@ -271,7 +276,8 @@ const unwrapSheet = (converted) => {
             note: note,
             time: baseTime + nowBy128 * currentDurOf4 / 32,
             duration: converted[i].lenBy128 * currentDurOf4 / 32,
-            isLoud: converted[i].isLoud
+            isLoud: converted[i].isLoud,
+            id: converted[i].id
           });
         }
         nowBy128 += converted[i].lenBy128;
@@ -300,9 +306,18 @@ const unwrapSheet = (converted) => {
                 note: note,
                 time: copiedBaseTime,
                 duration: increment,
-                isLoud: tripletNote.isLoud
+                isLoud: tripletNote.isLoud,
+                id: converted[i].id,
+                tripletId: tripletNote.id
               });
             }
+          } else if (tripletNote.type === "rest") {
+            sequence.push({
+              note: null,
+              time: copiedBaseTime,
+              id: converted[i].id,
+              tripletId: tripletNote.id
+            });
           }
           copiedBaseTime += increment;
         }
@@ -323,6 +338,12 @@ const unwrapSheet = (converted) => {
       case "fine":
         if (afterDSorDC) {
           i = converted.length;
+          sequence.push({
+            note: null,
+            time: baseTime += nowBy128 * currentDurOf4 / 32,
+            id: -1,
+            tripletId: -1
+          });
         } else {
           i++;
         }
@@ -344,29 +365,52 @@ const unwrapSheet = (converted) => {
         break;
       case "terminate":
         i = converted.length;
+        sequence.push({
+          note: null,
+          time: baseTime += nowBy128 * currentDurOf4 / 32,
+          id: -1,
+          tripletId: -1
+        });
         break;
     }
   }
   return sequence;
 };
 
-const executeSequence = (soundPlayer, sequence, reservation) => {
+const executeSequence = (soundPlayer, sequence, reservation, changeHighlight, changeTripletHighlight) => {
   for(var i in sequence) {
-    const {note, time, duration, isLoud} = sequence[i];
-    reservation.push(setTimeout(() => {
-      var stopper = soundPlayer.play(note, isLoud);
-      setTimeout(stopper.stop, duration);
-    }, time));
+    const note = sequence[i].note;
+    const time = sequence[i].time;
+    const id = sequence[i].id;
+    const tripletId = sequence[i].tripletId;
+    if (note === null) {
+      reservation.push(setTimeout(() => {
+        changeHighlight(id);
+        if (tripletId) {
+          changeTripletHighlight(tripletId);
+        }
+      }, time));
+    } else {
+      const {duration, isLoud} = sequence[i];
+      reservation.push(setTimeout(() => {
+        var stopper = soundPlayer.play(note, isLoud);
+        changeHighlight(id);
+        if (tripletId) {
+          changeTripletHighlight(tripletId);
+        }
+        setTimeout(stopper.stop, duration);
+      }, time));
+    }
   }
 };
 
-const SheetPlayer = (soundPlayer) => {
+const SheetPlayer = (soundPlayer, changeHighlight, changeTripletHighlight) => {
   var sequence = [];
   var reservation = [];
 
   const play = () => {
     stop();
-    executeSequence(soundPlayer, sequence, reservation);
+    executeSequence(soundPlayer, sequence, reservation, changeHighlight, changeTripletHighlight);
   };
 
   const stop = () => {
