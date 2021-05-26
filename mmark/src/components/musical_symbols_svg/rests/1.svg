@@ -6,7 +6,7 @@
 	 style="enable-background:new 0 0 22 9;" xmlSpace="preserve">
 
 <a id="a18" transform="translate(-13.174896,-3.8302961)">
-	<path id="path20" inkscapeConnector-curvature="0" d="M34.5,12.8H13.8c-0.4,0-0.7-0.2-0.7-0.7V4.5c0-0.4,0.2-0.7,0.7-0.7h20.7
+	<path stroke-width="0.01px" id="path20" inkscapeConnector-curvature="0" d="M34.5,12.8H13.8c-0.4,0-0.7-0.2-0.7-0.7V4.5c0-0.4,0.2-0.7,0.7-0.7h20.7
 		c0.4,0,0.7,0.2,0.7,0.7v7.9C35.2,12.6,35,12.8,34.5,12.8z"/>
 </a>
 </svg>

@@ -5,7 +5,7 @@ import {ReactComponent as NoteIcon_2} from "../musical_symbols_svg/notes/2.svg";
 import {ReactComponent as NoteIcon_4} from "../musical_symbols_svg/notes/4.svg";
 import {ReactComponent as NoteIcon_6} from "../musical_symbols_svg/notes/6.svg";
 import {ReactComponent as NoteIcon_8} from "../musical_symbols_svg/notes/8.svg";
-import {ReactComponent as NoteIcon_1} from "../musical_symbols_svg/notes/1.svg";
+import {ReactComponent as NoteIcon_1} from "../musical_symbols_svg/notes1/1.svg";
 import {ReactComponent as NoteIcon_1_5} from "../musical_symbols_svg/notes/1.5.svg";
 import {ReactComponent as NoteIcon_2_alloc} from "../musical_symbols_svg/notes/2_alloc.svg";
 import {ReactComponent as NoteIcon_2_down} from "../musical_symbols_svg/notes/2_down.svg";
@@ -26,6 +26,9 @@ import {ReactComponent as NoteIcon_48} from "../musical_symbols_svg/notes/48.svg
 import {ReactComponent as NoteIcon_48_down} from "../musical_symbols_svg/notes/48_down.svg";
 import {ReactComponent as RestIcon_1_5} from "../musical_symbols_svg/rests/48.svg";
 
+
+
+
 // objectType: (char) 
         // c - clef
         // t - time
@@ -39,10 +42,10 @@ import {ReactComponent as RestIcon_1_5} from "../musical_symbols_svg/rests/48.sv
 const Components = [];
 
 
-Components.push(NoteIcon_2);
+Components.push(NoteIcon_8);
 Components.push(NoteIcon_6);
 Components.push(NoteIcon_4);
-Components.push(NoteIcon_8);
+Components.push(NoteIcon_2);
 Components.push(NoteIcon_1);
 Components.push(NoteIcon_1_5);
 Components.push(NoteIcon_2_alloc);
