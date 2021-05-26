@@ -23,10 +23,10 @@ const TimeObj = ({type, num}) => {
     )
 }
 
-const Time = ({obj}) => {
+const Time = ({obj, margin}) => {
 
     return (
-        <div style = {{width: "23px", display: "inline"}}>
+        <div style = {{width: "23px", display: "inline", "margin-right": margin}}>
             { <TimeObj type="nu" num = {obj.numerator}/>}
             { <TimeObj type="de" num = {obj.denominator}/>}
         </div >

@@ -67,10 +67,10 @@ Components.push(NoteIcon_48);
 Components.push(NoteIcon_48_down);
 Components.push(RestIcon_1_5);
 
-const BpmObj = ({className, bpmUnit8}) => {
+const BpmObj = ({className, bpmUnit8, margin}) => {
     const NoteComponent = Components[bpmUnit8 - 1];
     return (
-        <div style = {{width: "0px", height: "100px", display: "inline-flex" }}>
+        <div style = {{width: "0px", height: "100px", display: "inline-flex", "margin-right": margin }}>
             <div className={"black"} style = {{width: "10px", display: "inline", position: "relative", top : "-106.5px"}}>
                 <NoteComponent style = {{display: "inline", position: "relative"}} height = "20px"/>
             </div>
@@ -85,10 +85,10 @@ const BpmObj = ({className, bpmUnit8}) => {
     );
 }
 
-const Bpm = ({obj}) => {
+const Bpm = ({obj, margin}) => {
     return (
         <div style = {{width: "0px", height: "100px", display: "inline-flex" }}>
-            <BpmObj className={obj.bpm} bpmUnit8={obj.bpmUnit8}/>
+            <BpmObj className={obj.bpm} bpmUnit8={obj.bpmUnit8} margin={margin}/>
         </div>
     );
 };

@@ -29,36 +29,36 @@ import "./StyleSheet.css";
 
 
 
-const BarlineObj = ({ className, barlineDecoration }) => {
+const BarlineObj = ({ className, barlineDecoration, margin }) => {
     switch (className) {
         case "b":
-            return (<div className="bar" style = {{width: "1px", display: "inline" }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
+            return (<div className="bar" style = {{width: "1px", display: "inline", "margin-right": margin}}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
         case "o":
-            return (<div className="open" style = {{width: "14px", display: "inline" }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_repeat_open.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
+            return (<div className="open" style = {{width: "14px", display: "inline", "margin-right": margin }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_repeat_open.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
         case "c":
-            return (<div className="close" style = {{width: "14px", display: "inline" }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_repeat_close.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
+            return (<div className="close" style = {{width: "14px", display: "inline", "margin-right": margin }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_repeat_close.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
         case "d":
-            return (<div className="double" style = {{width: "3px", display: "inline" }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_double.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
+            return (<div className="double" style = {{width: "3px", display: "inline", "margin-right": margin }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_double.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
         case "t":
-            return (<div className="terminate" style = {{width: "6px", display: "inline" }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_terminal.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
+            return (<div className="terminate" style = {{width: "6px", display: "inline", "margin-right": margin }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_terminal.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
         default:
             return (<div> Invalid Object Obj</div>)
     };
 }
 
 
-const Barline = ({obj}) => {
+const Barline = ({obj, margin}) => {
     switch (obj.type) {
         case "b":
-            return (<BarlineObj className={"b"} barlineDecoration={ obj.barlineDecoration} style = {{width: "1px"}}/>)
+            return (<BarlineObj className={"b"} barlineDecoration={ obj.barlineDecoration} style = {{width: "1px"}} margin = {margin}/>)
         case "o":
-            return (<BarlineObj className={"o"} barlineDecoration={ obj.barlineDecoration} style = {{width: "14px"}}/>)
+            return (<BarlineObj className={"o"} barlineDecoration={ obj.barlineDecoration} style = {{width: "14px"}} margin = {margin}/>)
         case "c":
-            return (<BarlineObj className={"c"} barlineDecoration={ obj.barlineDecoration} style = {{width: "14px"}}/>)
+            return (<BarlineObj className={"c"} barlineDecoration={ obj.barlineDecoration} style = {{width: "14px"}} margin = {margin}/>)
         case "d":
-            return (<BarlineObj className={"d"} barlineDecoration={ obj.barlineDecoration} style = {{width: "3px"}}/>)
+            return (<BarlineObj className={"d"} barlineDecoration={ obj.barlineDecoration} style = {{width: "3px"}} margin = {margin}/>)
         case "t":
-            return (<BarlineObj className={"t"} barlineDecoration={ obj.barlineDecoration} style = {{width: "6px"}}/>)
+            return (<BarlineObj className={"t"} barlineDecoration={ obj.barlineDecoration} style = {{width: "6px"}} margin = {margin}/>)
         default:
             return (<div>Invalid Object</div>)
     }

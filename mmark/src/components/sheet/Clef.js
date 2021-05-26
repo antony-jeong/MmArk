@@ -11,9 +11,9 @@ import "./StyleSheet.css";
         // > if clef
         // treble: (boolean) true - treble, false - bass
 
-const ClefObj = ({className}) => {
+const ClefObj = ({className, margin}) => {
     return (
-        <div style = {{width: "27px", display: "inline" }} >
+        <div style = {{width: "27px", display: "inline", "margin":  margin}} >
             {className === "treble" 
             ? <div className="treble" style = {{width: "27px", display: "inline" }}>
                 <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/clef_g.svg"} style = {{position: "relative", top: "-17px"}}  height = "81px"/>
@@ -25,10 +25,10 @@ const ClefObj = ({className}) => {
     );
 }
 
-const Clef = ({obj}) => {
+const Clef = ({obj, margin}) => {
     return (
         <div style = {{width: "27px", display: "inline" }}>
-            {obj.treble ? <ClefObj className="treble"/> : <ClefObj className="bass"/>}
+            {obj.treble ? <ClefObj className="treble" margin={margin}/> : <ClefObj className="bass"margin={margin}/>}
         </div>
     );
 };
