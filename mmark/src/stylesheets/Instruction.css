@@ -1,12 +1,32 @@
-.Note,
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;1,900&display=swap');
+
+.Instruction span {
+    line-height: 150%;
+}
+
 .note {
-    background-color: aquamarine;
+    padding: 1px 4px;
+    font-weight: bold;
+    background-color: rgb(186, 189, 233);
+    border-radius: 5px;
+    color: rgb(40, 43, 73);
 }
 
 .term {
-    background-color: violet;
+    font-family: 'Merriweather', serif;
+    padding: 1px 4px;
+    font-weight: 900;
+    font-style: italic;
+    background-color: rgb(226, 198, 161);
+    border-radius: 5px;
+    color: rgb(41, 16, 16);
 }
 
 .absolute {
-    background-color: darkorange;
+    padding: 1px 5px;
+    font-weight: bold;
+    background-color: rgb(179, 197, 228);
+    border-radius: 5px;
+    color: rgb(7, 9, 39);
 }

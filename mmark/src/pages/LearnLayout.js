@@ -18,10 +18,16 @@ import LearnIntervalData from '../LearnNoteData';       //Temporarily import fro
 import LearnChordData from '../LearnNoteData';          //because the corresponding json is not written yet
 import LearnRoadmapSignData from '../LearnNoteData';    //
 
+
+const addPlayHistory = (note) => {
+    return;
+}
+
 const lngs = {
   en: { nativeName: "English" },
   kr: { nativeName: "Korean" }
 };
+
 
 const LearnLayout = ({game, gameName, pageNum, history}) => {
     var data;
@@ -120,7 +126,7 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
             <div className={`${gameName}-Page`}>
                 <Instruction className="Instruction" inst={i18n.language === "en" ? pageData.inst : (i18n.language === "kr"? pageData.inst_kr : "Internationalization Error")}/>
                 <Sheet className = "Sheet" dataStructure={pageData.ds}/>
-                <Piano className = "Piano" startNote = "C3" endNote = "B4"/>
+                <Piano className = "Piano" startNote = "C3" endNote = "B4" addPlayHistory={addPlayHistory}/>
             </div>
             <div>
                 {Object.keys(lngs).map((lng) => (
