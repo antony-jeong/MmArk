@@ -18,7 +18,7 @@ const PianoWrapper = styled.div `
   padding: 10px;
 `
 
-const Piano = ({startNote, endNote, addPlayHistory}) => {
+const Piano = ({startNote, endNote, addPlayHistory, inputMode}) => {
   const [playingNotes, setPlayingNotes] = useState([]);
   const playNote = (note) => {
     if (!playingNotes.includes(note)) {
@@ -44,7 +44,7 @@ const Piano = ({startNote, endNote, addPlayHistory}) => {
   return (
     <>
       <PianoWrapper>
-        {existingNotes.map((note, index) => <PianoKey note={note} play={() => playNote(note)} stop={() => stopNote(note)} key={index}/>)}
+        {existingNotes.map((note, index) => <PianoKey note={note} play={() => playNote(note)} stop={() => stopNote(note)} key={index} type={inputMode}/>)}
       </PianoWrapper>
       <InstrumentAudio playingNotes={playingNotes} instrumentName={"acoustic_grand_piano"}/>
     </>

@@ -186,8 +186,8 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
             </div>
             {
             pageNum===pageEnd
-            ?<PageButton text = {'Complete'} className = {`Complete`} onClick={handleNext}/>
-            :<PageButton text = {'Next'} className = {`Next`} onClick={handleNext}/>
+            ?<PageButton text = {'Complete'} className = {`Complete`} onClick={handleNext} show={true}/>
+            :<PageButton text = {'Next'} className = {`Next`} onClick={handleNext} show={true}/>
             }
         </div>
         :

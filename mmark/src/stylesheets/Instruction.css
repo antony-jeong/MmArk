@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,900&family=Noto+Serif+KR:wght@900&family=Song+Myung&display=swap');
 
 .Instruction span {
     line-height: 150%;
@@ -14,10 +14,9 @@
 }
 
 .term {
-    font-family: 'Merriweather', serif;
+    font-family: 'Merriweather', 'Noto Serif KR', serif;
     padding: 1px 4px;
     font-weight: 900;
-    font-style: italic;
     background-color: rgb(226, 198, 161);
     border-radius: 5px;
     color: rgb(41, 16, 16);
