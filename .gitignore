@@ -1,5 +1,7 @@
 #vscode
 .vscode/
+
+./mmark/debug.log
 .metals/metals.h2.db
 .metals/metals.lock.db
 .metals/metals.log
