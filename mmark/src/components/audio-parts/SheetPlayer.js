@@ -339,12 +339,6 @@ const unwrapSheet = (converted) => {
       case "fine":
         if (afterDSorDC) {
           i = converted.length;
-          sequence.push({
-            note: null,
-            time: baseTime += nowBy128 * currentDurOf4 / 32,
-            id: -1,
-            tripletId: -1
-          });
         } else {
           i++;
         }
@@ -366,15 +360,15 @@ const unwrapSheet = (converted) => {
         break;
       case "terminate":
         i = converted.length;
-        sequence.push({
-          note: null,
-          time: baseTime += nowBy128 * currentDurOf4 / 32,
-          id: -1,
-          tripletId: -1
-        });
         break;
     }
   }
+  sequence.push({
+    note: null,
+    time: baseTime += nowBy128 * currentDurOf4 / 32,
+    id: -1,
+    tripletId: -1
+  });
   return sequence;
 };
 
