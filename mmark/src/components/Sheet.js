@@ -13,6 +13,8 @@ import Triplet from "./sheet/Triplet"
 
 import SoundPlayer from "../components/audio-parts/SoundPlayer";
 import SheetPlayer from "../components/audio-parts/SheetPlayer";
+import "./utils/calcSheetObjectMargin";
+import calcSheetObjectMargin from './utils/calcSheetObjectMargin';
 
 // dataStructure
     // objectType: (char) 
@@ -119,24 +121,26 @@ const Sheet = ({ dataStructure, className }) => {
     const [playingTripletIndex, setPlayingTripletIndex] = useState(-1);
     const changeHighlight = (index) => setPlayingIndex(index);
     const changeTripletHighlight = (tripletIndex) => setPlayingTripletIndex(tripletIndex);
-
+    console.log(calcSheetObjectMargin(dataStructure, 2000));
+    console.log(dataStructure);
+    const margin = calcSheetObjectMargin(dataStructure, 1450);
     const data = dataStructure;
     const returnValue = data.map((obj, index) => {
         switch (obj.objectType) {
             case "c":
-                return (<Clef obj={obj} key={index} />)
+                return (<Clef obj={obj} key={index} margin = {margin[index]}/>)
             case "t":
-                return (<Time obj={obj} key={index} />)
+                return (<Time obj={obj} key={index} margin = {margin[index]}/>)
             case "k":
-                return (<Key obj={obj} key={index} />)
+                return (<Key obj={obj} key={index} margin = {margin[index]}/>)
             case "b":
-                return (<Barline obj={obj} key={index} />)
+                return (<Barline obj={obj} key={index} margin = {margin[index]}/>)
             case "n":
-                return (<Note obj={obj} key={index} isPlaying={index === playingIndex} />)
+                return (<Note obj={obj} key={index} isPlaying={index === playingIndex} margin = {margin[index]}/>)
             case "p":
-                return (<Bpm obj={obj} key={index} />)
+                return (<Bpm obj={obj} key={index} margin = {margin[index]}/>)
             case "r":
-                return (<Triplet obj={obj} key={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex}/>)
+                return (<Triplet obj={obj} key={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex} margin = {margin[index]}/>)
             default:
                 return (<div key={index}>Invalid Object</div>)
         }

@@ -6,7 +6,7 @@ const PianoKey = ({note, play, stop}) => {
     return (
       <div className={"piano-black-key-wrapper"}>
         <div className={"piano-black-key"} onMouseDown={play} onMouseUp={stop} onMouseOut={stop}>
-          <div className={"piano-key-text"}>{note}</div>
+          <div className={"piano-key-text"}>{""}</div>
         </div>
       </div>
     );
@@ -14,7 +14,7 @@ const PianoKey = ({note, play, stop}) => {
     return (
       <>
         <div className={"piano-key"} onMouseDown={play} onMouseUp={stop} onMouseOut={stop}>
-          <div className={"piano-key-text"}>{note}</div>
+          <div className={"piano-key-text"}>{note === "C4" ? "●" : ""}</div>
         </div>
       </>
     );
