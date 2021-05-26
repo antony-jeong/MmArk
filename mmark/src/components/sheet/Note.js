@@ -198,7 +198,7 @@ const AccidentalObj = ({ type, height, direction }) => {
               }}
               height={28 + (type == "f" ? 7.2 : 0) + "px"}
             /> */}
-						<div style = {{width: "10px", display: "inline", position: "relative", top : -11.5 - 6.1225 * (height + 1) + "px"}}>
+						<div style = {{width: "10px", display: "inline", position: "relative", top : -11.5 - 6.1225 * (height + 1) + (type === "f" ? -3.5 : 0) + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "28px"/>
             </div>
           </div>
@@ -219,7 +219,7 @@ const AccidentalObj = ({ type, height, direction }) => {
               }}
               height={28 + (type == "f" ? 7.2 : 0) + "px"}
             /> */}
-            <div style = {{width: "10px", display: "inline", position: "relative", top : -11.5 - 6.1225 * (height + 1) + "px"}}>
+            <div style = {{width: "10px", display: "inline", position: "relative", top : -11.5 - 6.1225 * (height + 1) + (type === "f" ? -3.5 : 0) + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "28px"/>
             </div>
           </div>
@@ -413,7 +413,7 @@ const IndivNoteDownObj = ({ type, height, deco, acc }) => {
   return (
     <div style={{ width: "0px", display: "inline" }}>
       <AccidentalObj type={acc} height={height} direction="down" />
-      <NoteDecorationObj type={deco} height={height} direction="down" />
+        <NoteDecorationObj type={deco} height={height} direction="down" />
       <div style={{ width: "0px", display: "inline-flex", "margin-right": "0px" }}>
           <LineObj height = {height} />
         </div>
@@ -441,9 +441,9 @@ const IndivNoteDownObj = ({ type, height, deco, acc }) => {
 
 const IndivNoteStackObj = ({ type, realloc, accAlloc, accHori, accHoriMax, isRealloc, finished, height, deco, acc }) => {
 	const realloc_type = realloc ? "_alloc" : "";
-	console.log("Hori : " +accHoriMax);
+	//console.log("Hori : " +accHoriMax);
 	if (finished && isRealloc) {
-		console.log("finished && isRealloc");
+		//console.log("finished && isRealloc");
 		return (
 			<div className={height} style={{ width: "32px", display: "inline" }}>
 				<AccidentalStackObj type={acc} height={height} direction="up" realloc={accAlloc} Hori={accHori}/>
@@ -562,7 +562,7 @@ const NoteObj = ({ obj, isPlaying }) => {
   };
 
   const type = f(obj);
-  console.log(obj.length);
+  //console.log(obj.length);
 	const heights = [];
 	for(var i = 0; i < obj.height.length; i++){
 		heights.push(obj.height[i]);
@@ -605,7 +605,7 @@ const NoteObj = ({ obj, isPlaying }) => {
 	}
 
 	
-	console.log(thereIsRealloc);
+	//console.log(thereIsRealloc);
 	obj.accHori = Accidental(heights);
 	var AccidentalMax = 0;
 	for (var i = 0; i < obj.height.length; i++) {
@@ -614,7 +614,7 @@ const NoteObj = ({ obj, isPlaying }) => {
 		}
 	}
 	const accidental = Accidental(heights);
-	console.log(obj.accHori);
+	//console.log(obj.accHori);
   const objData = [];
   for (var i = 0; i < obj.height.length; i++) {
     const newObj = {
