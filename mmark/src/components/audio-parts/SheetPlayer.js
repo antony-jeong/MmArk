@@ -128,6 +128,7 @@ const convertObjects = (ds) => {
         }
         break;
       case "b":
+        accidentals = [];
         // pre-barline
         switch (o.barlineDecoration) {
           case "ds":
