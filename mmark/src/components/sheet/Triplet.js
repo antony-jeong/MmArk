@@ -2,6 +2,9 @@ import React from 'react';
 import Note from "./Note";
 import "./StyleSheet.css";
 
+
+
+
 // objectType: (char) 
         // c - clef
         // t - time
@@ -18,9 +21,10 @@ const Triplet = ({ obj }) => {
         return (<Note obj={obj} />);
     });
     return (
-        <div>
-            <div className="tripletWrapper">Triplet Wrapper</div>
+        <div style={{ width: "5px", display: "inline" }}>
+            <div className="tripletWrapper" style={{ width: "5px", display: "inline" }}>
                 {returnValue}
+            </div>
         </div>
     );
 }
