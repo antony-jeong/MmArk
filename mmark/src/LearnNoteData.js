@@ -16,8 +16,8 @@ const flat = '😂';
 
 const LearnNoteData = [{
     "pageId": 1,
-    "inst": "<Note>Do</Note> is represented as below. Play <Note>Do</Note>.",
-    "inst_kr": "<Note>도</Note>라는 음은 아래처럼 나타낼 수 있습니다. <Note>도</Note>를 연주해보세요.",
+    "inst": "<note>Do</note> is represented as below. Play <note>Do</note>.",
+    "inst_kr": "<note>도</note>라는 음은 아래처럼 나타낼 수 있습니다. <note>도</note>를 연주해보세요.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -63,8 +63,8 @@ const LearnNoteData = [{
     "inputMode": "oneKey"
 }, {
     "pageId": 2,
-    "inst": "<Note>Do</Note>-<Note>Re</Note>-<Note>Mi</Note>-<Note>Fa</Note>-<Note>Sol</Note>-<Note>La</Note>-<Note>Ti</Note>-<Note>Do</Note> is represented as below.<br></br>These are notes for white keys in the piano. Play the notes in given order.",
-    "inst_kr": "<Note>도</Note>-<Note>레</Note>-<Note>미</Note>-<Note>파</Note>-<Note>솔</Note>-<Note>라</Note>-<Note>시</Note>-<Note>도</Note>는 아래와 같습니다.<br></br>이 음들은 피아노의 하얀 건반의 음표들입니다. 주어진 순서대로 음표를 연주해보세요.",
+    "inst": "<note>Do</note>-<note>Re</note>-<note>Mi</note>-<note>Fa</note>-<note>Sol</note>-<note>La</note>-<note>Ti</note>-<note>Do</note> is represented as below.<br></br>These are notes for white keys in the piano. Play the notes in given order.",
+    "inst_kr": "<note>도</note>-<note>레</note>-<note>미</note>-<note>파</note>-<note>솔</note>-<note>라</note>-<note>시</note>-<note>도</note>는 아래와 같습니다.<br></br>이 음들은 피아노의 하얀 건반의 음표들입니다. 주어진 순서대로 음표를 연주해보세요.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -213,8 +213,8 @@ const LearnNoteData = [{
 
 {
     "pageId": 3,
-    "inst": "Low <Note>Do</Note>-<Note>Re</Note>-<Note>Mi</Note>-<Note>Fa</Note>-<Note>Sol</Note>-<Note>La</Note>-<Note>Ti</Note>-<Note>Do</Note> is represented as below.<br></br>Play the notes in given order.",
-    "inst_kr": "낮은 <Note>도</Note>-<Note>레</Note>-<Note>미</Note>-<Note>파</Note>-<Note>솔</Note>-<Note>라</Note>-<Note>시</Note>-<Note>도</Note>는 아래와 같이 표현할 수 있습니다.<br></br>주어진 순서대로 음표들을 연주해보세요.",
+    "inst": "Low <note>Do</note>-<note>Re</note>-<note>Mi</note>-<note>Fa</note>-<note>Sol</note>-<note>La</note>-<note>Ti</note>-<note>Do</note> is represented as below.<br></br>Play the notes in given order.",
+    "inst_kr": "낮은 <note>도</note>-<note>레</note>-<note>미</note>-<note>파</note>-<note>솔</note>-<note>라</note>-<note>시</note>-<note>도</note>는 아래와 같이 표현할 수 있습니다.<br></br>주어진 순서대로 음표들을 연주해보세요.",
         "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -1598,8 +1598,8 @@ const LearnNoteData = [{
 
 {
     "pageId": 15,
-    "inst": "A <term>scale</term> is a group of frequently used notes. What we're using now is <term>C major</term>.<br></br>The <term>musical key</term> of <Note>Do</Note>-<Note>Re</Note>-<Note>Mi</Note>-<Note>Fa</Note>-<Note>Sol</Note>-<Note>La</Note>-<Note>Ti</Note>-<Note>Do</Note> in C Major is <absolute>C</absolute>-<absolute>D</absolute>-<absolute>E</absolute>-<absolute>F</absolute>-<absolute>G</absolute>-<absolute>A</absolute>-<absolute>B</absolute>-<absolute>C</absolute>, respectively.<br></br>Play <absolute>C</absolute>-<absolute>A</absolute>-<absolute>G</absolute>-<absolute>E</absolute>.",
-    "inst_kr": "<term>음계</term>는 자주 사용되는 음들의 집합입니다. 현재 사용하는 것은 <term>C 장조</term>입니다.<br></br><Note>도</Note>-<Note>레</Note>-<Note>미</Note>-<Note>파</Note>-<Note>솔</Note>-<Note>라</Note>-<Note>시</Note>-<Note>도</Note>는 C 장조에서 <absolute>C</absolute>-<absolute>D</absolute>-<absolute>E</absolute>-<absolute>F</absolute>-<absolute>G</absolute>-<absolute>A</absolute>-<absolute>B</absolute>-<absolute>C</absolute>라는 <term>음이름</term>을 가집니다.<br></br><absolute>C</absolute>-<absolute>A</absolute>-<absolute>G</absolute>-<absolute>E</absolute>를 연주해보세요.",
+    "inst": "A <term>scale</term> is a group of frequently used notes. What we're using now is <term>C major</term>.<br></br>The <term>musical key</term> of <note>Do</note>-<note>Re</note>-<note>Mi</note>-<note>Fa</note>-<note>Sol</note>-<note>La</note>-<note>Ti</note>-<note>Do</note> in C Major is <absolute>C</absolute>-<absolute>D</absolute>-<absolute>E</absolute>-<absolute>F</absolute>-<absolute>G</absolute>-<absolute>A</absolute>-<absolute>B</absolute>-<absolute>C</absolute>, respectively.<br></br>Play <absolute>C</absolute>-<absolute>A</absolute>-<absolute>G</absolute>-<absolute>E</absolute>.",
+    "inst_kr": "<term>음계</term>는 자주 사용되는 음들의 집합입니다. 현재 사용하는 것은 <term>C 장조</term>입니다.<br></br><note>도</note>-<note>레</note>-<note>미</note>-<note>파</note>-<note>솔</note>-<note>라</note>-<note>시</note>-<note>도</note>는 C 장조에서 <absolute>C</absolute>-<absolute>D</absolute>-<absolute>E</absolute>-<absolute>F</absolute>-<absolute>G</absolute>-<absolute>A</absolute>-<absolute>B</absolute>-<absolute>C</absolute>라는 <term>음이름</term>을 가집니다.<br></br><absolute>C</absolute>-<absolute>A</absolute>-<absolute>G</absolute>-<absolute>E</absolute>를 연주해보세요.",
     "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -1793,4 +1793,4 @@ const LearnNoteData = [{
 
 ];
 
-export default LearnNoteData;
+export default LearnnoteData;
