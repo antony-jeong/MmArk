@@ -1130,4 +1130,4 @@ const LearnNoteData = [{
 
 ];
 
-export default LearnnoteData;
+export default LearnNoteData;
