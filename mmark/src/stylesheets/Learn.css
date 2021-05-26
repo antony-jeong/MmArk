@@ -262,6 +262,7 @@
     color: #7147CB;
     padding: 0px 15px 0px 15px;
     cursor: pointer;
+    outline: none;
 }
 
 .Language-Select-Learn button+button {

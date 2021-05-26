@@ -11,12 +11,12 @@ inputMode:
     "sheetClick" - input notes by clicking the sheet
 */
 
-const Img_barline_t = '😀';
-const Img_time_44 = '😎';
-const Img_note_arr = ['🌝', '🌕', '🌓', '🌒', '🌑'];
-const Img_dotted_note_arr = ['🌝*', '🌕*', '🌓*', '🌒*', '🌑*'];
-const Img_rest_arr = ['🌝', '🌕', '🌓', '🌒', '🌑'];
-const Img_tempo = ['😁'];
+const Img_barline_t = '';
+const Img_time_44 = '';
+const Img_note_arr = ['', '', '', '', ''];
+const Img_dotted_note_arr = ['', '', '', '', ''];
+const Img_rest_arr = ['', '', '', '', ''];
+const Img_tempo = [''];
 
 const LearnRhythmData = [{
 "pageId": 1,
@@ -428,96 +428,30 @@ const LearnRhythmData = [{
         "treble": true
         }, {
             "objectType": "t",
-            "numerator": 4,
+            "numerator": 3,
             "denominator": 4
         }, {
             "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
             "length": 1,
-            "extend": false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        },  {
-            "objectType": "n",
-            "length": 1,
-            "extend": false,
+            "extend": true,
             "rest": false,
             "height": [0],
             "accidental": ["x"],
             "noteDecoration": ["x"]
         }, {
-            "objectType": "n",
-            "length": 0,
-            "extend": false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 1,
-            "extend": false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
-        }, {
-            "objectType": "n",
-            "length": 2,
-            "extend": false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
+            "objectType": "b",
+            "type": "b"
         }, {
             "objectType": "n",
             "length": 3,
-            "extend": false,
+            "extend": true,
             "rest": false,
             "height": [0],
             "accidental": ["x"],
             "noteDecoration": ["x"]
         }, {
-            "objectType": "n",
-            "length": 3,
-            "extend": false,
-            "rest": false,
-            "height": [0],
-            "accidental": ["x"],
-            "noteDecoration": ["x"]
+            "objectType": "b",
+            "type": "t"
         }
     ],
     "checkType": "Input",
