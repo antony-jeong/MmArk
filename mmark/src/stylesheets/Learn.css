@@ -146,7 +146,7 @@
     margin: 0 50px;
 }
 
-.Sheet{
+.Sheet {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -245,7 +245,7 @@
     opacity: 0;
 }
 
-.Complete.Pass{
+.Complete.Pass {
     opacity: 1;
     background-color: rgb(0, 173, 173);
 }
@@ -275,4 +275,30 @@
 
 .unselected {
     opacity: 50%;
+}
+
+.textInputWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 200px;
+}
+
+#textInput {
+    background: none;
+    border: solid 5px white;
+    height: 2rem;
+    margin: 20px;
+    outline: none;
+}
+
+#textButton {
+    padding: 6px 15px 6px 15px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: rgb(161, 155, 161);
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 1.5rem;
 }

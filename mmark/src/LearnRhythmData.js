@@ -21,7 +21,7 @@ const Img_tempo = [''];
 const LearnRhythmData = [{
 "pageId": 1,
 "inst": `A <term>half note</term>${Img_note_arr[1]} is half the length of a <term>whole note</term>${Img_note_arr[0]}.<br></br>A <term>quarter note</term>${Img_note_arr[2]} is half the length of a <term>half note</term>${Img_note_arr[0]}.<br></br>How many times a <term>quarter note</term>${Img_note_arr[1]} is the sum of the notes to the right of the vertical line?`,
-"inst_kr": `<term>2분음표</term>${Img_note_arr[1]}는 <term>온음표</term>${Img_note_arr[0]} 길이의 절반입니다.<br></br><term>4분음표</term>${Img_note_arr[2]}는 <term>2분음표</term>${Img_note_arr[0]} 길이의 절반입니다.<br></br> 아래의 악보는 <term>4분음표</term>${Img_note_arr[1]} 몇 개와 같을까요?`,
+"inst_kr": `<term>2분음표</term>${Img_note_arr[1]}는 <term>온음표</term>${Img_note_arr[0]} 길이의 절반입니다.<br></br><term>4분음표</term>${Img_note_arr[2]}는 <term>2분음표</term>${Img_note_arr[0]} 길이의 절반입니다.<br></br> 아래의 악보 중 세로줄 오른쪽 부분은 <term>4분음표</term>${Img_note_arr[1]} 몇 개와 같을까요?`,
 "ds": [{
             "objectType": "p",
             "bpm": 360,

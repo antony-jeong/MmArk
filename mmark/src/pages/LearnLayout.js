@@ -116,29 +116,43 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
 
     const { t, i18n } = useTranslation();
 
-    const [inputArr, setInputArr] = useState(Array(pageData.checkAnswer.length).fill(""));
+    const [inputArr, setInputArr] = useState(Array(pageData.checkAnswer.length).fill(" "));
     const addPlayHistory = (note) => {
         setInputArr(inputArr.concat([note]).slice(-pageData.checkAnswer.length));
         return;
     }
-    useEffect(()=>{
-        if (Checker({type: pageData.checkType, input: inputArr, answer: pageData.checkAnswer})){
-            if (pageNum===pageEnd) document.querySelector('.Complete').classList.add('Pass');
-            else document.querySelector('.Next').classList.add('Pass');
+    const addText = (str) => {
+        setInputArr(inputArr.concat([str]));
+        return;
+    }
+
+    useEffect(() => {
+        if (inputArr.length > 0) {
+            if (Checker({type: pageData.checkType, input: inputArr, answer: pageData.checkAnswer})){
+                if (pageNum === pageEnd) document.querySelector('.Complete').classList.add('Pass');
+                else document.querySelector('.Next').classList.add('Pass');
+            }            
         }
     }, [inputArr]);
 
     useEffect(()=>{
-        setInputArr(Array(pageData.checkAnswer.length).fill(" "));
+        setInputArr(Array(pageData.checkAnswer.length).fill(""));
     }, [pageNum]);
 
 
+    const handleOnClick = () => {
+        let inputWrapper = document.getElementById("textInput");
+        addText(inputWrapper.value.toString());
+        inputWrapper.value = "";
+    }
 
     const inputSubject = () => {
         switch (pageData.inputMode) {
             case ("text"):
-                console.log("HHH");
-                return (<div>Text</div>);
+                return (<div className="textInputWrapper">
+                    <input type="text" id="textInput" autoComplete="off"/>
+                    <button type="submit" id="textButton" onClick={handleOnClick}>Submit</button>
+                </div>);
             case ("oneKey"):
                 return (<Piano className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} />);
             case ("whiteKeys"):
