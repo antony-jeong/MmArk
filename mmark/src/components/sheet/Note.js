@@ -1,25 +1,98 @@
 import React from "react";
 import "./StyleSheet.css";
 
-// objectType: (char)
-// c - clef
-// t - time
-// k - key
-// b - barline
-// n - note
+import {ReactComponent as NoteIcon_1} from "../musical_symbols_svg/notes1/1.svg";
+import {ReactComponent as NoteIcon_1_down} from "../musical_symbols_svg/notes1/1_down.svg";
+import {ReactComponent as NoteIcon_1_5} from "../musical_symbols_svg/notes1/1.5.svg";
+import {ReactComponent as NoteIcon_1_5_down} from "../musical_symbols_svg/notes1/1.5_down.svg";
+import {ReactComponent as NoteIcon_2} from "../musical_symbols_svg/notes1/2.svg";
+import {ReactComponent as NoteIcon_2_down} from "../musical_symbols_svg/notes1/2_down.svg";
+import {ReactComponent as NoteIcon_3} from "../musical_symbols_svg/notes1/3.svg";
+import {ReactComponent as NoteIcon_3_down} from "../musical_symbols_svg/notes1/3_down.svg";
+import {ReactComponent as NoteIcon_4} from "../musical_symbols_svg/notes1/4.svg";
+import {ReactComponent as NoteIcon_4_down} from "../musical_symbols_svg/notes1/4_down.svg";
+import {ReactComponent as NoteIcon_6} from "../musical_symbols_svg/notes1/6.svg";
+import {ReactComponent as NoteIcon_6_down} from "../musical_symbols_svg/notes1/6_down.svg";
+import {ReactComponent as NoteIcon_8} from "../musical_symbols_svg/notes1/8.svg";
+import {ReactComponent as NoteIcon_8_down} from "../musical_symbols_svg/notes1/8_down.svg";
+import {ReactComponent as NoteIcon_12} from "../musical_symbols_svg/notes1/12.svg";
+import {ReactComponent as NoteIcon_12_down} from "../musical_symbols_svg/notes1/12_down.svg";
+import {ReactComponent as NoteIcon_16} from "../musical_symbols_svg/notes1/16.svg";
+import {ReactComponent as NoteIcon_16_down} from "../musical_symbols_svg/notes1/16_down.svg";
+import {ReactComponent as NoteIcon_24} from "../musical_symbols_svg/notes1/24.svg";
+import {ReactComponent as NoteIcon_24_down} from "../musical_symbols_svg/notes1/24_down.svg";
+import {ReactComponent as NoteIcon_32} from "../musical_symbols_svg/notes1/32.svg";
+import {ReactComponent as NoteIcon_32_down} from "../musical_symbols_svg/notes1/32_down.svg";
+import {ReactComponent as NoteIcon_48} from "../musical_symbols_svg/notes1/48.svg";
+import {ReactComponent as NoteIcon_48_down} from "../musical_symbols_svg/notes1/48_down.svg";
 
-// > if note
-// length: (int) as exponent of 2; 0 - whole note
-// extend: (boolean) true - w/ point
-// rest: (boolean) true - rest note
-// height: ([int]) vertical location in sheet; 0 - mi
-// accidental : ([char]) s - sharp, f - flat, n - natural, x - none
-// noteDecoration : ([char])
-// s - staccato
-// a - accent
-// t - tenuto
-// f - fermata
-// x - none
+import {ReactComponent as RestIcon_1} from "../musical_symbols_svg/rests/1.svg";
+import {ReactComponent as RestIcon_1_5} from "../musical_symbols_svg/rests/1.5.svg";
+import {ReactComponent as RestIcon_2} from "../musical_symbols_svg/rests/2.svg";
+import {ReactComponent as RestIcon_3} from "../musical_symbols_svg/rests/3.svg";
+import {ReactComponent as RestIcon_4} from "../musical_symbols_svg/rests/4.svg";
+import {ReactComponent as RestIcon_6} from "../musical_symbols_svg/rests/6.svg";
+import {ReactComponent as RestIcon_8} from "../musical_symbols_svg/rests/8.svg";
+import {ReactComponent as RestIcon_12} from "../musical_symbols_svg/rests/12.svg";
+import {ReactComponent as RestIcon_16} from "../musical_symbols_svg/rests/16.svg";
+import {ReactComponent as RestIcon_24} from "../musical_symbols_svg/rests/24.svg";
+import {ReactComponent as RestIcon_32} from "../musical_symbols_svg/rests/32.svg";
+import {ReactComponent as RestIcon_48} from "../musical_symbols_svg/rests/48.svg";
+
+
+import {ReactComponent as AccIcon_s} from "../musical_symbols_svg/accidental_s.svg";
+import {ReactComponent as AccIcon_f} from "../musical_symbols_svg/accidental_f.svg";
+import {ReactComponent as AccIcon_n} from "../musical_symbols_svg/accidental_n.svg";
+
+import {ReactComponent as LineIcon} from "../musical_symbols_svg/notes1/line.svg";
+
+const noteComponents = [];
+noteComponents.push(NoteIcon_1);
+noteComponents.push(NoteIcon_1_5);
+noteComponents.push(NoteIcon_2);
+noteComponents.push(NoteIcon_3);
+noteComponents.push(NoteIcon_4);
+noteComponents.push(NoteIcon_6);
+noteComponents.push(NoteIcon_8);
+noteComponents.push(NoteIcon_12);
+noteComponents.push(NoteIcon_16);
+noteComponents.push(NoteIcon_24);
+noteComponents.push(NoteIcon_32);
+noteComponents.push(NoteIcon_48);
+
+const restComponents = [];
+restComponents.push(RestIcon_1);
+restComponents.push(RestIcon_1_5);
+restComponents.push(RestIcon_2);
+restComponents.push(RestIcon_3);
+restComponents.push(RestIcon_4);
+restComponents.push(RestIcon_6);
+restComponents.push(RestIcon_8);
+restComponents.push(RestIcon_12);
+restComponents.push(RestIcon_16);
+restComponents.push(RestIcon_24);
+restComponents.push(RestIcon_32);
+restComponents.push(RestIcon_48);
+
+
+const noteDownComponents = [];
+noteDownComponents.push(NoteIcon_1_down);
+noteDownComponents.push(NoteIcon_1_5_down);
+noteDownComponents.push(NoteIcon_2_down);
+noteDownComponents.push(NoteIcon_3_down);
+noteDownComponents.push(NoteIcon_4_down);
+noteDownComponents.push(NoteIcon_6_down);
+noteDownComponents.push(NoteIcon_8_down);
+noteDownComponents.push(NoteIcon_12_down);
+noteDownComponents.push(NoteIcon_16_down);
+noteDownComponents.push(NoteIcon_24_down);
+noteDownComponents.push(NoteIcon_32_down);
+noteDownComponents.push(NoteIcon_48_down);
+
+const accComponents = [];
+accComponents.push(AccIcon_s);
+accComponents.push(AccIcon_f);
+accComponents.push(AccIcon_n);
 
 const LineObj = ({height}) => {
   const lineObjData = [];
@@ -89,12 +162,19 @@ const IndivLineObj = ({height}) => {
 }
 
 const AccidentalObj = ({ type, height, direction }) => {
+  var type_num = 0;
+  if (type = "s") {type_num = 0}
+  else if (type = "f") {type_num = 1}
+  else {type_num = 2}
+
+  const NoteComponent = accComponents[type_num];
+
   var f = (direction) => {
     switch (direction) {
       case "up":
         return (
           <div style={{ width: "8px", display: "inline"}}>
-            <img
+            {/* <img
               src={
                 process.env.PUBLIC_URL +
                 "/musical_symbols_svg/accidental_" +
@@ -107,14 +187,16 @@ const AccidentalObj = ({ type, height, direction }) => {
 								left: 0 + "px"
               }}
               height={28 + (type == "f" ? 7.2 : 0) + "px"}
-            />
-						
+            /> */}
+						<div style = {{width: "10px", display: "inline", position: "relative", top : -11.5 - 6.1225 * (height + 1) + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = "28px"/>
+            </div>
           </div>
         );
       case "down":
         return (
           <div style={{ width: "8px", display: "inline" }}>
-            <img
+            {/* <img
               src={
                 process.env.PUBLIC_URL +
                 "/musical_symbols_svg/accidental_" +
@@ -126,7 +208,10 @@ const AccidentalObj = ({ type, height, direction }) => {
                 top: -11.5 - 6.1225 * (height + 1) + "px",
               }}
               height={28 + (type == "f" ? 7.2 : 0) + "px"}
-            />
+            /> */}
+            <div style = {{width: "10px", display: "inline", position: "relative", top : -11.5 - 6.1225 * (height + 1) + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = "28px"/>
+            </div>
           </div>
         );
     }
@@ -275,14 +360,16 @@ const NoteDecorationObj = ({ type, height, direction }) => {
 };
 
 const IndivNoteUpObj = ({ type, height, deco, acc }) => {
+  const NoteComponent = noteComponents[type];
   return (
-    <div className={height} style={{ width: "0px", display: "inline" }}>
+    <div style={{ width: "0px", display: "inline" }}>
       <AccidentalObj type={acc} height={height} direction="up" />
+
       <div style={{ width: "0px", display: "inline-flex", "margin-right": "0px" }}>
           <LineObj height = {height} />
         </div>
       <div className="up" style={{ width: "0px", display: "inline" }}>
-        <img
+        {/* <img
           src={
             process.env.PUBLIC_URL +
             "/musical_symbols_svg/notes/" +
@@ -294,7 +381,11 @@ const IndivNoteUpObj = ({ type, height, deco, acc }) => {
             top: -19 - 6.1225 * (height + 1) + "px",
           }}
           height="45px"
-        />
+        /> */}
+        <div  style = {{width: "10px", display: "inline", position: "relative", top : -19.5 - 6.1225 * (height + 1) + "px"}}>
+          <NoteComponent style = {{display: "inline", position: "relative"}} height = "45px"/>
+        </div>
+
       </div>
       <NoteDecorationObj type={deco} height={height} direction="up" />
     </div>
@@ -302,14 +393,15 @@ const IndivNoteUpObj = ({ type, height, deco, acc }) => {
 };
 
 const IndivNoteDownObj = ({ type, height, deco, acc }) => {
+  const NoteComponent = noteDownComponents[type];
   return (
-    <div className={height} style={{ width: "0px", display: "inline" }}>
+    <div style={{ width: "0px", display: "inline" }}>
       <AccidentalObj type={acc} height={height} direction="down" />
       <div style={{ width: "0px", display: "inline-flex", "margin-right": "0px" }}>
           <LineObj height = {height} />
         </div>
       <div className="down" style={{ width: "0px", display: "inline" }}>
-        <img
+        {/* <img
           src={
             process.env.PUBLIC_URL +
             "/musical_symbols_svg/notes/" +
@@ -321,7 +413,10 @@ const IndivNoteDownObj = ({ type, height, deco, acc }) => {
             top: 14 - 6.1225 * (height + 1) + "px",
           }}
           height="45px"
-        />
+        /> */}
+        <div style = {{width: "10px", display: "inline", position: "relative", top : 14 - 6.1225 * (height + 1) + "px"}}>
+          <NoteComponent style = {{display: "inline", position: "relative"}} height = "45px"/>
+        </div>
       </div>
       <NoteDecorationObj type={deco} height={height} direction="down" />
     </div>
@@ -410,9 +505,9 @@ const IndivNoteStackObj = ({ type, realloc, accAlloc, accHori, accHoriMax, isRea
   );
 };
 
-const NoteObj = ({ obj }) => {
+const NoteObj = ({ obj, isPlaying }) => {
   const direction = obj.height[0] > 3 ? "down" : "up";
-  var f = (obj) => {
+  var f1 = (obj) => {
     switch (obj.length) {
       case 0:
         return obj.extend ? 1.5 : 1;
@@ -430,6 +525,26 @@ const NoteObj = ({ obj }) => {
         return <div>Invalid Object</div>;
     }
   };
+
+  var f = (obj) => {
+    switch (obj.length) {
+      case 0:
+        return obj.extend ? 1 : 0;
+      case 1:
+        return obj.extend ? 3 : 2;
+      case 2:
+        return obj.extend ? 5 : 4;
+      case 3:
+        return obj.extend ? 7 : 6;
+      case 4:
+        return obj.extend ? 9 : 8;
+      case 5:
+        return obj.extend ? 11 : 10;
+      default:
+        return <div>Invalid Object</div>;
+    }
+  };
+
   const type = f(obj);
   console.log(obj.length);
 	const heights = [];
@@ -538,7 +653,7 @@ const NoteObj = ({ obj }) => {
 
 
   if (obj.height.length == 1) {
-    return <div style={{ width: "5px", display: "inline" }}>{returnValue}</div>;
+    return <div className = {isPlaying ? "skyBlue" : "black"} style={{ width: "5px", display: "inline" }}>{returnValue}</div>;
   }
 
   return (
@@ -549,186 +664,133 @@ const NoteObj = ({ obj }) => {
 };
 
 const IndivRestObj = ({ length }) => {
+  var f1 = (length) => {
+    switch (length) {
+      case 1:
+        return 0;
+      case 1.5:
+        return 1;
+      case 2:
+        return 2;
+      case 3:
+        return 3;
+      case 4:
+        return 4;
+      case 6:
+        return 5;
+      case 8:
+        return 6;
+      case 12:
+        return 7;
+      case 16:
+        return 8;
+      case 24:
+        return 9;
+      case 32:
+        return 10;
+      case 48:
+        return 11;
+      default:
+        return <div>Invalid Object</div>;
+    }
+  };
+  const NoteComponent = restComponents[f1(length)];
   var f = (length) => {
     switch (length) {
       case 1:
         return (
           <div className={length} style={{ width: "5px", display: "inline" }}>
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/musical_symbols_svg/rests/" +
-                length +
-                ".svg"
-              }
-              style={{ position: "relative", top: -47.5 - 12.245 + "px" }}
-              height="9px"
-            />
+            <div style = {{width: "10px", display: "inline", position: "relative", top : -47.5 - 12.245 + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = "9px"/>
+            </div>
           </div>
         );
       case 1.5:
         return (
           <div className={length} style={{ width: "5px", display: "inline" }}>
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/musical_symbols_svg/rests/" +
-                length +
-                ".svg"
-              }
-              style={{ position: "relative", top: -47.5 - 12.245 + "px" }}
-              height="9px"
-            />
+            <div style = {{width: "10px", display: "inline", position: "relative", top : -47.5 - 12.245 + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = "9px"/>
+            </div>
           </div>
         );
       case 2:
         return (
           <div className={length} style={{ width: "5px", display: "inline" }}>
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/musical_symbols_svg/rests/" +
-                length +
-                ".svg"
-              }
-              style={{ position: "relative", top: -47.5 - 12.245 + 3.5 + "px" }}
-              height="9px"
-            />
+            <div style = {{width: "10px", display: "inline", position: "relative", top : -47.5 - 12.245 + 3.5 + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = "9px"/>
+            </div>
           </div>
         );
       case 3:
         return (
           <div className={length} style={{ width: "5px", display: "inline" }}>
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/musical_symbols_svg/rests/" +
-                length +
-                ".svg"
-              }
-              style={{ position: "relative", top: -47.5 - 12.245 + 3.5 + "px" }}
-              height="9px"
-            />
+            <div style = {{width: "10px", display: "inline", position: "relative", top : -47.5 - 12.245 + 3.5 + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = "9px"/>
+            </div>
           </div>
         );
       case 4:
         return (
           <div className={length} style={{ width: "5px", display: "inline" }}>
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/musical_symbols_svg/rests/" +
-                length +
-                ".svg"
-              }
-              style={{ position: "relative", top: -39 + "px" }}
-              height="40px"
-            />
+            <div style = {{width: "10px", display: "inline", position: "relative", top : -39 + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = "40px"/>
+            </div>
           </div>
         );
       case 6:
         return (
           <div className={length} style={{ width: "5px", display: "inline" }}>
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/musical_symbols_svg/rests/" +
-                length +
-                ".svg"
-              }
-              style={{ position: "relative", top: -39 + "px" }}
-              height="40px"
-            />
+            <div style = {{width: "10px", display: "inline", position: "relative", top : -39 + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = "40px"/>
+            </div>
           </div>
         );
       case 8:
         return (
           <div className={length} style={{ width: "5px", display: "inline" }}>
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/musical_symbols_svg/rests/" +
-                length +
-                ".svg"
-              }
-              style={{ position: "relative", top: -40 + "px" }}
-              height="27px"
-            />
+            <div style = {{width: "10px", display: "inline", position: "relative", top : -40 + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = "27px"/>
+            </div>
           </div>
         );
       case 12:
         return (
           <div className={length} style={{ width: "5px", display: "inline" }}>
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/musical_symbols_svg/rests/" +
-                length +
-                ".svg"
-              }
-              style={{ position: "relative", top: -40 + "px" }}
-              height="27px"
-            />
+            <div style = {{width: "10px", display: "inline", position: "relative", top : -40 + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = "27px"/>
+            </div>
           </div>
         );
       case 16:
         return (
           <div className={length} style={{ width: "5px", display: "inline" }}>
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/musical_symbols_svg/rests/" +
-                length +
-                ".svg"
-              }
-              style={{ position: "relative", top: -28 + "px" }}
-              height="39px"
-            />
+            <div style = {{width: "10px", display: "inline", position: "relative", top : -28 + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = "39px"/>
+            </div>
           </div>
         );
       case 24:
         return (
           <div className={length} style={{ width: "5px", display: "inline" }}>
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/musical_symbols_svg/rests/" +
-                length +
-                ".svg"
-              }
-              style={{ position: "relative", top: -28 + "px" }}
-              height="39px"
-            />
+            <div style = {{width: "10px", display: "inline", position: "relative", top : -28 + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = "39px"/>
+            </div>
           </div>
         );
       case 32:
         return (
           <div className={length} style={{ width: "5px", display: "inline" }}>
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/musical_symbols_svg/rests/" +
-                length +
-                ".svg"
-              }
-              style={{ position: "relative", top: -24.5 + "px" }}
-              height="54px"
-            />
+            <div style = {{width: "10px", display: "inline", position: "relative", top : -24.5 + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = "54px"/>
+            </div>
           </div>
         );
       case 48:
         return (
           <div className={length} style={{ width: "5px", display: "inline" }}>
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/musical_symbols_svg/rests/" +
-                length +
-                ".svg"
-              }
-              style={{ position: "relative", top: -24.5 + "px" }}
-              height="54px"
-            />
+            <div style = {{width: "10px", display: "inline", position: "relative", top : -24.5 + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = "54px"/>
+            </div>
           </div>
         );
       default:
@@ -739,7 +801,7 @@ const IndivRestObj = ({ length }) => {
   return f(length);
 };
 
-const RestObj = ({ obj }) => {
+const RestObj = ({ obj, isPlaying }) => {
   var f = (obj) => {
     switch (obj.length) {
       case 0:
@@ -751,7 +813,7 @@ const RestObj = ({ obj }) => {
       case 3:
         return obj.extend ? 12 : 8;
       case 4:
-        return obj.extend ? 32 : 16;
+        return obj.extend ? 24 : 16;
       case 5:
         return obj.extend ? 48 : 32;
       default:
@@ -761,14 +823,14 @@ const RestObj = ({ obj }) => {
   const length = f(obj);
   const returnValue = <IndivRestObj length={length} />;
 
-  return <div style={{ width: "5px", display: "inline" }}>{returnValue}</div>;
+  return <div className = {isPlaying ? "skyBlue" : "black"} style={{ width: "5px", display: "inline" }}>{returnValue}</div>;
 
 };
 
-const Note = ({ obj }) => {
+const Note = ({ obj, isPlaying }) => {
   return (
     <div style={{ width: "10px", display: "inline" }}>
-      {obj.rest ? <RestObj obj={obj} /> : <NoteObj obj={obj} />}
+      {obj.rest ? <RestObj obj={obj} isPlaying = {isPlaying}/> : <NoteObj obj={obj} isPlaying = {isPlaying}/>}
     </div>
   );
 };
