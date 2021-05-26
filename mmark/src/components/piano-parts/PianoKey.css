@@ -62,3 +62,16 @@
         color: white;
         margin-bottom: 20px;
     }
+
+    .disabled{
+        cursor: default;
+    }
+
+    .piano-black-key.disabled{
+        background: #b6b7c5;
+        border: #b6b7c5;
+    }
+    .piano-key.disabled{
+        background: #b6b7c5;
+        border: #b6b7c5;
+    }

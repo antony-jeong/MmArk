@@ -122,6 +122,12 @@
     padding-right: 15px;
 }
 
+.GoLeft.Hide,
+.GoRight.Hide{
+    opacity: 0.3;
+    cursor: default;
+}
+
 .PageNavigator svg {
     zoom: 0.7;
 }
@@ -146,6 +152,19 @@
     justify-content: center;
 }
 
+.PlayButton,
+.StopButton{
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.PlayButton:hover,
+.StopButton:hover{
+    transition: opacity 0.4s;
+    opacity: 1;
+}
+
 .Next {
     position: fixed;
     bottom: 0px;
@@ -153,14 +172,15 @@
     margin: 20px;
     padding: 10px 20px;
     border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: black;
     color: white;
     text-decoration: none;
     border: none;
     outline: none;
+    opacity: 0.3;
 }
 
-.NotPass:not(.Hide) {
+.NotPass {
     animation: shake 0.3s;
 }
 
@@ -200,23 +220,13 @@
     }
 }
 
-.Pass:not(.Hide) {
-    background-color: black;
+.Pass {
+    transition: opacity ease-in 0.2s;
+    opacity: 1;
 }
 
-.Pass:hover:not(.Hide) {
-    background-color: rgb(36, 36, 46);
+.Pass:hover {
     cursor: pointer;
-}
-
-.Hide {
-    background-color: rgba(0, 0, 0, 0);
-    color: rgba(0, 0, 0, 0);
-    cursor: default;
-}
-
-.Hide path {
-    fill: rgba(0, 0, 0, 0.2);
 }
 
 .Complete {
@@ -237,6 +247,7 @@
 
 .Complete.Pass{
     opacity: 1;
+    background-color: rgb(0, 173, 173);
 }
 
 .Language-Select-Learn {
@@ -251,6 +262,7 @@
     color: #7147CB;
     padding: 0px 15px 0px 15px;
     cursor: pointer;
+    outline: none;
 }
 
 .Language-Select-Learn button+button {

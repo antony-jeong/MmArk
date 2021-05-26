@@ -37,7 +37,7 @@ function ParserHelper({ desc }){
            temp.push({start: j, end: j, depth: 0, class: "text"});
     }
 
-    console.log(temp);
+    //console.log(temp);
     if (temp.length === 0) return groups[0];
     return temp.map((obj) => {
         switch (obj.class) {

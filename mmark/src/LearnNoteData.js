@@ -11,8 +11,8 @@
         "sheetClick" - input notes by clicking the sheet
 */
 const standardLen = 0;
-const sharp = '😆';
-const flat = '😂';
+const sharp = '♯';
+const flat = '♭';
 
 const LearnNoteData = [{
     "pageId": 1,
@@ -316,7 +316,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": ["F4", "A4", "B3"],
+    "checkAnswer": ["D4", "F4", "B3"],
     "inputMode": "whiteKeys"
 },
 
@@ -623,9 +623,9 @@ const LearnNoteData = [{
 {
     "pageId": 10,
     "inst": 
-        "<note>Do😆</note> and <note>Re😂</note> are the same,<br></br><note>Re😆</note> and <note>Mi😂</note> are the same, and so on.",
-    "inst_kr": "😆을 가지는 음표는 <term>반음</term>이 더 높고, <br></br>😂을 가지는 음표는 <term>반음</term>이 더 낮습니다.<br></br> 아래 음표에서 <term>반음</term> 차이 나는 두 음을 찾아 연주해보세요.",
-    "ds": [{
+        `<note>Do${sharp}</note> and <note>Re${flat}</note> are the same,<br></br><note>Re${sharp}</note> and <note>Mi${flat}</note> are the same, and so on.`,
+    "inst_kr": `<note>도${sharp}</note>은 <note>레${flat}</note>와 같고, <note>레${sharp}</note>은 <note>미${flat}</note>과 같습니다. 뒤로도 이와 같이 계속됩니다.`,
+        "ds": [{
             "objectType": "p",
             "bpm": 600,
             "bpmUnit8": 2
@@ -722,8 +722,8 @@ const LearnNoteData = [{
 {
     "pageId": 11,
     "inst": 
-        "The note with 😆 is a <term>semitone</term> higher than the original note.<br></br>The note with 😂 is a <term>semitone</term> lower than the original note.<br></br>Play the two notes in the sheet music that the interval between them is a <term>semitone</term>.",
-    "inst_kr": "<term>샤프</term>😆와 <term>플랫</term>😂은 해당 마디가 끝날 때까지 유효합니다.",
+    `The note with ${sharp} is a <term>semitone</term> higher than the original note.<br></br>The note with ${flat} is a <term>semitone</term> lower than the original note.<br></br>Play the two notes in the sheet music that the interval between them is a <term>semitone</term>.`,
+    "inst_kr": `${sharp}을 가지는 음표는 <term>반음</term>이 더 높고, <br></br>${flat}을 가지는 음표는 <term>반음</term>이 더 낮습니다.<br></br> 아래 음표에서 <term>반음</term> 차이 나는 두 음을 찾아 연주해보세요.`,
         "ds": [{
             "objectType": "p",
             "bpm": 480,
@@ -808,17 +808,18 @@ const LearnNoteData = [{
 {
     "pageId": 12,
     "inst": 
-        "The effect of a <term>sharp</term>😆 and a <term>flat</term>😂 next to the notes is maintained within the bar.",
+    "The effect of a <term>sharp</term>😆 and a <term>flat</term>😂 next to the notes is maintained within the bar.",
+    "inst_kr": `<term>샤프</term>${sharp}와 <term>플랫</term>${flat}은 해당 마디가 끝날 때까지 유효합니다.`,
     "ds": [{
-            "objectType": "p",
-            "bpm": 150,
-            "bpmUnit8": 2
-        }, {
-            "objectType": "c",
-            "treble": true
-        }, {
-            "objectType": "t",
-            "numerator": 4,
+        "objectType": "p",
+        "bpm": 150,
+        "bpmUnit8": 2
+    }, {
+        "objectType": "c",
+        "treble": true
+    }, {
+        "objectType": "t",
+        "numerator": 4,
             "denominator": 4
         }, {
             "objectType": "n",
