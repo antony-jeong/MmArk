@@ -93,12 +93,15 @@ const Sheet = ({ dataStructure, className }) => {
     const [soundPlayer, setSoundPlayer] = useState(false);
     const [player, setPlayer] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const getState = (playState) => {
+        setIsPlaying(playState);
+    };
     console.log(isPlaying);
     useEffect(() => {
         if (!soundPlayer) {
             setSoundPlayer(SoundPlayer());
         } else if (!player) {
-            setPlayer(SheetPlayer(soundPlayer, changeHighlight, changeTripletHighlight, setIsPlaying));
+            setPlayer(SheetPlayer(soundPlayer, changeHighlight, changeTripletHighlight, getState));
         }
     });
     useEffect(() => {
@@ -145,7 +148,7 @@ const Sheet = ({ dataStructure, className }) => {
                 return (<div key={index}>Invalid Object</div>)
         }
     });
-
+    console.log(isPlaying);
     return (
         <div className={`${className}`}>
             {!isPlaying

@@ -317,7 +317,7 @@ const LearnRhythmData = [{
     "inputMode": "text"
 }, {
     "pageId": 5,
-    "inst": `The numerator indicates how many <term>beat</term>s a bar has.<br></br>How many more bar lines should be drawn on this sheet music?`,
+    "inst": `The numerator indicates how many <term>beats</term> a bar has.<br></br>How many more bar lines should be drawn on this sheet music?`,
     "inst_kr": `분자는 한 마디 안의 <term>박자</term>의 개수를 의미합니다.<br></br> 그렇다면, 이 악보에는 얼마나 더 많은 세로줄이 필요할까요?`,
     "ds": [{
         "objectType": "c",
@@ -421,7 +421,7 @@ const LearnRhythmData = [{
     "inputMode": "text"
 }, {
     "pageId": 6,
-    "inst": `A dot on a note means it is 1.5 times longer.<br></br>In the sheet music below, a <term>dotted half note</term>${Img_dotted_note_arr[1]} stands for three beats, so it takes up one bar.<br></br>How many more <term>eighth note</term>s${Img_note_arr[3]} can be added to the last bar?`,
+    "inst": `A dot on a note means it is 1.5 times longer.<br></br>In the sheet music below, a <term>dotted half note</term>${Img_dotted_note_arr[1]} stands for three beats, so it takes up one bar.<br></br>How many more <term>eighth notes</term>${Img_note_arr[3]} can be added to the last bar?`,
     "inst_kr": `음표에 점이 붙으면 그 길이를 1.5배 증가시킵니다.<br></br>예를 들어, 아래의 <term>점2분음표</term>${Img_dotted_note_arr[1]}는 세 박자로, 한 마디를 차지합니다.<br></br> 아래의 악보에서 마지막 마디에 몇 개의 <term>8분음표</term>${Img_note_arr[3]} 가 추가될 수 있을까요?`,
     "ds": [{
         "objectType": "c",
