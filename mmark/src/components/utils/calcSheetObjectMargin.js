@@ -76,7 +76,7 @@ const calcSheetObjectMargin = (ds, tw) => {
         break;
       case "n":
         subj -= wNote(o.rest, o.length, o.extend, o.height, o.accidental)+2;
-        let l = 4/Math.pow(2, o.length);
+        let l = 128/Math.pow(2, o.length);
         if (o.extend) {
           l = l * 3 / 2;
         }
