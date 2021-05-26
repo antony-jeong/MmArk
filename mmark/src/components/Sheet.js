@@ -92,7 +92,7 @@ const Sheet = ({ dataStructure, className }) => {
         if (!soundPlayer) {
             setSoundPlayer(SoundPlayer());
         } else if (!player) {
-            setPlayer(SheetPlayer(soundPlayer));
+            setPlayer(SheetPlayer(soundPlayer, changeHighlight, changeTripletHighlight));
         }
     });
     useEffect(() => {
@@ -110,25 +110,31 @@ const Sheet = ({ dataStructure, className }) => {
             player.setSheet(dataStructure);
         }
     }, [dataStructure]);
+
+    const [playingIndex, setPlayingIndex] = useState(-1);
+    const [playingTripletIndex, setPlayingTripletIndex] = useState(-1);
+    const changeHighlight = (index) => setPlayingIndex(index);
+    const changeTripletHighlight = (tripletIndex) => setPlayingTripletIndex(tripletIndex);
+
     const data = dataStructure;
-    const returnValue = data.map((obj) => {
+    const returnValue = data.map((obj, index) => {
         switch (obj.objectType) {
             case "c":
-                return (<Clef obj={obj} />)
+                return (<Clef obj={obj} key={index} />)
             case "t":
-                return (<Time obj={obj} />)
+                return (<Time obj={obj} key={index} />)
             case "k":
-                return (<Key obj={obj} />)
+                return (<Key obj={obj} key={index} />)
             case "b":
-                return (<Barline obj={obj} />)
+                return (<Barline obj={obj} key={index} />)
             case "n":
-                return (<Note obj={obj} />)
+                return (<Note obj={obj} key={index} isPlaying={index === playingIndex} />)
             case "p":
-                return (<Bpm obj={obj} />)
+                return (<Bpm obj={obj} key={index} />)
             case "r":
-                return (<Triplet obj={obj} />)
+                return (<Triplet obj={obj} key={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex}/>)
             default:
-                return (<div>Invalid Object</div>)
+                return (<div key={index}>Invalid Object</div>)
         }
     });
     return (
