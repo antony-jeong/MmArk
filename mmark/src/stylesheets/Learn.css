@@ -140,6 +140,12 @@
     margin: 0 50px;
 }
 
+.Sheet{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .Next {
     position: fixed;
     bottom: 0px;

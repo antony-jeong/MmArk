@@ -3,6 +3,7 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 i18n.use(LanguageDetector).use(initReactI18next).init({
+    lng: 'en',
     debug: true,
     fallbackLng: 'en',
     interpolation: {
@@ -16,13 +17,13 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     madeby: 'Made by Team MmArk',
                     name_notes: 'Notes',
                     desc_notes: 'Can you guess<br>this note?',
-                    name_rhythms: 'Rhythms',
+                    name_rhythms: 'Rhythm',
                     desc_rhythms: 'Play it to the beat!',
                     name_intervals: 'Intervals',
                     desc_intervals: 'Learn the interval<br>between the two notes',
-                    name_chord: 'Chord',
+                    name_chord: 'Chords',
                     desc_chord: 'Much richer fun of music',
-                    name_roadmap: 'Roadmap',
+                    name_roadmap: 'Roadmap Signs',
                     desc_roadmap: 'Where should we go?<br>Find a way!'
                 }
             }

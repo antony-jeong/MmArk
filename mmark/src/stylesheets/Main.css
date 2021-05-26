@@ -1,138 +1,281 @@
-html,
-body {
-    display: flex;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
-    padding: 0;
-    background-color: #3f4454;
-    background-image: linear-gradient(135deg, #3f4454 0%, #0f0930 100%);
-    user-select: none;
+@media screen and (min-width: 900px) and (min-height: 650px) {
+    
+    html,
+    body {
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        background-color: #3f4454;
+        background-image: linear-gradient(135deg, #3f4454 0%, #0f0930 100%);
+        user-select: none;
+    }
+
+    .Main-Container {
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Main-Logo-Container {
+        justify-self: flex-end;
+        display: flex;
+        flex-direction: column;
+        width: 40vw;
+        margin-left: 10vw;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .Main-Logo {
+        zoom: 0.7;
+    }
+
+    .Learn-Music-by-Games {
+        font-family: Roboto;
+        font-size: 20px;
+        font-weight: 300;
+        text-align: center;
+        color: #cdbfda;
+    }
+
+    .Made-by {
+        margin-top: 30px;
+        font-family: Roboto;
+        font-size: 10px;
+        text-align: left;
+        color: #ffffff;
+    }
+
+    .Made-by a {
+        color: #ffffff;
+    }
+
+    .Main-Button-Container {
+        display: flex;
+        flex-direction: column;
+        width: 60vw;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .GameSelectButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        zoom: 0.6;
+        width: 340px;
+        height: 140px;
+        margin: 0 10vw 20px 0;
+        border-radius: 10px;
+        border: solid 2px #ffffff;
+        align-self: center;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        font-family: Roboto;
+        font-size: 30px;
+        font-weight: 300;
+        transition: width .4s;
+        cursor: pointer;
+    }
+
+    .Main-Button-Container:hover .GameSelectButton:hover {
+        width: 680px;
+        transition: width .4s;
+    }
+
+    .name {
+        width: 340px;
+        text-align: center;
+    }
+
+    .description {
+        overflow: hidden;
+        width: 0;
+        font-size: 25px;
+        text-align: center;
+        justify-self: right;
+        letter-spacing: -15px;
+        color: rgba(100, 100, 100, 0);
+        transition: width .4s, letter-spacing .4s, color .2s;
+    }
+
+    .Main-Button-Container:hover .GameSelectButton:hover .description {
+        width: 340px;
+        letter-spacing: 0px;
+        color: rgb(165, 165, 165);
+        transition: width .4s, letter-spacing .4s, color .4s;
+    }
+
+    .Language-Select {
+        margin-top: 100px;
+    }
+
+    .Language-Select button {
+        border: none;
+        background: none;
+        color: white;
+        padding: 0px 20px 0px 20px;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .Language-Select button+button {
+        border-left: #cdbfda 1px solid;
+    }
+
+    .selected {
+        font-weight: bold;
+    }
+
+    .unselected {
+        opacity: 70%;
+    }
+
 }
 
-.Main-Container {
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    overflow: hidden;
-    align-items: center;
-    justify-content: center;
-}
+@media screen and (max-width: 900px) and (min-width: 360px) and (min-height: 650px) {
+    html,
+    body {
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        background-color: #3f4454;
+        background-image: linear-gradient(135deg, #3f4454 0%, #0f0930 100%);
+        user-select: none;
+    }
 
-.Main-Logo-Container {
-    justify-self: flex-end;
-    display: flex;
-    flex-direction: column;
-    width: 40vw;
-    margin-left: 10vw;
-    align-items: center;
-    justify-content: flex-end;
-}
+    .Main-Container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
+    }
 
-.Main-Logo {
-    zoom: 0.7;
-}
+    .Main-Logo-Container {
+        justify-self: flex-end;
+        display: flex;
+        flex-direction: column;
+        width: 80vw;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: 5vh;
+    }
 
-.Learn-Music-by-Games {
-    font-family: Roboto;
-    font-size: 20px;
-    font-weight: 300;
-    text-align: center;
-    color: #cdbfda;
-}
+    .Main-Logo {
+        zoom: 0.7;
+    }
 
-.Made-by {
-    margin-top: 30px;
-    font-family: Roboto;
-    font-size: 10px;
-    text-align: left;
-    color: #ffffff;
-}
+    .Learn-Music-by-Games {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        text-align: center;
+        color: #cdbfda;
+    }
 
-.Made-by a {
-    color: #ffffff;
-}
+    .Made-by {
+        position: absolute;
+        bottom: 0;
+        padding-bottom: 15px;
+        font-family: Roboto;
+        font-size: 7px;
+        text-align: left;
+        color: #ffffff;
+    }
 
-.Main-Button-Container {
-    display: flex;
-    flex-direction: column;
-    width: 60vw;
-    align-items: center;
-    justify-content: center;
-}
+    .Made-by a {
+        color: #ffffff;
+    }
 
-.GameSelectButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    zoom: 0.6;
-    width: 340px;
-    height: 140px;
-    margin: 0 10vw 20px 0;
-    border-radius: 10px;
-    border: solid 2px #ffffff;
-    align-self: center;
-    text-align: center;
-    text-decoration: none;
-    color: #ffffff;
-    font-family: Roboto;
-    font-size: 30px;
-    font-weight: 300;
-    transition: width .4s;
-    cursor: pointer;
-}
+    .Main-Button-Container {
+        display: flex;
+        flex-direction: column;
+        width: 80vw;
+        align-items: center;
+        justify-content: center;
+        margin-top: 5vh;
+    }
 
-.Main-Button-Container:hover .GameSelectButton:hover {
-    width: 680px;
-    transition: width .4s;
-}
+    .GameSelectButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        zoom: 0.4;
+        width: 340px;
+        height: 140px;
+        margin: 10px auto;
+        border-radius: 10px;
+        border: solid 2px #ffffff;
+        align-self: center;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        font-family: Roboto;
+        font-size: 30px;
+        font-weight: 300;
+        transition: width .4s;
+        cursor: pointer;
+    }
 
-.name {
-    width: 340px;
-    text-align: center;
-}
+    .name {
+        width: 340px;
+        text-align: center;
+    }
 
-.description {
-    overflow: hidden;
-    width: 0;
-    font-size: 25px;
-    text-align: center;
-    justify-self: right;
-    letter-spacing: -15px;
-    color: rgba(100, 100, 100, 0);
-    transition: width .4s, letter-spacing .4s, color .2s;
-}
+    .description {
+        overflow: hidden;
+        width: 0;
+        font-size: 25px;
+        text-align: center;
+        justify-self: right;
+        letter-spacing: -15px;
+        color: rgba(100, 100, 100, 0);
+        transition: width .4s, letter-spacing .4s, color .2s;
+    }
 
-.Main-Button-Container:hover .GameSelectButton:hover .description {
-    width: 340px;
-    letter-spacing: 0px;
-    color: rgb(165, 165, 165);
-    transition: width .4s, letter-spacing .4s, color .4s;
-}
+    .Language-Select {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+    }
 
-.Language-Select {
-    margin-top: 100px;
-}
+    .Language-Select button {
+        border: none;
+        background: none;
+        color: white;
+        padding: 0px 20px 0px 20px;
+        cursor: pointer;
+        outline: none;
+    }
 
-.Language-Select button {
-    border: none;
-    background: none;
-    color: white;
-    padding: 0px 20px 0px 20px;
-    cursor: pointer;
-}
+    .Language-Select button+button {
+        border-left: #cdbfda 1px solid;
+    }
 
-.Language-Select button+button {
-    border-left: #cdbfda 1px solid;
-}
+    .selected {
+        font-weight: bold;
+    }
 
-.selected {
-    font-weight: bold;
-}
-
-.unselected {
-    opacity: 70%;
+    .unselected {
+        opacity: 70%;
+    }
 }
