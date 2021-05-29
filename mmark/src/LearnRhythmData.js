@@ -96,7 +96,7 @@ const LearnRhythmData = [{
 }, {
     "pageId": 2,
     "inst": `Each tail halves the length of the note.<br></br>A <term>eighth note</term>${Img_note_arr[3]} is half the length of a <term>quarter note</term>${Img_note_arr[2]}. A <term>sixteenth note</term>${Img_note_arr[4]} is half the length of a <term>eighth note</term>${Img_note_arr[3]}.<br></br>How many times the <term>sixteenth note</term>${Img_note_arr[4]} is the sum of the notes to the right of the vertical line?`,
-    "inst_kr": `음표에 꼬리가 달릴 때마다 길이가 절반이 됩니다.<br></br> <term>8분음표</term>${Img_note_arr[3]}는 <term>4분음표</term>${Img_note_arr[2]}의 길이의 절반입니다. 마찬가지로, <term>16분음표</term>${Img_note_arr[4]}는 <term>8분음표</term>${Img_note_arr[3]}의 길이의 절반입니다.<br></br> 아래의 악보는 <term>16분음표</term>${Img_note_arr[4]} 몇 개의 길이와 같을까요?`,
+    "inst_kr": `음표에 꼬리가 달릴 때마다 길이가 절반이 됩니다.<br></br> <term>8분음표</term>${Img_note_arr[3]}는 <term>4분음표</term>${Img_note_arr[2]}의 길이의 절반입니다. 마찬가지로, <term>16분음표</term>${Img_note_arr[4]}는 <term>8분음표</term>${Img_note_arr[3]}의 길이의 절반입니다.<br></br> 아래의 악보 중 세로줄 오른쪽 부분은 <term>16분음표</term>${Img_note_arr[4]} 몇 개의 길이와 같을까요?`,
     "ds": [{
             "objectType": "p",
             "bpm": 360,
