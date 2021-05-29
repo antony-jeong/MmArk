@@ -8,7 +8,7 @@ import InvalidPage from '../pages/InvalidPage';
 import PageNavigator from '../components/PageNavigator';
 import '../stylesheets/Learn.css';
 
-import Piano from "../components/Piano";
+import PianoInstance from "../components/PianoInstance";
 import Sheet from '../components/Sheet'
 import ProgressBar from '../components/ProgressBar';
 import Instruction from '../components/Instruction';
@@ -158,11 +158,11 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
                     <button type="submit" id="textButton" onClick={handleOnClick}>{t("learn.submit")}</button>
                 </div>);
             case ("oneKey"):
-                return (<Piano className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} />);
+                return (<PianoInstance className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} />);
             case ("whiteKeys"):
-                return (<Piano className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} />);
+                return (<PianoInstance className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} />);
             case ("allKeys"):
-                return (<Piano className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} />);
+                return (<PianoInstance className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} />);
             default:
                 return (<div>inputMode Error</div>)
         }
