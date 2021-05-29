@@ -50,6 +50,9 @@ import {ReactComponent as TripIcon_3} from "../musical_symbols_svg/triplet_3.svg
 import {ReactComponent as TripIcon_o} from "../musical_symbols_svg/triplet_open.svg";
 import {ReactComponent as TripIcon_c} from "../musical_symbols_svg/triplet_close.svg";
 
+import {ReactComponent as Cursor} from "../musical_symbols_svg/cursor.svg";
+import {ReactComponent as CursorBig} from "../musical_symbols_svg/cursor_big.svg";
+
 import {ReactComponent as LineIcon} from "../musical_symbols_svg/notes1/line.svg";
 import calcSheetObjectMargin from "../utils/calcSheetObjectMargin.js";
 
@@ -146,7 +149,7 @@ const IndivLineObj = ({height}) => {
     toptop = -1.3;
   }
   else{
-    newHeight = height;
+    newHeight = height - 0.095;
   }
   if (height === -1) {
     prefix = 3;
@@ -378,7 +381,7 @@ const NoteDecorationObj = ({ type, height, direction }) => {
   return f(direction);
 };
 
-const IndivNoteUpObj = ({ type, height, deco, acc }) => {
+const IndivNoteUpObj = ({ type, height, deco, acc, cursorHeight }) => {
   const NoteComponent = noteComponents[type];
   return (
     <div style={{ width: "0px", display: "inline" }}>
@@ -388,30 +391,25 @@ const IndivNoteUpObj = ({ type, height, deco, acc }) => {
           <LineObj height = {height} />
         </div>
       <div className="up" style={{ width: "0px", display: "inline" }}>
-        {/* <img
-          src={
-            process.env.PUBLIC_URL +
-            "/musical_symbols_svg/notes/" +
-            type +
-            ".svg"
-          }
-          style={{
-            position: "relative",
-            top: -19 - 6.1225 * (height + 1) + "px",
-          }}
-          height="45px"
-        /> */}
-        <div  style = {{width: "10px", display: "inline", position: "relative", top : -19.5 - 6.1225 * (height + 1) + "px"}}>
+        <div  style = {{width: "0px", display: "inline", position: "relative", top : -19.5 - 6.1225 * (height + 1) + "px"}}>
           <NoteComponent style = {{display: "inline", position: "relative"}} height = "45px"/>
         </div>
-
+        <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+          <div>
+            {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+          </div>
+        </div>
+        <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+          <div>
+            {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+          </div>
+        </div>
       </div>
-      
     </div>
   );
 };
 
-const IndivNoteDownObj = ({ type, height, deco, acc }) => {
+const IndivNoteDownObj = ({ type, height, deco, acc, cursorHeight}) => {
   const NoteComponent = noteDownComponents[type];
   return (
     <div style={{ width: "0px", display: "inline" }}>
@@ -434,8 +432,18 @@ const IndivNoteDownObj = ({ type, height, deco, acc }) => {
           }}
           height="45px"
         /> */}
-        <div style = {{width: "10px", display: "inline", position: "relative", top : 14 - 6.1225 * (height + 1) + "px"}}>
+        <div style = {{width: "0px", display: "inline", position: "relative", top : 14 - 6.1225 * (height + 1) + "px"}}>
           <NoteComponent style = {{display: "inline", position: "relative"}} height = "45px"/>
+        </div>
+        <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+          <div>
+            {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+          </div>
+        </div>
+        <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+          <div>
+            {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+          </div>
         </div>
       </div>
     </div>
@@ -524,7 +532,7 @@ const IndivNoteStackObj = ({ type, realloc, accAlloc, accHori, accHoriMax, isRea
   );
 };
 
-const NoteObj = ({ obj, isPlaying, margin }) => {
+const NoteObj = ({ obj, isPlaying, margin, cursorHeight }) => {
   const direction = obj.height[0] > 3 ? "down" : "up";
   var f1 = (obj) => {
     switch (obj.length) {
@@ -641,6 +649,7 @@ const NoteObj = ({ obj, isPlaying, margin }) => {
         height={obj.height}
         deco={obj.deco}
         acc={obj.acc}
+        cursorHeight={cursorHeight}
       />
     ) : (
       <IndivNoteDownObj
@@ -648,6 +657,7 @@ const NoteObj = ({ obj, isPlaying, margin }) => {
         height={obj.height}
         deco={obj.deco}
         acc={obj.acc}
+        cursorHeight={cursorHeight}
       />
     );
   });
@@ -665,6 +675,7 @@ const NoteObj = ({ obj, isPlaying, margin }) => {
 				height={obj.height}
 				deco={obj.deco}
 				acc={obj.acc}
+        cursorHeight={cursorHeight}
 			/>
 		);
 
@@ -672,7 +683,7 @@ const NoteObj = ({ obj, isPlaying, margin }) => {
 
   //console.log(calcSheetObjectMargin(obj, 800));
   if (obj.height.length == 1) {
-    return <div className = {isPlaying ? "skyBlue" : "black"} style={{ width: "5px", display: "inline", "margin-right":margin}}>{returnValue}</div>;
+    return <div className = {isPlaying ? "skyBlue" : "black"} style={{ width: "0px", display: "inline", "margin-right":margin}}>{returnValue}</div>;
   }
 
   return (
@@ -682,7 +693,7 @@ const NoteObj = ({ obj, isPlaying, margin }) => {
   );
 };
 
-const IndivRestObj = ({ length }) => {
+const IndivRestObj = ({ length, cursorHeight }) => {
   var f1 = (length) => {
     switch (length) {
       case 1:
@@ -722,6 +733,16 @@ const IndivRestObj = ({ length }) => {
             <div style = {{width: "10px", display: "inline", position: "relative", top : -47.5 - 12.245 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "9px"/>
             </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
           </div>
         );
       case 1.5:
@@ -729,6 +750,16 @@ const IndivRestObj = ({ length }) => {
           <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -47.5 - 12.245 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "9px"/>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
             </div>
           </div>
         );
@@ -738,6 +769,16 @@ const IndivRestObj = ({ length }) => {
             <div style = {{width: "10px", display: "inline", position: "relative", top : -47.5 - 12.245 + 3.5 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "9px"/>
             </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
           </div>
         );
       case 3:
@@ -745,6 +786,16 @@ const IndivRestObj = ({ length }) => {
           <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -47.5 - 12.245 + 3.5 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "9px"/>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
             </div>
           </div>
         );
@@ -754,6 +805,16 @@ const IndivRestObj = ({ length }) => {
             <div style = {{width: "10px", display: "inline", position: "relative", top : -39 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "40px"/>
             </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
           </div>
         );
       case 6:
@@ -761,6 +822,16 @@ const IndivRestObj = ({ length }) => {
           <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -39 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "40px"/>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
             </div>
           </div>
         );
@@ -770,6 +841,16 @@ const IndivRestObj = ({ length }) => {
             <div style = {{width: "10px", display: "inline", position: "relative", top : -40 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "27px"/>
             </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
           </div>
         );
       case 12:
@@ -777,6 +858,16 @@ const IndivRestObj = ({ length }) => {
           <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -40 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "27px"/>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
             </div>
           </div>
         );
@@ -786,6 +877,16 @@ const IndivRestObj = ({ length }) => {
             <div style = {{width: "10px", display: "inline", position: "relative", top : -28 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "39px"/>
             </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
           </div>
         );
       case 24:
@@ -793,6 +894,16 @@ const IndivRestObj = ({ length }) => {
           <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -28 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "39px"/>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
             </div>
           </div>
         );
@@ -802,6 +913,16 @@ const IndivRestObj = ({ length }) => {
             <div style = {{width: "10px", display: "inline", position: "relative", top : -24.5 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "54px"/>
             </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
           </div>
         );
       case 48:
@@ -809,6 +930,16 @@ const IndivRestObj = ({ length }) => {
           <div className={length} style={{ width: "5px", display: "inline"}}>
             <div style = {{width: "10px", display: "inline", position: "relative", top : -24.5 + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = "54px"/>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+              <div>
+                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+              </div>
             </div>
           </div>
         );
@@ -820,7 +951,7 @@ const IndivRestObj = ({ length }) => {
   return f(length);
 };
 
-const RestObj = ({ obj, isPlaying, margin }) => {
+const RestObj = ({ obj, isPlaying, margin, cursorHeight }) => {
   var f = (obj) => {
     switch (obj.length) {
       case 0:
@@ -840,16 +971,16 @@ const RestObj = ({ obj, isPlaying, margin }) => {
     }
   };
   const length = f(obj);
-  const returnValue = <IndivRestObj length={length} margin={margin}/>;
+  const returnValue = <IndivRestObj length={length} margin={margin} cursorHeight={cursorHeight}/>;
 
   return <div className = {isPlaying ? "skyBlue" : "black"} style={{ width: "5px", display: "inline", "margin-right":  margin  }}>{returnValue}</div>;
 
 };
 
-const Note = ({ obj, isPlaying, margin }) => {
+const Note = ({ obj, isPlaying, margin, cursorHeight }) => {
   return (
-    <div style={{ width: "10px", display: "inline" }}>
-      {obj.rest ? <RestObj obj={obj} isPlaying = {isPlaying} margin = {margin}/> : <NoteObj obj={obj} isPlaying = {isPlaying} margin = {margin}/>}
+    <div style={{ width: "0px", display: "inline" }}>
+      {obj.rest ? <RestObj obj={obj} isPlaying = {isPlaying} margin = {margin} cursorHeight ={ cursorHeight } /> : <NoteObj obj={obj} isPlaying = {isPlaying} margin = {margin} cursorHeight ={ cursorHeight } />}
     </div>
   );
 };
