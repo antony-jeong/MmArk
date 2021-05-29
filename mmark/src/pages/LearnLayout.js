@@ -10,6 +10,7 @@ import '../stylesheets/Learn.css';
 
 import Piano from "../components/Piano";
 import Sheet from '../components/Sheet'
+import ProgressBar from '../components/ProgressBar';
 import Instruction from '../components/Instruction';
 
 import LearnNoteData from '../LearnNoteData';
@@ -121,17 +122,23 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
         setInputArr(inputArr.concat([note]).slice(-pageData.checkAnswer.length));
         return;
     }
+    var [progressCur, setProgressCur] = useState(0);
+    var progressEnd = pageData.inputMode==='text'? 1 : pageData.checkAnswer.length;
+    
     useEffect(()=>{
-        if (Checker({type: pageData.checkType, input: inputArr, answer: pageData.checkAnswer})){
+        setProgressCur(Checker({type: pageData.checkType, input: inputArr, answer: pageData.checkAnswer}))
+    }, [inputArr]);
+
+    useEffect(()=>{
+        if (progressCur===progressEnd){
             if (pageNum===pageEnd) document.querySelector('.Complete').classList.add('Pass');
             else document.querySelector('.Next').classList.add('Pass');
         }
-    }, [inputArr]);
+    }, progressCur);
 
     useEffect(()=>{
         setInputArr(Array(pageData.checkAnswer.length).fill(" "));
     }, [pageNum]);
-
 
 
     const inputSubject = () => {
@@ -152,14 +159,15 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
 
     return (
         (pageNum >= 1) && (pageNum <= pageEnd)
-        ?<div className={`${gameName}`}>
+        ?<div className={'LearnLayout'}>
             <span className={`LogoContainer`}>
                 <Logo className={`Logo`}isLink={true}/>
                 <span className={'GameName'}>{i18n.language === "en" ? game : i18n.language === "kr" ? game_kor : "i18n error"}</span>
             </span>
             <PageNavigator className="PageNavigator" pageNum={pageNum} pageEnd={pageEnd} parentCallback={callback}/>
-            <div className={`${gameName}-Page`}>
+            <div className={`LearnPage`}>
                 <Instruction className="Instruction" inst={i18n.language === "en" ? pageData.inst : (i18n.language === "kr"? pageData.inst_kr : "Internationalization Error")}/>
+                <ProgressBar cur={progressCur} end={progressEnd} />
                 <Sheet className="Sheet" dataStructure={pageData.ds} />
                 {inputSubject()}
             </div>

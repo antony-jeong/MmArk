@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-.LearnNote,
-.LearnRhythm,
-.LearnInterval,
-.LearnChord,
-.LearnRoadmapSign {
+.LearnLayout {
     width: 100vw;
     display: block;
     background: linear-gradient(to top, #cac7dc, #eaecf1);
@@ -132,18 +128,44 @@
     zoom: 0.7;
 }
 
-.LearnNote-Page,
-.LearnRhythm-Page,
-.LearnInterval-Page,
-.LearnChord-Page,
-.LearnRoadmapSign-Page {
+.LearnPage {
     height: 100vh;
     top: 0;
     left: 0;
     display: grid;
-    grid-template-rows: 1fr 1fr 2fr;
-    grid-gap: 20px;
+    grid-template-rows: 1fr 40px 1fr 2fr;
     margin: 0 50px;
+}
+
+.ProgressBar {
+    height: 10px;
+    align-self: flex-end;
+    width: 40vw;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: gray;
+    display: grid;
+    grid-auto-flow: column;
+    overflow: hidden;
+}
+
+
+.ProgressBar{
+    background-color: rgb(163, 163, 163);
+}
+.ProgressBar .ProgressBefore{
+    background-color: #7147CB;
+}
+.ProgressBar .ProgressCur{
+    background-color: #7147CB;
+    border-radius: 0px 5px 5px 0px;
+    animation: progress 1s normal forwards;
+}
+
+@keyframes progress {
+    0% {width: 0;}
+    90% {width: 110%;}
+    100% {width: 100%;}
 }
 
 .Sheet{
