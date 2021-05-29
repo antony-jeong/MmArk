@@ -146,12 +146,14 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
         inputWrapper.value = "";
     }
 
+
+
     const inputSubject = () => {
         switch (pageData.inputMode) {
             case ("text"):
                 return (<div className="textInputWrapper">
                     <input type="text" id="textInput" autoComplete="off"/>
-                    <button type="submit" id="textButton" onClick={handleOnClick}>Submit</button>
+                    <button type="submit" id="textButton" onClick={handleOnClick}>{t("learn.submit")}</button>
                 </div>);
             case ("oneKey"):
                 return (<Piano className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} />);
