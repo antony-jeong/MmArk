@@ -115,6 +115,7 @@ const Sheet = ({ dataStructure, className }) => {
     }, [player]);
     useEffect( () => {
         if (player) {
+            player.stop();
             player.setSheet(dataStructure);
         }
     }, [dataStructure]);
