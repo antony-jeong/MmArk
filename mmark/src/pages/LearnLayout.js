@@ -89,56 +89,52 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
         if (pageNum !== newPageNum){
             clearTimeout(updateTimer);
             update();
-            if (document.querySelector('.Next'))
-                document.querySelector('.Next').classList.remove('Pass');
+            if (document.querySelector('.ProgressBarWrapper'))
+                document.querySelector('.ProgressBarWrapper').classList.remove('Next');
         }
         setPageNum(newPageNum);
         history.push(`/${gameName}/${newPageNum}`);
     }
 
     const handleNext = () => {
-        let notPassTimer = undefined;
         if (pageNum < pageEnd){
-            if (document.querySelector('.Next').classList.contains('Pass'))
-                callback(pageNum + 1);
-            else {
-                clearTimeout(notPassTimer);
-                document.querySelector('.Next').classList.add('NotPass');
-                notPassTimer = setTimeout(removeNotPass, 300);
-        }}else{
+            callback(pageNum + 1);
+        }else{
             if (document.querySelector('.Complete').classList.contains('Pass'))
                 history.push(`/`);
         }
     }
 
-    const removeNotPass = () => {
-        document.querySelector('.Next').classList.remove('NotPass');
-    }
-
     const { t, i18n } = useTranslation();
 
-    const [inputArr, setInputArr] = useState(Array(pageData.checkAnswer.length).fill(" "));
+    const [inputArr, setInputArr] = useState([" "]);
     const addPlayHistory = (note) => {
-        setInputArr(inputArr.concat([note]).slice(-pageData.checkAnswer.length));
+        document.querySelector('.ProgressBar').classList.remove('Started');
+        document.querySelector('.ProgressBar').classList.remove('Wrong');
+        setInputArr(inputArr.slice(inputArr.length - progressCur).concat([note]));
         return;
     }
 
     var [progressCur, setProgressCur] = useState(0);
     var progressEnd = pageData.inputMode==='text'? 1 : pageData.checkAnswer.length;
     
-    useEffect(()=>{
-        setProgressCur(Checker({type: pageData.checkType, input: inputArr, answer: pageData.checkAnswer}))
-    }, [inputArr]);
-
-    useEffect(()=>{
+    const Pass = (progressCur) => {
+        setProgressCur(progressCur);
         if (progressCur===progressEnd){
             if (pageNum===pageEnd) document.querySelector('.Complete').classList.add('Pass');
             else document.querySelector('.Next').classList.add('Pass');
-        }
-    }, progressCur);
+            document.querySelector('.ProgressBarWrapper').classList.add('Next');
+        };
+    }
 
     useEffect(()=>{
-        setInputArr(Array(pageData.checkAnswer.length).fill(""));
+        Pass(Checker({type: pageData.checkType, input: inputArr, answer: pageData.checkAnswer}));
+    }, [inputArr]);
+
+    useEffect(()=>{
+        setInputArr([" "]);
+        document.querySelector('.ProgressBar').classList.add('Started');
+        document.querySelector('.ProgressBarWrapper').classList.remove('Next');
     }, [pageNum]);
 
     const addText = (str) => {
@@ -182,7 +178,7 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
             <PageNavigator className="PageNavigator" pageNum={pageNum} pageEnd={pageEnd} parentCallback={callback}/>
             <div className={`LearnPage`}>
                 <Instruction className="Instruction" inst={i18n.language === "en" ? pageData.inst : (i18n.language === "kr"? pageData.inst_kr : "Internationalization Error")}/>
-                <ProgressBar cur={progressCur} end={progressEnd} />
+                <ProgressBar cur={progressCur} end={progressEnd} onClick={handleNext}/>
                 <Sheet className="Sheet" dataStructure={pageData.ds} />
                 {inputSubject()}
             </div>
@@ -208,7 +204,6 @@ LearnLayout.propTypes = {
     gameName: PropTypes.string.isRequired,
     gamePage: PropTypes.node.isRequired,
     pageNum: PropTypes.number.isRequired,
-    pageEnd: PropTypes.number.isRequired,
     history: PropTypes.object.isRequired
 };
 
