@@ -16,6 +16,8 @@ import SheetPlayer from "../components/audio-parts/SheetPlayer";
 import "./utils/calcSheetObjectMargin";
 import calcSheetObjectMargin from './utils/calcSheetObjectMargin';
 
+import {ReactComponent as Cursor} from "./musical_symbols_svg/cursor.svg";
+
 // dataStructure
     // objectType: (char) 
         // c - clef
@@ -85,11 +87,12 @@ const SheetWrapper = styled.div`
     height: 50px;
     margin: 50px 10px 50px 20px;
     zoom: 1;
+    overflow-inline: scroll;
     display: inline-block;
     width: 1100px;
     `;
 
-const Sheet = ({ dataStructure, className }) => {
+const Sheet = ({ dataStructure, className, cursorIndex, cursorHeight, isBeingEdited }) => {
     const [soundPlayer, setSoundPlayer] = useState(false);
     const [player, setPlayer] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -134,35 +137,42 @@ const Sheet = ({ dataStructure, className }) => {
     const returnValue = data.map((obj, index) => {
         switch (obj.objectType) {
             case "c":
-                return (<Clef obj={obj} key={index} margin = {margin ? margin[index] : 0}/>)
+                return (<Clef obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited ? cursorHeight : 50} />)
             case "t":
-                return (<Time obj={obj} key={index} margin = {margin ? margin[index] : 0}/>)
+                return (<Time obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
             case "k":
-                return (<Key obj={obj} key={index} margin = {margin ? margin[index] : 0}/>)
+                return (<Key obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
             case "b":
-                return (<Barline obj={obj} key={index} margin = {margin ? margin[index] : 0}/>)
+                return (<Barline obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
             case "n":
-                return (<Note obj={obj} key={index} isPlaying={index === playingIndex} margin = {margin ? margin[index] : 0}/>)
+                return (<Note obj={obj} key={index} isPlaying={index === playingIndex} margin = {margin ? margin[index] : 0} ccursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
             case "p":
-                return (<Bpm obj={obj} key={index} margin = {margin ? margin[index] : 0}/>)
+                return (<Bpm obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index  && isBeingEdited ? cursorHeight : 50} />)
             case "r":
-                return (<Triplet obj={obj} key={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex} margin = {margin ? margin[index] : 0}/>)
+                return (<Triplet obj={obj} key={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
             default:
                 return (<div key={index}>Invalid Object</div>)
         }
     });
     return (
-        <div className={`${className}`}>
-            {!isPlaying
-            ?<svg className={'PlayButton'} onClick={player ? player.play : () => {}} width="33" height="38" viewBox="0 0 33 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M31.5 16.4019C33.5 17.5566 33.5 20.4434 31.5 21.5981L4.5 37.1865C2.5 38.3412 1.98328e-06 36.8979 2.08423e-06 34.5885L3.44702e-06 3.41154C3.54796e-06 1.10214 2.5 -0.341234 4.5 0.813466L31.5 16.4019Z" fill="#977ED7"/>
-            </svg>
-            :<svg className={'StopButton'}onClick={player ? player.stop : () => {}} width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="35" height="35" rx="3" fill="#D77E8E"/>
-            </svg>}
-            <SheetWrapper >
-                {returnValue}
-            </SheetWrapper>
+        <div className={`${className}`} style={{"overflow-x":"auto", "overflow-y":"hidden", "justify-content":"center"}}>
+            <div style={{"overflow-x":"auto", "overflow-y":"hidden", "justify-content":"start"}}>
+                {!isPlaying
+                ?<div>
+                    <svg className={'PlayButton'} onClick={player ? player.play : () => {}} width="33" height="38" viewBox="0 0 33 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M31.5 16.4019C33.5 17.5566 33.5 20.4434 31.5 21.5981L4.5 37.1865C2.5 38.3412 1.98328e-06 36.8979 2.08423e-06 34.5885L3.44702e-06 3.41154C3.54796e-06 1.10214 2.5 -0.341234 4.5 0.813466L31.5 16.4019Z" fill="#977ED7"/>
+                    </svg>
+                </div>
+                :<div>
+                    <svg className={'StopButton'}onClick={player ? player.stop : () => {}} width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="35" height="35" rx="3" fill="#D77E8E"/>
+                    </svg>
+                </div>}
+                    
+                <SheetWrapper >
+                    {returnValue}
+                </SheetWrapper>
+            </div>
         </div>
     );
 };
