@@ -117,11 +117,12 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
 
     const { t, i18n } = useTranslation();
 
-    const [inputArr, setInputArr] = useState(Array(pageData.checkAnswer.length).fill(""));
+    const [inputArr, setInputArr] = useState(Array(pageData.checkAnswer.length).fill(" "));
     const addPlayHistory = (note) => {
         setInputArr(inputArr.concat([note]).slice(-pageData.checkAnswer.length));
         return;
     }
+
     var [progressCur, setProgressCur] = useState(0);
     var progressEnd = pageData.inputMode==='text'? 1 : pageData.checkAnswer.length;
     
@@ -137,15 +138,29 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
     }, progressCur);
 
     useEffect(()=>{
-        setInputArr(Array(pageData.checkAnswer.length).fill(" "));
+        setInputArr(Array(pageData.checkAnswer.length).fill(""));
     }, [pageNum]);
+
+    const addText = (str) => {
+        setInputArr(inputArr.concat([str]));
+        return;
+    }
+
+    const handleOnClick = () => {
+        let inputWrapper = document.getElementById("textInput");
+        addText(inputWrapper.value.toString());
+        inputWrapper.value = "";
+    }
+
 
 
     const inputSubject = () => {
         switch (pageData.inputMode) {
             case ("text"):
-                console.log("HHH");
-                return (<div>Text</div>);
+                return (<div className="textInputWrapper">
+                    <input type="text" id="textInput" autoComplete="off"/>
+                    <button type="submit" id="textButton" onClick={handleOnClick}>{t("learn.submit")}</button>
+                </div>);
             case ("oneKey"):
                 return (<Piano className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} />);
             case ("whiteKeys"):

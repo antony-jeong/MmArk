@@ -25,6 +25,9 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     desc_chord: 'Much richer fun of music',
                     name_roadmap: 'Roadmap Signs',
                     desc_roadmap: 'Where should we go?<br>Find a way!'
+                },
+                learn: {
+                    submit: "Submit"
                 }
             }
         },
@@ -43,6 +46,9 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     desc_chord: '음악의 소금',
                     name_roadmap: '로드맵',
                     desc_roadmap: '어디로 가야 하오?'                    
+                },
+                learn: {
+                    submit: "제출"
                 }
             }
         }
