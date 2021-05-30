@@ -884,7 +884,7 @@ const LearnRhythmData = [{
     "checkAnswer": ["3"],
     "inputMode": "text"
 }, */{
-    "pageId": 12,
+    "pageId": 11,
     "inst": `When the beat changes, we draw a <term>double bar line</term> and a new <term>time signature</term>.<br></br>There are no notes/rests on the sheet music below. How many <term>eighth notes</term>${Img_note_arr[3]} we should use to fill it?`,
     "inst_kr": `박자가 바뀌게 되면 <term>겹세로줄</term>을 긋고, 새로운 <term>박자표</term>를 적습니다.<br></br>아래 악보에는 음표나 쉼표가 적혀있지 않습니다. 얼마나 많은 <term>8분음표</term>${Img_note_arr[3]}가 해당 악보를 채우기 위해 필요한가요?`,
     "ds": [{
