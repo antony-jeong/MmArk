@@ -16,14 +16,9 @@
     }
 }
 
-.Piano {
-    display: flex;
-    justify-content: center;
-}
-
 .Instruction {
     display: flex;
-    align-items: flex-end;
+    align-self: flex-end;
     justify-content: center;
     margin: 0 auto;
     text-align: center;
@@ -130,16 +125,18 @@
     top: 0;
     left: 0;
     display: grid;
-    grid-template-rows: 1fr 60px 1fr 2fr;
+    grid-template-rows: 1.3fr 0.4fr 30px 1fr;
+    align-items: center;
     margin: 0 50px;
 }
 
 .ProgressBarWrapper {
     height: 10px;
-    align-self: center;
+    align-self: flex-end;
     width: 40vw;
     margin: 0 auto;
     border-radius: 10px;
+    border: 2px solid rgb(163, 163, 163);
     overflow: hidden;
 }
 
@@ -163,7 +160,7 @@
     align-self: center;
     height: 10px;
     overflow: hidden;
-    background-color: rgb(163, 163, 163);
+    background-color: white;
     border-radius: 5px;
 }
 
@@ -233,11 +230,37 @@
         height: 40px;
         border-radius: 5px;
         background: #7147CB;
+        border: 0px;
     }
 }
 
 .Wrong:not(.updated):not(.started):not(.Next) {
     animation: shake 0.2s;
+}
+
+.InputHistory{
+    align-self: center;
+    padding: 0 auto;
+    margin: auto;
+    text-align: center;
+    overflow: hidden;
+    opacity: 1;
+}
+
+.InputHistory span {
+    z-index: 1;
+    position: relative;
+    padding: 1px 4px;
+    margin: 3px;
+    font-weight: bold;
+    background: none;
+    border-radius: 5px;
+    color: #9b9b9b;
+}
+
+.InputHistory.Hide{
+    transition: opacity ease-in .3s 1s;
+    opacity: 0;
 }
 
 
@@ -277,26 +300,6 @@
     }
 }
 
-.Complete {
-    position: fixed;
-    bottom: 0px;
-    right: 0px;
-    margin: 20px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: rgb(0, 173, 173);
-    color: white;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    font-weight: bold;
-    opacity: 0;
-}
-
-.Complete.Pass {
-    opacity: 1;
-    background-color: rgb(0, 173, 173);
-}
 
 .Language-Select-Learn {
     position: fixed;
@@ -329,15 +332,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
 }
 
 #textInput {
-    background: none;
+    background: white;
     border: solid 5px white;
-    height: 2rem;
+    border-radius: 7px;
+    height: 1.7rem;
+    width: 10rem;
     margin: 20px;
     outline: none;
+    font-size: 1.4rem;
+    text-align: right;
 }
 
 #textButton {
@@ -345,8 +352,8 @@
     border: none;
     border-radius: 5px;
     outline: none;
-    background: rgb(161, 155, 161);
+    color: white;
+    background: rgb(94, 94, 94);
     font-family: 'Roboto';
-    font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
