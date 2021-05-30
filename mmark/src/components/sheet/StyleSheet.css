@@ -31,6 +31,11 @@
     fill: rgb(140, 82, 187);
     opacity: 0.2;
 }
+.anker {
+    stroke:  rgb(140, 82, 187);
+    fill: rgb(140, 82, 187);
+    opacity: 0.5;
+}
 
 .blink_me {
     animation: blinker 1s linear infinite;

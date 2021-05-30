@@ -26,7 +26,9 @@ import {ReactComponent as NoteIcon_48} from "../musical_symbols_svg/notes/48.svg
 import {ReactComponent as NoteIcon_48_down} from "../musical_symbols_svg/notes/48_down.svg";
 import {ReactComponent as RestIcon_1_5} from "../musical_symbols_svg/rests/48.svg";
 
-
+import {ReactComponent as Cursor} from "../musical_symbols_svg/cursor.svg";
+import {ReactComponent as CursorBig} from "../musical_symbols_svg/cursor_big.svg";
+import {ReactComponent as BpmAnker} from "../musical_symbols_svg/bpm_anker.svg";
 
 
 // objectType: (char) 
@@ -67,28 +69,42 @@ Components.push(NoteIcon_48);
 Components.push(NoteIcon_48_down);
 Components.push(RestIcon_1_5);
 
-const BpmObj = ({className, bpmUnit8, margin}) => {
+const BpmObj = ({className, bpmUnit8, margin, cursorHeight}) => {
     const NoteComponent = Components[bpmUnit8 - 1];
     return (
         <div style = {{width: "0px", height: "100px", display: "inline-flex", "margin-right": margin }}>
             <div className={"black"} style = {{width: "10px", display: "inline", position: "relative", top : "-106.5px"}}>
                 <NoteComponent style = {{display: "inline", position: "relative"}} height = "20px"/>
             </div>
-            <div className={className} style = {{font: "italic", width: "40px", display: "inline", position: "relative", top : "-100px", left: "8px"}}>
+            <div className={className} style = {{font: "italic", width: "10px", display: "inline", position: "relative", top : "-100px", left: "8px"}}>
                 <font style = {{font: "italic",}}>{"  =  "}</font>
             </div>
             <div className={className} style = {{font: "italic", width: "0px", display: "inline", position: "relative", top : "-102px", left: "16px"}}>
                 <font style = {{font: "italic", "font-size": "11px" , left: "8px"}}>{className}</font>
             </div>
-
         </div>
     );
 }
 
-const Bpm = ({obj, margin}) => {
+const Bpm = ({obj, margin, cursorHeight, isBeingEdited}) => {
     return (
         <div style = {{width: "0px", height: "100px", display: "inline-flex" }}>
-            <BpmObj className={obj.bpm} bpmUnit8={obj.bpmUnit8} margin={margin}/>
+            <BpmObj className={obj.bpm} bpmUnit8={obj.bpmUnit8} margin={margin} cursorHeight={cursorHeight}/>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -59.1 - 6.1225 * (cursorHeight + 1) + "px"}}>
+                <div>
+                    {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                </div>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -59.1 - 6.1225  + "px"}}>
+                <div>
+                    {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                </div>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -84.1 - 6.1225  + "px"}}>
+                <div>
+                    {isBeingEdited ? <BpmAnker className="anker" style = {{display: "inline-flex", position: "relative", left: "-4px"}} height="10px"/> : <div></div>}
+                </div>
+            </div>
         </div>
     );
 };

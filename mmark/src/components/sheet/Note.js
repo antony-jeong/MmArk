@@ -176,8 +176,12 @@ const IndivLineObj = ({height}) => {
 
 const AccidentalObj = ({ type, height, direction }) => {
   var type_num = 0;
+  var type_height = 28;
   if (type === "s") {type_num = 0}
-  else if (type === "f") {type_num = 1}
+  else if (type === "f") {
+    type_num = 1
+    type_height = 33.2;
+  }
   else if (type === "n") {type_num = 2}
   else if (type === "3") {type_num = 3}
   else if (type === "o") {type_num = 4}
@@ -204,8 +208,8 @@ const AccidentalObj = ({ type, height, direction }) => {
               }}
               height={28 + (type == "f" ? 7.2 : 0) + "px"}
             /> */}
-						<div style = {{width: "10px", display: "inline", position: "relative", top : -11.5 - 6.1225 * (height + 1) + (type === "f" ? -3.5 : 0) + "px"}}>
-              <NoteComponent style = {{display: "inline", position: "relative"}} height = "28px"/>
+						<div style = {{width: "10px", display: "inline", position: "relative", top : -11.5 - 6.1225 * (height + 1) + (type === "f" ? -2 : 0) + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = {type_height + "px"}/>
             </div>
           </div>
         );
@@ -225,8 +229,8 @@ const AccidentalObj = ({ type, height, direction }) => {
               }}
               height={28 + (type == "f" ? 7.2 : 0) + "px"}
             /> */}
-            <div style = {{width: "10px", display: "inline", position: "relative", top : -11.5 - 6.1225 * (height + 1) + (type === "f" ? -3.5 : 0) + "px"}}>
-              <NoteComponent style = {{display: "inline", position: "relative"}} height = "28px"/>
+            <div style = {{width: "10px", display: "inline", position: "relative", top : -11.5 - 6.1225 * (height + 1) + (type === "f" ? -2 : 0) + "px"}}>
+              <NoteComponent style = {{display: "inline", position: "relative"}} height = {type_height + "px"}/>
             </div>
           </div>
         );
