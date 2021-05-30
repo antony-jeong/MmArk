@@ -405,7 +405,7 @@ const LearnNoteData = [{
 // },
 
 {
-    "pageId": 7,
+    "pageId": 6,
     "inst": `Putting a <term>sharp</term>${sharp} beside a note raises the note.<br></br>Below are notes for black keys in the piano. Play the notes in given order.`,
     "inst_kr": `<term>샤프</term>${sharp}를 음표 옆에 붙이면 반음이 올라갑니다.<br></br>아래의 음표들은 검은 건반의 것들입니다. 주어진 순서대로 연주하십시오.`,
     "ds": [{
