@@ -11,8 +11,9 @@
         "sheetClick" - input notes by clicking the sheet
 */
 const standardLen = 0;
-const sharp = '♯';
-const flat = '♭';
+const natural = "♮";
+const sharp = "♯";
+const flat = "♭";
 
 const LearnNoteData = [{
     "pageId": 1,
@@ -572,8 +573,8 @@ const LearnNoteData = [{
 
 {
     "pageId": 9,
-    "inst": `<note>Fa</note>${flat} equals <note>Mi</note> and <note>Do</note>${flat} equals <note>Ti</note>.`,
-    "inst_kr": `<note>파</note>${flat}은 <note>미</note>와, <note>도</note>${flat}은 <note>시</note>와 같습니다.`,
+    "inst": `<note>Fa${flat}</note> equals <note>Mi</note> and <note>Do${flat}</note> equals <note>Ti</note>.`,
+    "inst_kr": `<note>파${flat}</note>은 <note>미</note>와, <note>도${flat}</note>은 <note>시</note>와 같습니다.`,
     "ds": [{
             "objectType": "p",
             "bpm": 480,
@@ -808,7 +809,7 @@ const LearnNoteData = [{
 {
     "pageId": 12,
     "inst": 
-    "The effect of a <term>sharp</term>😆 and a <term>flat</term>😂 next to the notes is maintained within the bar.",
+    `The effect of a <term>sharp</term>${sharp} and a <term>flat</term>${flat} next to the notes is maintained within the bar.`,
     "inst_kr": `<term>샤프</term>${sharp}와 <term>플랫</term>${flat}은 해당 마디가 끝날 때까지 유효합니다.`,
     "ds": [{
         "objectType": "p",
@@ -900,8 +901,8 @@ const LearnNoteData = [{
 
 {
     "pageId": 13,
-    "inst": "Symbol 😐 is called <term>natural</term>.<br></br>If it is beside, the note should be played on its original note.",
-    "inst_kr": "😐는 <term>제자리표</term>라고 부릅니다.<br></br>이 기호가 붙으면 원래 음을 연주하면 됩니다.",
+    "inst": `Symbol ${natural} is called <term>natural</term>.<br></br>If it is beside, the note should be played on its original note.`,
+    "inst_kr": `${natural}는 <term>제자리표</term>라고 부릅니다.<br></br>이 기호가 붙으면 원래 음을 연주하면 됩니다.`,
     "ds": [{
             "objectType": "p",
             "bpm": 150,
