@@ -46,3 +46,12 @@
     51% {opacity: 0}
     100% {opacity: 0}
   }
+
+  .scroll {
+    margin: 4px, 4px;
+    padding: 4px;
+    background-color: #08c708;
+    width: 300px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
