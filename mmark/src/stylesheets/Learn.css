@@ -7,15 +7,11 @@
     
 }
 
-@keyframes twinkle {
+@keyframes fade-in {
     from {
-        color: #eaecf1;
-        fill: #eaecf1;
         opacity: 0%;
     }
     to {
-        color: black;
-        fill: black;
         opacity: 100%;
     }
 }
@@ -38,7 +34,7 @@
 }
 
 .updated {
-    animation: twinkle ease-in-out 1s;
+    animation: fade-in ease-in-out 1s;
 }
 
 .Logo path {
@@ -171,6 +167,11 @@
     border-radius: 5px;
 }
 
+.Next .ProgressBar{
+    transition-delay: 1s;
+    background-color: #7147CB;
+}
+
 .ProgressBar .ProgressBefore{
     background-color: #7147CB;
 }
@@ -235,8 +236,8 @@
     }
 }
 
-:not(.Next) .Wrong:not(.Started) {
-    animation: shake 0.3s;
+.Wrong:not(.updated):not(.started):not(.Next) {
+    animation: shake 0.2s;
 }
 
 

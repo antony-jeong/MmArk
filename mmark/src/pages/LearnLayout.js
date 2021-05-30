@@ -68,11 +68,14 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
             if (document.querySelector('.Instruction') && document.querySelector('.Sheet')){
                 document.querySelector('.Instruction').classList.remove('updated');
                 document.querySelector('.Sheet').classList.remove('updated');
+                document.querySelector('.ProgressBarWrapper').classList.remove('updated');
+                document.querySelector('.ProgressBarWrapper').classList.remove('Wrong');
             }
         }
 
         document.querySelector('.Instruction').classList.add('updated');
         document.querySelector('.Sheet').classList.add('updated');
+        document.querySelector('.ProgressBarWrapper').classList.add('updated');
         updateTimer = setTimeout(removeUpdate, 1000);
     }
 
@@ -98,10 +101,10 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
 
     const handleNext = () => {
         if (pageNum < pageEnd){
-            callback(pageNum + 1);
+            if (document.querySelector('.ProgressBarWrapper').classList.contains('Next'))
+                callback(pageNum + 1);
         }else{
-            if (document.querySelector('.Complete').classList.contains('Pass'))
-                history.push(`/`);
+            history.push(`/`);
         }
     }
 
@@ -109,31 +112,32 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
 
     const [inputArr, setInputArr] = useState([" "]);
     const addPlayHistory = (note) => {
-        document.querySelector('.ProgressBar').classList.remove('Started');
-        document.querySelector('.ProgressBar').classList.remove('Wrong');
+        document.querySelector('.ProgressBarWrapper').classList.remove('updated');
+        document.querySelector('.ProgressBarWrapper').classList.remove('started');
+        document.querySelector('.ProgressBarWrapper').classList.remove('Wrong');
         setInputArr(inputArr.slice(inputArr.length - progressCur).concat([note]));
         return;
     }
 
     var [progressCur, setProgressCur] = useState(0);
-    var progressEnd = pageData.inputMode==='text'? 1 : pageData.checkAnswer.length;
+    var progressEnd = pageData.inputMode==='text'? 1 : pageData.checkAnswer[0].length;
     
-    const Pass = (progressCur) => {
-        setProgressCur(progressCur);
+    const updateProgress = (progressCur) => {
+        setProgressCur(0);
+        setTimeout(setProgressCur, 10, progressCur);
         if (progressCur===progressEnd){
-            if (pageNum===pageEnd) document.querySelector('.Complete').classList.add('Pass');
-            else document.querySelector('.Next').classList.add('Pass');
             document.querySelector('.ProgressBarWrapper').classList.add('Next');
         };
+        return;
     }
 
     useEffect(()=>{
-        Pass(Checker({type: pageData.checkType, input: inputArr, answer: pageData.checkAnswer}));
+        updateProgress(Checker({type: pageData.checkType, input: inputArr, answer: pageData.checkAnswer}));
     }, [inputArr]);
 
     useEffect(()=>{
         setInputArr([" "]);
-        document.querySelector('.ProgressBar').classList.add('Started');
+        document.querySelector('.ProgressBarWrapper').classList.add('started');
         document.querySelector('.ProgressBarWrapper').classList.remove('Next');
     }, [pageNum]);
 
@@ -189,11 +193,6 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
                 </button>
                 ))}
             </div>
-            {
-            pageNum===pageEnd
-            ?<PageButton text = {'Complete'} className = {`Complete`} onClick={handleNext} show={true}/>
-            :<PageButton text = {'Next'} className = {`Next`} onClick={handleNext} show={true}/>
-            }
         </div>
         :
         <InvalidPage history={history} />
