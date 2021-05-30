@@ -109,24 +109,26 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
     }
 
     const { t, i18n } = useTranslation();
-
+    const [slicedInput, setSlicedInput] = useState([" "]);
     const [inputArr, setInputArr] = useState([" "]);
     const addPlayHistory = (note) => {
         document.querySelector('.ProgressBarWrapper').classList.remove('updated');
         document.querySelector('.ProgressBarWrapper').classList.remove('started');
         document.querySelector('.ProgressBarWrapper').classList.remove('Wrong');
-        setInputArr(inputArr.slice(inputArr.length - progressCur).concat([note]));
+        setInputArr(slicedInput.concat([note]));
         return;
     }
 
     var [progressCur, setProgressCur] = useState(0);
     var progressEnd = pageData.inputMode==='text'? 1 : pageData.checkAnswer[0].length;
     
-    const updateProgress = (progressCur) => {
-        setProgressCur(0);
-        setTimeout(setProgressCur, 10, progressCur);
-        if (progressCur===progressEnd){
+    const updateProgress = (newProgressCur) => {
+        setSlicedInput(inputArr.slice(inputArr.length - newProgressCur));
+        if (progressCur===newProgressCur) setProgressCur(0);
+        setTimeout(setProgressCur, 10, newProgressCur);
+        if (newProgressCur===progressEnd){
             document.querySelector('.ProgressBarWrapper').classList.add('Next');
+            document.querySelector('.InputHistory').classList.add('Hide');
         };
         return;
     }
@@ -139,6 +141,7 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
         setInputArr([" "]);
         document.querySelector('.ProgressBarWrapper').classList.add('started');
         document.querySelector('.ProgressBarWrapper').classList.remove('Next');
+        document.querySelector('.InputHistory').classList.remove('Hide');
     }, [pageNum]);
 
     const addText = (str) => {
@@ -183,6 +186,7 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
             <div className={`LearnPage`}>
                 <Instruction className="Instruction" inst={i18n.language === "en" ? pageData.inst : (i18n.language === "kr"? pageData.inst_kr : "Internationalization Error")}/>
                 <ProgressBar cur={progressCur} end={progressEnd} onClick={handleNext}/>
+                <div className="InputHistory">{slicedInput.map((item)=>{return <span>{item}</span>})}</div>
                 <Sheet className="Sheet" dataStructure={pageData.ds} />
                 {inputSubject()}
             </div>
