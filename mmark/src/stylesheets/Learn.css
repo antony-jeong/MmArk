@@ -1,13 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-.LearnNote,
-.LearnRhythm,
-.LearnInterval,
-.LearnChord,
-.LearnRoadmapSign {
+.LearnLayout {
     width: 100vw;
     display: block;
     background: linear-gradient(to top, #cac7dc, #eaecf1);
     overflow: auto;
+    
 }
 
 @keyframes twinkle {
@@ -132,21 +129,65 @@
     zoom: 0.7;
 }
 
-.LearnNote-Page,
-.LearnRhythm-Page,
-.LearnInterval-Page,
-.LearnChord-Page,
-.LearnRoadmapSign-Page {
+.LearnPage {
     height: 100vh;
     top: 0;
     left: 0;
     display: grid;
-    grid-template-rows: 1fr 1fr 2fr;
-    grid-gap: 20px;
+    grid-template-rows: 1fr 60px 1fr 2fr;
     margin: 0 50px;
 }
 
-.Sheet {
+.ProgressBarWrapper {
+    height: 10px;
+    align-self: center;
+    width: 40vw;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.ProgressBarText{
+    color: white;
+    position: relative;
+    text-align: center;
+    opacity: 0;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.Next .ProgressBarText{
+    transition: opacity 0.2s 2s;
+    opacity: 1;
+}
+
+.ProgressBar{
+    display: grid;
+    grid-auto-flow: column;
+    align-self: center;
+    height: 10px;
+    overflow: hidden;
+    background-color: rgb(163, 163, 163);
+    border-radius: 5px;
+}
+
+.ProgressBar .ProgressBefore{
+    background-color: #7147CB;
+}
+.ProgressBar .ProgressCur{
+    background-color: #7147CB;
+    border-radius: 0px 5px 5px 0px;
+    animation: progress 1s normal forwards;
+}
+
+
+@keyframes progress {
+    0% {width: 0;}
+    90% {width: 110%;}
+    100% {width: 100%;}
+}
+
+.Sheet{
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -165,24 +206,39 @@
     opacity: 1;
 }
 
-.Next {
-    position: fixed;
-    bottom: 0px;
-    right: 0px;
-    margin: 20px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: black;
-    color: white;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    opacity: 0.3;
+.Next{
+    animation: toNextButton 1.5s 1s forwards;
+    cursor: pointer;
 }
 
-.NotPass {
+@keyframes toNextButton {
+    50%{
+        margin-top: 0;
+        width: 0px;
+        height: 10px;
+    }
+    80%{
+        margin-top: 0;
+        width: 0px;
+        height: 10px;
+    }
+    90%{
+        width: 65px;
+        height: 45px;
+    }
+    100%{
+        margin-top: 10px;
+        width: 70px;
+        height: 40px;
+        border-radius: 5px;
+        background: #7147CB;
+    }
+}
+
+:not(.Next) .Wrong:not(.Started) {
     animation: shake 0.3s;
 }
+
 
 @keyframes shake {
     0% {
@@ -218,15 +274,6 @@
     100% {
         transform: translate(1px, -2px) rotate(-1deg);
     }
-}
-
-.Pass {
-    transition: opacity ease-in 0.2s;
-    opacity: 1;
-}
-
-.Pass:hover {
-    cursor: pointer;
 }
 
 .Complete {

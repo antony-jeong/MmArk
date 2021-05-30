@@ -12,7 +12,7 @@ import Bpm from "./sheet/Bpm";
 import Triplet from "./sheet/Triplet"
 
 
-import SoundPlayer from "../components/audio-parts/SoundPlayer";
+import SoundFontPlayerWrapper from "../components/audio-parts/SoundFontPlayerWrapper";
 import SheetPlayer from "../components/audio-parts/SheetPlayer";
 import "./utils/calcSheetObjectMargin";
 import calcSheetObjectMargin from './utils/calcSheetObjectMargin';
@@ -126,14 +126,14 @@ const Sheet = ({ dataStructure, className, cursorIndex, cursorHeight, isBeingEdi
     };
     useEffect(() => {
         if (!soundPlayer) {
-            setSoundPlayer(SoundPlayer());
+            setSoundPlayer(SoundFontPlayerWrapper());
         } else if (!player) {
             setPlayer(SheetPlayer(soundPlayer, changeHighlight, changeTripletHighlight, getState));
         }
     });
     useEffect(() => {
         if (soundPlayer) {
-            soundPlayer.setInstrument("acoustic_grand_piano");
+            soundPlayer.init("acoustic_grand_piano");
         }
     }, [soundPlayer]);
     useEffect(() => {
@@ -143,6 +143,7 @@ const Sheet = ({ dataStructure, className, cursorIndex, cursorHeight, isBeingEdi
     }, [player]);
     useEffect( () => {
         if (player) {
+            player.stop();
             player.setSheet(dataStructure);
         }
     }, [dataStructure]);
