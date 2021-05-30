@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import styled from "styled-components";
 
 import "./sheet/StyleSheet.css";
@@ -11,10 +11,13 @@ import Clef from "./sheet/Clef";
 import Bpm from "./sheet/Bpm";
 import Triplet from "./sheet/Triplet"
 
-import SoundPlayer from "../components/audio-parts/SoundPlayer";
+
+import SoundFontPlayerWrapper from "../components/audio-parts/SoundFontPlayerWrapper";
 import SheetPlayer from "../components/audio-parts/SheetPlayer";
 import "./utils/calcSheetObjectMargin";
 import calcSheetObjectMargin from './utils/calcSheetObjectMargin';
+
+import {ReactComponent as Cursor} from "./musical_symbols_svg/cursor.svg";
 
 // dataStructure
     // objectType: (char) 
@@ -76,6 +79,11 @@ import calcSheetObjectMargin from './utils/calcSheetObjectMargin';
 
 // const dataStructure = [{objectType: "c", treble: }, {objectType: "t", numerator: "", denominator: ""}, {objectType: "k", key: }, {objectType: "b", type: , barlineDecoration: ,}, {objectType: "n", length: , extend: , rest: , height:, accidental:, triplet:, noteDecoration: ,}]
 
+const AlwaysScrollSection = memo(props => {
+    const { children } = props;
+    return <StyledAlwaysScrollSection>{children}</StyledAlwaysScrollSection>;
+  });
+
 const SheetWrapper = styled.div`
     background-image: url(${process.env.PUBLIC_URL + "/musical_symbols_svg/sheet.svg"});
     background-attatchment: fixed;
@@ -85,11 +93,30 @@ const SheetWrapper = styled.div`
     height: 50px;
     margin: 50px 10px 50px 20px;
     zoom: 1;
+    overflow-inline: scroll;
     display: inline-block;
     width: 1100px;
     `;
 
-const Sheet = ({ dataStructure, className }) => {
+//      background: rgba(255, 255, 255, 0.4);
+
+const StyledAlwaysScrollSection = styled.div`
+    overflow-x: auto;
+    overflow-y: hidden;
+    &::-webkit-scrollbar {
+      /* 세로 스크롤 넓이 */
+      width: 0px;
+  
+      /* 가로 스크롤 높이 */
+      height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 6px;
+    }
+  `;
+
+const Sheet = ({ dataStructure, className, cursorIndex, cursorHeight, isBeingEdited }) => {
     const [soundPlayer, setSoundPlayer] = useState(false);
     const [player, setPlayer] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -98,14 +125,14 @@ const Sheet = ({ dataStructure, className }) => {
     };
     useEffect(() => {
         if (!soundPlayer) {
-            setSoundPlayer(SoundPlayer());
+            setSoundPlayer(SoundFontPlayerWrapper());
         } else if (!player) {
             setPlayer(SheetPlayer(soundPlayer, changeHighlight, changeTripletHighlight, getState));
         }
     });
     useEffect(() => {
         if (soundPlayer) {
-            soundPlayer.setInstrument("acoustic_grand_piano");
+            soundPlayer.init("acoustic_grand_piano");
         }
     }, [soundPlayer]);
     useEffect(() => {
@@ -134,35 +161,43 @@ const Sheet = ({ dataStructure, className }) => {
     const returnValue = data.map((obj, index) => {
         switch (obj.objectType) {
             case "c":
-                return (<Clef obj={obj} key={index} margin = {margin ? margin[index] : 0}/>)
+                return (<Clef obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited ? cursorHeight : 50} />)
             case "t":
-                return (<Time obj={obj} key={index} margin = {margin ? margin[index] : 0}/>)
+                return (<Time obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
             case "k":
-                return (<Key obj={obj} key={index} margin = {margin ? margin[index] : 0}/>)
+                return (<Key obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
             case "b":
-                return (<Barline obj={obj} key={index} margin = {margin ? margin[index] : 0}/>)
+                return (<Barline obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
             case "n":
-                return (<Note obj={obj} key={index} isPlaying={index === playingIndex} margin = {margin ? margin[index] : 0}/>)
+                return (<Note obj={obj} key={index} isPlaying={index === playingIndex} margin = {margin ? margin[index] : 0} ccursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
             case "p":
-                return (<Bpm obj={obj} key={index} margin = {margin ? margin[index] : 0}/>)
+                return (<Bpm obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index  && isBeingEdited ? cursorHeight : 50} />)
             case "r":
-                return (<Triplet obj={obj} key={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex} margin = {margin ? margin[index] : 0}/>)
+                return (<Triplet obj={obj} key={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
             default:
                 return (<div key={index}>Invalid Object</div>)
         }
     });
     return (
-        <div className={`${className}`}>
+        <div className={`${className}`} style={{"overflow-x":"auto", "overflow-y":"hidden", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
             {!isPlaying
-            ?<svg className={'PlayButton'} onClick={player ? player.play : () => {}} width="33" height="38" viewBox="0 0 33 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M31.5 16.4019C33.5 17.5566 33.5 20.4434 31.5 21.5981L4.5 37.1865C2.5 38.3412 1.98328e-06 36.8979 2.08423e-06 34.5885L3.44702e-06 3.41154C3.54796e-06 1.10214 2.5 -0.341234 4.5 0.813466L31.5 16.4019Z" fill="#977ED7"/>
-            </svg>
-            :<svg className={'StopButton'}onClick={player ? player.stop : () => {}} width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="35" height="35" rx="3" fill="#D77E8E"/>
-            </svg>}
-            <SheetWrapper >
-                {returnValue}
-            </SheetWrapper>
+            ?<div style={{display:"inline"}}>
+                <svg className={'PlayButton'} onClick={player ? player.play : () => {}} width="33" height="38" viewBox="0 0 33 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M31.5 16.4019C33.5 17.5566 33.5 20.4434 31.5 21.5981L4.5 37.1865C2.5 38.3412 1.98328e-06 36.8979 2.08423e-06 34.5885L3.44702e-06 3.41154C3.54796e-06 1.10214 2.5 -0.341234 4.5 0.813466L31.5 16.4019Z" fill="#977ED7"/>
+                </svg>
+            </div>
+            :<div style={{display:"inline"}}>
+                <svg className={'StopButton'}onClick={player ? player.stop : () => {}} width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="35" height="35" rx="3" fill="#D77E8E"/>
+                </svg>
+            </div>}
+            <AlwaysScrollSection>
+            <div style={{ "justify-content":"start"}}>
+                <SheetWrapper >
+                    {returnValue}
+                </SheetWrapper>
+            </div>
+            </AlwaysScrollSection>
         </div>
     );
 };

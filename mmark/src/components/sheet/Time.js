@@ -1,6 +1,9 @@
 import React from 'react';
 import "./StyleSheet.css";
 
+import {ReactComponent as Cursor} from "../musical_symbols_svg/cursor.svg";
+import {ReactComponent as CursorBig} from "../musical_symbols_svg/cursor_big.svg";
+
 // objectType: (char) 
         // c - clef
         // t - time
@@ -23,13 +26,24 @@ const TimeObj = ({type, num}) => {
     )
 }
 
-const Time = ({obj, margin}) => {
+const Time = ({obj, margin, cursorHeight}) => {
 
     return (
         <div style = {{width: "23px", display: "inline", "margin-right": margin}}>
             { <TimeObj type="nu" num = {obj.numerator}/>}
             { <TimeObj type="de" num = {obj.denominator}/>}
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+                <div>
+                    {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                </div>
+            </div>
+            <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+                <div>
+                    {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                </div>
+            </div>
         </div >
+        
     );
 };
 
