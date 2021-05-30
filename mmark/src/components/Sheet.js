@@ -101,15 +101,14 @@ const SheetWrapper = styled.div`
 //      background: rgba(255, 255, 255, 0.4);
 
 const StyledAlwaysScrollSection = styled.div`
-    overflow: scroll;
+    overflow-x: auto;
+    overflow-y: hidden;
     &::-webkit-scrollbar {
       /* 세로 스크롤 넓이 */
       width: 0px;
   
       /* 가로 스크롤 높이 */
       height: 8px;
-  
-      border-radius: 6px;
     }
     &::-webkit-scrollbar-thumb {
       background-color: rgba(0, 0, 0, 0.3);
@@ -180,18 +179,18 @@ const Sheet = ({ dataStructure, className, cursorIndex, cursorHeight, isBeingEdi
         }
     });
     return (
-        <div className={`${className}`} style={{"overflow-x":"scroll", "overflow-y":"hidden", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
-                {!isPlaying
-                ?<div style={{display:"inline"}}>
-                    <svg className={'PlayButton'} onClick={player ? player.play : () => {}} width="33" height="38" viewBox="0 0 33 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M31.5 16.4019C33.5 17.5566 33.5 20.4434 31.5 21.5981L4.5 37.1865C2.5 38.3412 1.98328e-06 36.8979 2.08423e-06 34.5885L3.44702e-06 3.41154C3.54796e-06 1.10214 2.5 -0.341234 4.5 0.813466L31.5 16.4019Z" fill="#977ED7"/>
-                    </svg>
-                </div>
-                :<div style={{display:"inline"}}>
-                    <svg className={'StopButton'}onClick={player ? player.stop : () => {}} width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="35" height="35" rx="3" fill="#D77E8E"/>
-                    </svg>
-                </div>}
+        <div className={`${className}`} style={{"overflow-x":"auto", "overflow-y":"hidden", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
+            {!isPlaying
+            ?<div style={{display:"inline"}}>
+                <svg className={'PlayButton'} onClick={player ? player.play : () => {}} width="33" height="38" viewBox="0 0 33 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M31.5 16.4019C33.5 17.5566 33.5 20.4434 31.5 21.5981L4.5 37.1865C2.5 38.3412 1.98328e-06 36.8979 2.08423e-06 34.5885L3.44702e-06 3.41154C3.54796e-06 1.10214 2.5 -0.341234 4.5 0.813466L31.5 16.4019Z" fill="#977ED7"/>
+                </svg>
+            </div>
+            :<div style={{display:"inline"}}>
+                <svg className={'StopButton'}onClick={player ? player.stop : () => {}} width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="35" height="35" rx="3" fill="#D77E8E"/>
+                </svg>
+            </div>}
             <AlwaysScrollSection>
             <div style={{ "justify-content":"start"}}>
                 <SheetWrapper >
