@@ -1,0 +1,108 @@
+.piano-container {
+  display: flex;
+  align-items: flex-start;
+  justify-self: center;
+  justify-content: center;
+  width: fit-content;
+  margin: 0px;
+  padding: 10px;
+}
+
+.piano-black-key-wrapper {
+  width: 0px;
+}
+
+.piano-black-key {
+  position: relative;
+  width: 2rem;
+  height: 9rem;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  border: 2px solid black;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background-image: linear-gradient(to top, #180f18, #373137);
+}
+
+.piano-black-key:hover {
+  background: rgba(35, 35, 35);
+}
+
+.piano-black-key-playing {
+  background: #101010;
+}
+
+.piano-black-key-playing:hover {
+  background: #101010;
+}
+
+.piano-black-key-text {
+  width: 100%;
+  text-align: center;
+  font-size: 2.5rem;
+  user-select: none;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.piano-white-key {
+  width: 3rem;
+  height: 15rem;
+  display: flex;
+  align-items: flex-end;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  border-radius: 4px;
+  border: solid 5px #ffffff;
+  cursor: pointer;
+}
+
+.piano-white-key:hover {
+  background: linear-gradient(to top, rgba(195, 153, 199, 0.3), rgba(164, 200, 255, 0.35));
+}
+
+.piano-white-key-playing {
+  background: linear-gradient(to top, rgba(195, 153, 199, 0.6), rgba(164, 200, 255, 0.65));
+}
+
+.piano-white-key-playing:hover {
+  background: linear-gradient(to top, rgba(195, 153, 199, 0.6), rgba(164, 200, 255, 0.65));
+}
+
+.piano-white-key-text {
+  width: 100%;
+  text-align: center;
+  font-size: 2.5rem;
+  user-select: none;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.piano-black-key-disabled{
+  position: relative;
+  width: 2rem;
+  height: 9rem;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  border: 2px solid #b6b7c5;
+  cursor: default;
+  border-radius: 4px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background: #b6b7c5;
+}
+
+.piano-white-key-disabled{
+  width: 3rem;
+  height: 15rem;
+  display: flex;
+  align-items: flex-end;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  border-radius: 4px;
+  border: solid 5px #b6b7c5;
+  cursor: default;
+  background: #b6b7c5;
+}
