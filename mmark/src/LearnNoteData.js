@@ -39,7 +39,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": ["C4"],
+    "checkAnswer": [["C4"]],
     "inputMode": "oneKey"
 }, {
     "pageId": 2,
@@ -122,7 +122,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": ["C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5"],
+    "checkAnswer": [["C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5"]],
     "inputMode": "whiteKeys"
 }, 
 
@@ -271,7 +271,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": ["C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4", "C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5"],
+    "checkAnswer": [["C3", "D3", "E3", "F3", "G3", "A3", "B3", "C4", "C4", "D4", "E4", "F4", "G4", "A4", "B4", "C5"]],
     "inputMode": "whiteKeys"
 }, 
 
@@ -316,7 +316,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": ["D4", "F4", "B3"],
+    "checkAnswer": [["D4", "F4", "B3"]],
     "inputMode": "whiteKeys"
 },
 
@@ -361,7 +361,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": ["B3", "C4", "E4"],
+    "checkAnswer": [["B3", "C4", "E4"]],
     "inputMode": "whiteKeys"
 },
 
@@ -457,7 +457,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": ["C#4", "D#4", "F#4", "G#4", "A#4"],
+    "checkAnswer": [["C#4", "D#4", "F#4", "G#4", "A#4"]],
     "inputMode": "allKeys"
 },
 
@@ -508,7 +508,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": ["F4", "F4", "C5", "C5"],
+    "checkAnswer": [["F4", "F4", "C5", "C5"]],
     "inputMode": "allKeys"
 },
 
@@ -566,7 +566,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": ["C#4", "D#4", "F#4", "G#4", "A#4"],
+    "checkAnswer": [["C#4", "D#4", "F#4", "G#4", "A#4"]],
     "inputMode": "allKeys"
 },
 
@@ -616,7 +616,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": ["E4", "E4", "B4", "B4"],
+    "checkAnswer": [["E4", "E4", "B4", "B4"]],
     "inputMode": "allKeys"
 },
 
@@ -715,7 +715,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": ["C#4", "C#4", "D#4", "D#4", "F#4", "F#4", "G#4", "G#4", "A#4", "A#4"],
+    "checkAnswer": [["C#4", "C#4", "D#4", "D#4", "F#4", "F#4", "G#4", "G#4", "A#4", "A#4"]],
     "inputMode": "allKeys"
 },
 
@@ -801,7 +801,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": ["E4", "F4"],
+    "checkAnswer": [["E4", "F4"], ["F4", "E4"], ["B4", "C5"], ["C5", "B4"]],
     "inputMode": "allKeys"
 },
 
@@ -894,7 +894,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": ["C#4", "D4", "C#4", "D4", "C4", "D#4", "C4", "D#4"],
+    "checkAnswer": [["C#4", "D4", "C#4", "D4", "C4", "D#4", "C4", "D#4"]],
     "inputMode": "allKeys"
 },
 
@@ -970,7 +970,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": ["C#4", "C#4", "C4", "D#4", "D#4", "E4"],
+    "checkAnswer": [["C#4", "C#4", "C4", "D#4", "D#4", "E4"]],
     "inputMode": "allKeys"
 },
 
@@ -1125,7 +1125,7 @@ const LearnNoteData = [{
         }
     ],
     "checkType": "Play",
-    "checkAnswer": ["C4", "A4", "G4", "E4"],
+    "checkAnswer": [["C4", "A4", "G4", "E4"]],
     "inputMode": "allKeys"
 }
 

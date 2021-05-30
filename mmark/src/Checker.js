@@ -2,16 +2,22 @@ const Checker = ({type, input, answer}) => {
     // if type is input, checkAnswer is array of string 
     switch (type) {
         case "Play":
-            var correct = 0;
-            for (let i = 0; i < input.length; i++) {
-                if (input[i]!==answer[i]){
-                    document.querySelector('.ProgressBar').classList.add('Wrong');
-                    if (input[i]===answer[0]) return 1;
-                    return 0;
+            var arr = [];
+            for (let k = 0; k < answer.length; k++){
+                var correct = 0;
+                for (let i = 0; i < input.length; i++) {
+                    if (input[i]!==answer[k][i]){
+                        if (input[input.length-1]===answer[k][0]){correct=1; break;}
+                        correct=0; break;
+                    }
+                    correct++;
                 }
-                correct++;
+                arr.push(correct);
             }
-            return correct;
+            console.log(arr);
+            if (Math.max(...arr) < input.length) document.querySelector('.ProgressBarWrapper').classList.add('Wrong');
+            return Math.max(...arr);
+            
         case "Equal":
             return false;
         case "Input":
