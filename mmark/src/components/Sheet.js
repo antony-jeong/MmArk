@@ -101,8 +101,8 @@ const SheetWrapper = styled.div`
 //      background: rgba(255, 255, 255, 0.4);
 
 const StyledAlwaysScrollSection = styled.div`
-    overflow-y: hidden;
     overflow-x: auto;
+    overflow-y: hidden;
     &::-webkit-scrollbar {
       /* 세로 스크롤 넓이 */
       width: 0px;
@@ -179,7 +179,7 @@ const Sheet = ({ dataStructure, className, cursorIndex, cursorHeight, isBeingEdi
         }
     });
     return (
-        <div className={`${className}`} style={{"overflow-y":"hidden", "overflow-x":"auto", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
+        <div className={`${className}`} style={{"overflow-x":"auto", "overflow-y":"hidden", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
             {!isPlaying
             ?<div style={{display:"inline"}}>
                 <svg className={'PlayButton'} onClick={player ? player.play : () => {}} width="33" height="38" viewBox="0 0 33 38" fill="none" xmlns="http://www.w3.org/2000/svg">
