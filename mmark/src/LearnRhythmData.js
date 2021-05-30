@@ -99,7 +99,7 @@ const LearnRhythmData = [{
     "inst_kr": `음표에 꼬리가 달릴 때마다 길이가 절반이 됩니다.<br></br> <term>8분음표</term>${Img_note_arr[3]}는 <term>4분음표</term>${Img_note_arr[2]}의 길이의 절반입니다. 마찬가지로, <term>16분음표</term>${Img_note_arr[4]}는 <term>8분음표</term>${Img_note_arr[3]}의 길이의 절반입니다.<br></br> 아래의 악보 중 세로줄 오른쪽 부분은 <term>16분음표</term>${Img_note_arr[4]} 몇 개의 길이와 같을까요?`,
     "ds": [{
             "objectType": "p",
-            "bpm": 360,
+            "bpm": 60,
             "bpmUnit8": 2
         }, {
             "objectType": "c",
@@ -216,8 +216,12 @@ const LearnRhythmData = [{
     "inst": `Things like ${Img_time_44} are attached to the sheet music. It is called a <term>time signature</term>.<br></br>A music has a standard of note length called <term>beat</term>, and the denominator represents a note that is the standard of a beat.<br></br>Which note is one beat here?`,
     "inst_kr": `악보를 보다 보면 ${Img_time_44}와 같은 것들을 발견할 수 있습니다. 이를 우리는 <term>박자표</term>라고 부릅니다.<br></br><term>박자</term>는 해당 악보에서 빠르기를 정의합니다. 분모는 한 박자의 음표를 의미합니다.<br></br> 이 악보에서는 어떤 음표가 한 박자일까요?`,
     "ds": [{
-        "objectType": "c",
-        "treble": true
+            "objectType": "p",
+            "bpm": 150,
+            "bpmUnit8": 2
+        }, {
+            "objectType": "c",
+            "treble": true
         }, {
             "objectType": "t",
             "numerator": 4,
@@ -320,8 +324,12 @@ const LearnRhythmData = [{
     "inst": `The numerator indicates how many <term>beats</term> a bar has.<br></br>How many more bar lines should be drawn on this sheet music?`,
     "inst_kr": `분자는 한 마디 안의 <term>박자</term>의 개수를 의미합니다.<br></br> 그렇다면, 이 악보에는 얼마나 더 많은 세로줄이 필요할까요?`,
     "ds": [{
-        "objectType": "c",
-        "treble": true
+            "objectType": "p",
+            "bpm": 150,
+            "bpmUnit8": 2
+        }, {
+            "objectType": "c",
+            "treble": true
         }, {
             "objectType": "t",
             "numerator": 4,
@@ -424,8 +432,12 @@ const LearnRhythmData = [{
     "inst": `A dot on a note means it is 1.5 times longer.<br></br>In the sheet music below, a <term>dotted half note</term>${Img_dotted_note_arr[1]} stands for three beats, so it takes up one bar.<br></br>How many more <term>eighth notes</term>${Img_note_arr[3]} can be added to the last bar?`,
     "inst_kr": `음표에 점이 붙으면 그 길이를 1.5배 증가시킵니다.<br></br>예를 들어, 아래의 <term>점2분음표</term>${Img_dotted_note_arr[1]}는 세 박자로, 한 마디를 차지합니다.<br></br> 아래의 악보에서 마지막 마디에 몇 개의 <term>8분음표</term>${Img_note_arr[3]} 가 추가될 수 있을까요?`,
     "ds": [{
-        "objectType": "c",
-        "treble": true
+            "objectType": "p",
+            "bpm": 150,
+            "bpmUnit8": 2
+        }, {
+            "objectType": "c",
+            "treble": true
         }, {
             "objectType": "t",
             "numerator": 3,
@@ -462,8 +474,12 @@ const LearnRhythmData = [{
     "inst": `A <term>rest</term> means not to play that length.<br></br>How many beats does this rest ${Img_rest_arr[1]} means to rest?`,
     "inst_kr": `<term>쉼표</term>는 해당 박자를 연주하지 말라는 뜻입니다.<br></br> 그렇다면 이 쉼표는 ${Img_rest_arr[1]} 몇 박자를 쉬라는 뜻일까요?`,
     "ds": [{
-        "objectType": "c",
-        "treble": true
+            "objectType": "p",
+            "bpm": 120,
+            "bpmUnit8": 2
+        }, {
+            "objectType": "c",
+            "treble": true
         }, {
             "objectType": "t",
             "numerator": 4,
@@ -505,8 +521,12 @@ const LearnRhythmData = [{
     "inst": `A <term>whole rest</term>${Img_rest_arr[0]} is twice a <term>half rest</term>${Img_rest_arr[1]},<br></br> a <term>half rest</term>${Img_rest_arr[1]} is twice a <term>quarter rest</term>${Img_rest_arr[2]}, a <term>quarter rest</term>${Img_rest_arr[2]} is twice a <term>eighth rest</term>${Img_rest_arr[3]}.<br></br>From the <term>eighth rest</term>${Img_rest_arr[3]}, every head halves the length of the rest.<br></br>According to the sheet music below, how many beats in total should you <term>rest</term>?`,
     "inst_kr": `<term>온쉼표</term>${Img_rest_arr[0]}는 <term>이분쉼표</term>${Img_rest_arr[1]}의 길이의 두 배이고, <term>2분쉼표</term>${Img_rest_arr[1]} 는 <term>4분쉼표</term>${Img_rest_arr[2]}의 길이의 2배이고,<br></br><term>4분쉼표</term>${Img_rest_arr[2]} 는 <term>8분쉼표</term>${Img_rest_arr[3]}의 길이의 2배입니다.<term>8분쉼표</term>${Img_rest_arr[3]}부터는 머리가 추가될 때마다 그 길이가 절반이 됩니다.<br></br> 아래의 악보의 총 <term>쉼표</term>의 길이는 얼마인가요?`,
     "ds": [{
-        "objectType": "c",
-        "treble": true
+            "objectType": "p",
+            "bpm": 120,
+            "bpmUnit8": 2
+        }, {
+            "objectType": "c",
+            "treble": true
         }, {
             "objectType": "t",
             "numerator": 4,
@@ -653,8 +673,12 @@ const LearnRhythmData = [{
     "inst": `<term>Rests</term> can also have dots. How many more bar lines should be drawn on the sheet music below?`,
     "inst_kr": `<term>쉼표</term>에도 점을 붙일 수가 있습니다. 아래의 악보에는 마디선을 몇 개를 더 그어야 할까요?`,
     "ds": [{
-        "objectType": "c",
-        "treble": true
+            "objectType": "p",
+            "bpm": 240,
+            "bpmUnit8": 1
+        }, {
+            "objectType": "c",
+            "treble": true
         }, {
             "objectType": "t",
             "numerator": 6,
