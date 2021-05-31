@@ -4,11 +4,13 @@ import "./PianoInstance.css";
 
 function PianoContainer({children}) {
   return (
-    <div
-      className={"piano-container"}
-      onMouseDown={event => event.preventDefault()}
-    >
-      {children}
+    <div className={"piano-container-wrapper"}>
+      <div
+        className={"piano-container"}
+        onMouseDown={event => event.preventDefault()}
+      >
+        {children}
+      </div>
     </div>
   );
 }
