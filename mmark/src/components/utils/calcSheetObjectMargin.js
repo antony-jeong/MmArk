@@ -41,31 +41,31 @@ const calcSheetObjectMargin = (ds, tw) => {
     const o = ds[i];
     switch (o.objectType) {
       case "c":
-        subj -= wClef(o.treble)+2;
+        subj -= wClef(o.treble)+10;
         tags.push(0);
-        pixels.push(2);
+        pixels.push(10);
         break;
       case "t":
-        subj -= wTime+2;
+        subj -= wTime+10;
         tags.push(0);
-        pixels.push(2);
+        pixels.push(10);
         break;
       case "k":
-        subj -= wKey(o.key)+2;
+        subj -= wKey(o.key)+10;
         tags.push(0);
-        pixels.push(2);
+        pixels.push(10);
         break;
       case "b":
         switch (o.type) {
           case "b":
-            subj -= wBar+2;
+            subj -= wBar+10;
             tags.push(0);
-            pixels.push(2);
+            pixels.push(10);
             break;
           case "d":
-            subj -= wDoubleBar+2;
+            subj -= wDoubleBar+10;
             tags.push(0);
-            pixels.push(2);
+            pixels.push(10);
             break;
           case "t":
             subj -= wTermBar;
@@ -75,19 +75,19 @@ const calcSheetObjectMargin = (ds, tw) => {
         }
         break;
       case "n":
-        subj -= wNote(o.rest, o.length, o.extend, o.height, o.accidental)+2;
+        subj -= wNote(o.rest, o.length, o.extend, o.height, o.accidental)+10;
         let l = 128/Math.pow(2, o.length);
         if (o.extend) {
           l = l * 3 / 2;
         }
         tags.push(l);
         tagSum += l;
-        pixels.push(2);
+        pixels.push(10);
         break;
       case "p":
-        subj -= wBPM;
+        subj -= wBPM+10;
         tags.push(0);
-        pixels.push(0);
+        pixels.push(10);
         break;
       case "r":
         tags.push(0);
@@ -103,6 +103,9 @@ const calcSheetObjectMargin = (ds, tw) => {
       pixels[i] += increment;
     }
   }
+  // var temptemp = [];
+  // ds.forEach(()=>temptemp.push(20));
+  // return temptemp;
   return pixels;
 };
 
