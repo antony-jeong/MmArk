@@ -493,6 +493,7 @@ body {
     border: 1px solid black;
     text-align: center;
     margin-right: 10px;
+}
 
 @media screen and (max-width: 900px){
     .LearnPage {
