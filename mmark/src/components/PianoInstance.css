@@ -5,8 +5,16 @@
   justify-content: center;
   width: fit-content;
   margin: 0px;
-  padding: 10px;
-  padding-bottom: 40px;
+}
+
+.piano-container-wrapper{
+  width: 100%;
+  display: flex;
+
+  justify-content: center;
+  margin: 5vh auto;
+  padding: 0 auto;
+  overflow: scroll;
 }
 
 .piano-black-key-wrapper {

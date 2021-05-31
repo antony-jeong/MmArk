@@ -1,10 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+    margin: 0;
+}
+
 .LearnLayout {
     width: 100vw;
     display: block;
     background: linear-gradient(to top, #cac7dc, #eaecf1);
-    overflow: auto;
-    
+    overflow: hidden;
+}
+
+.LearnPage {
+    height: 100vh;
+    width: calc(100vw-100px);
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-rows: 1.3fr 0.4fr 30px 1fr;
+    align-items: center;
+    margin: 0 50px;
 }
 
 @keyframes fade-in {
@@ -62,6 +77,7 @@
 }
 
 .PageNavigator {
+    size: fit-content;
     position: fixed;
     top: 0px;
     right: 0px;
@@ -120,15 +136,6 @@
     zoom: 0.7;
 }
 
-.LearnPage {
-    height: 100vh;
-    top: 0;
-    left: 0;
-    display: grid;
-    grid-template-rows: 1.3fr 0.4fr 30px 1fr;
-    align-items: center;
-    margin: 0 50px;
-}
 
 .ProgressBarWrapper {
     height: 10px;
@@ -214,15 +221,18 @@
         margin-top: 0;
         width: 0px;
         height: 10px;
+        border: 0px;
     }
     80%{
         margin-top: 0;
         width: 0px;
         height: 10px;
+        border: 0px;
     }
     90%{
         width: 65px;
         height: 45px;
+        border: 0px;
     }
     100%{
         margin-top: 10px;
@@ -483,4 +493,59 @@
     border: 1px solid black;
     text-align: center;
     margin-right: 10px;
+
+@media screen and (max-width: 900px){
+    .LearnPage {
+        width: 90vw;
+        margin: 0 auto;
+    }
+    .Instruction{
+        font-size: 1.2rem;
+        width: 90vw;
+        margin: 0 auto;
+    }
+    .Sheet{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .LogoContainer{
+        zoom: 0.8;
+    }
+    .Language-Select-Learn{
+        zoom: 0.9;
+    }
+    .PageNavigator{
+        zoom: 0.9;
+    }
+    .ProgressBarWrapper{
+        zoom: 0.8;
+    }
+    .Sheet{
+        zoom: 0.7;
+    }
+    .piano-container{
+        zoom: 0.8;
+    }
+    .textInputWrapper{
+        zoom: 0.8;
+        margin-bottom: 20vh;
+    }
+    .Instruction{
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .PageNavigator{
+        position: fixed;
+        top: 30px;
+        zoom: 0.8;
+    }
+    .Language-Select-Learn {
+        position: fixed;
+        top: 10px;
+        right: 0px;
+    }
 }
