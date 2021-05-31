@@ -17,6 +17,7 @@ import SoundFontPlayerWrapper from "../components/audio-parts/SoundFontPlayerWra
 import SheetPlayer from "../components/audio-parts/SheetPlayer";
 import "./utils/calcSheetObjectMargin";
 import calcSheetObjectMargin from './utils/calcSheetObjectMargin';
+import SheetEditControl from './SheetEditControl';
 
 
 // dataStructure
@@ -116,7 +117,7 @@ const StyledAlwaysScrollSection = styled.div`
     }
   `;
 
-const Sheet = ({ dataStructure, className, cursorIndex, cursorHeight, isBeingEdited }) => {
+const Sheet = ({ dataStructure, className, cursorIndex, cursorHeight }) => {
     const [soundPlayer, setSoundPlayer] = useState(false);
     const [player, setPlayer] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -173,6 +174,7 @@ const Sheet = ({ dataStructure, className, cursorIndex, cursorHeight, isBeingEdi
     }, [dataStructure, minMargin]);
     //document.getElementById("sheetwrapper").clientWidth
     //document.getElementById("sheetwrapper").clientWidth-2
+    const [isBeingEdited, setIsBeingEdited] = useState(false);
     const data = dataStructure;
     var trebled = true;
     const returnValue = data.map((obj, index) => {
@@ -197,19 +199,31 @@ const Sheet = ({ dataStructure, className, cursorIndex, cursorHeight, isBeingEdi
         }
     });
     return (
-        <div className={`${className}`} id="sheet" style={{"overflow-x":"auto", "overflow-y":"hidden", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
-            
-            {!isPlaying
-            ?<div style={{"margin-left": "20px", display:"inline"}}>
-                <svg className={'PlayButton'} onClick={player ? player.play : () => {}} width="20" height="23" viewBox="0 0 33 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M31.5 16.4019C33.5 17.5566 33.5 20.4434 31.5 21.5981L4.5 37.1865C2.5 38.3412 1.98328e-06 36.8979 2.08423e-06 34.5885L3.44702e-06 3.41154C3.54796e-06 1.10214 2.5 -0.341234 4.5 0.813466L31.5 16.4019Z" fill="#977ED7"/>
-                </svg>
+        <div className={`${className}`} id="sheet" style={{"overflow-x":"auto", "overflow-y":"visible", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
+            <div className={"sheet-menu-bar"}>
+                {!isPlaying
+                ?<div style={{"margin-left": "20px", display:"inline"}}>
+                    <svg className={'PlayButton'} onClick={player ? player.play : () => {}} width="20" height="23" viewBox="0 0 33 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M31.5 16.4019C33.5 17.5566 33.5 20.4434 31.5 21.5981L4.5 37.1865C2.5 38.3412 1.98328e-06 36.8979 2.08423e-06 34.5885L3.44702e-06 3.41154C3.54796e-06 1.10214 2.5 -0.341234 4.5 0.813466L31.5 16.4019Z" fill="#977ED7"/>
+                    </svg>
+                </div>
+                :<div style={{"margin-left": "20px", display:"inline"}}>
+                    <svg className={'StopButton'}onClick={player ? player.stop : () => {}} width="23" height="23" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="35" height="35" rx="3" fill="#D77E8E"/>
+                    </svg>
+                </div>}
+                <SheetEditControl isBeingEdited={isBeingEdited}/>
+                {isBeingEdited
+                ?<div
+                    className={"sheet-mode-button view"}
+                    onClick={() => setIsBeingEdited(false)}
+                    >View
+                </div>:<div
+                    className={"sheet-mode-button edit"}
+                    onClick={() => setIsBeingEdited(true)}
+                    >Edit
+                </div>}
             </div>
-            :<div style={{"margin-left": "20px", display:"inline"}}>
-                <svg className={'StopButton'}onClick={player ? player.stop : () => {}} width="23" height="23" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="35" height="35" rx="3" fill="#D77E8E"/>
-                </svg>
-            </div>}
             <AlwaysScrollSection>
             <div id="sheetwrapperwrapper" style={{ "justify-content":"start"}}>
                 <SheetWrapper id="sheetwrapper">

@@ -188,6 +188,7 @@
 .Sheet{
     align-items: center;
     justify-content: center;
+    overflow-y: auto;
 }
 
 .PlayButton,
@@ -355,4 +356,67 @@
     background: rgb(94, 94, 94);
     font-family: 'Roboto';
     font-size: 1rem;
+}
+
+.sheet-menu-bar {
+    display: inline;
+}
+
+.sheet-mode-button {
+    float: right;
+    display: inline;
+    margin-right: 10px;
+}
+
+.sheet-mode-button.view {
+    background: lightgreen;
+}
+
+.sheet-mode-button.edit {
+    background: skyblue;
+}
+
+.sheet-edit-control-button {
+    background: rgb(188, 169, 196);
+    margin-left: 10px;
+    display: inline;
+}
+
+.sheet-edit-control-dropup .button {
+    background-color: #3498DB;
+    color: white;
+    padding: 20px;
+    font-size: 16px;
+    border: none;
+  }
+
+.sheet-edit-control-dropup {
+    position: relative;
+    display: inline;
+}
+
+.sheet-edit-control-dropup .content {
+    display: none;
+    position: absolute;
+    background-color: #f1f101;
+    min-width: 160px;
+    bottom: 50px;
+    z-index: 1;
+}
+
+.sheet-edit-control-dropup .content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.sheet-edit-control-dropup .content a:hover {background-color: #ccc}
+
+.sheet-edit-control-dropup:hover .content {
+    display: block;
+}
+
+.sheet-edit-control-dropup:hover .button {
+    background-color: #2980B9;
 }
