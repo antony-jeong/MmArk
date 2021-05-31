@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../stylesheets/Community.css';
 
 class Community extends Component {
      state = {
@@ -31,22 +32,28 @@ class Community extends Component {
 
     render() {
         return (
-            <div>
+            <div className="listWrapper">
                 {this.state.articles.map(item => (
-                    <div key={item.id}>
-                        <h1>Title: {item.title}</h1>
-                        <h2>{item.created_time} || {item.modified_time}</h2>
-                        <h3>Desc: {item.description}</h3>
-                        <h4>Sheet: {item.sheet_ds}</h4>
-                        <h4>Author: {this.state.users[item.author-1]!=undefined? this.state.users[item.author-1].username: ""}</h4>
-                        <h4>Tags: {item.tags.length > 0 ? item.tags.map(i => (
-                            this.state.tags[i-1]!=undefined? this.state.tags[i - 1].name + " " : ""
-                        )) : ""}</h4>
-                        <h4>Favorites: {item.total_favorites.length > 0 ? item.total_favorites.map(i => (
-                            this.state.users[i-1]!=undefined? this.state.users[i - 1].username + " " : ""
-                        )) : ""}
-                        </h4>
-                        <hr></hr>
+                    <div key={item.id} className="itemWrapper">
+                        <div className="authorWrapper">Author: {this.state.users[item.author-1]!=undefined? this.state.users[item.author-1].username: ""}</div>
+                        <div className="titleWrapper">
+                            <div className="title">
+                            {item.title}
+                            </div>
+                            <div className="date">{item.created_time} || {item.modified_time}</div>
+                        </div>
+                        <div className="descWrapperWrapper">
+                            <div className="descWrapper">
+                                <div className="sheetWrapper">Sheet: {item.sheet_ds}</div>
+                                <div className="favWrapper">Favorites: {item.total_favorites.length}</div>
+                                <div className="tagWrapper">{item.tags.length > 0 ? item.tags.map(i => (
+                                    <div className="tag">#{this.state.tags[i - 1] != undefined ? this.state.tags[i - 1].name + " " : ""}</div>
+                                    )) : ""}
+                                </div>
+                                <div className="descButtonWrapper">Show Description</div>
+                            </div>
+                            <div className="descriptionWrapper hidden">Desc: {item.description}</div>
+                        </div>
                     </div>
                     // console.log(this.state.users[iStem.author-1]!=undefined? this.state.users[item.author-1]: "")
                 ))}
