@@ -1,5 +1,6 @@
 import React, { useState, useEffect, memo } from 'react';
 import styled from "styled-components";
+import { debounce } from 'lodash';
 
 import "./sheet/StyleSheet.css";
 
@@ -17,7 +18,6 @@ import SheetPlayer from "../components/audio-parts/SheetPlayer";
 import "./utils/calcSheetObjectMargin";
 import calcSheetObjectMargin from './utils/calcSheetObjectMargin';
 
-import {ReactComponent as Cursor} from "./musical_symbols_svg/cursor.svg";
 
 // dataStructure
     // objectType: (char) 
@@ -95,7 +95,7 @@ const SheetWrapper = styled.div`
     zoom: 1;
     overflow-inline: scroll;
     display: inline-block;
-    width: 1100px;
+
     `;
 
 //      background: rgba(255, 255, 255, 0.4);
@@ -152,26 +152,44 @@ const Sheet = ({ dataStructure, className, cursorIndex, cursorHeight, isBeingEdi
     const changeHighlight = (index) => setPlayingIndex(index);
     const changeTripletHighlight = (tripletIndex) => setPlayingTripletIndex(tripletIndex);
 
+    const [minMargin, setMinMargin] = useState(500);
+
+
+    const handleResize = debounce(() => {
+        setMinMargin(document.getElementById("sheet").clientWidth-30);
+      }, 100);
+
+    useEffect(() => {
+        setMinMargin(document.getElementById("sheet").clientWidth-30)
+        window.addEventListener("resize", handleResize)
+        return() =>{
+            window.removeEventListener("resize", handleResize)
+        }
+
+    }, [dataStructure])
     const [margin, setMargin] = useState(false);
     useEffect(() => {
-        setMargin(calcSheetObjectMargin(dataStructure, 1095));
-    }, [dataStructure]);
+        setMargin(calcSheetObjectMargin(dataStructure, minMargin));
+    }, [dataStructure, minMargin]);
+    //document.getElementById("sheetwrapper").clientWidth
     //document.getElementById("sheetwrapper").clientWidth-2
     const data = dataStructure;
+    var trebled = true;
     const returnValue = data.map((obj, index) => {
         switch (obj.objectType) {
             case "c":
                 return (<Clef obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited ? cursorHeight : 50} />)
             case "t":
+                trebled = obj.treble;
                 return (<Time obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
             case "k":
-                return (<Key obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
+                return (<Key obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} treble={trebled} />)
             case "b":
                 return (<Barline obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
             case "n":
-                return (<Note obj={obj} key={index} isPlaying={index === playingIndex} margin = {margin ? margin[index] : 0} ccursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
+                return (<Note obj={obj} key={index} isPlaying={index === playingIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
             case "p":
-                return (<Bpm obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index  && isBeingEdited ? cursorHeight : 50} />)
+                return (<Bpm obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} isBeingEdited={isBeingEdited}/>)
             case "r":
                 return (<Triplet obj={obj} key={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
             default:
@@ -179,21 +197,22 @@ const Sheet = ({ dataStructure, className, cursorIndex, cursorHeight, isBeingEdi
         }
     });
     return (
-        <div className={`${className}`} style={{"overflow-x":"auto", "overflow-y":"hidden", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
+        <div className={`${className}`} id="sheet" style={{"overflow-x":"auto", "overflow-y":"hidden", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
+            
             {!isPlaying
-            ?<div style={{display:"inline"}}>
-                <svg className={'PlayButton'} onClick={player ? player.play : () => {}} width="33" height="38" viewBox="0 0 33 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            ?<div style={{"margin-left": "20px", display:"inline"}}>
+                <svg className={'PlayButton'} onClick={player ? player.play : () => {}} width="20" height="23" viewBox="0 0 33 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M31.5 16.4019C33.5 17.5566 33.5 20.4434 31.5 21.5981L4.5 37.1865C2.5 38.3412 1.98328e-06 36.8979 2.08423e-06 34.5885L3.44702e-06 3.41154C3.54796e-06 1.10214 2.5 -0.341234 4.5 0.813466L31.5 16.4019Z" fill="#977ED7"/>
                 </svg>
             </div>
-            :<div style={{display:"inline"}}>
-                <svg className={'StopButton'}onClick={player ? player.stop : () => {}} width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            :<div style={{"margin-left": "20px", display:"inline"}}>
+                <svg className={'StopButton'}onClick={player ? player.stop : () => {}} width="23" height="23" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="35" height="35" rx="3" fill="#D77E8E"/>
                 </svg>
             </div>}
             <AlwaysScrollSection>
-            <div style={{ "justify-content":"start"}}>
-                <SheetWrapper >
+            <div id="sheetwrapperwrapper" style={{ "justify-content":"start"}}>
+                <SheetWrapper id="sheetwrapper">
                     {returnValue}
                 </SheetWrapper>
             </div>

@@ -42,6 +42,9 @@ const Main = () => {
           <GameSelectButton /*src={'LearnRoadmapSign'}*/ name={t("main.name_roadmap")}>
             <Trans i18nKey="main.desc_roadmap"/>  
           </GameSelectButton>
+          <GameSelectButton src={"Community"} name={t("main.name_community")}>
+            <Trans i18nKey="main.desc_community"/>
+          </GameSelectButton>
         </div>
       </div>
     );

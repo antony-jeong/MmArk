@@ -1,6 +1,9 @@
 import React from 'react';
 import "./StyleSheet.css";
 
+import {ReactComponent as Cursor} from "../musical_symbols_svg/cursor.svg";
+import {ReactComponent as CursorBig} from "../musical_symbols_svg/cursor_big.svg";
+
 // objectType: (char) 
         // c - clef
         // t - time
@@ -29,36 +32,96 @@ import "./StyleSheet.css";
 
 
 
-const BarlineObj = ({ className, barlineDecoration, margin }) => {
+const BarlineObj = ({ className, barlineDecoration, margin, cursorHeight }) => {
     switch (className) {
         case "b":
-            return (<div className="bar" style = {{width: "1px", display: "inline", "margin-right": margin}}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
+            return (<div className="bar" style = {{width: "1px", display: "inline", "margin-right": margin}}>
+                        <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/>
+                        <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+                            <div>
+                                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                            </div>
+                        </div>
+                        <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+                            <div>
+                                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                            </div>
+                        </div>
+                    </div>)
         case "o":
-            return (<div className="open" style = {{width: "14px", display: "inline", "margin-right": margin }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_repeat_open.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
+            return (<div className="open" style = {{width: "14px", display: "inline", "margin-right": margin }}>
+                        <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_repeat_open.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/>
+                        <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+                            <div>
+                                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                            </div>
+                        </div>
+                        <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+                            <div>
+                                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                            </div>
+                        </div>
+                    </div>)
         case "c":
-            return (<div className="close" style = {{width: "14px", display: "inline", "margin-right": margin }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_repeat_close.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
+            return (<div className="close" style = {{width: "14px", display: "inline", "margin-right": margin }}>
+                        <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_repeat_close.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/>
+                        <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+                            <div>
+                                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                            </div>
+                        </div>
+                        <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+                            <div>
+                                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                            </div>
+                        </div>
+                    </div>)
         case "d":
-            return (<div className="double" style = {{width: "3px", display: "inline", "margin-right": margin }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_double.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
+            return (<div className="double" style = {{width: "3px", display: "inline", "margin-right": margin }}>
+                        <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_double.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/>
+                        <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+                            <div>
+                                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                            </div>
+                        </div>
+                        <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+                            <div>
+                                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                            </div>
+                        </div>
+                    </div>)
         case "t":
-            return (<div className="terminate" style = {{width: "6px", display: "inline", "margin-right": margin }}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_terminal.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/></div>)
+            return (<div className="terminate" style = {{width: "6px", display: "inline", "margin-right": margin }}>
+                        <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_terminal.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/>
+                        <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
+                            <div>
+                                {cursorHeight < 50 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                            </div>
+                        </div>
+                        <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px"}}>
+                            <div>
+                                {cursorHeight < 50 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                            </div>
+                        </div>
+                    </div>)
         default:
             return (<div> Invalid Object Obj</div>)
     };
 }
 
 
-const Barline = ({obj, margin}) => {
+const Barline = ({obj, margin, cursorHeight}) => {
     switch (obj.type) {
         case "b":
-            return (<BarlineObj className={"b"} barlineDecoration={ obj.barlineDecoration} style = {{width: "1px"}} margin = {margin}/>)
+            return (<BarlineObj className={"b"} barlineDecoration={ obj.barlineDecoration} style = {{width: "1px"}} margin = {margin} cursorHeight = {cursorHeight}/>)
         case "o":
-            return (<BarlineObj className={"o"} barlineDecoration={ obj.barlineDecoration} style = {{width: "14px"}} margin = {margin}/>)
+            return (<BarlineObj className={"o"} barlineDecoration={ obj.barlineDecoration} style = {{width: "14px"}} margin = {margin} cursorHeight = {cursorHeight}/>)
         case "c":
-            return (<BarlineObj className={"c"} barlineDecoration={ obj.barlineDecoration} style = {{width: "14px"}} margin = {margin}/>)
+            return (<BarlineObj className={"c"} barlineDecoration={ obj.barlineDecoration} style = {{width: "14px"}} margin = {margin} cursorHeight = {cursorHeight}/>)
         case "d":
-            return (<BarlineObj className={"d"} barlineDecoration={ obj.barlineDecoration} style = {{width: "3px"}} margin = {margin}/>)
+            return (<BarlineObj className={"d"} barlineDecoration={ obj.barlineDecoration} style = {{width: "3px"}} margin = {margin} cursorHeight = {cursorHeight}/>)
         case "t":
-            return (<BarlineObj className={"t"} barlineDecoration={ obj.barlineDecoration} style = {{width: "6px"}} margin = {margin}/>)
+            return (<BarlineObj className={"t"} barlineDecoration={ obj.barlineDecoration} style = {{width: "6px"}} margin = {margin} cursorHeight = {cursorHeight}/>)
         default:
             return (<div>Invalid Object</div>)
     }
