@@ -161,7 +161,7 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
         switch (pageData.inputMode) {
             case ("text"):
                 return (<div className="textInputWrapper">
-                    <input type="text" id="textInput" autoComplete="off"/>
+                    <input type="text" id="textInput" autoComplete="off" onKeyPress={(e)=>{if (e.key==='Enter') handleOnClick()}}/>
                     <button type="submit" id="textButton" onClick={handleOnClick}>{t("learn.submit")}</button>
                 </div>);
             case ("oneKey"):
