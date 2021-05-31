@@ -7,7 +7,10 @@ import LearnInterval from "./pages/LearnInterval";
 import LearnChord from "./pages/LearnChord";
 import LearnRoadmapSign from "./pages/LearnRoadmapSign";
 import Community from "./pages/Community";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Main from "./pages/Main";
+import {Link} from 'react-router-dom';
 
 function App() {
     return (
@@ -19,6 +22,8 @@ function App() {
                 <Route path="/LearnChord/:pagenum" component={LearnChord}/>
                 <Route path="/LearnRoadmapSign/:pagenum" component={LearnRoadmapSign} />
                 <Route path="/Community" component={Community} />
+                <Route path="/login" component={Login} />
+                <Route path="/signup" component={Signup}/>
                 <Route path="/" component={Main} />
             </Switch>
         </div>

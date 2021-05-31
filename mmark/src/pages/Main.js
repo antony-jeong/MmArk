@@ -1,7 +1,9 @@
 import React from 'react';
 import GameSelectButton from '../components/GameSelectButton';
+import LoginNav from "../components/LoginNav";
 import Logo from '../components/Logo';
 import { Trans, useTranslation } from 'react-i18next';
+import {Link} from 'react-router-dom';
 import '../stylesheets/Main.css';
 
 const lngs = {
@@ -18,6 +20,7 @@ const Main = () => {
           <Logo className={'Main-Logo'} isLink={false}/>
           <div className={'Learn-Music-by-Games'}>{t("main.slogan")}</div>
           <div className={'Made-by'}>{t("main.madeby")} ∙ <a href="https://github.com/antony-jeong/MmArk" target="_blank">GitHub</a></div>
+          <LoginNav/>
           <div className={'Language-Select'}>
             {Object.keys(lngs).map((lng) => (
               <button key={lng} className={i18n.language === lng ? "selected" : ""} type="submit" onClick={() => i18n.changeLanguage(lng)}>
@@ -44,6 +47,9 @@ const Main = () => {
           </GameSelectButton>
           <GameSelectButton src={"Community"} name={t("main.name_community")}>
             <Trans i18nKey="main.desc_community"/>
+          </GameSelectButton>
+          <GameSelectButton src={"login"} name={t("main.name_login")}>
+            <Trans i18nKey="main.desc_login"/>
           </GameSelectButton>
         </div>
       </div>

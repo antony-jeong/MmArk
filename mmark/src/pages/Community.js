@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
 import '../stylesheets/Community.css';
 
+const handleOnClick = function () {
+    const descButtonWrapper = document.getElementById("descButtonWrapper");
+    const descriptionWrapper = document.getElementById("descriptionWrapper");
+    if (descButtonWrapper.classList.contains("show")) {
+        descButtonWrapper.classList.remove("show");
+        descButtonWrapper.classList.add("hide");
+        descriptionWrapper.classList.remove("hidden");
+        descButtonWrapper.innerText = "Hide Description";
+    } else if (descButtonWrapper.classList.contains("hide")) {
+        descButtonWrapper.classList.remove("hide");
+        descButtonWrapper.classList.add("show");
+        descButtonWrapper.innerText = "Show Description";
+        descriptionWrapper.classList.add("hidden");
+    }
+}
+
 class Community extends Component {
-     state = {
+    state = {
         articles: [],
         users: [],
         tags: []
@@ -28,7 +44,9 @@ class Community extends Component {
         } catch (e) {
             console.log(e);
         }
-    }
+    };
+
+    
 
     render() {
         return (
@@ -47,12 +65,12 @@ class Community extends Component {
                                 <div className="sheetWrapper">Sheet: {item.sheet_ds}</div>
                                 <div className="favWrapper">Favorites: {item.total_favorites.length}</div>
                                 <div className="tagWrapper">{item.tags.length > 0 ? item.tags.map(i => (
-                                    <div className="tag">#{this.state.tags[i - 1] != undefined ? this.state.tags[i - 1].name + " " : ""}</div>
+                                    <div className="tag">#{this.state.tags[i - 1] != undefined ? this.state.tags[i - 1].name + " " : ""} / color: {this.state.tags[i - 1] != undefined ? this.state.tags[i - 1].color + " " : ""}</div>
                                     )) : ""}
                                 </div>
-                                <div className="descButtonWrapper">Show Description</div>
+                                <div className="descButtonWrapper show" id="descButtonWrapper" onClick={handleOnClick}>Show Description</div>
                             </div>
-                            <div className="descriptionWrapper hidden">Desc: {item.description}</div>
+                            <div className="descriptionWrapper hidden" id="descriptionWrapper">Desc: {item.description}</div>
                         </div>
                     </div>
                     // console.log(this.state.users[iStem.author-1]!=undefined? this.state.users[item.author-1]: "")
