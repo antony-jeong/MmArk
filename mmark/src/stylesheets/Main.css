@@ -1,4 +1,4 @@
-@media screen and (min-width: 900px) and (min-height: 650px) {
+@media screen and (min-width: 900px){
     
     html,
     body {
@@ -142,7 +142,7 @@
 
 }
 
-@media screen and (max-width: 900px) and (min-width: 360px) and (min-height: 650px) {
+@media screen and (max-width: 900px){
     html,
     body {
         display: flex;
@@ -219,8 +219,8 @@
         align-items: center;
         justify-content: center;
         zoom: 0.4;
-        width: 340px;
-        height: 140px;
+        width: 300px;
+        height: 120px;
         margin: 10px auto;
         border-radius: 10px;
         border: solid 2px #ffffff;
@@ -229,7 +229,7 @@
         text-decoration: none;
         color: #ffffff;
         font-family: Roboto;
-        font-size: 30px;
+        font-size: 35px;
         font-weight: 300;
         transition: width .4s;
         cursor: pointer;
@@ -277,5 +277,32 @@
 
     .unselected {
         opacity: 70%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .Main-Logo{
+        zoom: 0.5;
+    }
+    .Language-Select{
+        zoom: 0.8;
+    }
+    .GameSelectButton{
+        font-size: 30px;
+        width: 250px;
+        height: 100px;
+    }
+}
+@media screen and (max-height: 600px){
+    .Main-Logo{
+        zoom: 0.5;
+    }
+    .Language-Select{
+        zoom: 0.8;
+    }
+    .GameSelectButton{
+        font-size: 30px;
+        width: 250px;
+        height: 100px;
     }
 }
