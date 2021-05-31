@@ -39,7 +39,7 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-PROJECT_APPS=["users.apps.UsersConfig",]
+PROJECT_APPS=["users.apps.UsersConfig","articles.apps.ArticlesConfig"]
 
 THIRD_PARTY_APPS=["rest_framework", "corsheaders",]
 
@@ -113,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'ASIA/SEOUL'
 
 USE_I18N = True
 

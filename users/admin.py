@@ -18,6 +18,7 @@ class CustomUserAdmin(UserAdmin):
                     "desc",
                     "language",
                     "superhost",
+                    "favorites"
                 )
             },
         ),
