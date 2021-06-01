@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../stylesheets/Community.css';
 
 class Community extends Component {
@@ -32,6 +33,7 @@ class Community extends Component {
 
     render() {
         return (
+            <>
             <div className="listWrapper">
                 {this.state.articles.map(item => (
                     <div key={item.id} className="itemWrapper">
@@ -58,6 +60,8 @@ class Community extends Component {
                     // console.log(this.state.users[iStem.author-1]!=undefined? this.state.users[item.author-1]: "")
                 ))}
             </div>
+            <Link to='/Community/newPost'>Create a new Sheet</Link>
+            </>
         );
     }
 }
