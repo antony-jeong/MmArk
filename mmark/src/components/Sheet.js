@@ -252,7 +252,7 @@ const Sheet = ({ dataStructure, className }) => {
                 Reset
             </div>
         </div>
-        <div className={`${className}`} id="sheet" style={{"overflow-x":"auto", "overflow-y":"visible", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
+        <div className={`${className}`} id="sheet" style={{display: "flex", "overflow-x":"auto", "overflow-y":"visible", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
             <AlwaysScrollSection>
             <div id="sheetwrapperwrapper" style={{ "justify-content":"start"}}>
                 <SheetWrapper id="sheetwrapper">

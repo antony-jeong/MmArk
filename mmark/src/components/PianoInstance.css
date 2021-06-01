@@ -14,7 +14,9 @@
   justify-content: center;
   margin: 5vh auto;
   padding: 0 auto;
-  overflow: scroll;
+  overflow: auto visible;
+  white-space:nowrap;
+  -webkit-appearance: none
 }
 
 .piano-black-key-wrapper {
