@@ -8,6 +8,7 @@ import LearnChord from "./pages/LearnChord";
 import LearnRoadmapSign from "./pages/LearnRoadmapSign";
 import Community from "./pages/Community";
 import Main from "./pages/Main";
+import NewPost from "./pages/NewPost";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/LearnInterval/:pagenum" component={LearnInterval}/>
                 <Route path="/LearnChord/:pagenum" component={LearnChord}/>
                 <Route path="/LearnRoadmapSign/:pagenum" component={LearnRoadmapSign} />
+                <Route path="/Community/NewPost" component={NewPost} />
                 <Route path="/Community" component={Community} />
                 <Route path="/" component={Main} />
             </Switch>
