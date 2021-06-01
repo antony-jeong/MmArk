@@ -3,6 +3,10 @@ html {
     background: linear-gradient(to top, #3f4454, #0f0930);
 }
 
+.logo {
+    zoom: 0.5;
+}
+
 .listWrapper {
     width: 55vw;
     height: 80vh;

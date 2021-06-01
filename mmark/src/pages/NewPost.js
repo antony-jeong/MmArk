@@ -1,5 +1,7 @@
 import Sheet from '../components/Sheet';
 import React, { Component } from 'react';
+import Logo from '../components/Logo';
+import { Link } from 'react-router-dom';
 
 // function getCookie(name) {
 //     var cookieValue = null;
@@ -23,21 +25,28 @@ class NewPost extends Component {
     state = {
         'title': ' ',
         'description': ' ',
-        'sheet_ds': '[]'
+        'sheet_ds': JSON.stringify([])
     };
+
+    updateDS = (ds) =>{
+        this.setState(prevstate => {
+            const newState = { ...prevstate };
+            newState['sheet_ds'] = JSON.stringify(ds);
+            return newState;
+        });
+    }
 
     handleChange = e => {
         const name = e.target.name;
         const value = e.target.value;
         this.setState(prevstate => {
-          const newState = { ...prevstate };
-          newState[name] = value;
-          return newState;
+            const newState = { ...prevstate };
+            newState[name] = value;
+            return newState;
         });
     };
 
     handlePost = (e, data) => {
-        console.log(JSON.stringify(data));
         e.preventDefault();
         fetch('http://localhost:8000/plz/', {
             method: 'POST',
@@ -54,90 +63,19 @@ class NewPost extends Component {
 
     render() {
         return (
+            <>
+            <Logo isLink={true}/>
+            <Link to='/Community'>Community</Link>
             <form onSubmit={(e) => {this.handlePost(e, this.state)}}>
                 제목<br/>
                 <input type={"text"} name={"title"} onChange={this.handleChange}/><br/>
                 내용<br/>
-                <Sheet className="Sheet" dataStructure={[{
-                        "objectType": "p",
-                        "bpm": 360,
-                        "bpmUnit8": 2
-                    }, {
-                        "objectType": "c",
-                        "treble": true
-                    }, {
-                        "objectType": "k",
-                        "key": 0
-                    }, {
-                        "objectType": "n",
-                        "length": 2,
-                        "extend": false,
-                        "rest": false,
-                        "height": [-2],
-                        "accidental": ["x"],
-                        "noteDecoration": ["x"]
-                    }, {
-                        "objectType": "n",
-                        "length": 2,
-                        "extend": false,
-                        "rest": false,
-                        "height": [-1],
-                        "accidental": ["x"],
-                        "noteDecoration": ["x"]
-                    }, {
-                        "objectType": "n",
-                        "length": 2,
-                        "extend": false,
-                        "rest": false,
-                        "height": [0],
-                        "accidental": ["x"],
-                        "noteDecoration": ["x"]
-                    }, {
-                        "objectType": "n",
-                        "length": 2,
-                        "extend": false,
-                        "rest": false,
-                        "height": [1],
-                        "accidental": ["x"],
-                        "noteDecoration": ["x"]
-                    }, {
-                        "objectType": "n",
-                        "length": 2,
-                        "extend": false,
-                        "rest": false,
-                        "height": [2],
-                        "accidental": ["x"],
-                        "noteDecoration": ["x"]
-                    }, {
-                        "objectType": "n",
-                        "length": 2,
-                        "extend": false,
-                        "rest": false,
-                        "height": [3],
-                        "accidental": ["x"],
-                        "noteDecoration": ["x"]
-                    }, {
-                        "objectType": "n",
-                        "length": 2,
-                        "extend": false,
-                        "rest": false,
-                        "height": [4],
-                        "accidental": ["x"],
-                        "noteDecoration": ["x"]
-                    }, {
-                        "objectType": "n",
-                        "length": 2,
-                        "extend": false,
-                        "rest": false,
-                        "height": [5],
-                        "accidental": ["x"],
-                        "noteDecoration": ["x"]
-                    }
-                ]} name={"sheet_ds"}/>
+                <Sheet className="Sheet" dataStructure={JSON.parse(this.state.sheet_ds)} name={"sheet_ds"} updateDS={this.updateDS}/>
                 description<br/>
                 <textarea rows={"10"} cols={"50"} name={"description"} onChange={this.handleChange}></textarea><br/>
                 <input type={"submit"} value={"Post"}/>
             </form>
+            </>
         );
     }
 }

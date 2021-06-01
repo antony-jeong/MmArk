@@ -117,7 +117,7 @@ const StyledAlwaysScrollSection = styled.div`
     }
   `;
 
-const Sheet = ({ dataStructure, className }) => {
+const Sheet = ({ dataStructure, className, updateDS }) => {
     const [cursorIndex, setCursorIndex] = useState(false);
     const propSetCursorIndex = (i) => setCursorIndex(i);
     const [cursorHeight, setCursorHeight] = useState(0);
@@ -231,7 +231,7 @@ const Sheet = ({ dataStructure, className }) => {
                 {isBeingEdited
                 ?<div
                     className={"sheet-mode-button view"}
-                    onClick={() => setIsBeingEdited(false)}
+                    onClick={() => {setIsBeingEdited(false); if(updateDS) updateDS(ds);}}
                     >View
                 </div>:<div
                     className={"sheet-mode-button edit"}

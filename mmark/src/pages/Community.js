@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Logo from '../components/Logo';
+import Sheet from '../components/Sheet';
 import '../stylesheets/Community.css';
 
 class Community extends Component {
@@ -16,6 +18,7 @@ class Community extends Component {
             this.setState({
                 articles
             });
+            articles.map((item)=>console.log(item.sheet_ds));
             const res_users = await fetch('http://127.0.0.1:8000/api/users');
             const users = await res_users.json();
             this.setState({
@@ -34,6 +37,7 @@ class Community extends Component {
     render() {
         return (
             <>
+            <Logo className="logo" isLink={true} />
             <div className="listWrapper">
                 {this.state.articles.map(item => (
                     <div key={item.id} className="itemWrapper">
@@ -46,7 +50,9 @@ class Community extends Component {
                         </div>
                         <div className="descWrapperWrapper">
                             <div className="descWrapper">
-                                <div className="sheetWrapper">Sheet: {item.sheet_ds}</div>
+                                <div className="sheetWrapper">
+                                    Sheet: <Sheet dataStructure={JSON.parse(item.sheet_ds)}></Sheet>
+                                </div>
                                 <div className="favWrapper">Favorites: {item.total_favorites.length}</div>
                                 <div className="tagWrapper">{item.tags.length > 0 ? item.tags.map(i => (
                                     <div className="tag">#{this.state.tags[i - 1] != undefined ? this.state.tags[i - 1].name + " " : ""}</div>
