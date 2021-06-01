@@ -11,7 +11,7 @@ const wClef = (b) => (b ? 27 : 32);
 const wTime = 27;
 const wBPM = 0;
 const wBar = 1;
-const wDoubleBar = 3;
+const wDoubleBar = 4;
 const wTermBar = 6;
 
 const wKey = (key) => (key * wAcc);
