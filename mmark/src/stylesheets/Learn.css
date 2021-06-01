@@ -195,18 +195,19 @@ body {
 .Sheet{
     align-items: center;
     justify-content: center;
+    overflow-y: auto;
 }
 
 .PlayButton,
 .StopButton{
-    cursor: pointer;
+    transform: translateX(-10px) translateY(2px);
     opacity: 0.8;
     transition: opacity 0.2s;
 }
 
 .PlayButton:hover,
 .StopButton:hover{
-    transition: opacity 0.4s;
+    transition: opacity 0.2s;
     opacity: 1;
 }
 
@@ -365,6 +366,133 @@ body {
     background: rgb(94, 94, 94);
     font-family: 'Roboto';
     font-size: 1rem;
+}
+
+.sheet-menu-bar {
+    height: 40px;
+    justify-content: space-between;
+    align-items: flex-start;
+    display: flex;
+    padding-left: 25px;
+}
+
+.sheet-mode-button {
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    margin-left: 10px;
+    border: 1px solid black;
+}
+
+.sheet-mode-button.view {
+    background: lightgreen;
+}
+
+.sheet-mode-button.edit {
+    background: skyblue;
+}
+
+.sheet-edit-control-button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    background: rgb(188, 169, 196);
+    display: inline;
+}
+
+.sheet-edit-control-button.chosen {
+    background: rgb(168, 149, 176);
+}
+
+.sheet-edit-control-dropup .button {
+    background-color: #f1f1f1;
+    height: 30px;
+    width: 30px;
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border: 1px solid black;
+  }
+
+.sheet-edit-control-dropup {
+    position: relative;
+    display: inline-block;
+}
+
+.sheet-edit-control-dropup .content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    bottom: 32px;
+    z-index: 1;
+}
+
+.sheet-edit-control-dropup .content .option {
+    width: 30px;
+    height: 30px;
+    border-top: 1px solid black;
+    color: black;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sheet-edit-control-dropup .content .option:hover {background-color: #ccc}
+
+.sheet-edit-control-dropup:hover .content {
+    display: block;
+}
+
+.sheet-edit-control-dropup .button:hover {
+    background-color: #ccc;
+}
+
+.sheet-edit-viewmode-placeholder {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.sheet-audio-button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sheet-edit-control-bundle {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    margin-left: 10px;
+}
+
+.sheet-edit-control-showed {
+    display: flex;
+}
+
+.sheet-edit-control-hidden {
+    display: none;
+}
+
+.sheet-menu-section-left {
+    display: flex;
+}
+
+.sheet-reset-button {
+    background-color: #ffa287;
+    width: 60px;
+    height: 30px;
+    border: 1px solid black;
+    text-align: center;
+    margin-right: 10px;
 }
 
 @media screen and (max-width: 900px){
