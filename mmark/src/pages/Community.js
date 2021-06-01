@@ -73,7 +73,6 @@ class Community extends Component {
                             <div className="descriptionWrapper hidden" id="descriptionWrapper">Desc: {item.description}</div>
                         </div>
                     </div>
-                    // console.log(this.state.users[iStem.author-1]!=undefined? this.state.users[item.author-1]: "")
                 ))}
             </div>
         );

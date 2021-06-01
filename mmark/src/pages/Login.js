@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Nav from '../components/LoginNav';
+import LoginNav from '../components/LoginNav';
 import LoginForm from '../components/LoginForm';
-import SignupForm from '../components/SignupForm';
+import { withRouter } from 'react-router-dom';
+import { withCookies, Cookies } from "react-cookie";
 
 
 function handleErrors(response) {
@@ -11,21 +12,28 @@ function handleErrors(response) {
         return response;
     }
 
+
 class Login extends Component {
   constructor(props) {
     super(props);
+    const { cookies } = props;
     this.state = {
-      displayed_form: '',
-      logged_in: localStorage.getItem('token') ? true : false,
-      username: ''
+      //logged_in: localStorage.getItem('token') ? true : false,
+      logged_in: cookies.get('token') ? true : false,
+      username: cookies.get('name')
     };
   }
 
+    handleRoute() {
+        this.props.history.push('/');
+    }
+    
   componentDidMount() {
+    const { cookies } = this.props;
     if (this.state.logged_in) {
       fetch('http://localhost:8000/api/test/current_user/', {
         headers: {
-          Authorization: `JWT ${localStorage.getItem('token')}`
+          Authorization: `JWT ${cookies.get('token')}`
         }
       })
         .then(res => res.json())
@@ -34,10 +42,9 @@ class Login extends Component {
         });
     }
 }
-    
-    
 
   handle_login = (e, data) => {
+    const { cookies } = this.props;
     e.preventDefault();
       fetch('http://localhost:8000/token-auth/', {
           method: 'POST',
@@ -48,20 +55,24 @@ class Login extends Component {
       }).then(handleErrors)
           .then(res => res.json())
           .then(json => {
-              localStorage.setItem('token', json.token);
+              //localStorage.setItem('token', json.token);
+            cookies.set('name', json.user.username, { path: '/' });
+            cookies.set('token', json.token, { path: '/' });
               if (typeof json.user != "undefined") {
                   this.setState({
                       logged_in: true,
-                      displayed_form: '',
                       username: json.user.username
                   });
+                  this.handleRoute();
               }
-          }).catch(function (error) {
+          })
+          .catch(function (error) {
               console.log(error);
           });
   };
 
   handle_signup = (e, data) => {
+    const { cookies } = this.props;
     e.preventDefault();
     fetch('http://localhost:8000/api/test/users/', {
       method: 'POST',
@@ -72,19 +83,17 @@ class Login extends Component {
     })
       .then(res => res.json())
       .then(json => {
-        localStorage.setItem('token', json.token);
+        // localStorage.setItem('token', json.token);
+        cookies.set('name', json.user.username, { path: '/' });
+        cookies.set('token', json.token, { path: '/' });
         this.setState({
           logged_in: true,
-          displayed_form: '',
           username: json.username
         });
       });
   };
 
-  handle_logout = () => {
-    localStorage.removeItem('token');
-    this.setState({ logged_in: false, username: '' });
-  };
+  
 
   display_form = form => {
     this.setState({
@@ -92,35 +101,22 @@ class Login extends Component {
     });
   };
 
-  render() {
-    let form;
-    switch (this.state.displayed_form) {
-      case 'login':
-        form = <LoginForm handle_login={this.handle_login} />;
-        break;
-      case 'signup':
-        form = <SignupForm handle_signup={this.handle_signup} />;
-        break;
-      default:
-        form = null;
+    render() {
+        return (
+            <div className="App">
+                <LoginNav
+                logged_in={this.state.logged_in}
+                history={this.props.history}
+                />
+                <LoginForm handle_login={this.handle_login} />
+                <h3>
+                    {this.state.logged_in
+                        ? `Hello, ${this.state.username}`
+                        : 'Please Log In'}
+                </h3>
+            </div>
+        );
     }
-
-    return (
-      <div className="App">
-        <Nav
-          logged_in={this.state.logged_in}
-          display_form={this.display_form}
-          handle_logout={this.handle_logout}
-        />
-        {form}
-        <h3>
-          {this.state.logged_in
-            ? `Hello, ${this.state.username}`
-            : 'Please Log In'}
-        </h3>
-      </div>
-    );
-  }
 }
 
-export default Login;
+export default withCookies(withRouter(Login));

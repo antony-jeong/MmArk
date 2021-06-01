@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
-import { withCookies, Cookies } from "react-cookie";
+import { withRouter, Redirect} from 'react-router';
+import { withCookies, Cookies, useCookies } from "react-cookie";
 
 class Logout extends Component {
     constructor(props) {
-    super(props);
-    this.state = {
-            logged_in: localStorage.getItem('token') ? true : false,
-            username: ''
+        super(props);
+        const { cookies } = props;
+        this.state = {
+            logged_in: cookies.get('token') ? true : false,
+            username: cookies.get('name')
         };
     }
-    
+
+    componentDidMount() {
+        this.handle_logout();
+    }
     handle_logout = () => {
-        localStorage.removeItem('token');
+        const { cookies } = this.props;
+        cookies.remove('token');
+        cookies.remove('name');
         this.setState({ logged_in: false, username: '' });
-        this.props.history.push('/');
+        this.props.history.push("/login");
     };
 
     render() {
-        return (
-            <div>
-                {this.handle_logout()}
-            </div>
-        );
+        return null;
     }
 }
 
-export default Logout;
+export default withCookies(withRouter(Logout));

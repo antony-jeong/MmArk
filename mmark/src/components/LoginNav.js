@@ -1,33 +1,30 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const LoginNav = (props) => {
+const LoginNav = ({logged_in}) => {
     
     const logged_out_nav = (
         <>
-            {/* <Link to = {`/login`} >
+            <Link to = {`/login`} >
                 <button className="loginButton">Log In</button>
             </Link>
             <Link to = {`/signup`} >
                 <button className="signupButton">Sign Up</button>
-            </Link> */}
-            <li onClick={() => props.display_form('login')}>login</li>
-            <li onClick={() => props.display_form('signup')}>signup</li>
+            </Link>
         </>
     )
 
     const logged_in_nav = (
         <>
-            {/* <Link to={`/logout`} >
+            <Link to={`/logout`} >
                 <button className="logoutButton">Log Out</button>
-            </Link> */}
-            <li onClick={props.handle_logout}>logout</li>
+            </Link>
         </>
     )
 
     return (
         <div className={"loginWrapper"}>
-            {props.logged_in ? logged_in_nav : logged_out_nav}
+            {logged_in ? logged_in_nav : logged_out_nav}
         </div>
     );
 };
