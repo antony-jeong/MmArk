@@ -375,7 +375,7 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     display: flex;
-    padding-left: 25px;
+    padding: 0px 20px 0px 20px;
 }
 
 .sheet-mode-button {
@@ -399,7 +399,6 @@ body {
     height: 30px;
     border: 1px solid black;
     background: rgb(188, 169, 196);
-    display: inline;
 }
 
 .sheet-edit-control-button.chosen {
@@ -415,38 +414,37 @@ body {
     justify-content: center;
     display: flex;
     border: 1px solid black;
-  }
+}
 
 .sheet-edit-control-dropup {
     position: relative;
-    display: inline-block;
 }
 
 .sheet-edit-control-dropup .content {
+    transform: translateX(-50%);
+    left: 50%;
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    bottom: 32px;
+    top: 100%;
+    /* bottom: 100%; */
     z-index: 1;
+    outline: 1px red solid;
 }
 
-.sheet-edit-control-dropup .content .option {
-    width: 30px;
-    height: 30px;
-    border-top: 1px solid black;
-    color: black;
-    text-decoration: none;
+.sheet-edit-control-dropup .content .option-cell {
+    background-color: #f1f1f1;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    border: 1px solid black;
+    color: black;
 }
 
-.sheet-edit-control-dropup .content .option:hover {background-color: #ccc}
+.sheet-edit-control-dropup .content .option-cell:hover {background-color: #9f83dd}
 
 .sheet-edit-control-dropup:hover .content {
-    display: block;
+    display: grid;
 }
 
 .sheet-edit-control-dropup .button:hover {
@@ -494,7 +492,6 @@ body {
     height: 30px;
     border: 1px solid black;
     text-align: center;
-    margin-right: 10px;
 }
 
 @media screen and (max-width: 900px){
