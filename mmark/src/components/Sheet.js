@@ -168,11 +168,13 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
 
 
     const handleResize = debounce(() => {
-        setMinMargin(document.getElementById("sheet").clientWidth-31);
-      }, 100);
+        setMinMargin(document.getElementById("top").clientWidth-21);
+        console.log(document.getElementById("top").clientWidth)
+      }, 500);
     
     useEffect(() => {
-        setMinMargin(document.getElementById("sheet").clientWidth-31);
+        setMinMargin(document.getElementById("top").clientWidth-21);
+        console.log(document.getElementById("top").clientWidth)
     }, []);
     useEffect(() => {
         window.addEventListener("resize", handleResize)
@@ -214,8 +216,8 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
         }
     });
     return (
-        <>
-        <div className={"sheet-menu-bar"}>
+        <div id = "top" style = {{overflow: "hidden"}}>
+        <div id = "sheet-menu" className={"sheet-menu-bar"}>
             <div className={"sheet-menu-section-left"}>
                 <div className={"sheet-audio-button"} onClick={!isPlaying ? (player ? player.play : () => {}) : (player ? player.stop : () => {})}>
                     {!isPlaying
@@ -277,7 +279,7 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
             </div>
             </AlwaysScrollSection>
         </div>
-        </>
+        </div>
     );
 };
 
