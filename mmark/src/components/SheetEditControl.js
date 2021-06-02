@@ -394,6 +394,7 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
           {KeySignatureCell(7, "2 / 7 / 3 / 8")}
         </div>
       </div>
+      <span style={{color: "red"}}>*Arrow keys to move cursor</span>
       {/* <div className={"sheet-edit-control-dropup"}>
       <div
           className={"button"+(activeDD==="b"?" chosen":"")}
