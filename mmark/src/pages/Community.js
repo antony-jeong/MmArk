@@ -14,18 +14,18 @@ class Community extends Component {
 
     async componentDidMount() {
         try {
-            const res_articles = await fetch('http://3.35.175.101:8000/api/articles');
+            const res_articles = await fetch('http://3.36.217.441:8000/api/articles');
             const articles = await res_articles.json();
             this.setState({
                 articles
             });
-            const res_users = await fetch('http://3.35.175.101:8000/api/users');
+            const res_users = await fetch('http://3.36.217.44:8000/api/users');
             const users = await res_users.json();
             this.setState({
                 users
             });
             console.log(users);
-            const res_tags = await fetch('http://3.35.175.101:8000/api/tags');
+            const res_tags = await fetch('http://3.36.217.44:8000/api/tags');
             const tags = await res_tags.json();
             this.setState({
                 tags
