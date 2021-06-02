@@ -34,7 +34,7 @@
 .anker {
     stroke:  rgb(140, 82, 187);
     fill: rgb(140, 82, 187);
-    opacity: 0.5;
+    opacity: 1;
 }
 
 .blink_me {

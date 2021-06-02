@@ -19,6 +19,9 @@ import "./utils/calcSheetObjectMargin";
 import calcSheetObjectMargin from './utils/calcSheetObjectMargin';
 import SheetEditControl from './SheetEditControl';
 
+import {ReactComponent as Cursor} from "./musical_symbols_svg/cursor.svg";
+import {ReactComponent as CursorBig} from "./musical_symbols_svg/cursor_big.svg";
+
 
 // dataStructure
     // objectType: (char) 
@@ -90,7 +93,6 @@ const SheetWrapper = styled.div`
     background-attatchment: fixed;
     background-size: contain;
     position: static;
-    align-items: baseline;
     height: 50px;
     margin: 50px 10px 50px 20px;
     zoom: 1;
@@ -166,11 +168,11 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
 
 
     const handleResize = debounce(() => {
-        setMinMargin(document.getElementById("sheet").clientWidth-30);
-      }, 100);
+        setMinMargin(document.getElementById("top").clientWidth-21);
+      }, 500);
     
     useEffect(() => {
-        setMinMargin(document.getElementById("sheet").clientWidth-30);
+        setMinMargin(document.getElementById("top").clientWidth-21);
     }, []);
     useEffect(() => {
         window.addEventListener("resize", handleResize)
@@ -212,8 +214,8 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
         }
     });
     return (
-        <>
-        <div className={"sheet-menu-bar"}>
+        <div id = "top" style = {{overflow: "hidden"}}>
+        <div id = "sheet-menu" className={"sheet-menu-bar"}>
             <div className={"sheet-menu-section-left"}>
                 <div className={"sheet-audio-button"} onClick={!isPlaying ? (player ? player.play : () => {}) : (player ? player.stop : () => {})}>
                     {!isPlaying
@@ -252,16 +254,29 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
                 Reset
             </div>
         </div>
-        <div className={`${className}`} id="sheet" style={{display: "flex", "overflow-x":"auto", "overflow-y":"visible", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
+        <div className={`${className}`} id="sheet" height="150px"  style={{display: "flex", "overflow-x":"auto", "overflow-y":"visible", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
             <AlwaysScrollSection>
-            <div id="sheetwrapperwrapper" style={{ "justify-content":"start"}}>
-                <SheetWrapper id="sheetwrapper">
+            <div id="sheetwrapperwrapper" style={{ "justify-content":"start"} }>
+                <SheetWrapper id="sheetwrapper" style={ data.length === 0 || (data.length < 3 && data[0].objectType==="p" ) ? {width:"100px"} : {}}>
+                    <div className="starting" style = {{width: "1px", display: "inline" }}>
+                        <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/starting.svg"} style = {{position: "relative", top: "-17px"}}  height = "81px"/>
+                    </div> 
+                    <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px", left: "-1px"}}>
+                        <div>
+                            {cursorIndex===0 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                        </div>
+                    </div>
+                    <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px", left: "-1px"}}>
+                        <div>
+                            {cursorIndex===0 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                        </div>
+                    </div>
                     {returnValue}
                 </SheetWrapper>
             </div>
             </AlwaysScrollSection>
         </div>
-        </>
+        </div>
     );
 };
 
