@@ -19,6 +19,8 @@ import "./utils/calcSheetObjectMargin";
 import calcSheetObjectMargin from './utils/calcSheetObjectMargin';
 import SheetEditControl from './SheetEditControl';
 
+import {ReactComponent as ViewIcon} from "./edit_menu_bar_svg/view.svg";
+import {ReactComponent as EditIcon} from "./edit_menu_bar_svg/edit.svg";
 
 // dataStructure
     // objectType: (char) 
@@ -231,12 +233,19 @@ const Sheet = ({ dataStructure, className }) => {
                 {isBeingEdited
                 ?<div
                     className={"sheet-mode-button view"}
+<<<<<<< Updated upstream
                     onClick={() => setIsBeingEdited(false)}
                     >View
+=======
+                    onClick={() => {setIsBeingEdited(false); if(updateDS) updateDS(ds);}}
+                >
+                    <ViewIcon width={"24px"} fill={"green"}/>
+>>>>>>> Stashed changes
                 </div>:<div
                     className={"sheet-mode-button edit"}
                     onClick={() => setIsBeingEdited(true)}
-                    >Edit
+                >
+                    <EditIcon width={"24px"} fill={"#7147CB"}/>
                 </div>}
                 <SheetEditControl
                   isBeingEdited={isBeingEdited}
