@@ -233,7 +233,7 @@ const Sheet = ({ dataStructure, className }) => {
                 {isBeingEdited
                 ?<div
                     className={"sheet-mode-button view"}
-                    onClick={() => {setIsBeingEdited(false); if(updateDS) updateDS(ds);}}
+                    onClick={() => {setIsBeingEdited(false)}}
                 >
                     <ViewIcon width={"24px"} fill={"green"}/>
                 </div>:<div
