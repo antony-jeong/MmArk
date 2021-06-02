@@ -3,6 +3,13 @@ import {ReactComponent as AccNatural} from "./musical_symbols_svg/accidental_n.s
 import {ReactComponent as AccFlat} from "./musical_symbols_svg/accidental_f.svg";
 import {ReactComponent as AccSharp} from "./musical_symbols_svg/accidental_s.svg";
 
+import {ReactComponent as NoteIcon_1} from "./musical_symbols_svg/notes1/1.svg";
+import {ReactComponent as NoteIcon_2} from "./musical_symbols_svg/notes1/2.svg";
+import {ReactComponent as NoteIcon_4} from "./musical_symbols_svg/notes1/4.svg";
+import {ReactComponent as NoteIcon_8} from "./musical_symbols_svg/notes1/8.svg";
+import {ReactComponent as NoteIcon_16} from "./musical_symbols_svg/notes1/16.svg";
+import {ReactComponent as NoteIcon_32} from "./musical_symbols_svg/notes1/32.svg";
+
 const isRegularKey = (e) => {
   return !e.ctrlKey && !e.metaKey && !e.shiftKey;
 };
@@ -235,8 +242,8 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
       <div
         className={"sheet-edit-control-button"+(editExtend?" chosen":"")}
         onClick={()=>setEditExtend(!editExtend)}
-        style={{width: "30px"}}
-      >dot</div>
+        style={{width: "40px", textAlign: "center", font: "Roboto"}}
+      >Dot</div>
     </div>
     <div className={"sheet-edit-control-bundle"}>
       <div
@@ -266,40 +273,54 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
     </div> */}
     <div className={"sheet-edit-control-bundle"}>
       <div className={"sheet-edit-control-button"+(editLength===0?" chosen":"")} onClick={()=>setEditLength(0)} style={{width: "30px"}}
-      >1</div>
+      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_1 className={"black"} height={"24px"} /></div></div>
       <div className={"sheet-edit-control-button"+(editLength===1?" chosen":"")} onClick={()=>setEditLength(1)} style={{width: "30px"}}
-      >2</div>
+      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_2 className={"black"} height={"24px"} /></div></div>
       <div className={"sheet-edit-control-button"+(editLength===2?" chosen":"")} onClick={()=>setEditLength(2)} style={{width: "30px"}}
-      >3</div>
+      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_4 className={"black"} height={"24px"} /></div></div>
       <div className={"sheet-edit-control-button"+(editLength===3?" chosen":"")} onClick={()=>setEditLength(3)} style={{width: "30px"}}
-      >4</div>
+      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_8 className={"black"} height={"24px"} /></div></div>
       <div className={"sheet-edit-control-button"+(editLength===4?" chosen":"")} onClick={()=>setEditLength(4)} style={{width: "30px"}}
-      >5</div>
+      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_16 className={"black"} height={"24px"} /></div></div>
       <div className={"sheet-edit-control-button"+(editLength===5?" chosen":"")} onClick={()=>setEditLength(5)} style={{width: "30px"}}
-      >6</div>
+      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_32 className={"black"} height={"24px"} /></div></div>
     </div>
     <div className={"sheet-edit-control-bundle"}>
       <div
         className={"sheet-edit-control-button"}
         onClick={()=>addNote(false)}
-        style={{width: "30px"}}
-      >note</div>
+        style={{width: "70px", textAlign: "center", font: "Roboto"}}
+      >Put note</div>
       <div
         className={"sheet-edit-control-button"}
         onClick={()=>addNote(true)}
-        style={{width: "30px"}}
-      >rest</div>
+        style={{width: "70px", textAlign: "center", font: "Roboto"}}
+      >Put rest</div>
+      <div
+        className={"sheet-edit-control-button"}
+        onClick={()=>addObj({objectType: "b", type: "b"})}
+        style={{width: "60px", textAlign: "center", font: "Roboto"}}
+      >
+        Barline
+      </div>
+      <div
+        className={"sheet-edit-control-button"}
+        onClick={delObj}
+        style={{width: "60px", textAlign: "center", font: "Roboto", background: "#ffc2a7"}}
+      >
+        Delete
+      </div>
     </div>
     <div className={"sheet-edit-control-bundle"}>
-      <div className={"sheet-edit-control-button"} style={{width: "30px"}}>p</div>
+      {/* <div className={"sheet-edit-control-button"} style={{width: "30px"}}>p</div> */}
       <div className={"sheet-edit-control-dropup"}>
         <div
           className={"button"+(activeDD==="c"?" chosen":"")}
           onClick={()=>{setActiveDD(activeDD==="c"?"x":"c")}}
-          style={{width: "30px"}}
+          style={{width: "130px", textAlign: "center", font: "Roboto"}}
           ddtype="c"
         >
-          DU
+          Clef / Time Sign
         </div>
         <div
           className={"content"+(activeDD==="c"?" chosen":"")}
@@ -346,10 +367,10 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
         <div
           className={"button"+(activeDD==="k"?" chosen":"")}
           onClick={()=>{setActiveDD(activeDD==="k"?"x":"k")}}
-          style={{width: "30px"}}
+          style={{width: "75px", textAlign: "center", font: "Roboto"}}
           ddtype="k"
         >
-          Key
+          Key sign
         </div>
         <div
           className={"content"+(activeDD==="k"?" chosen":"")}
@@ -373,7 +394,8 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
           {KeySignatureCell(7, "2 / 7 / 3 / 8")}
         </div>
       </div>
-      <div className={"sheet-edit-control-dropup"}>
+      <span style={{color: "red"}}>*Arrow keys to move cursor</span>
+      {/* <div className={"sheet-edit-control-dropup"}>
       <div
           className={"button"+(activeDD==="b"?" chosen":"")}
           onClick={()=>{setActiveDD(activeDD==="b"?"x":"b")}}
@@ -388,7 +410,7 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
           <div className={"option-cell"} style={{gridArea: "1 / 3 / 2 / 4",}} ddtype="b">c</div>
           <div className={"option-cell"} style={{gridArea: "1 / 4 / 2 / 5",}} ddtype="b">t</div>
         </div>
-      </div>
+      </div> */}
     </div>
   </div>);
 };

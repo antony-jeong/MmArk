@@ -451,9 +451,6 @@ body {
 .sheet-edit-control-dropup .button {
     height: 30px;
     font-size: 16px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
     cursor: pointer;
     border-radius: 3px;
 }
