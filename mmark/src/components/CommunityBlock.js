@@ -15,11 +15,22 @@ const CommunityBlock = ({articles, users, tags}) => {
         articles[i].hour = raw_time.split("T")[1].split(".")[0].split(":")[0];
         articles[i].minute = raw_time.split("T")[1].split(".")[0].split(":")[1];
         articles[i].second = raw_time.split("T")[1].split(".")[0].split(":")[2];
-        articles[i].time = articles[i].year*3600*24*31*12 + articles[i].month*3600*24*31+ articles[i].day*3600*24 + articles[i].hour*3600 + articles[i].minute*60 + articles[i].second
+        articles[i].time = parseInt(articles[i].year) * 3600 * 24 * 31 * 12 + parseInt(articles[i].month) * 3600 * 24 * 31 + parseInt(articles[i].date) * 3600 * 24 + parseInt(articles[i].hour) * 3600 + parseInt(articles[i].minute) * 60 + parseInt(articles[i].second);
         articles[i].author = users[articles[i].author];
+
+        console.log(
+            articles[i].title,
+            articles[i].year,
+            articles[i].month,
+            articles[i].date,
+            articles[i].hour,
+            articles[i].minute,
+            articles[i].second,
+            articles[i].time
+        )
     }
     
-    articles.sort(((a, b) => a.time > b.time ? 1 : -1))
+    articles.sort(((a, b) => a.time > b.time ? -1 : 1))
     
     const handleDate = (e) => {
         const now = new Date()
@@ -69,7 +80,7 @@ const CommunityBlock = ({articles, users, tags}) => {
                         <div className="descWrapperWrapper">
                             <div className="descWrapper">
                                 <div className="sheetWrapper">
-                                    Sheet: <Sheet dataStructure={JSON.parse(item.sheet_ds)}></Sheet>
+                                    <Sheet dataStructure={JSON.parse(item.sheet_ds)}></Sheet>
                                 </div>
                                 <div className="favWrapper">
                                     <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
