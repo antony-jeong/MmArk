@@ -303,6 +303,13 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
       >
         Barline
       </div>
+      <div
+        className={"sheet-edit-control-button"}
+        onClick={delObj}
+        style={{width: "60px", textAlign: "center", font: "Roboto", background: "#ffc2a7"}}
+      >
+        Delete
+      </div>
     </div>
     <div className={"sheet-edit-control-bundle"}>
       {/* <div className={"sheet-edit-control-button"} style={{width: "30px"}}>p</div> */}
@@ -310,7 +317,7 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
         <div
           className={"button"+(activeDD==="c"?" chosen":"")}
           onClick={()=>{setActiveDD(activeDD==="c"?"x":"c")}}
-          style={{width: "130px", textAlign: "center"}}
+          style={{width: "130px", textAlign: "center", font: "Roboto"}}
           ddtype="c"
         >
           Clef / Time Sign
@@ -360,7 +367,7 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
         <div
           className={"button"+(activeDD==="k"?" chosen":"")}
           onClick={()=>{setActiveDD(activeDD==="k"?"x":"k")}}
-          style={{width: "75px", textAlign: "center"}}
+          style={{width: "75px", textAlign: "center", font: "Roboto"}}
           ddtype="k"
         >
           Key sign
