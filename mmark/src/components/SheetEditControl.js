@@ -295,9 +295,9 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
         onClick={()=>setEditAccidental(editAccidental==="s"?"x":"s")}
       >shrp</div>
     </div>
-    <div className={"sheet-edit-control-bundle"}>
+    {/* <div className={"sheet-edit-control-bundle"}>
       <div className={"sheet-edit-control-button"}>stack</div>
-    </div>
+    </div> */}
     <div className={"sheet-edit-control-bundle"}>
       <div className={"sheet-edit-control-button"+(editLength===0?" chosen":"")} onClick={()=>setEditLength(0)}
       >1</div>

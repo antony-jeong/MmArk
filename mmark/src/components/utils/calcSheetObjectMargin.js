@@ -14,7 +14,7 @@ const wBar = 1;
 const wDoubleBar = 4;
 const wTermBar = 6;
 
-const wKey = (key) => (key * wAcc);
+const wKey = (key) => (Math.abs(key) * wAcc);
 
 const wNote = (isRest, length, isExtended, height, acc) => {
   if (isRest) {
