@@ -233,14 +233,9 @@ const Sheet = ({ dataStructure, className }) => {
                 {isBeingEdited
                 ?<div
                     className={"sheet-mode-button view"}
-<<<<<<< Updated upstream
-                    onClick={() => setIsBeingEdited(false)}
-                    >View
-=======
                     onClick={() => {setIsBeingEdited(false); if(updateDS) updateDS(ds);}}
                 >
                     <ViewIcon width={"24px"} fill={"green"}/>
->>>>>>> Stashed changes
                 </div>:<div
                     className={"sheet-mode-button edit"}
                     onClick={() => setIsBeingEdited(true)}
