@@ -1,7 +1,10 @@
 import Sheet from '../components/Sheet';
 import React, { Component } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import Logo from '../components/Logo';
 import { Link } from 'react-router-dom';
+import '../stylesheets/NewPost.css';
+
 
 // function getCookie(name) {
 //     var cookieValue = null;
@@ -21,6 +24,7 @@ import { Link } from 'react-router-dom';
 // var csrftoken = getCookie('csrftoken');
 
 class NewPost extends Component {
+
 
     state = {
         'title': ' ',
@@ -63,19 +67,21 @@ class NewPost extends Component {
 
     render() {
         return (
-            <>
-            <Logo isLink={true}/>
-            <Link to='/Community'>Community</Link>
+            <div className='NewPost'>
+            <Logo className='logo' isLink={true}/>
+            <Link className='CommunityButton' to='/Community'>Kkoekkoli</Link>
+            <div className='Form'>
             <form onSubmit={(e) => {this.handlePost(e, this.state)}}>
-                제목<br/>
-                <input type={"text"} name={"title"} onChange={this.handleChange}/><br/>
-                내용<br/>
+                Title<br/>
+                <input className='textInput' type={"text"} name={"title"} onChange={this.handleChange}/><br/>
+                description<br/>
                 <Sheet className="Sheet" dataStructure={JSON.parse(this.state.sheet_ds)} name={"sheet_ds"} updateDS={this.updateDS}/>
                 description<br/>
-                <textarea rows={"10"} cols={"50"} name={"description"} onChange={this.handleChange}></textarea><br/>
-                <input type={"submit"} value={"Post"}/>
+                <textarea className='textInput' rows={"10"} cols={"50"} name={"description"} onChange={this.handleChange}></textarea><br/>
+                <input className="PostButton" type={"submit"} value={"Post"}/>
             </form>
-            </>
+            </div>
+            </div>
         );
     }
 }
