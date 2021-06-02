@@ -168,11 +168,11 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
 
 
     const handleResize = debounce(() => {
-        setMinMargin(document.getElementById("sheet").clientWidth-31);
-      }, 100);
+        setMinMargin(document.getElementById("top").clientWidth-31);
+      }, 500);
     
     useEffect(() => {
-        setMinMargin(document.getElementById("sheet").clientWidth-31);
+        setMinMargin(document.getElementById("top").clientWidth-31);
     }, []);
     useEffect(() => {
         window.addEventListener("resize", handleResize)
@@ -214,8 +214,8 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
         }
     });
     return (
-        <>
-        <div className={"sheet-menu-bar"}>
+        <div id = "top" style = {{overflow: "hidden"}}>
+        <div id = "sheet-menu" className={"sheet-menu-bar"}>
             <div className={"sheet-menu-section-left"}>
                 <div className={"sheet-audio-button"} onClick={!isPlaying ? (player ? player.play : () => {}) : (player ? player.stop : () => {})}>
                     {!isPlaying
@@ -258,18 +258,17 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
             <AlwaysScrollSection>
             <div id="sheetwrapperwrapper" style={{ "justify-content":"start"} }>
                 <SheetWrapper id="sheetwrapper" style={ data.length === 0 || (data.length < 3 && data[0].objectType==="p" ) ? {width:"100px"} : {}}>
-                    {console.log(data[0])}
                     <div className="starting" style = {{width: "1px", display: "inline" }}>
                         <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/starting.svg"} style = {{position: "relative", top: "-17px"}}  height = "81px"/>
                     </div> 
                     <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px", left: "-1px"}}>
                         <div>
-                            {cursorIndex===0 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                            {cursorIndex ===0 && isBeingEdited? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
                         </div>
                     </div>
                     <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px", left: "-1px"}}>
                         <div>
-                            {cursorIndex===0 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                            {cursorIndex ===0 && isBeingEdited? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
                         </div>
                     </div>
                     {returnValue}
@@ -277,7 +276,7 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
             </div>
             </AlwaysScrollSection>
         </div>
-        </>
+        </div>
     );
 };
 
