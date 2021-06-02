@@ -133,7 +133,7 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
     const [ds, setDs] = useState(false);
     const propSetDs = (newDs) => {
         setDs(newDs);
-        updateDS(newDs);
+        if (updateDS) { updateDS(newDs); }
     };
     useEffect(() => {
         setDs([...dataStructure]);
