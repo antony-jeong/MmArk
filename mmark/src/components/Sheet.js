@@ -169,12 +169,10 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
 
     const handleResize = debounce(() => {
         setMinMargin(document.getElementById("top").clientWidth-21);
-        console.log(document.getElementById("top").clientWidth)
       }, 500);
     
     useEffect(() => {
         setMinMargin(document.getElementById("top").clientWidth-21);
-        console.log(document.getElementById("top").clientWidth)
     }, []);
     useEffect(() => {
         window.addEventListener("resize", handleResize)
@@ -260,7 +258,6 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
             <AlwaysScrollSection>
             <div id="sheetwrapperwrapper" style={{ "justify-content":"start"} }>
                 <SheetWrapper id="sheetwrapper" style={ data.length === 0 || (data.length < 3 && data[0].objectType==="p" ) ? {width:"100px"} : {}}>
-                    {console.log(data[0])}
                     <div className="starting" style = {{width: "1px", display: "inline" }}>
                         <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/starting.svg"} style = {{position: "relative", top: "-17px"}}  height = "81px"/>
                     </div> 
