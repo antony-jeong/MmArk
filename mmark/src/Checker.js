@@ -25,7 +25,8 @@ const Checker = ({type, input, answer}) => {
                 if (input[input.length - 1].toLowerCase() === answer[i].toLowerCase()) {
                     return 1;
                 }
-            }                
+            }
+            document.querySelector('.ProgressBarWrapper').classList.add('Wrong');           
             return 0;
         default: 
             return false;

@@ -20,7 +20,7 @@ class Article(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     modified_time = models.DateTimeField(auto_now=True)
     description = models.TextField()
-    sheet_ds = models.TextField()
+    sheet_ds = models.JSONField()
     author = models.ForeignKey(user_models.User, related_name='articles', on_delete=models.CASCADE, blank=True)
     tags = models.ManyToManyField(Tag, related_name="articles", blank=True)
 
@@ -49,7 +49,7 @@ def new_post(request):
         new_article=Article.objects.create(
             title=form_data['title'],
             description=form_data['description'],
-            sheet_ds=[],
+            sheet_ds=form_data['sheet_ds'],
             author = new_user
         )
     return new_article;

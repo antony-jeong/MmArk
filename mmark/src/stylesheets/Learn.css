@@ -355,6 +355,7 @@ body {
     outline: none;
     font-size: 1.4rem;
     text-align: right;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
 }
 
 #textButton {
@@ -366,6 +367,7 @@ body {
     background: rgb(94, 94, 94);
     font-family: 'Roboto';
     font-size: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
 }
 
 .sheet-menu-bar {
