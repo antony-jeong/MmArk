@@ -15,11 +15,22 @@ const CommunityBlock = ({articles, users, tags}) => {
         articles[i].hour = raw_time.split("T")[1].split(".")[0].split(":")[0];
         articles[i].minute = raw_time.split("T")[1].split(".")[0].split(":")[1];
         articles[i].second = raw_time.split("T")[1].split(".")[0].split(":")[2];
-        articles[i].time = articles[i].year*3600*24*31*12 + articles[i].month*3600*24*31+ articles[i].day*3600*24 + articles[i].hour*3600 + articles[i].minute*60 + articles[i].second
+        articles[i].time = parseInt(articles[i].year) * 3600 * 24 * 31 * 12 + parseInt(articles[i].month) * 3600 * 24 * 31 + parseInt(articles[i].date) * 3600 * 24 + parseInt(articles[i].hour) * 3600 + parseInt(articles[i].minute) * 60 + parseInt(articles[i].second);
         articles[i].author = users[articles[i].author];
+
+        console.log(
+            articles[i].title,
+            articles[i].year,
+            articles[i].month,
+            articles[i].date,
+            articles[i].hour,
+            articles[i].minute,
+            articles[i].second,
+            articles[i].time
+        )
     }
     
-    articles.sort(((a, b) => a.time > b.time ? 1 : -1))
+    articles.sort(((a, b) => a.time > b.time ? -1 : 1))
     
     const handleDate = (e) => {
         const now = new Date()
@@ -55,6 +66,24 @@ const CommunityBlock = ({articles, users, tags}) => {
         return "Something Went Wrong";
     }
 
+    const handleOnClick = function (e) {
+        console.log(e.target.parentNode.parentNode.parentNode.lastChild);
+        console.log("clicked")
+        const descButtonWrapper = e.target;
+        const descriptionWrapper = e.target.parentNode.parentNode.parentNode.lastChild;
+        if (descButtonWrapper.classList.contains("show")) {
+            descButtonWrapper.classList.remove("show");
+            descButtonWrapper.classList.add("hide");
+            descriptionWrapper.classList.remove("hidden");
+            descButtonWrapper.innerText = "Hide Description △";
+        } else if (descButtonWrapper.classList.contains("hide")) {
+            descButtonWrapper.classList.remove("hide");
+            descButtonWrapper.classList.add("show");
+            descButtonWrapper.innerText = "Show Description ▽";
+            descriptionWrapper.classList.add("hidden");
+        }
+    }
+
     return (
         <div className="listWrapper">
             {articles.map(item => (
@@ -69,7 +98,7 @@ const CommunityBlock = ({articles, users, tags}) => {
                         <div className="descWrapperWrapper">
                             <div className="descWrapper">
                                 <div className="sheetWrapper">
-                                    Sheet: <Sheet dataStructure={JSON.parse(item.sheet_ds)}></Sheet>
+                                    <Sheet dataStructure={JSON.parse(item.sheet_ds)}></Sheet>
                                 </div>
                                 <div className="favWrapper">
                                     <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -95,13 +124,13 @@ const CommunityBlock = ({articles, users, tags}) => {
                                     <div className="tag">#{tags[i - 1] != undefined ? tags[i - 1].name + " " : ""}</div>
                                     )) : ""}
                                 </div>
-                                <div className="descButtonWrapper">
-                                    <div className="descButtonText">
-                                        Show Description  ▽
+                                <div className="descButtonWrapper" id="descButtonWrapper">
+                                    <div className="descButtonText show" onClick={e => { handleOnClick(e); }}>
+                                        Show Description  ▽ 
                                     </div>
                                 </div>
                             </div>
-                            <div className="descriptionWrapper hidden">Desc: {item.description}</div>
+                            <div className="descriptionWrapper hidden" id="descriptionWrapper">{item.description}</div>
                         </div>
                     </div>
                 ))}

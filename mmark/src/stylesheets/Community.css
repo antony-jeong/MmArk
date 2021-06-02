@@ -25,6 +25,7 @@ html {
     justify-content: center;
 }
 
+
 .searchWrapper .search{
     color: gray;
     border-radius: 10px;
@@ -100,7 +101,7 @@ html {
     margin-top: 20px;
 }
 
-.authorProfilePic{
+.authorProfilePic {
     width: 50px;
     height: 50px;
     background-color: #6a5aec;
@@ -196,6 +197,5 @@ html {
 }
 
 .hidden {
-    visibility: hidden;
+    display: none;
 }
-
