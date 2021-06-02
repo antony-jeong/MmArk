@@ -93,14 +93,15 @@ const AlwaysScrollSection = memo(props => {
 const SheetWrapper = styled.div`
     background-image: url(${process.env.PUBLIC_URL + "/musical_symbols_svg/sheet.svg"});
     background-attatchment: fixed;
-    background-size: contain;
+    background-position: center center;
+    background-repeat: repeat no-repeat;
     position: static;
     height: 50px;
     margin: 50px 10px 50px 20px;
     zoom: 1;
     overflow-inline: scroll;
     display: inline-block;
-
+    vertical-align: baseline;
     `;
 
 //      background: rgba(255, 255, 255, 0.4);
