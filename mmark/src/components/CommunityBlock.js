@@ -66,6 +66,24 @@ const CommunityBlock = ({articles, users, tags}) => {
         return "Something Went Wrong";
     }
 
+    const handleOnClick = function (e) {
+        console.log(e.target.parentNode.parentNode.parentNode.lastChild);
+        console.log("clicked")
+        const descButtonWrapper = e.target;
+        const descriptionWrapper = e.target.parentNode.parentNode.parentNode.lastChild;
+        if (descButtonWrapper.classList.contains("show")) {
+            descButtonWrapper.classList.remove("show");
+            descButtonWrapper.classList.add("hide");
+            descriptionWrapper.classList.remove("hidden");
+            descButtonWrapper.innerText = "Hide Description △";
+        } else if (descButtonWrapper.classList.contains("hide")) {
+            descButtonWrapper.classList.remove("hide");
+            descButtonWrapper.classList.add("show");
+            descButtonWrapper.innerText = "Show Description ▽";
+            descriptionWrapper.classList.add("hidden");
+        }
+    }
+
     return (
         <div className="listWrapper">
             {articles.map(item => (
@@ -106,13 +124,13 @@ const CommunityBlock = ({articles, users, tags}) => {
                                     <div className="tag">#{tags[i - 1] != undefined ? tags[i - 1].name + " " : ""}</div>
                                     )) : ""}
                                 </div>
-                                <div className="descButtonWrapper">
-                                    <div className="descButtonText">
-                                        Show Description  ▽
+                                <div className="descButtonWrapper" id="descButtonWrapper">
+                                    <div className="descButtonText show" onClick={e => { handleOnClick(e); }}>
+                                        Show Description  ▽ 
                                     </div>
                                 </div>
                             </div>
-                            <div className="descriptionWrapper hidden">Desc: {item.description}</div>
+                            <div className="descriptionWrapper hidden" id="descriptionWrapper">{item.description}</div>
                         </div>
                     </div>
                 ))}
