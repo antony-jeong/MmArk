@@ -1,4 +1,4 @@
-## CS374: Intro to **HCI** 2021 Spring
+## CS374: Intro to **HCI** 2021 Spring Design Project 4 & 5
 ---
 # Redesigning Experiences on Learning Music for Beginners
 ## Team *MmArk* (Members: [*Kim Daewon*](https://github.com/star810, "Kim Daewon"), [*Kim Minjun*](https://github.com/HoneyTt21, "Kim Minjun"), [*Jeong Seunghyeon*](https://github.com/antony-jeong, "Jeong Seunghyeon"), [*Hwang Hyewon*](https://github.com/hywnH, "Hwang Hyewon"))
