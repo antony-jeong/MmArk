@@ -131,7 +131,10 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const getState = (playState) => setIsPlaying(playState);
     const [ds, setDs] = useState(false);
-    const propSetDs = (newDs) => setDs(newDs);
+    const propSetDs = (newDs) => {
+        setDs(newDs);
+        updateDS(newDs);
+    };
     useEffect(() => {
         setDs([...dataStructure]);
         setCursorIndex(dataStructure.length);
@@ -160,7 +163,6 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
             player.setSheet(ds);
         }
     }, [ds]);
-
     const [playingIndex, setPlayingIndex] = useState(-1);
     const [playingTripletIndex, setPlayingTripletIndex] = useState(-1);
     const changeHighlight = (index) => setPlayingIndex(index);

@@ -17,17 +17,6 @@ const CommunityBlock = ({articles, users, tags}) => {
         articles[i].second = raw_time.split("T")[1].split(".")[0].split(":")[2];
         articles[i].time = parseInt(articles[i].year) * 3600 * 24 * 31 * 12 + parseInt(articles[i].month) * 3600 * 24 * 31 + parseInt(articles[i].date) * 3600 * 24 + parseInt(articles[i].hour) * 3600 + parseInt(articles[i].minute) * 60 + parseInt(articles[i].second);
         articles[i].author = users[articles[i].author];
-
-        console.log(
-            articles[i].title,
-            articles[i].year,
-            articles[i].month,
-            articles[i].date,
-            articles[i].hour,
-            articles[i].minute,
-            articles[i].second,
-            articles[i].time
-        )
     }
     
     articles.sort(((a, b) => a.time > b.time ? -1 : 1))
@@ -67,8 +56,6 @@ const CommunityBlock = ({articles, users, tags}) => {
     }
 
     const handleOnClick = function (e) {
-        console.log(e.target.parentNode.parentNode.parentNode.lastChild);
-        console.log("clicked")
         const descButtonWrapper = e.target;
         const descriptionWrapper = e.target.parentNode.parentNode.parentNode.lastChild;
         if (descButtonWrapper.classList.contains("show")) {
