@@ -168,11 +168,11 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
 
 
     const handleResize = debounce(() => {
-        setMinMargin(document.getElementById("top").clientWidth-21);
+        setMinMargin(document.getElementById("top").clientWidth-31);
       }, 500);
     
     useEffect(() => {
-        setMinMargin(document.getElementById("top").clientWidth-21);
+        setMinMargin(document.getElementById("top").clientWidth-31);
     }, []);
     useEffect(() => {
         window.addEventListener("resize", handleResize)
@@ -263,12 +263,12 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
                     </div> 
                     <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px", left: "-1px"}}>
                         <div>
-                            {cursorIndex===0 ? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                            {cursorIndex ===0 && isBeingEdited? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
                         </div>
                     </div>
                     <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px", left: "-1px"}}>
                         <div>
-                            {cursorIndex===0 ? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                            {cursorIndex ===0 && isBeingEdited? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
                         </div>
                     </div>
                     {returnValue}
