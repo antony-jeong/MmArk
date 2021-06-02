@@ -150,6 +150,8 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
     }
 
     const handleOnClick = () => {
+        document.querySelector('.ProgressBarWrapper').classList.remove('Wrong');
+        document.querySelector('.ProgressBarWrapper').classList.remove('started');
         let inputWrapper = document.getElementById("textInput");
         addText(inputWrapper.value.toString());
         inputWrapper.value = "";
