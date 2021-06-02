@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {ReactComponent as NoteIcon_2} from "./musical_symbols_svg/notes1/2.svg";
+import {ReactComponent as AccNatural} from "./musical_symbols_svg/accidental_n.svg";
+import {ReactComponent as AccFlat} from "./musical_symbols_svg/accidental_f.svg";
+import {ReactComponent as AccSharp} from "./musical_symbols_svg/accidental_s.svg";
 
 const isRegularKey = (e) => {
   return !e.ctrlKey && !e.metaKey && !e.shiftKey;
@@ -13,6 +15,13 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
   const [editLength, setEditLength] = useState(2);
   const [editExtend, setEditExtend] = useState(false);
   const [editAccidental, setEditAccidental] = useState("x");
+  const [activeDD, setActiveDD] = useState("x");
+  const handleMouseDown = (e) => {
+    const ddtype = e.target.getAttribute("ddtype");
+    if (ddtype !== "c" && ddtype !== "k" && ddtype !== "b") {
+      setActiveDD("x");
+    }
+  };
   const handleKeyDown = (e) => {
     if (isBeingEdited) {
       if (isRegularKey(e)) {
@@ -109,7 +118,9 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
   };
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("mousedown", handleMouseDown);
     return () => {
+      window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("keydown", handleKeyDown);
     };
   });
@@ -163,21 +174,25 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
       <div
         className={"option-cell"}
         style={{gridArea: area, flexDirection: "column"}}
-        onClick={() => addObj({objectType: "t", numerator: n, denominator: d})}
+        onClick={() => {
+          addObj({objectType: "t", numerator: n, denominator: d});
+          setActiveDD("x");
+        }}
+        ddtype="c"
       >
-        <div style = {{width: "0px"}}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/numerator_" + n + ".svg"} style = {{position: "relative", top: "4px", left: "-9px"}} height = "15px"/></div>
-        <div style = {{width: "20px", height: "1px", borderTop: "1px solid black"}}></div>
-        <div style = {{width: "0px"}}><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/denominator_" + d + ".svg"} style = {{position: "relative", top: "-3px", left: "-9px"}} height = "15px"/></div>
+        <div style = {{width: "0px"}} ddtype="c"><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/numerator_" + n + ".svg"} style = {{position: "relative", top: "4px", left: "-9px"}} height = "15px" ddtype="c"/></div>
+        <div style = {{width: "20px", height: "1px", borderTop: "1px solid black"}} ddtype="c"></div>
+        <div style = {{width: "0px"}} ddtype="c"><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/denominator_" + d + ".svg"} style = {{position: "relative", top: "-3px", left: "-9px"}} height = "15px" ddtype="c"/></div>
       </div>
     );
   };
   const KeySignatureCell = (key, area) => {
     const AccImg = (key > 0
       ? (top, index) => {return (
-        <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/accidental_s.svg"} style = {{position: "relative", top: top+"px", left: "0px"}} height = "18px" width ="5px" key={index}/>
+        <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/accidental_s.svg"} style = {{position: "relative", top: top+"px", left: "0px"}} height = "18px" width ="5px" key={index} ddtype="k"/>
       );}
       : (top, index) => {return (
-        <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/accidental_f.svg"} style = {{position: "relative", top: top+"px", left: "0px"}} height = "18px" width ="5px" key={index}/>
+        <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/accidental_f.svg"} style = {{position: "relative", top: top+"px", left: "0px"}} height = "18px" width ="5px" key={index} ddtype="k"/>
       );}
     );
     const numAcc = (key > 0 ? key : -key);
@@ -188,29 +203,109 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
       <div
         className={"option-cell"}
         style={{gridArea: area, flexDirection: "column", paddingTop: paddingTop+"px"}}
-        onClick={() => addObj({objectType: "k", key: key})}
+        onClick={() => {
+          addObj({objectType: "k", key: key});
+          setActiveDD("x");
+        }}
+        ddtype="k"
       >
-        <div style={{height: "0px"}}>
+        <div style={{height: "0px"}} ddtype="k">
           {topArr.map((top, index) => {
             return AccImg(top, index);
           })}
         </div>
-        <div style={{height: "0px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-          <div style={{width: lineWidth+"px", height: "0px", borderTop: "1px solid black", marginBottom: "5px"}}></div>
-          <div style={{width: lineWidth+"px", height: "0px", borderTop: "1px solid black", marginBottom: "5px"}}></div>
-          <div style={{width: lineWidth+"px", height: "0px", borderTop: "1px solid black", marginBottom: "5px"}}></div>
-          <div style={{width: lineWidth+"px", height: "0px", borderTop: "1px solid black", marginBottom: "5px"}}></div>
-          <div style={{width: lineWidth+"px", height: "0px", borderTop: "1px solid black"}}></div>
+        <div style={{height: "0px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}} ddtype="k">
+          <div style={{width: lineWidth+"px", height: "0px", borderTop: "1px solid black", marginBottom: "5px"}} ddtype="k"></div>
+          <div style={{width: lineWidth+"px", height: "0px", borderTop: "1px solid black", marginBottom: "5px"}} ddtype="k"></div>
+          <div style={{width: lineWidth+"px", height: "0px", borderTop: "1px solid black", marginBottom: "5px"}} ddtype="k"></div>
+          <div style={{width: lineWidth+"px", height: "0px", borderTop: "1px solid black", marginBottom: "5px"}} ddtype="k"></div>
+          <div style={{width: lineWidth+"px", height: "0px", borderTop: "1px solid black"}} ddtype="k"></div>
         </div>
       </div>
     );
   };
   return (<div className={isBeingEdited ? "sheet-edit-control-showed" : "sheet-edit-control-hidden"}>
+    {/* <div className={"sheet-edit-control-bundle"}>
+      <div className={"sheet-edit-control-button"}>stct</div>
+      <div className={"sheet-edit-control-button"}>acnt</div>
+      <div className={"sheet-edit-control-button"}>tnt</div>
+      <div className={"sheet-edit-control-button"}>frmt</div>
+    </div> */}
     <div className={"sheet-edit-control-bundle"}>
-      <div className={"sheet-edit-control-button"}>p</div>
+      <div
+        className={"sheet-edit-control-button"+(editExtend?" chosen":"")}
+        onClick={()=>setEditExtend(!editExtend)}
+        style={{width: "30px"}}
+      >dot</div>
+    </div>
+    <div className={"sheet-edit-control-bundle"}>
+      <div
+        className={"sheet-edit-control-button"+(editAccidental==="n"?" chosen":"")}
+        onClick={()=>setEditAccidental(editAccidental==="n"?"x":"n")}
+        style={{width: "30px"}}
+      >
+        <div style={{transform: "translate(40%, 10%)"}}><AccNatural height={"24px"} fill={"#1f1f1f"}/></div>
+      </div>
+      <div
+        className={"sheet-edit-control-button"+(editAccidental==="f"?" chosen":"")}
+        onClick={()=>setEditAccidental(editAccidental==="f"?"x":"f")}
+        style={{width: "30px"}}
+      >
+        <div style={{transform: "translate(40%, 15%)"}}><AccFlat height={"24px"} fill={"#1f1f1f"}/></div>
+      </div>
+      <div
+        className={"sheet-edit-control-button"+(editAccidental==="s"?" chosen":"")}
+        onClick={()=>setEditAccidental(editAccidental==="s"?"x":"s")}
+        style={{width: "30px"}}
+      >
+        <div style={{transform: "translate(40%, 10%)"}}><AccSharp height={"24px"} fill={"#1f1f1f"}/></div>
+      </div>
+    </div>
+    {/* <div className={"sheet-edit-control-bundle"}>
+      <div className={"sheet-edit-control-button"}>stack</div>
+    </div> */}
+    <div className={"sheet-edit-control-bundle"}>
+      <div className={"sheet-edit-control-button"+(editLength===0?" chosen":"")} onClick={()=>setEditLength(0)} style={{width: "30px"}}
+      >1</div>
+      <div className={"sheet-edit-control-button"+(editLength===1?" chosen":"")} onClick={()=>setEditLength(1)} style={{width: "30px"}}
+      >2</div>
+      <div className={"sheet-edit-control-button"+(editLength===2?" chosen":"")} onClick={()=>setEditLength(2)} style={{width: "30px"}}
+      >3</div>
+      <div className={"sheet-edit-control-button"+(editLength===3?" chosen":"")} onClick={()=>setEditLength(3)} style={{width: "30px"}}
+      >4</div>
+      <div className={"sheet-edit-control-button"+(editLength===4?" chosen":"")} onClick={()=>setEditLength(4)} style={{width: "30px"}}
+      >5</div>
+      <div className={"sheet-edit-control-button"+(editLength===5?" chosen":"")} onClick={()=>setEditLength(5)} style={{width: "30px"}}
+      >6</div>
+    </div>
+    <div className={"sheet-edit-control-bundle"}>
+      <div
+        className={"sheet-edit-control-button"}
+        onClick={()=>addNote(false)}
+        style={{width: "30px"}}
+      >note</div>
+      <div
+        className={"sheet-edit-control-button"}
+        onClick={()=>addNote(true)}
+        style={{width: "30px"}}
+      >rest</div>
+    </div>
+    <div className={"sheet-edit-control-bundle"}>
+      <div className={"sheet-edit-control-button"} style={{width: "30px"}}>p</div>
       <div className={"sheet-edit-control-dropup"}>
-        <div className={"sheet-edit-control-button"}>DU</div>
-        <div className={"content"} style={{gridTemplate: "36px 36px 40px / 24px 24px 12px 12px 24px 24px",}}>
+        <div
+          className={"button"+(activeDD==="c"?" chosen":"")}
+          onClick={()=>{setActiveDD(activeDD==="c"?"x":"c")}}
+          style={{width: "30px"}}
+          ddtype="c"
+        >
+          DU
+        </div>
+        <div
+          className={"content"+(activeDD==="c"?" chosen":"")}
+          style={{gridTemplate: "36px 36px 40px / 24px 24px 12px 12px 24px 24px",}}
+          ddtype="c"
+        >
           {TimeSignatureCell( 3, 8, "1 / 1 / 2 / 2")}
           {TimeSignatureCell( 5, 8, "1 / 2 / 2 / 3")}
           {TimeSignatureCell( 6, 8, "1 / 3 / 2 / 5")}
@@ -226,22 +321,41 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
           <div
             className={"option-cell"}
             style={{gridArea: "3 / 1 / 4 / 4",}}
-            onClick={() => addObj({objectType: "c", treble: true})}
+            onClick={() => {
+              addObj({objectType: "c", treble: true});
+              setActiveDD("x");
+            }}
+            ddtype="c"
           >
-            <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/clef_g.svg"} style = {{position: "relative", top: "0px", left: "0px"}} height = "35px"/>
+            <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/clef_g.svg"} style = {{position: "relative", top: "0px", left: "0px"}} height = "35px" ddtype="c"/>
           </div>
           <div
             className={"option-cell"}
             style={{gridArea: "3 / 4 / 4 / 7",}}
-            onClick={() => addObj({objectType: "c", treble: false})}
+            onClick={() => {
+              addObj({objectType: "c", treble: false});
+              setActiveDD("x");
+            }}
+            ddtype="c"
           >
-            <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/clef_f.svg"} style = {{position: "relative", top: "0px", left: "0px"}} height = "40px"/>
+            <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/clef_f.svg"} style = {{position: "relative", top: "0px", left: "0px"}} height = "40px" ddtype="c"/>
           </div>
         </div>
       </div>
       <div className={"sheet-edit-control-dropup"}>
-        <div className={"sheet-edit-control-button"}>Key</div>
-        <div className={"content"} style={{gridTemplate: "50px 50px / 24px 24px 28px 32px 36px 40px 44px",}}>
+        <div
+          className={"button"+(activeDD==="k"?" chosen":"")}
+          onClick={()=>{setActiveDD(activeDD==="k"?"x":"k")}}
+          style={{width: "30px"}}
+          ddtype="k"
+        >
+          Key
+        </div>
+        <div
+          className={"content"+(activeDD==="k"?" chosen":"")}
+          style={{gridTemplate: "50px 50px / 24px 24px 28px 32px 36px 40px 44px",}}
+          ddtype="k"
+        >
           {KeySignatureCell(-1, "1 / 1 / 2 / 2")}
           {KeySignatureCell(-2, "1 / 2 / 2 / 3")}
           {KeySignatureCell(-3, "1 / 3 / 2 / 4")}
@@ -260,86 +374,19 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
         </div>
       </div>
       <div className={"sheet-edit-control-dropup"}>
-        <div className={"sheet-edit-control-button"}>b</div>
-        <div className={"content"} style={{gridTemplate: "40px / 24px 24px 24px 24px",}}>
-          <div className={"option-cell"} style={{gridArea: "1 / 1 / 2 / 2",}}>d</div>
-          <div className={"option-cell"} style={{gridArea: "1 / 2 / 2 / 3",}}>o</div>
-          <div className={"option-cell"} style={{gridArea: "1 / 3 / 2 / 4",}}>c</div>
-          <div className={"option-cell"} style={{gridArea: "1 / 4 / 2 / 5",}}>t</div>
+      <div
+          className={"button"+(activeDD==="b"?" chosen":"")}
+          onClick={()=>{setActiveDD(activeDD==="b"?"x":"b")}}
+          style={{width: "30px"}}
+          ddtype="b"
+        >
+          Bar
         </div>
-      </div>
-    </div>
-    {/* <div className={"sheet-edit-control-bundle"}>
-      <div className={"sheet-edit-control-button"}>stct</div>
-      <div className={"sheet-edit-control-button"}>acnt</div>
-      <div className={"sheet-edit-control-button"}>tnt</div>
-      <div className={"sheet-edit-control-button"}>frmt</div>
-    </div> */}
-    <div className={"sheet-edit-control-bundle"}>
-      <div
-        className={"sheet-edit-control-button"+(editExtend?" chosen":"")}
-        onClick={()=>setEditExtend(!editExtend)}
-      >dot</div>
-    </div>
-    <div className={"sheet-edit-control-bundle"}>
-      <div
-        className={"sheet-edit-control-button"+(editAccidental==="n"?" chosen":"")}
-        onClick={()=>setEditAccidental(editAccidental==="n"?"x":"n")}
-      >nat</div>
-      <div
-        className={"sheet-edit-control-button"+(editAccidental==="f"?" chosen":"")}
-        onClick={()=>setEditAccidental(editAccidental==="f"?"x":"f")}
-      >flt</div>
-      <div
-        className={"sheet-edit-control-button"+(editAccidental==="s"?" chosen":"")}
-        onClick={()=>setEditAccidental(editAccidental==="s"?"x":"s")}
-      >shrp</div>
-    </div>
-    {/* <div className={"sheet-edit-control-bundle"}>
-      <div className={"sheet-edit-control-button"}>stack</div>
-    </div> */}
-    <div className={"sheet-edit-control-bundle"}>
-      <div className={"sheet-edit-control-button"+(editLength===0?" chosen":"")} onClick={()=>setEditLength(0)}
-      >1</div>
-      <div className={"sheet-edit-control-button"+(editLength===1?" chosen":"")} onClick={()=>setEditLength(1)}
-      >2</div>
-      <div className={"sheet-edit-control-button"+(editLength===2?" chosen":"")} onClick={()=>setEditLength(2)}
-      >3</div>
-      <div className={"sheet-edit-control-button"+(editLength===3?" chosen":"")} onClick={()=>setEditLength(3)}
-      >4</div>
-      <div className={"sheet-edit-control-button"+(editLength===4?" chosen":"")} onClick={()=>setEditLength(4)}
-      >5</div>
-      <div className={"sheet-edit-control-button"+(editLength===5?" chosen":"")} onClick={()=>setEditLength(5)}
-      >6</div>
-    </div>
-    <div className={"sheet-edit-control-bundle"}>
-      <div
-        className={"sheet-edit-control-button"}
-        onClick={()=>addNote(false)}
-      >note</div>
-      <div
-        className={"sheet-edit-control-button"}
-        onClick={()=>addNote(true)}
-      >rest</div>
-    </div>
-    <div className={"sheet-edit-control-bundle"}>
-      <div className={"sheet-edit-control-button"}>
-        <NoteIcon_2 className={"black"} style={{position: "relative", height: "20px"}}/>
-      </div>
-      <div className={"sheet-edit-control-dropup"}>
-        <div className={"button"} onClick={() => {addObj({objectType: "c", treble: true});}}>
-          <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/clef_g.svg"} style = {{position: "relative", top: "0px"}}  height = "25px"/>
-        </div>
-        <div className={"content"}>
-          <div className={"option-cell"}>
-            <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/clef_f.svg"} style = {{position: "relative", top: "0px"}}  height = "30px"/>
-          </div>
-          <div className={"option-cell"} onClick={() => {addObj({objectType: "n", length: 1, noteDecoration: ["x"], rest: false, extend: false, height: [2, 4], accidental: ["x", "x"]})}}>
-            <NoteIcon_2 className={"black"} style={{position: "relative", height: "20px"}}/>
-          </div>
-          <div className={"option-cell"}>
-            <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/clef_f.svg"} style = {{position: "relative", top: "0px"}}  height = "30px"/>
-          </div>
+        <div className={"content"+(activeDD==="b"?" chosen":"")} style={{gridTemplate: "40px / 24px 24px 24px 24px",}} ddtype="b">
+          <div className={"option-cell"} style={{gridArea: "1 / 1 / 2 / 2",}} ddtype="b">d</div>
+          <div className={"option-cell"} style={{gridArea: "1 / 2 / 2 / 3",}} ddtype="b">o</div>
+          <div className={"option-cell"} style={{gridArea: "1 / 3 / 2 / 4",}} ddtype="b">c</div>
+          <div className={"option-cell"} style={{gridArea: "1 / 4 / 2 / 5",}} ddtype="b">t</div>
         </div>
       </div>
     </div>
