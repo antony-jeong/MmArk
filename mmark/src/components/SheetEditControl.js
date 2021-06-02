@@ -29,7 +29,7 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
       setActiveDD("x");
     }
   };
-  const handleKeyDown = (e) => { return;
+  const handleKeyDown = (e) => {
     if (isBeingEdited) {
       if (isRegularKey(e)) {
         const code = e.keyCode;
