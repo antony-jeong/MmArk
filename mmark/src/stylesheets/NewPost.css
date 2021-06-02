@@ -1,0 +1,57 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+html {
+    background: linear-gradient(to top, #3f4454, #0f0930);
+}
+
+.NewPost{
+    font-family: 'Roboto';
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+}
+
+.Form{
+    align-self: center;
+    justify-self: center;
+    margin: auto auto;
+    width: 60vw;
+}
+
+.NewPost .CommunityButton{
+    display: inline;
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: 40px;
+    left: 150px;
+}
+
+.logo {
+    display: inline;
+    zoom: 0.4;
+    position: absolute;
+    top: 40px;
+    left: 50px;
+}
+
+.textInput {
+    width: 60vw;
+}
+
+.PostButton{
+    display: flex;
+    text-align: center;
+    padding-top: 5px;
+    justify-content: center;
+    width: 100px;
+    height: 1.5rem;
+    background: linear-gradient(to top, #555cc5, #6a5ae1);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    margin: 20px auto;
+    outline: none;
+    border: none;
+}

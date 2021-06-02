@@ -3,6 +3,13 @@ html {
     background: linear-gradient(to top, #3f4454, #0f0930);
 }
 
+.Community{
+    font-family: 'Roboto';
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
 .logo {
     zoom: 0.4;
     position: absolute;
@@ -11,14 +18,15 @@ html {
 }
 
 .searchWrapper {
+    display: flex;
     width: 60vw;
     height: 5vh;
-    margin: 40px 20px 20px 10vw;
-    display: flex;
+    margin: 20px auto;
     justify-content: center;
 }
 
 .searchWrapper .search{
+    color: gray;
     border-radius: 10px;
     height: 30px;
     width: 45vw;
@@ -33,12 +41,30 @@ html {
     align-items: center;
 }
 
+.searchButton{
+    cursor: pointer;
+}
+
+.newPostButton{
+    display: flex;
+    text-align: center;
+    padding-top: 5px;
+    justify-content: center;
+    width: 60vw;
+    height: 1.5rem;
+    background: linear-gradient(to top, #555cc5, #6a5ae1);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    margin: 20px auto;
+}
+
 .listWrapper {
     width: 60vw;
-    height: 85vh;
+    height: 75vh;
     background: linear-gradient(to top, #eaecf1, #cac7dc);
     overflow-y: scroll;
-    margin: 20px 20px 20px 10vw;
+    margin: 20px auto;
     border-radius: 10px;
 }
 
