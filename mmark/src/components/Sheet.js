@@ -217,69 +217,69 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
     });
     return (
         <div id = "top" style = {{overflow: "hidden"}}>
-        <div id = "sheet-menu" className={"sheet-menu-bar"}>
-            <div className={"sheet-menu-section-left"}>
-                <div className={"sheet-audio-button"} onClick={!isPlaying ? (player ? player.play : () => {}) : (player ? player.stop : () => {})}>
-                    {!isPlaying
-                    ?<div style={{"margin-left": "20px"}}>
-                        <svg className={'PlayButton'} width="20" height="23" viewBox="0 0 33 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M31.5 16.4019C33.5 17.5566 33.5 20.4434 31.5 21.5981L4.5 37.1865C2.5 38.3412 1.98328e-06 36.8979 2.08423e-06 34.5885L3.44702e-06 3.41154C3.54796e-06 1.10214 2.5 -0.341234 4.5 0.813466L31.5 16.4019Z" fill="#977ED7"/>
-                        </svg>
+            <div className={"sheet-menu-bar"}>
+                <div className={"sheet-menu-section-left"}>
+                    <div className={"sheet-audio-button"} onClick={!isPlaying ? (player ? player.play : () => {}) : (player ? player.stop : () => {})}>
+                        {!isPlaying
+                        ?<div style={{"margin-left": "20px"}}>
+                            <svg className={'PlayButton'} width="20" height="23" viewBox="0 0 33 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M31.5 16.4019C33.5 17.5566 33.5 20.4434 31.5 21.5981L4.5 37.1865C2.5 38.3412 1.98328e-06 36.8979 2.08423e-06 34.5885L3.44702e-06 3.41154C3.54796e-06 1.10214 2.5 -0.341234 4.5 0.813466L31.5 16.4019Z" fill="#977ED7"/>
+                            </svg>
+                        </div>
+                        :<div style={{"margin-left": "20px"}}>
+                            <svg className={'StopButton'} width="23" height="23" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="35" height="35" rx="3" fill="#D77E8E"/>
+                            </svg>
+                        </div>}
                     </div>
-                    :<div style={{"margin-left": "20px"}}>
-                        <svg className={'StopButton'} width="23" height="23" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="35" height="35" rx="3" fill="#D77E8E"/>
-                        </svg>
+                    {isBeingEdited
+                    ?<div
+                        className={"sheet-mode-button view"}
+                        onClick={() => {setIsBeingEdited(false)}}
+                    >
+                        <ViewIcon width={"24px"} fill={"green"}/>
+                    </div>:<div
+                        className={"sheet-mode-button edit"}
+                        onClick={() => setIsBeingEdited(true)}
+                    >
+                        <EditIcon width={"24px"} fill={"#7147CB"}/>
                     </div>}
+                    <SheetEditControl
+                    isBeingEdited={isBeingEdited}
+                    ds={ds}
+                    setDs={propSetDs}
+                    idx={cursorIndex}
+                    setIdx={propSetCursorIndex}
+                    h={cursorHeight}
+                    setH={propSetCursorHeight}
+                    />
                 </div>
-                {isBeingEdited
-                ?<div
-                    className={"sheet-mode-button view"}
-                    onClick={() => {setIsBeingEdited(false)}}
-                >
-                    <ViewIcon width={"24px"} fill={"green"}/>
-                </div>:<div
-                    className={"sheet-mode-button edit"}
-                    onClick={() => setIsBeingEdited(true)}
-                >
-                    <EditIcon width={"24px"} fill={"#7147CB"}/>
-                </div>}
-                <SheetEditControl
-                  isBeingEdited={isBeingEdited}
-                  ds={ds}
-                  setDs={propSetDs}
-                  idx={cursorIndex}
-                  setIdx={propSetCursorIndex}
-                  h={cursorHeight}
-                  setH={propSetCursorHeight}
-                />
+                <div className={"sheet-reset-button"} onClick={() => {setDs(dataStructure);setCursorIndex(dataStructure.length);setCursorHeight(0);}}>
+                    Reset
+                </div>
             </div>
-            <div className={"sheet-reset-button"} onClick={() => {setDs(dataStructure);setCursorIndex(dataStructure.length);setCursorHeight(0);}}>
-                Reset
-            </div>
-        </div>
-        <div className={`${className}`} id="sheet" height="150px"  style={{display: "flex", "overflow-x":"auto", "overflow-y":"visible", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
-            <AlwaysScrollSection>
-            <div id="sheetwrapperwrapper" style={{ "justify-content":"start"} }>
-                <SheetWrapper id="sheetwrapper" style={ data.length === 0 || (data.length < 3 && data[0].objectType==="p" ) ? {width:"100px"} : {}}>
-                    <div className="starting" style = {{width: "1px", display: "inline" }}>
-                        <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/starting.svg"} style = {{position: "relative", top: "-17px"}}  height = "81px"/>
-                    </div> 
-                    <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px", left: "-1px"}}>
-                        <div>
-                            {cursorIndex ===0 && isBeingEdited? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+            <div className={`${className}`} id="sheet" height="150px"  style={{display: "flex", "overflow-x":"auto", "overflow-y":"visible", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
+                <AlwaysScrollSection>
+                <div id="sheetwrapperwrapper" style={{ "justify-content":"start"} }>
+                    <SheetWrapper id="sheetwrapper" style={ data.length === 0 || (data.length < 3 && data[0].objectType==="p" ) ? {width:"100px"} : {}}>
+                        <div className="starting" style = {{width: "1px", display: "inline" }}>
+                            <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/starting.svg"} style = {{position: "relative", top: "-17px"}}  height = "81px"/>
                         </div>
-                    </div>
-                    <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px", left: "-1px"}}>
-                        <div>
-                            {cursorIndex ===0 && isBeingEdited? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                        <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px", left: "-1px"}}>
+                            <div>
+                                {cursorIndex ===0 && isBeingEdited? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                            </div>
                         </div>
-                    </div>
-                    {returnValue}
-                </SheetWrapper>
+                        <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px", left: "-1px"}}>
+                            <div>
+                                {cursorIndex ===0 && isBeingEdited? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                            </div>
+                        </div>
+                        {returnValue}
+                    </SheetWrapper>
+                </div>
+                </AlwaysScrollSection>
             </div>
-            </AlwaysScrollSection>
-        </div>
         </div>
     );
 };

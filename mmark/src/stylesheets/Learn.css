@@ -375,7 +375,7 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     display: flex;
-    margin-left: 20px;
+    margin-left: 30px;
     margin-right: 20px;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -470,6 +470,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .sheet-edit-control-delimiter {
