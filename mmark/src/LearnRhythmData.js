@@ -191,7 +191,7 @@ const LearnRhythmData = [{
     "inputMode": "text"
 }, {
     "pageId": 3,
-    "inst": `The vertical lines are called <term>bar line</term>${Img_barline}. Between bar lines are called a <term>measure</term>.<br></br>However, the first bar doesn't have a starting bar line. At the end of the sheet music, there's a <term>terminal bar line</term>${Img_barline_t}<br></br>How many bars are there in the sheet music below?`,
+    "inst": `The vertical lines are called <term>bar line</term>${Img_barline}. Between bar lines are called a <term>measure</term>.<br></br>However, the first measure doesn't have a starting bar line. At the end of the sheet music, there's a <term>terminal bar line</term>${Img_barline_t}<br></br>How many measures are there in the sheet music below?`,
     "inst_kr": `세로로 그어진 선들은 <term>세로줄</term></term><svg>barline</svg>이라고 부릅니다. 세로줄 사이는 <term>마디</term>라고 부릅니다.<br></br> 다만, 첫번째 마디의 경우에는 예외적으로 시작하는 세로줄이 없습니다. 악보의 끝에는 <term>끝세로줄</term>${Img_barline_t}이 있습니다. <br></br>아래 악보에는 몇 개의 마디가 있을까요?`,
     "ds": [{
         "objectType": "c",
@@ -323,7 +323,7 @@ const LearnRhythmData = [{
     "inputMode": "text"
 }, {
     "pageId": 5,
-    "inst": `The numerator<svg>numerator_4</svg> indicates how many <term>beats</term> a bar has.<br></br>How many more bar lines should be drawn on this sheet music?`,
+    "inst": `The numerator<svg>numerator_4</svg> indicates how many <term>beats</term> a measure has.<br></br>How many more bar lines should be drawn on this sheet music?`,
     "inst_kr": `분자<svg>numerator_4</svg>는 한 마디 안의 <term>박자</term>의 개수를 의미합니다.<br></br> 그렇다면, 이 악보에는 얼마나 더 많은 세로줄이 필요할까요?`,
     "ds": [{
             "objectType": "p",
@@ -431,7 +431,7 @@ const LearnRhythmData = [{
     "inputMode": "text"
 }, {
     "pageId": 6,
-    "inst": `A dot on a note means it is 1.5 times longer.<br></br>In the sheet music below, a <term>dotted half note</term>${Img_dotted_note_arr[1]} stands for three beats, so it takes up one bar.<br></br>How many more <term>eighth notes</term>${Img_note_arr[3]} can be added to the last bar?`,
+    "inst": `A dot on a note means it is 1.5 times longer.<br></br>In the sheet music below, a <term>dotted half note</term>${Img_dotted_note_arr[1]} stands for three beats, so it takes up one measure.<br></br>How many more <term>eighth notes</term>${Img_note_arr[3]} can be added to the last measure?`,
     "inst_kr": `음표에 점이 붙으면 그 길이를 1.5배 증가시킵니다.<br></br>예를 들어, 아래의 <term>점2분음표</term>${Img_dotted_note_arr[1]}는 세 박자로, 한 마디를 차지합니다.<br></br> 아래의 악보에서 마지막 마디에 몇 개의 <term>8분음표</term>${Img_note_arr[3]} 가 추가될 수 있을까요?`,
     "ds": [{
             "objectType": "p",
@@ -791,7 +791,7 @@ const LearnRhythmData = [{
     "inputMode": "text"
 }, {
     "pageId": 10,
-    "inst": `The <term>tempo</term> notation ${Img_tempo[0]} indicates how many of the note is played in a minute.<br></br>In the case of the above, how many bars do you get to play per minute?`,
+    "inst": `The <term>tempo</term> notation ${Img_tempo[0]} indicates how many of the note is played in a minute.<br></br>In the case of the above, how many measures do you get to play per minute?`,
     "inst_kr": `<term>빠르기</term> 표기${Img_tempo[0]}는 1분에 연주될 수 있는 음표의 수를 의미합니다.<br></br> 아래의 악보의 경우에는 1분에 몇 개의 마디를 연주할 수 있을까요?`,
     "ds": [{
             "objectType": "p",

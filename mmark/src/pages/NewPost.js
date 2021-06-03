@@ -1,6 +1,6 @@
 import Sheet from '../components/Sheet';
 import React, { Component } from 'react';
-import { Trans, useTranslation } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import Logo from '../components/Logo';
 import { Link } from 'react-router-dom';
 import '../stylesheets/NewPost.css';
@@ -65,20 +65,24 @@ class NewPost extends Component {
         )
     };
 
+
     render() {
+        const {t} = this.props;
         return (
             <div className='NewPost'>
             <Logo className='logo' isLink={true}/>
-            <Link className='CommunityButton' to='/Community'>Kkoekkoli</Link>
+            <Link className='CommunityButton' to='/Community'>{t("main.desc_community")}</Link>
             <div className='Form'>
             <form onSubmit={(e) => {this.handlePost(e, this.state)}}>
-                Title<br/>
+                <div>{t("post.title")}</div>
                 <input className='textInput' type={"text"} name={"title"} onChange={this.handleChange}/><br/>
-                description<br/>
                 <Sheet className="Sheet" dataStructure={JSON.parse(this.state.sheet_ds)} name={"sheet_ds"} updateDS={this.updateDS}/>
-                description<br/>
+                <div>{t("post.description")}</div>
                 <textarea className='textInput' rows={"10"} cols={"50"} name={"description"} onChange={this.handleChange}></textarea><br/>
-                <input className="PostButton" type={"submit"} value={"Post"}/>
+                <div className="newPost-ButtonWrapper">
+                    <Link className="DiscardButton" to="/Community/">{t("post.discard")}</Link>
+                    <input className="PostButton" type={"submit"} value={t("post.add")}/>
+                </div>
             </form>
             </div>
             </div>
@@ -86,4 +90,4 @@ class NewPost extends Component {
     }
 }
 
-export default NewPost;
+export default withTranslation()(NewPost);
