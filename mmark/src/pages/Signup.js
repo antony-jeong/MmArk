@@ -22,7 +22,7 @@ class Signup extends Component {
     
     handle_signup = (e, data) => {
         e.preventDefault();
-        fetch('http://localhost:8000/api/test/users/', {
+        fetch('http://3.36.217.44:8000/api/test/users/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

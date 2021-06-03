@@ -68,19 +68,19 @@ class NewPost extends Component {
     render() {
         return (
             <div className='NewPost'>
-            <Logo className='logo' isLink={true}/>
-            <Link className='CommunityButton' to='/Community'>Kkoekkoli</Link>
-            <div className='Form'>
-            <form onSubmit={(e) => {this.handlePost(e, this.state)}}>
-                Title<br/>
-                <input className='textInput' type={"text"} name={"title"} onChange={this.handleChange}/><br/>
-                description<br/>
-                <Sheet className="Sheet" dataStructure={JSON.parse(this.state.sheet_ds)} name={"sheet_ds"} updateDS={this.updateDS}/>
-                description<br/>
-                <textarea className='textInput' rows={"10"} cols={"50"} name={"description"} onChange={this.handleChange}></textarea><br/>
-                <input className="PostButton" type={"submit"} value={"Post"}/>
-            </form>
-            </div>
+                <Logo className='logo' isLink={true}/>
+                <Link className='CommunityButton' to='/Community'>Kkoekkoli</Link>
+                <div className='Form'>
+                    <form onSubmit={(e) => {this.handlePost(e, this.state)}}>
+                        Title<br/>
+                        <input className='textInput' type={"text"} name={"title"} onChange={this.handleChange}/><br/>
+                        description<br/>
+                        <Sheet className="Sheet" dataStructure={JSON.parse(this.state.sheet_ds)} name={"sheet_ds"} updateDS={this.updateDS}/>
+                        description<br/>
+                        <textarea className='textInput' rows={"10"} cols={"50"} name={"description"} onChange={this.handleChange}></textarea><br/>
+                        <input className="PostButton" type={"submit"} value={"Post"}/>
+                    </form>
+                </div>
             </div>
         );
     }

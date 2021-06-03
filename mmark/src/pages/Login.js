@@ -31,7 +31,7 @@ class Login extends Component {
   componentDidMount() {
     const { cookies } = this.props;
     if (this.state.logged_in) {
-      fetch('http://localhost:8000/api/test/current_user/', {
+      fetch('http://3.36.217.44:8000/api/test/current_user/', {
         headers: {
           Authorization: `JWT ${cookies.get('token')}`
         }
@@ -46,7 +46,7 @@ class Login extends Component {
   handle_login = (e, data) => {
     const { cookies } = this.props;
     e.preventDefault();
-      fetch('http://localhost:8000/token-auth/', {
+      fetch('http://3.36.217.44:8000/token-auth/', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
@@ -74,7 +74,7 @@ class Login extends Component {
   handle_signup = (e, data) => {
     const { cookies } = this.props;
     e.preventDefault();
-    fetch('http://localhost:8000/api/test/users/', {
+    fetch('http://3.36.217.44:8000/api/test/users/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
