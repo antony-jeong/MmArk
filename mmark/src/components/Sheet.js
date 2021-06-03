@@ -93,7 +93,6 @@ const AlwaysScrollSection = memo(props => {
 const SheetWrapper = styled.div`
     background-image: url(${process.env.PUBLIC_URL + "/musical_symbols_svg/sheet.svg"});
     background-attatchment: fixed;
-    background-position: center center;
     background-repeat: repeat no-repeat;
     position: static;
     height: 50px;
