@@ -7,6 +7,7 @@ class Tag(models.Model):
     """ Tag Model """
 
     name = models.CharField(max_length=20, null=False)
+    color = models.TextField(default="cyan")
 
     class Meta:
         verbose_name_plural = "Tags"

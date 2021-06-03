@@ -2,6 +2,7 @@ from .models import Article, Tag
 from users import models as user_models
 from .serializers import ArticleSerializer, TagSerializer
 from rest_framework import generics
+from django.shortcuts import render
 
 class ArticleListCreate(generics.ListCreateAPIView):
     queryset = Article.objects.all()
@@ -18,3 +19,6 @@ class TagListCreate(generics.ListCreateAPIView):
 class TagDetailCreate(generics.RetrieveUpdateDestroyAPIView):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
+
+def main_page(request):
+    return render(request, "main.html")

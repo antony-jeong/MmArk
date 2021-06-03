@@ -9,4 +9,4 @@ class ArticleSerializer(serializers.ModelSerializer):
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ('name', 'articles')
+        fields = ('name', 'color', 'articles')
