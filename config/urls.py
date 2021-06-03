@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-<<<<<<< HEAD
 from rest_framework_jwt.views import obtain_jwt_token
+from articles import views as article_views
 
 # urlpatterns = [
 #     path('admin/', admin.site.urls),
@@ -28,7 +28,7 @@ from articles import models
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include("users.urls", namespace= "users")),
-    path('plz/', models.new_post)
->>>>>>> apply_for_backend
+    path('plz/', models.new_post),
+    path('', article_views.main_page)
 ]
 

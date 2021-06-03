@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+.body {
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+.desc {
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+.a-wrapper {
+    font-size: 1.75rem;
+}
