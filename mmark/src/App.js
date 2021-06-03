@@ -11,7 +11,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Logout from "./pages/Logout";
 import Main from "./pages/Main";
-import { useCookies, Cookies } from "react-cookie";
+import NewPost from "./pages/NewPost";
 
 function App() {
     // const [user, setUser] = useState("");
@@ -31,6 +31,7 @@ function App() {
                 <Route path="/LearnInterval/:pagenum" component={LearnInterval}/>
                 <Route path="/LearnChord/:pagenum" component={LearnChord}/>
                 <Route path="/LearnRoadmapSign/:pagenum" component={LearnRoadmapSign} />
+                <Route path="/Community/NewPost" component={NewPost} />
                 <Route path="/Community" component={Community} />
                 <Route path="/login" component={Login} />
                 <Route path="/logout" component={Logout} />

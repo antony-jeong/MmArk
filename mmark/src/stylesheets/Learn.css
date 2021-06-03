@@ -1,10 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+    margin: 0;
+}
+
 .LearnLayout {
     width: 100vw;
     display: block;
     background: linear-gradient(to top, #cac7dc, #eaecf1);
-    overflow: auto;
-    
+    overflow: hidden;
+}
+
+.LearnPage {
+    height: 100vh;
+    width: calc(100vw-100px);
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-rows: 1.3fr 0.4fr 30px 1fr;
+    align-items: center;
+    margin: 0 50px;
 }
 
 @keyframes fade-in {
@@ -62,6 +77,7 @@
 }
 
 .PageNavigator {
+    size: fit-content;
     position: fixed;
     top: 0px;
     right: 0px;
@@ -120,15 +136,6 @@
     zoom: 0.7;
 }
 
-.LearnPage {
-    height: 100vh;
-    top: 0;
-    left: 0;
-    display: grid;
-    grid-template-rows: 1.3fr 0.4fr 30px 1fr;
-    align-items: center;
-    margin: 0 50px;
-}
 
 .ProgressBarWrapper {
     height: 10px;
@@ -188,18 +195,19 @@
 .Sheet{
     align-items: center;
     justify-content: center;
+    overflow-y: auto;
 }
 
 .PlayButton,
 .StopButton{
-    cursor: pointer;
+    transform: translateX(-10px) translateY(2px);
     opacity: 0.8;
     transition: opacity 0.2s;
 }
 
 .PlayButton:hover,
 .StopButton:hover{
-    transition: opacity 0.4s;
+    transition: opacity 0.2s;
     opacity: 1;
 }
 
@@ -213,15 +221,18 @@
         margin-top: 0;
         width: 0px;
         height: 10px;
+        border: 0px;
     }
     80%{
         margin-top: 0;
         width: 0px;
         height: 10px;
+        border: 0px;
     }
     90%{
         width: 65px;
         height: 45px;
+        border: 0px;
     }
     100%{
         margin-top: 10px;
@@ -344,6 +355,7 @@
     outline: none;
     font-size: 1.4rem;
     text-align: right;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
 }
 
 #textButton {
@@ -355,4 +367,196 @@
     background: rgb(94, 94, 94);
     font-family: 'Roboto';
     font-size: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+}
+
+.sheet-menu-bar {
+    height: 30px;
+    justify-content: space-between;
+    align-items: flex-start;
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-bottom: 3px solid #ccc;
+}
+
+.sheet-mode-button {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    margin-left: 6px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.sheet-mode-button.view {
+    background: lightgreen;
+}
+
+.sheet-mode-button.edit {
+    background: #cac7dc;
+}
+
+.sheet-edit-control-button {
+    height: 30px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.sheet-edit-control-button:hover {
+    background-color: #ccc;
+}
+
+.sheet-edit-control-button.chosen {
+    background: rgba(194, 174, 236, 0.5);
+}
+
+.sheet-edit-control-dropup {
+    position: relative;
+}
+
+.sheet-edit-control-dropup .content {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #f1f1f1;
+    transform: translateX(-50%);
+    left: 50%;
+    display: none;
+    position: absolute;
+    top: 100%;
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(159, 131, 221, 0.5);
+}
+
+.sheet-edit-control-dropup .content .option-cell {
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+    cursor: pointer;
+}
+
+.sheet-edit-control-dropup .content .option-cell:hover {background-color: #ccc}
+
+.sheet-edit-control-dropup .content.chosen {
+    display: grid;
+}
+
+.sheet-edit-control-dropup .button {
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.sheet-edit-control-dropup .button:hover {
+    background-color: #ccc;
+}
+
+.sheet-edit-control-dropup .button.chosen {
+    background-color: rgba(159, 131, 221, 0.5);
+}
+
+.sheet-audio-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sheet-edit-control-delimiter {
+    width: 0px;
+    height: 30px;
+}
+
+.sheet-edit-control-bundle {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    border-left: 3px solid #ccc;
+    padding-left: 6px;
+    margin-left: 6px;
+}
+
+.sheet-edit-control-showed {
+    display: flex;
+}
+
+.sheet-edit-control-hidden {
+    display: none;
+}
+
+.sheet-menu-section-left {
+    display: flex;
+}
+
+.sheet-reset-button {
+    background-color: #ffa287;
+    width: 60px;
+    height: 30px;
+    text-align: center;
+}
+
+@media screen and (max-width: 900px){
+    .LearnPage {
+        width: 90vw;
+        margin: 0 auto;
+    }
+    .Instruction{
+        font-size: 1.2rem;
+        width: 90vw;
+        margin: 0 auto;
+    }
+    .Sheet{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .LogoContainer{
+        zoom: 0.8;
+    }
+    .Language-Select-Learn{
+        zoom: 0.9;
+    }
+    .PageNavigator{
+        zoom: 0.9;
+    }
+    .ProgressBarWrapper{
+        zoom: 0.8;
+    }
+    .Sheet{
+        zoom: 0.7;
+    }
+    .piano-container{
+        zoom: 0.8;
+    }
+    .textInputWrapper{
+        zoom: 0.8;
+        margin-bottom: 20vh;
+    }
+    .Instruction{
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .PageNavigator{
+        position: fixed;
+        top: 30px;
+        zoom: 0.8;
+    }
+    .Language-Select-Learn {
+        position: fixed;
+        top: 10px;
+        right: 0px;
+    }
 }

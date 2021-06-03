@@ -3,12 +3,68 @@ html {
     background: linear-gradient(to top, #3f4454, #0f0930);
 }
 
+.Community {
+    font-family: 'Roboto';
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.logo {
+    zoom: 0.4;
+    position: absolute;
+    top: 40px;
+    left: 50px;
+}
+
+.searchWrapper {
+    display: flex;
+    width: 60vw;
+    height: 5vh;
+    margin: 20px auto;
+    justify-content: center;
+}
+
+.searchWrapper .search {
+    color: gray;
+    border-radius: 10px;
+    height: 30px;
+    width: 45vw;
+    background-color: white;
+    border: 2px inside white;
+    margin: 0px 30px 0px 30px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 200;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.searchButton {
+    cursor: pointer;
+}
+
+.newPostButton {
+    display: flex;
+    text-align: center;
+    padding-top: 5px;
+    justify-content: center;
+    width: 60vw;
+    height: 1.5rem;
+    background: linear-gradient(to top, #555cc5, #6a5ae1);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    margin: 20px auto;
+}
+
 .listWrapper {
-    width: 55vw;
-    height: 80vh;
+    width: 60vw;
+    height: 75vh;
     background: linear-gradient(to top, #eaecf1, #cac7dc);
     overflow-y: scroll;
-    margin: 20px;
+    margin: 20px auto;
     border-radius: 10px;
 }
 
@@ -31,18 +87,30 @@ html {
 
 .itemWrapper {
     display: grid;
-    grid-template: "a b" 1fr "a c" 5fr / 1fr 10fr;
+    grid-template: "d b" 1fr "a c" 5fr / 1fr 10fr;
 }
 
 .authorWrapper {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     grid-area: a;
+    flex-flow: column;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.authorProfilePic {
+    width: 50px;
+    height: 50px;
+    background-color: #6a5aec;
+    border-radius: 25px;
 }
 
 .titleWrapper {
     grid-area: b;
+    display: flex;
+    align-items: flex-end;
 }
 
 .descWrapperWrapper {
@@ -50,15 +118,15 @@ html {
     border-radius: 10px;
     box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.25);
     background: white;
-    margin: 10px 40px 10px 10px;
-    padding: 20px;
+    margin: 10px 20px 10px 10px;
+    padding: 15px;
     height: fit-content;
 }
 
 .titleWrapper .title {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    margin: 20px 15px 5px 15px;
+    margin: 20px 15px 0px 15px;
     font-size: 1.5125rem;
     display: inline-block;
     color: #494951;
@@ -70,6 +138,7 @@ html {
     font-size: 0.9375rem;
     display: inline-block;
     color: #6a5aec;
+    margin-bottom: 4px;
 }
 
 .descWrapper {
@@ -85,6 +154,15 @@ html {
     display: flex;
     align-items: center;
     grid-area: b;
+    margin-right: 20px;
+}
+
+.descWrapper .favNum {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 200;
+    font-size: 1.125rem;
+    height: max-content;
+    margin: 0.375rem;
 }
 
 .descWrapper .tagWrapper {
@@ -105,9 +183,18 @@ html {
 
 .descWrapper .descButtonWrapper {
     grid-area: d;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.descWrapper .descButtonWrapper .descButtonText {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.125rem;
+    color: #6a5aec;
+    font-weight: 300;
 }
 
 .hidden {
-    visibility: hidden;
+    display: none;
 }

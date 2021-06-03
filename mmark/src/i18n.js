@@ -32,6 +32,20 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 },
                 learn: {
                     submit: "Submit"
+                },
+                community: {
+                    second_singular: " second ago",
+                    second_plural: " seconds ago",
+                    minute_singular: " minute ago",
+                    minute_plural: " minutes ago",
+                    hour_singular: " hour ago",
+                    hour_plural: " hours ago",
+                    day_singular: "Yesterday",
+                    day_plural: " days ago",
+                    month_singular: "Last month",
+                    month_plural: " months ago",
+                    year_singular: "Last year",
+                    year_plural: " years ago"
                 }
             }
         },
@@ -57,6 +71,20 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 },
                 learn: {
                     submit: "제출"
+                },
+                community: {
+                    second_singular: " 초 전",
+                    second_plural: " 초 전",
+                    minute_singular: " 분 전",
+                    minute_plural: " 분 전",
+                    hour_singular: " 시간 전",
+                    hour_plural: " 시간 전",
+                    day_singular: "어제",
+                    day_plural: " 일 전",
+                    month_singular: "지난 달",
+                    month_plural: " 달 전",
+                    year_singular: "작년",
+                    year_plural: " 년 전"
                 }
             }
         }

@@ -1,4 +1,5 @@
 from .models import Article, Tag
+from users import models as user_models
 from .serializers import ArticleSerializer, TagSerializer
 from rest_framework import generics
 

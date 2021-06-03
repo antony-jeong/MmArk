@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="레이어_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-	 y="0px" viewBox="0 0 100 50" style="enable-background:new 0 0 100 50;" xml:space="preserve">
-<rect x="49.5" y="-49.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 49.4898 50.5102)" width="1" height="100"/>
-<rect x="49.5" y="-37.2" transform="matrix(6.123234e-17 -1 1 6.123234e-17 37.2449 62.7551)" width="1" height="100"/>
-<rect x="49.5" y="-25" transform="matrix(6.123234e-17 -1 1 6.123234e-17 25 75)" width="1" height="100"/>
-<rect x="49.5" y="-12.8" transform="matrix(6.123234e-17 -1 1 6.123234e-17 12.7551 87.2449)" width="1" height="100"/>
-<rect x="49.5" y="-0.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 0.5102 99.4898)" width="1" height="100"/>
+	 y="0px" viewBox="0 0 1 50" style="enable-background:new 0 0 1 50;" xml:space="preserve">
+<rect x="-49.5" y="0" width="100" height="1"/>
+<rect x="-49.5" y="12.3" width="100" height="1"/>
+<rect x="-49.5" y="24.5" width="100" height="1"/>
+<rect x="-49.5" y="36.7" width="100" height="1"/>
+<rect x="-49.5" y="49" width="100" height="1"/>
 </svg>

@@ -13,7 +13,7 @@ const convertObjects = (ds) => {
   var isTreble = true;
   var durOf4 = 750; // default: quarter = 80
   var keySign = {isSharp: true, notes: []};
-  var accidentals = [];
+  var accidentals = {};
 
   const processNote = (height, acc) => {
     const needsIncOctave = (index) => (index > 15 || index === 14);
@@ -26,37 +26,35 @@ const convertObjects = (ds) => {
     }
     var octave = (height - index) / 7 + 4;
     if (acc === "x") {
-      for (var accidentalIdx in accidentals) {
-        var accidental = accidentals[accidentalIdx];
-        if (accidental.height === height) {
-          index = index * 3 + accidental.offsetPlus1;
+      if (accidentals[height] === undefined) {
+        index = index * 3 + 1;
+        let note = noteOrder[index];
+        if (keySign.notes.indexOf(note) === -1) {
           if (needsIncOctave(index)) {
             octave += 1;
           }
-          return noteOrder[index] + octave;
+          return note + octave;
+        } else {
+          if (keySign.isSharp) {
+            index += 1;
+            if (needsIncOctave(index)) {
+              octave += 1;
+            }
+            return noteOrder[index] + octave;
+          } else {
+            index -= 1;
+            if (needsIncOctave(index)) {
+              octave += 1;
+            }
+            return noteOrder[index] + octave;
+          }
         }
-      }
-      index = index * 3 + 1;
-      var note = noteOrder[index];
-      if (keySign.notes.indexOf(note) === -1) {
+      } else {
+        index = index * 3 + accidentals[height];
         if (needsIncOctave(index)) {
           octave += 1;
         }
-        return note + octave;
-      } else {
-        if (keySign.isSharp) {
-          index += 1;
-          if (needsIncOctave(index)) {
-            octave += 1;
-          }
-          return noteOrder[index] + octave;
-        } else {
-          index -= 1;
-          if (needsIncOctave(index)) {
-            octave += 1;
-          }
-          return noteOrder[index] + octave;
-        }
+        return noteOrder[index] + octave;
       }
     } else {
       if (acc === "s") {
@@ -64,40 +62,21 @@ const convertObjects = (ds) => {
         if (needsIncOctave(index)) {
           octave += 1;
         }
-        for (let accidental in accidentals) {
-          if (accidental.height === height) {
-            accidental.offsetPlus1 = 2;
-            return noteOrder[index] + octave;
-          }
-        }
-        accidentals.push({height: height, offsetPlus1: 2});
+        accidentals[height] = 2;
         return noteOrder[index] + octave;
       } else if (acc === "f") {
         index = index * 3;
         if (needsIncOctave(index)) {
           octave += 1;
         }
-        for (let accidental in accidentals) {
-          if (accidental.height === height) {
-            accidental.offsetPlus1 = 0;
-            return noteOrder[index] + octave;
-          }
-        }
-        accidentals.push({height: height, offsetPlus1: 0});
+        accidentals[height] = 0;
         return noteOrder[index] + octave;
       } else if (acc === "n") {
         index = index * 3 + 1;
         if (needsIncOctave(index)) {
           octave += 1;
         }
-        for (let accidentalIdx in accidentals) {
-          var accidental = accidentals[accidentalIdx];
-          if (accidental.height === height) {
-            accidental.offsetPlus1 = 1;
-            return noteOrder[index] + octave;
-          }
-        }
-        accidentals.push({height: height, offsetPlus1: 1});
+        accidentals[height] = 1;
         return noteOrder[index] + octave;
       }
     }
@@ -128,7 +107,7 @@ const convertObjects = (ds) => {
         }
         break;
       case "b":
-        accidentals = [];
+        accidentals = {};
         // pre-barline
         switch (o.barlineDecoration) {
           case "ds":
@@ -245,7 +224,7 @@ const convertObjects = (ds) => {
 
 const unwrapSheet = (converted, setIsPlaying) => {
   var nowBy128 = 0;
-  var baseTime = 0;
+  var baseTime = 500;
   var currentDurOf4 = 750; // useless 750
   var afterDSorDC = false;
   var sequence = [];

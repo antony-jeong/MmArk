@@ -17,7 +17,13 @@ import SoundFontPlayerWrapper from "../components/audio-parts/SoundFontPlayerWra
 import SheetPlayer from "../components/audio-parts/SheetPlayer";
 import "./utils/calcSheetObjectMargin";
 import calcSheetObjectMargin from './utils/calcSheetObjectMargin';
+import SheetEditControl from './SheetEditControl';
 
+import {ReactComponent as ViewIcon} from "./edit_menu_bar_svg/view.svg";
+import {ReactComponent as EditIcon} from "./edit_menu_bar_svg/edit.svg";
+
+import {ReactComponent as Cursor} from "./musical_symbols_svg/cursor.svg";
+import {ReactComponent as CursorBig} from "./musical_symbols_svg/cursor_big.svg";
 
 // dataStructure
     // objectType: (char) 
@@ -89,7 +95,6 @@ const SheetWrapper = styled.div`
     background-attatchment: fixed;
     background-size: contain;
     position: static;
-    align-items: baseline;
     height: 50px;
     margin: 50px 10px 50px 20px;
     zoom: 1;
@@ -116,13 +121,25 @@ const StyledAlwaysScrollSection = styled.div`
     }
   `;
 
-const Sheet = ({ dataStructure, className, cursorIndex, cursorHeight, isBeingEdited }) => {
+const Sheet = ({ dataStructure, className, updateDS }) => {
+    const [cursorIndex, setCursorIndex] = useState(false);
+    const propSetCursorIndex = (i) => setCursorIndex(i);
+    const [cursorHeight, setCursorHeight] = useState(0);
+    const propSetCursorHeight = (i) => setCursorHeight(i);
     const [soundPlayer, setSoundPlayer] = useState(false);
     const [player, setPlayer] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
-    const getState = (playState) => {
-        setIsPlaying(playState);
+    const getState = (playState) => setIsPlaying(playState);
+    const [ds, setDs] = useState(false);
+    const propSetDs = (newDs) => {
+        setDs(newDs);
+        if (updateDS) { updateDS(newDs); }
     };
+    useEffect(() => {
+        setDs([...dataStructure]);
+        setCursorIndex(dataStructure.length);
+        setCursorHeight(0);
+    }, [dataStructure]);
     useEffect(() => {
         if (!soundPlayer) {
             setSoundPlayer(SoundFontPlayerWrapper());
@@ -137,16 +154,15 @@ const Sheet = ({ dataStructure, className, cursorIndex, cursorHeight, isBeingEdi
     }, [soundPlayer]);
     useEffect(() => {
         if (player) {
-            player.setSheet(dataStructure);
+            player.setSheet(ds);
         }
     }, [player]);
     useEffect( () => {
         if (player) {
             player.stop();
-            player.setSheet(dataStructure);
+            player.setSheet(ds);
         }
-    }, [dataStructure]);
-
+    }, [ds]);
     const [playingIndex, setPlayingIndex] = useState(-1);
     const [playingTripletIndex, setPlayingTripletIndex] = useState(-1);
     const changeHighlight = (index) => setPlayingIndex(index);
@@ -156,67 +172,116 @@ const Sheet = ({ dataStructure, className, cursorIndex, cursorHeight, isBeingEdi
 
 
     const handleResize = debounce(() => {
-        setMinMargin(document.getElementById("sheet").clientWidth-30);
-      }, 100);
-
+        setMinMargin(document.getElementById("top").clientWidth-31);
+      }, 500);
+    
     useEffect(() => {
-        setMinMargin(document.getElementById("sheet").clientWidth-30)
+        setMinMargin(document.getElementById("top").clientWidth-31);
+    }, []);
+    useEffect(() => {
         window.addEventListener("resize", handleResize)
         return() =>{
             window.removeEventListener("resize", handleResize)
         }
 
-    }, [dataStructure])
+    });
     const [margin, setMargin] = useState(false);
     useEffect(() => {
-        setMargin(calcSheetObjectMargin(dataStructure, minMargin));
-    }, [dataStructure, minMargin]);
+        if(ds){
+            setMargin(calcSheetObjectMargin(ds, minMargin));
+        }
+    }, [ds, minMargin]);
     //document.getElementById("sheetwrapper").clientWidth
     //document.getElementById("sheetwrapper").clientWidth-2
-    const data = dataStructure;
+    const [isBeingEdited, setIsBeingEdited] = useState(false);
+    const data = ds || dataStructure;
     var trebled = true;
     const returnValue = data.map((obj, index) => {
         switch (obj.objectType) {
             case "c":
-                return (<Clef obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited ? cursorHeight : 50} />)
+                return (<Clef obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited ? cursorHeight : 50} />)
             case "t":
                 trebled = obj.treble;
-                return (<Time obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
+                return (<Time obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
             case "k":
-                return (<Key obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} treble={trebled} />)
+                return (<Key obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} treble={trebled} />)
             case "b":
-                return (<Barline obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
+                return (<Barline obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
             case "n":
-                return (<Note obj={obj} key={index} isPlaying={index === playingIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
+                return (<Note obj={obj} key={index} isPlaying={index === playingIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
             case "p":
-                return (<Bpm obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} isBeingEdited={isBeingEdited}/>)
+                return (<Bpm obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} isBeingEdited={isBeingEdited}/>)
             case "r":
-                return (<Triplet obj={obj} key={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex === index && isBeingEdited  ? cursorHeight : 50} />)
+                return (<Triplet obj={obj} key={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
             default:
                 return (<div key={index}>Invalid Object</div>)
         }
     });
     return (
-        <div className={`${className}`} id="sheet" style={{"overflow-x":"auto", "overflow-y":"hidden", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
-            
-            {!isPlaying
-            ?<div style={{"margin-left": "20px", display:"inline"}}>
-                <svg className={'PlayButton'} onClick={player ? player.play : () => {}} width="20" height="23" viewBox="0 0 33 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M31.5 16.4019C33.5 17.5566 33.5 20.4434 31.5 21.5981L4.5 37.1865C2.5 38.3412 1.98328e-06 36.8979 2.08423e-06 34.5885L3.44702e-06 3.41154C3.54796e-06 1.10214 2.5 -0.341234 4.5 0.813466L31.5 16.4019Z" fill="#977ED7"/>
-                </svg>
+        <div id = "top" style = {{overflow: "hidden"}}>
+        <div id = "sheet-menu" className={"sheet-menu-bar"}>
+            <div className={"sheet-menu-section-left"}>
+                <div className={"sheet-audio-button"} onClick={!isPlaying ? (player ? player.play : () => {}) : (player ? player.stop : () => {})}>
+                    {!isPlaying
+                    ?<div style={{"margin-left": "20px"}}>
+                        <svg className={'PlayButton'} width="20" height="23" viewBox="0 0 33 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M31.5 16.4019C33.5 17.5566 33.5 20.4434 31.5 21.5981L4.5 37.1865C2.5 38.3412 1.98328e-06 36.8979 2.08423e-06 34.5885L3.44702e-06 3.41154C3.54796e-06 1.10214 2.5 -0.341234 4.5 0.813466L31.5 16.4019Z" fill="#977ED7"/>
+                        </svg>
+                    </div>
+                    :<div style={{"margin-left": "20px"}}>
+                        <svg className={'StopButton'} width="23" height="23" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="35" height="35" rx="3" fill="#D77E8E"/>
+                        </svg>
+                    </div>}
+                </div>
+                {isBeingEdited
+                ?<div
+                    className={"sheet-mode-button view"}
+                    onClick={() => {setIsBeingEdited(false)}}
+                >
+                    <ViewIcon width={"24px"} fill={"green"}/>
+                </div>:<div
+                    className={"sheet-mode-button edit"}
+                    onClick={() => setIsBeingEdited(true)}
+                >
+                    <EditIcon width={"24px"} fill={"#7147CB"}/>
+                </div>}
+                <SheetEditControl
+                  isBeingEdited={isBeingEdited}
+                  ds={ds}
+                  setDs={propSetDs}
+                  idx={cursorIndex}
+                  setIdx={propSetCursorIndex}
+                  h={cursorHeight}
+                  setH={propSetCursorHeight}
+                />
             </div>
-            :<div style={{"margin-left": "20px", display:"inline"}}>
-                <svg className={'StopButton'}onClick={player ? player.stop : () => {}} width="23" height="23" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="35" height="35" rx="3" fill="#D77E8E"/>
-                </svg>
-            </div>}
+            <div className={"sheet-reset-button"} onClick={() => {setDs(dataStructure);setCursorIndex(dataStructure.length);setCursorHeight(0);}}>
+                Reset
+            </div>
+        </div>
+        <div className={`${className}`} id="sheet" height="150px"  style={{display: "flex", "overflow-x":"auto", "overflow-y":"visible", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>
             <AlwaysScrollSection>
-            <div id="sheetwrapperwrapper" style={{ "justify-content":"start"}}>
-                <SheetWrapper id="sheetwrapper">
+            <div id="sheetwrapperwrapper" style={{ "justify-content":"start"} }>
+                <SheetWrapper id="sheetwrapper" style={ data.length === 0 || (data.length < 3 && data[0].objectType==="p" ) ? {width:"100px"} : {}}>
+                    <div className="starting" style = {{width: "1px", display: "inline" }}>
+                        <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/starting.svg"} style = {{position: "relative", top: "-17px"}}  height = "81px"/>
+                    </div> 
+                    <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px", left: "-1px"}}>
+                        <div>
+                            {cursorIndex ===0 && isBeingEdited? <Cursor className="blink_me" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                        </div>
+                    </div>
+                    <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225  + "px", left: "-1px"}}>
+                        <div>
+                            {cursorIndex ===0 && isBeingEdited? <CursorBig className="cursor" style = {{display: "inline-flex", position: "relative"}} height="60px"/> : <div></div>}
+                        </div>
+                    </div>
                     {returnValue}
                 </SheetWrapper>
             </div>
             </AlwaysScrollSection>
+        </div>
         </div>
     );
 };

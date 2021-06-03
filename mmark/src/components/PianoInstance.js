@@ -1,14 +1,39 @@
-import React from "react";
+import {React, memo} from "react";
 import Piano from "./audio-parts/Piano.js";
 import "./PianoInstance.css";
+import styled from "styled-components";
+
+const StyledAlwaysScrollSection = styled.div`
+    overflow-x: auto;
+    overflow-y: hidden;
+    &::-webkit-scrollbar {
+      /* 세로 스크롤 넓이 */
+      width: 0px;
+  
+      /* 가로 스크롤 높이 */
+      height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 6px;
+    }
+  `;
+const AlwaysScrollSection = memo(props => {
+    const { children } = props;
+    return <StyledAlwaysScrollSection>{children}</StyledAlwaysScrollSection>;
+  });
 
 function PianoContainer({children}) {
   return (
-    <div
-      className={"piano-container"}
-      onMouseDown={event => event.preventDefault()}
-    >
-      {children}
+    <div className={"piano-container-wrapper"}>
+      <AlwaysScrollSection>
+      <div
+        className={"piano-container"}
+        onMouseDown={event => event.preventDefault()}
+      >
+        {children}
+      </div>
+      </AlwaysScrollSection>
     </div>
   );
 }
