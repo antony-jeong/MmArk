@@ -11,17 +11,19 @@ inputMode:
     "sheetClick" - input notes by clicking the sheet
 */
 
-const Img_barline_t = '';
-const Img_time_44 = '';
-const Img_note_arr = ['', '', '', '', ''];
-const Img_dotted_note_arr = ['', '', '', '', ''];
-const Img_rest_arr = ['', '', '', '', ''];
-const Img_tempo = [''];
+const Img_barline = '<svg>barline</svg>';
+const Img_barline_t = '<svg>terminalBarline</svg>';
+const Img_barline_d = '<svg>doubleBarline</svg>';
+const Img_time_44 = '<svg>time_44</svg>';
+const Img_note_arr = ['<svg>wholeNote</svg>', '<svg>halfNote</svg>', '<svg>quarterNote</svg>', '<svg>eighthNote</svg>', '<svg>sixteenthNote</svg>'];
+const Img_dotted_note_arr = ['<svg>dottedWholeNote</svg>', '<svg>dottedHalfNote</svg>', '<svg>dottedQuarterNote</svg>', '<svg>dottedEighthNote</svg>', '<svg>dottedSixteenthNote</svg>'];
+const Img_rest_arr = ['<svg>wholeRest</svg>', '<svg>halfRest</svg>', '<svg>quarterRest</svg>', '<svg>eighthRest</svg>', '<svg>sixteenthRest</svg>'];
+const Img_tempo = ['<svg>tempo</svg>'];
 
 const LearnRhythmData = [{
 "pageId": 1,
-"inst": `A <term>half note</term>${Img_note_arr[1]} is half the length of a <term>whole note</term>${Img_note_arr[0]}.<br></br>A <term>quarter note</term>${Img_note_arr[2]} is half the length of a <term>half note</term>${Img_note_arr[0]}.<br></br>How many times a <term>quarter note</term>${Img_note_arr[1]} is the sum of the notes to the right of the vertical line?`,
-"inst_kr": `<term>2분음표</term>${Img_note_arr[1]}는 <term>온음표</term>${Img_note_arr[0]} 길이의 절반입니다.<br></br><term>4분음표</term>${Img_note_arr[2]}는 <term>2분음표</term>${Img_note_arr[0]} 길이의 절반입니다.<br></br> 아래의 악보 중 세로줄 오른쪽 부분은 <term>4분음표</term>${Img_note_arr[1]} 몇 개와 같을까요?`,
+"inst": `A <term>half note</term>${Img_note_arr[1]} is half the length of a <term>whole note</term>${Img_note_arr[0]}<br></br>A <term>quarter note</term>${Img_note_arr[2]} is half the length of a <term>half note</term>${Img_note_arr[1]}<br></br>How many times a <term>quarter note</term>${Img_note_arr[2]} is the sum of the notes to the right of the vertical line?`,
+"inst_kr": `<term>2분음표</term>${Img_note_arr[1]}는 <term>온음표</term>${Img_note_arr[0]} 길이의 절반입니다.<br></br><term>4분음표</term>${Img_note_arr[2]}는 <term>2분음표</term>${Img_note_arr[1]} 길이의 절반입니다.<br></br> 아래의 악보 중 세로줄 오른쪽 부분은 <term>4분음표</term>${Img_note_arr[2]} 몇 개와 같을까요?`,
 "ds": [{
             "objectType": "p",
             "bpm": 360,
@@ -189,8 +191,8 @@ const LearnRhythmData = [{
     "inputMode": "text"
 }, {
     "pageId": 3,
-    "inst": `The vertical lines are called <term>bar line</term>. Between bar lines are called a <term>measure</term>.<br></br>However, the first bar doesn't have a starting bar line. At the end of the sheet music, there's a <term>terminal bar line</term>${Img_barline_t}<br></br>How many bars are there in the sheet music below?`,
-    "inst_kr": `세로로 그어진 선들은 <term>세로줄</term>이라고 부릅니다. 세로줄 사이는 <term>마디</term>라고 부릅니다.<br></br> 다만, 첫번째 마디의 경우에는 예외적으로 시작하는 세로줄이 없습니다. 악보의 끝에는 <term>끝세로줄</term>${Img_barline_t}이 있습니다. <br></br>아래 악보에는 몇 개의 마디가 있을까요?`,
+    "inst": `The vertical lines are called <term>bar line</term>${Img_barline}. Between bar lines are called a <term>measure</term>.<br></br>However, the first bar doesn't have a starting bar line. At the end of the sheet music, there's a <term>terminal bar line</term>${Img_barline_t}<br></br>How many bars are there in the sheet music below?`,
+    "inst_kr": `세로로 그어진 선들은 <term>세로줄</term></term><svg>barline</svg>이라고 부릅니다. 세로줄 사이는 <term>마디</term>라고 부릅니다.<br></br> 다만, 첫번째 마디의 경우에는 예외적으로 시작하는 세로줄이 없습니다. 악보의 끝에는 <term>끝세로줄</term>${Img_barline_t}이 있습니다. <br></br>아래 악보에는 몇 개의 마디가 있을까요?`,
     "ds": [{
         "objectType": "c",
         "treble": true
@@ -213,8 +215,8 @@ const LearnRhythmData = [{
     "inputMode": "text"
 }, {
     "pageId": 4,
-    "inst": `Things like ${Img_time_44} are attached to the sheet music. It is called a <term>time signature</term>.<br></br>A music has a standard of note length called <term>beat</term>, and the denominator represents a note that is the standard of a beat.<br></br>Which note is one beat here?`,
-    "inst_kr": `악보를 보다 보면 ${Img_time_44}와 같은 것들을 발견할 수 있습니다. 이를 우리는 <term>박자표</term>라고 부릅니다.<br></br><term>박자</term>는 해당 악보에서 빠르기를 정의합니다. 분모는 한 박자의 음표를 의미합니다.<br></br> 이 악보에서는 어떤 음표가 한 박자일까요?`,
+    "inst": `Things like ${Img_time_44} are attached to the sheet music. It is called a <term>time signature</term>.<br></br>A music has a standard of note length called <term>beat</term>, and the denominator<svg>denominator_4</svg> represents a note that is the standard of a beat.<br></br>Which note is one beat here?`,
+    "inst_kr": `악보를 보다 보면 ${Img_time_44}와 같은 것들을 발견할 수 있습니다. 이를 우리는 <term>박자표</term>라고 부릅니다.<br></br><term>박자</term>는 해당 악보에서 빠르기를 정의합니다. 분모<svg>denominator_4</svg>는 한 박자의 음표를 의미합니다.<br></br> 이 악보에서는 어떤 음표가 한 박자일까요?`,
     "ds": [{
             "objectType": "p",
             "bpm": 150,
@@ -321,8 +323,8 @@ const LearnRhythmData = [{
     "inputMode": "text"
 }, {
     "pageId": 5,
-    "inst": `The numerator indicates how many <term>beats</term> a bar has.<br></br>How many more bar lines should be drawn on this sheet music?`,
-    "inst_kr": `분자는 한 마디 안의 <term>박자</term>의 개수를 의미합니다.<br></br> 그렇다면, 이 악보에는 얼마나 더 많은 세로줄이 필요할까요?`,
+    "inst": `The numerator<svg>numerator_4</svg> indicates how many <term>beats</term> a bar has.<br></br>How many more bar lines should be drawn on this sheet music?`,
+    "inst_kr": `분자<svg>numerator_4</svg>는 한 마디 안의 <term>박자</term>의 개수를 의미합니다.<br></br> 그렇다면, 이 악보에는 얼마나 더 많은 세로줄이 필요할까요?`,
     "ds": [{
             "objectType": "p",
             "bpm": 150,
@@ -670,8 +672,8 @@ const LearnRhythmData = [{
     "inputMode": "text"
 }, {
     "pageId": 9,
-    "inst": `<term>Rests</term> can also have dots. How many more bar lines should be drawn on the sheet music below?`,
-    "inst_kr": `<term>쉼표</term>에도 점을 붙일 수가 있습니다. 아래의 악보에는 마디선을 몇 개를 더 그어야 할까요?`,
+    "inst": `<term>Rests</term> can also have dots. How many more bar lines ${Img_barline} should be drawn on the sheet music below?`,
+    "inst_kr": `<term>쉼표</term>에도 점을 붙일 수가 있습니다. 아래의 악보에는 세로선을 몇 개를 더 그어야 할까요?`,
     "ds": [{
             "objectType": "p",
             "bpm": 240,
@@ -790,7 +792,7 @@ const LearnRhythmData = [{
 }, {
     "pageId": 10,
     "inst": `The <term>tempo</term> notation ${Img_tempo[0]} indicates how many of the note is played in a minute.<br></br>In the case of the above, how many bars do you get to play per minute?`,
-    "inst_kr": `<term>빠르기</term> 표기는 ${Img_tempo[0]} 1분에 연주될 수 있는 음표의 수를 의미합니다.<br></br> 아래의 악보의 경우에는 1분에 몇 개의 마디를 연주할 수 있을까요?`,
+    "inst_kr": `<term>빠르기</term> 표기${Img_tempo[0]}는 1분에 연주될 수 있는 음표의 수를 의미합니다.<br></br> 아래의 악보의 경우에는 1분에 몇 개의 마디를 연주할 수 있을까요?`,
     "ds": [{
             "objectType": "p",
             "bpm": 100,
@@ -885,8 +887,8 @@ const LearnRhythmData = [{
     "inputMode": "text"
 }, */{
     "pageId": 11,
-    "inst": `When the beat changes, we draw a <term>double bar line</term> and a new <term>time signature</term>.<br></br>There are no notes/rests on the sheet music below. How many <term>eighth notes</term>${Img_note_arr[3]} we should use to fill it?`,
-    "inst_kr": `박자가 바뀌게 되면 <term>겹세로줄</term>을 긋고, 새로운 <term>박자표</term>를 적습니다.<br></br>아래 악보에는 음표나 쉼표가 적혀있지 않습니다. 얼마나 많은 <term>8분음표</term>${Img_note_arr[3]}가 해당 악보를 채우기 위해 필요한가요?`,
+    "inst": `When the beat changes, we draw a <term>double bar line</term>${Img_barline_d} and a new <term>time signature</term>${Img_time_44}.<br></br>There are no notes/rests on the sheet music below. How many <term>eighth notes</term>${Img_note_arr[3]} we should use to fill it?`,
+    "inst_kr": `박자가 바뀌게 되면 <term>겹세로줄</term>${Img_barline_d}을 긋고, 새로운 <term>박자표</term>${Img_time_44}를 적습니다.<br></br>아래 악보에는 음표나 쉼표가 적혀있지 않습니다. 얼마나 많은 <term>8분음표</term>${Img_note_arr[3]}가 해당 악보를 채우기 위해 필요한가요?`,
     "ds": [{
             "objectType": "c",
             "treble": true
