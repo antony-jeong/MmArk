@@ -1,6 +1,7 @@
 import React, { useState, useEffect, memo } from 'react';
 import styled from "styled-components";
 import { debounce } from 'lodash';
+import { useTranslation } from 'react-i18next';
 
 import "./sheet/StyleSheet.css";
 
@@ -122,6 +123,7 @@ const StyledAlwaysScrollSection = styled.div`
   `;
 
 const Sheet = ({ dataStructure, className, updateDS }) => {
+    const { t, i18n } = useTranslation();
     const [cursorIndex, setCursorIndex] = useState(false);
     const propSetCursorIndex = (i) => setCursorIndex(i);
     const [cursorHeight, setCursorHeight] = useState(0);
@@ -257,7 +259,7 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
                 />
             </div>
             <div className={"sheet-reset-button"} onClick={() => {setDs(dataStructure);setCursorIndex(dataStructure.length);setCursorHeight(0);}}>
-                Reset
+                {t("sheet.reset")}
             </div>
         </div>
         <div className={`${className}`} id="sheet" height="150px"  style={{display: "flex", "overflow-x":"auto", "overflow-y":"visible", "justify-content":"center", "white-space":"nowrap", "-webkit-appearance": "none"}}>

@@ -4,6 +4,7 @@ import Logo from '../components/Logo';
 import CommunityBlock from "../components/CommunityBlock";
 import Sheet from '../components/Sheet';
 import '../stylesheets/Community.css';
+import { withTranslation } from 'react-i18next';
 
 class Community extends Component {
     state = {
@@ -11,7 +12,7 @@ class Community extends Component {
         users: [],
         tags: []
     };
-
+    
     async componentDidMount() {
         try {
             const res_articles = await fetch('http://3.36.217.44:8000/api/articles');
@@ -38,6 +39,7 @@ class Community extends Component {
 
 
     render() {
+        const {t} = this.props;
         return (
             <div className='Community'>
                 <Logo className="logo" isLink={true} />
@@ -52,11 +54,11 @@ class Community extends Component {
                         <path d="M21.707 20.2928L31.4143 30" stroke="white" stroke-width="2"/>
                     </svg>
                 </div>
-                <Link className='newPostButton' to='/Community/newPost'>+ NEW POST</Link>
+                <Link className='newPostButton' to='/Community/newPost'>{t("community.new_post")}</Link>
                 <CommunityBlock className="listWrapper" articles={this.state.articles} users={this.state.users} tags={this.state.tags}/>
             </div>
         );
     }
 }
 
-export default Community;
+export default withTranslation()(Community);

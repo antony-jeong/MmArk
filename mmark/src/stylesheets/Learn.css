@@ -16,10 +16,11 @@ body {
     width: calc(100vw-100px);
     top: 0;
     left: 0;
-    display: grid;
-    grid-template-rows: 1.3fr 0.4fr 30px 1fr;
+    display: flex;
     align-items: center;
-    margin: 0 50px;
+    justify-content: center;
+    vertical-align: middle;
+    flex-direction: column;
 }
 
 @keyframes fade-in {
@@ -33,9 +34,10 @@ body {
 
 .Instruction {
     display: flex;
-    align-self: flex-end;
+    flex: 1;
     justify-content: center;
-    margin: 0 auto;
+    vertical-align: middle;
+    align-items: center;
     text-align: center;
     font-family: 'Roboto', sans-serif;
     font-size: 1.4rem;
@@ -136,20 +138,25 @@ body {
     zoom: 0.7;
 }
 
+.progress-bar-wrapper-wrapper{
+    flex: 0 0 55px;
+    display: flex;
+    align-items: flex-end;
+
+}
 
 .ProgressBarWrapper {
     height: 10px;
-    align-self: flex-end;
     width: 40vw;
-    margin: 0 auto;
-    border-radius: 10px;
+    border-radius: 7px;
     border: 2px solid rgb(163, 163, 163);
+    box-sizing: content-box;
     overflow: hidden;
+    padding: 0;
 }
 
 .ProgressBarText{
     color: white;
-    position: relative;
     text-align: center;
     opacity: 0;
     margin-bottom: 10px;
@@ -192,11 +199,6 @@ body {
     100% {width: 100%;}
 }
 
-.Sheet{
-    align-items: center;
-    justify-content: center;
-    overflow-y: auto;
-}
 
 .PlayButton,
 .StopButton{
@@ -249,9 +251,8 @@ body {
 }
 
 .InputHistory{
+    flex: 0 0 25px;
     align-self: center;
-    padding: 0 auto;
-    margin: auto;
     text-align: center;
     overflow: hidden;
     opacity: 1;
@@ -259,7 +260,7 @@ body {
 
 .InputHistory span {
     z-index: 1;
-    position: relative;
+
     padding: 1px 4px;
     margin: 3px;
     font-weight: bold;
@@ -339,10 +340,10 @@ body {
 }
 
 .textInputWrapper {
+    flex: 0.5;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 100px;
 }
 
 #textInput {
@@ -370,7 +371,15 @@ body {
     box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
 }
 
+#top{
+    flex: 1;
+    width: 100%;
+    justify-content: space-between;
+}
+
+
 .sheet-menu-bar {
+    font-family: 'Roboto', sans-serif;
     height: 30px;
     justify-content: space-between;
     align-items: flex-start;
@@ -403,6 +412,7 @@ body {
     height: 30px;
     border-radius: 3px;
     cursor: pointer;
+    vertical-align: middle;
 }
 
 .sheet-edit-control-button:hover {
@@ -499,7 +509,8 @@ body {
 }
 
 .sheet-reset-button {
-    background-color: #a692d3;
+    font-family: 'Roboto', sans-serif;
+    background-color: #b95252;
     width: 60px;
     height: 24px;
     text-align: -webkit-center;

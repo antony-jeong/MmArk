@@ -1,0 +1,41 @@
+html{
+    font-family: "Roboto", sans-serif;
+}
+
+form {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    margin-right: 10px;
+}
+
+.embedded-login input[type="submit"],
+.login input[type="submit"]{
+    display: none;
+}
+
+.login-username,
+.login-password{
+    font-size: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 5px;
+}
+
+.login-username input,
+.login-password input{
+    font-size: 1.2rem;
+    width: 150px;
+    margin-left: 5px;
+    padding: 3px;
+    outline: none;
+    border-radius: 4px;
+    border: none;
+}

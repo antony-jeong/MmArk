@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withCookies, Cookies, useCookies } from "react-cookie";
-import { Trans, useTranslation } from 'react-i18next';
+import { Trans, useTranslation, withTranslation } from 'react-i18next';
 import Sheet from '../components/Sheet';
 import Logo from '../components/Logo';
 import '../stylesheets/NewPost.css';
 
 class NewPost extends Component {
-    
+
     constructor(props) {
         super(props);
         const { cookies } = props;
@@ -18,6 +18,7 @@ class NewPost extends Component {
             'logged_in': cookies.get('token') ? true : false,
             'username': cookies.get('name')
         };
+        const { t, i18n } = withTranslation();
     }
 
     updateDS = (ds) =>{
@@ -53,22 +54,25 @@ class NewPost extends Component {
         )
     };
 
+
     render() {
+        const {t} = this.props;
         return (
             <div className='NewPost'>
                 <Logo className='logo' isLink={true}/>
-                <Link className='CommunityButton' to='/Community'>Kkoekkoli</Link>
                 <div className='Form'>
                     <form onSubmit={(e) => {this.handlePost(e, this.state)}}>
-                        Title<br/>
+                        {t("post.title")}<br/>
                         <input className='textInput' type={"text"} name={"title"} onChange={this.handleChange} /><br />
-                        Author<br/>
-                        <div className="authorName" type={"text"} name={"author"}>{this.state.username}</div>
-                        description<br/>
+                        {t("post.author")} : {this.state.username}<br/>
+                        
                         <Sheet className="Sheet" dataStructure={JSON.parse(this.state.sheet_ds)} name={"sheet_ds"} updateDS={this.updateDS}/>
-                        description<br/>
+                        {t("post.description")}<br/>
                         <textarea className='textInput' rows={"10"} cols={"50"} name={"description"} onChange={this.handleChange}></textarea><br/>
-                        <input className="PostButton" type={"submit"} value={"Post"}/>
+                        <div className='newPost-ButtonWrapper'>
+                            <Link className='DiscardButton' to='/Community'>{t("post.discard")}</Link>
+                            <input className="PostButton" type={"submit"} value={t("post.add")}/>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -76,4 +80,4 @@ class NewPost extends Component {
     }
 }
 
-export default withCookies(NewPost);
+export default withCookies(withTranslation()(NewPost));

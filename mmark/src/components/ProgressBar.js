@@ -11,11 +11,13 @@ const ProgressBar = ({cur, end, onClick}) => {
         arr.push(<span className={`ProgressNext`}></span>);
     }
     return (
-        <div className="ProgressBarWrapper" onClick={onClick}>
-            <div className="ProgressBar">
-                {(cur > 0) ? arr : <div/>}
+        <div className="progress-bar-wrapper-wrapper">
+            <div className="ProgressBarWrapper" onClick={onClick}>
+                <div className="ProgressBar">
+                    {(cur > 0) ? arr : <div/>}
+                </div>
+                <div className="ProgressBarText">Next</div>
             </div>
-            <div className="ProgressBarText">Next</div>
         </div>
     );
 };

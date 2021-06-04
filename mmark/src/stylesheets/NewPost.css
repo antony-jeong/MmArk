@@ -13,19 +13,21 @@ html {
 }
 
 .Form{
+    color: white;
     align-self: center;
     justify-self: center;
     margin: auto auto;
     width: 60vw;
 }
 
-.NewPost .CommunityButton{
-    display: inline;
-    color: white;
-    text-decoration: none;
-    position: absolute;
-    top: 40px;
-    left: 150px;
+.NewPost .Sheet{
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.NewPost .sheet-menu-bar{
+    border-bottom: none;
 }
 
 .logo {
@@ -38,20 +40,69 @@ html {
 
 .textInput {
     width: 60vw;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.textInput[name='title']{
+    font-family: 'Roboto';
+    font-size: 1.5rem;
+}
+
+.textInput[name='description']{
+    font-family: 'Roboto';
+    font-size: 1.3rem;
+}
+
+Form div{
+    color: rgb(173, 173, 173);
+    font-family: 'Roboto';
+    font-size: 1.2rem;
+}
+
+.newPost-ButtonWrapper{
+    margin-top: 10px;
+    display: flex;
+    width: 60vw;
+    justify-content:space-between;
 }
 
 .PostButton{
-    display: flex;
+    cursor: pointer;
+    display: inline-flex;
     text-align: center;
-    padding-top: 5px;
+    padding: 10px;
     justify-content: center;
+    vertical-align: middle;
     width: 100px;
-    height: 1.5rem;
-    background: linear-gradient(to top, #555cc5, #6a5ae1);
+    background: linear-gradient(to top, #4950b4, #6a5ae1);
     color: white;
     text-decoration: none;
     border-radius: 10px;
-    margin: 20px auto;
+    margin: 0;
     outline: none;
     border: none;
+    font-size: 1rem;
+}
+
+
+.DiscardButton{
+    display: inline-flex;
+    text-align: center;
+    align-self: flex-start;
+    padding: 10px;
+    justify-content: center;
+    vertical-align: middle;
+    background: linear-gradient(to top, #ad2c2c, #da3232);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    margin: 0;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    padding: auto 10px;
+    width: fit-content;
 }

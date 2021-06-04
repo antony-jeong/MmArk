@@ -6,6 +6,8 @@ import { Trans, useTranslation } from 'react-i18next';
 import { withCookies, useCookies } from 'react-cookie';
 import {BrowserRouter, Link} from 'react-router-dom';
 import '../stylesheets/Main.css';
+import Login from './Login';
+import EmbeddedLogin from '../components/EmbeddedLogin';
 
 const lngs = {
   en: { nativeName: "English" },
@@ -22,9 +24,10 @@ const Main = () => {
         <div className={'Main-Logo-Container'}>
           <Logo className={'Main-Logo'} isLink={false}/>
           <div className={'Learn-Music-by-Games'}>{t("main.slogan")}</div>
-          <div className={'Made-by'}>{t("main.madeby")} ∙ <a href="https://github.com/antony-jeong/MmArk" target="_blank">GitHub</a></div>
-          <LoginNav logged_in={Cookie.token !== undefined} />
-          {Cookie.name !== undefined ? <div className="loginIndicator">Logged in as {Cookie.name}</div> : <div className="logoutIndicator">Log In to use Community Tab</div>}
+          <EmbeddedLogin/>
+          <GameSelectButton src={"Community"} name={t("main.name_community")}>
+            <Trans i18nKey="main.desc_community"/>
+          </GameSelectButton>
           <div className={'Language-Select'}>
             {Object.keys(lngs).map((lng) => (
               <button key={lng} className={i18n.language === lng ? "selected" : ""} type="submit" onClick={() => i18n.changeLanguage(lng)}>
@@ -32,6 +35,7 @@ const Main = () => {
               </button>
             ))}
           </div>
+          <div className={'Made-by'}>{t("main.madeby")} ∙ <a href="https://github.com/antony-jeong/MmArk" target="_blank">GitHub</a></div>
         </div>
         <div className={'Main-Button-Container'}>
           <GameSelectButton src={'LearnRhythm'} name={t("main.name_rhythms")}>
@@ -49,15 +53,6 @@ const Main = () => {
           <GameSelectButton /*src={'LearnRoadmapSign'}*/ name={t("main.name_roadmap")}>
             <Trans i18nKey="main.desc_roadmap"/>  
           </GameSelectButton>
-          <GameSelectButton src={"Community"} name={t("main.name_community")}>
-            <Trans i18nKey="main.desc_community"/>
-          </GameSelectButton>
-          {Cookie.name !== undefined ?  
-              <></>
-            : 
-              <GameSelectButton src={"login"} name={t("main.name_login")}>
-                <Trans i18nKey="main.desc_login"/>
-              </GameSelectButton>}
         </div>
       </div>
     );
