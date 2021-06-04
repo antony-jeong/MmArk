@@ -10,10 +10,14 @@ from .serializers import UserSerializer, UserSerializerWithToken
 class UserListCreate(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = (permissions.AllowAny)
+
 
 class UserDetailCreate(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = (permissions.AllowAny)
+
 
 
 
