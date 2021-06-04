@@ -57,7 +57,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     discard: "Discard and Go Back",
                     add: "Upload +",
                     description: "Description",
-                    title: "Title"
+                    title: "Title",
+                    author: "Author"
                 }
             }
         },
@@ -108,7 +109,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     discard: "취소",
                     add: "업로드 +",
                     description: "내용",
-                    title: "제목"
+                    title: "제목",
+                    author: "작성자"
                 }
             }
         }
