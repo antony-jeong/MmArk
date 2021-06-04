@@ -33,18 +33,16 @@ def main_page(request):
 
 @csrf_exempt
 def new_post(request):
-    print('hi')
     if request.method == 'POST':
         form_data = json.loads(request.body.decode())
-        new_user=user_models.User.objects.get(
-            username="mmark"
+        author=user_models.User.objects.get(
+            username=form_data['author']
         )
         new_article=Article.objects.create(
             title=form_data['title'],
             description=form_data['description'],
             sheet_ds=form_data['sheet_ds'],
-            author = new_user
+            author = author
         )
-        new_article.save()
     return new_article;
 
