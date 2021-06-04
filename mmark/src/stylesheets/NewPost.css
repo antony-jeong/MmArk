@@ -13,19 +13,21 @@ html {
 }
 
 .Form{
+    color: white;
     align-self: center;
     justify-self: center;
     margin: auto auto;
     width: 60vw;
 }
 
-.NewPost .CommunityButton{
-    display: inline;
-    color: white;
-    text-decoration: none;
-    position: absolute;
-    top: 40px;
-    left: 150px;
+.NewPost .Sheet{
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.NewPost .sheet-menu-bar{
+    border-bottom: none;
 }
 
 .logo {
@@ -41,9 +43,11 @@ html {
     box-sizing: border-box;
     padding: 10px;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .textInput[name='title']{
+    font-family: 'Roboto';
     font-size: 1.5rem;
 }
 
@@ -59,6 +63,7 @@ Form div{
 }
 
 .newPost-ButtonWrapper{
+    margin-top: 10px;
     display: flex;
     width: 60vw;
     justify-content:space-between;
