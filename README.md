@@ -70,7 +70,7 @@ It’d be game-changing
 
 - Links:
   - Hi-Fi Prototype : http://bit.ly/CS374-MmArk
-  - Hi-Fi Prototype Back-end Server : http://3.36.217.44:8000/ (Under construction; Unavailable for DP 4, DP 5)
+  - Hi-Fi Prototype Back-end Server : http://3.36.217.44/ (Under construction; Unavailable for DP 4, DP 5)
 
   - GitHub Repository : http://bit.ly/CS374-MmArk-GitHub
 
