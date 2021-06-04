@@ -1,7 +1,7 @@
 ## CS374: Intro to **HCI** 2021 Spring Design Project 4 & 5
 ---
 # Redesigning Experiences on Learning Music for Beginners
-## Team *MmArk* (Members: [*Kim Daewon*](https://github.com/star810, "Kim Daewon"), [*Kim Minjun*](https://github.com/HoneyTt21, "Kim Minjun"), [*Jeong Seunghyeon*](https://github.com/antony-jeong, "Jeong Seunghyeon"), [*Hwang Hyewon*](https://github.com/hywnH, "Hwang Hyewon"))
+## Team *MmArk* (Members: <a href="https://github.com/star810">*Kim Daewon*</a>, <a href="https://github.com/HoneyTt21">*Kim Minjun*</a>, <a href="https://github.com/antony-jeong">*Jeong Seunghyeon*</a>, <a href="https://github.com/hywnH">*Hwang Hyewon*</a>)
 
 - POV : We met (read or saw) people who
 **cannot read sheet music well.**
@@ -70,7 +70,7 @@ It’d be game-changing
 
 - Links:
   - Hi-Fi Prototype : http://bit.ly/CS374-MmArk
-  - Hi-Fi Prototype Back-end Server : http://3.36.217.44:8000/ (Under construction; Unavailable for DP 4, DP 5)
+  - Hi-Fi Prototype Back-end Server : http://3.36.217.44/ (Under construction; Unavailable for DP 4, DP 5)
 
   - GitHub Repository : http://bit.ly/CS374-MmArk-GitHub
 
