@@ -7,7 +7,7 @@ import '../stylesheets/Community.css';
 import { withTranslation } from 'react-i18next';
 
 class Community extends Component {
-     state = {
+    state = {
         articles: [],
         users: [],
         tags: []
@@ -25,7 +25,6 @@ class Community extends Component {
             this.setState({
                 users
             });
-            console.log(users);
             const res_tags = await fetch('http://3.36.217.44:8000/api/tags');
             const tags = await res_tags.json();
             this.setState({
@@ -35,7 +34,9 @@ class Community extends Component {
         } catch (e) {
             console.log(e);
         }
-    }
+    };
+
+    
 
 
     render() {

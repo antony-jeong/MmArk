@@ -48,7 +48,7 @@ class TagAdmin(admin.ModelAdmin):
 
     """Tag Admin"""
 
-    list_display = ("name", "count_articles")
+    list_display = ("name", "color", "count_articles")
 
     def count_articles(self, obj):
         return obj.articles.count()

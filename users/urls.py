@@ -11,4 +11,6 @@ urlpatterns = [
     path('articles/<int:pk>/', article_views.ArticleDetailCreate.as_view() ),
     path('tags/', article_views.TagListCreate.as_view()),
     path('tags/<int:pk>/', article_views.TagDetailCreate.as_view() ),
+    path('test/current_user/', views.current_user),
+    path('test/users/', views.UserList.as_view())
 ]
