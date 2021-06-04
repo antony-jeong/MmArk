@@ -52,7 +52,7 @@ class NewPost extends Component {
 
     handlePost = (e, data) => {
         e.preventDefault();
-        fetch('http://3.35.175.101:8000/plz/', {
+        fetch('http://3.36.217.44:8000/plz/', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
