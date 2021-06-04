@@ -1,3 +1,5 @@
+
+import {Link} from 'react-router-dom';
 import React, { Component } from 'react';
 import LoginNav from '../components/LoginNav';
 import LoginForm from '../components/LoginForm';
@@ -12,7 +14,7 @@ function handleErrors(response) {
         return response;
     }
 
-class Login extends Component {
+class EmbeddedLogin extends Component {
   constructor(props) {
     super(props);
     const { cookies } = props;
@@ -22,10 +24,6 @@ class Login extends Component {
       username: cookies.get('name')
     };
   }
-
-    handleRoute() {
-        this.props.history.push('/');
-    }
     
   componentDidMount() {
     const { cookies } = this.props;
@@ -62,37 +60,12 @@ class Login extends Component {
                       logged_in: true,
                       username: json.user.username
                   });
-                  this.handleRoute();
               }
           })
           .catch(function (error) {
               console.log(error);
           });
   };
-
-  handle_signup = (e, data) => {
-    const { cookies } = this.props;
-    e.preventDefault();
-    fetch('http://3.36.217.44:8000/api/test/users/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then(res => res.json())
-      .then(json => {
-        // localStorage.setItem('token', json.token);
-        cookies.set('name', json.user.username, { path: '/' });
-        cookies.set('token', json.token, { path: '/' });
-        this.setState({
-          logged_in: true,
-          username: json.username
-        });
-      });
-  };
-
-  
 
   display_form = form => {
     this.setState({
@@ -102,20 +75,27 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="login">
-                <LoginNav
-                logged_in={this.state.logged_in}
-                history={this.props.history}
-                />
-                <LoginForm handle_login={this.handle_login} />
-                <h3>
-                    {this.state.logged_in
-                        ? `Hello, ${this.state.username}`
-                        : 'Please Log In'}
-                </h3>
+            <div className="embedded-login">
+                {
+                  this.state.logged_in?
+                  <div className="embedded-login-logined">
+                    <Link to={`/logout`} >
+                      <button className="logoutButton">Log Out</button>
+                    </Link>
+                    {`Hello, ${this.state.username}`}
+                  </div>
+                  :
+                  <div className="embedded-login-loggedout">
+                    <LoginForm handle_login={this.handle_login} />
+                    'Please Log In to use Community Tab'
+                    <Link to = {`/signup`}>
+                    <button className="signupButton">Sign Up</button>
+                    </Link>
+                  </div>
+                }
             </div>
         );
     }
 }
 
-export default withCookies(withRouter(Login));
+export default withCookies(withRouter(EmbeddedLogin));
