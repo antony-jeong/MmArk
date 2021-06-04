@@ -3,6 +3,26 @@
 
 .Instruction span {
     line-height: 150%;
+    vertical-align: middle;
+}
+
+.Instruction svg {
+    vertical-align: middle;
+    padding: 0 5px;
+}
+
+.Instruction .option-cell{
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 5px;
+}
+
+.Instruction .tempo-svg{
+    display: inline-flex;
+    align-self: center;
+    align-items: center;
+    margin: 0 5px;
 }
 
 .note {

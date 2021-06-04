@@ -44,6 +44,12 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     month_plural: " months ago",
                     year_singular: "Last year",
                     year_plural: " years ago"
+                }, 
+                post: {
+                    discard: "Discard and Go Back",
+                    add: "Upload +",
+                    description: "Description",
+                    title: "Title"
                 }
             }
         },
@@ -81,6 +87,12 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     month_plural: " 달 전",
                     year_singular: "작년",
                     year_plural: " 년 전"
+                }, 
+                post: {
+                    discard: "취소",
+                    add: "업로드 +",
+                    description: "내용",
+                    title: "제목"
                 }
             }
         }
