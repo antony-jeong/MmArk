@@ -29,6 +29,8 @@ class Article(models.Model):
         self.description = str.capitalize(self.description)
         super().save(*args, **kwargs) 
 
+    
+
     def total_favorites(self):
         all_favorites = self.favorites.all()
         user_ids = []

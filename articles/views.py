@@ -11,12 +11,12 @@ import json
 class ArticleListCreate(generics.ListCreateAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,permissions.AllowAny)
 
 class ArticleDetailCreate(generics.RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,permissions.AllowAny)
 
 class TagListCreate(generics.ListCreateAPIView):
     queryset = Tag.objects.all()
@@ -44,5 +44,6 @@ def new_post(request):
             sheet_ds=form_data['sheet_ds'],
             author = new_user
         )
+        new_article.save()
     return new_article;
 
