@@ -15,6 +15,7 @@ class Community extends Component {
     async componentDidMount() {
         try {
             const res_articles = await fetch('http://3.36.217.44:8000/api/articles');
+            console.log(res_articles);
             const articles = await res_articles.json();
             this.setState({
                 articles
