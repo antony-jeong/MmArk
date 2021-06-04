@@ -62,11 +62,11 @@ const CommunityBlock = ({articles, users, tags}) => {
             descButtonWrapper.classList.remove("show");
             descButtonWrapper.classList.add("hide");
             descriptionWrapper.classList.remove("hidden");
-            descButtonWrapper.innerText = "Hide Description △";
+            descButtonWrapper.innerText = t("community.hide_description");
         } else if (descButtonWrapper.classList.contains("hide")) {
             descButtonWrapper.classList.remove("hide");
             descButtonWrapper.classList.add("show");
-            descButtonWrapper.innerText = "Show Description ▽";
+            descButtonWrapper.innerText = t("community.show_description");
             descriptionWrapper.classList.add("hidden");
         }
     }
@@ -113,7 +113,7 @@ const CommunityBlock = ({articles, users, tags}) => {
                                 </div>
                                 <div className="descButtonWrapper" id="descButtonWrapper">
                                     <div className="descButtonText show" onClick={e => { handleOnClick(e); }}>
-                                        Show Description  ▽ 
+                                        {t("community.show_description")}
                                     </div>
                                 </div>
                             </div>

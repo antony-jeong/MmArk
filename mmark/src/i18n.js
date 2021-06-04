@@ -31,6 +31,9 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 learn: {
                     submit: "Submit"
                 },
+                sheet: {
+                    reset: "Reset"
+                },
                 community: {
                     second_singular: " second ago",
                     second_plural: " seconds ago",
@@ -43,7 +46,10 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     month_singular: "Last month",
                     month_plural: " months ago",
                     year_singular: "Last year",
-                    year_plural: " years ago"
+                    year_plural: " years ago",
+                    new_post: "+ NEW POST",
+                    show_description: "Show Description ▽",
+                    hide_description: "Hide Description △"
                 }, 
                 post: {
                     discard: "Discard and Go Back",
@@ -74,6 +80,9 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 learn: {
                     submit: "제출"
                 },
+                sheet: {
+                    reset: "초기화"
+                },
                 community: {
                     second_singular: " 초 전",
                     second_plural: " 초 전",
@@ -86,7 +95,10 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     month_singular: "지난 달",
                     month_plural: " 달 전",
                     year_singular: "작년",
-                    year_plural: " 년 전"
+                    year_plural: " 년 전",
+                    new_post: "+ 글쓰기",
+                    show_description: "더보기 ▽",
+                    hide_description: "접기 △"
                 }, 
                 post: {
                     discard: "취소",

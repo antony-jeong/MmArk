@@ -148,9 +148,11 @@ body {
 .ProgressBarWrapper {
     height: 10px;
     width: 40vw;
-    border-radius: 10px;
+    border-radius: 7px;
     border: 2px solid rgb(163, 163, 163);
+    box-sizing: content-box;
     overflow: hidden;
+    padding: 0;
 }
 
 .ProgressBarText{
@@ -173,6 +175,7 @@ body {
     height: 10px;
     overflow: hidden;
     background-color: white;
+    border-radius: 5px;
 }
 
 .Next .ProgressBar{
@@ -376,6 +379,7 @@ body {
 
 
 .sheet-menu-bar {
+    font-family: 'Roboto', sans-serif;
     height: 30px;
     justify-content: space-between;
     align-items: flex-start;
@@ -408,6 +412,7 @@ body {
     height: 30px;
     border-radius: 3px;
     cursor: pointer;
+    vertical-align: middle;
 }
 
 .sheet-edit-control-button:hover {
@@ -504,7 +509,8 @@ body {
 }
 
 .sheet-reset-button {
-    background-color: #a692d3;
+    font-family: 'Roboto', sans-serif;
+    background-color: #b95252;
     width: 60px;
     height: 24px;
     text-align: -webkit-center;

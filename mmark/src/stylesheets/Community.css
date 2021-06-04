@@ -186,7 +186,7 @@ html {
     grid-area: d;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .descWrapper .descButtonWrapper .descButtonText {

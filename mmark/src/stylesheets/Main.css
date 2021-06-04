@@ -13,9 +13,23 @@
         user-select: none;
     }
     .Main-Logo-Container .GameSelectButton{
-        margin: 10px 0;
+        margin: 50px 0;
+        width: 200px;
+        height: 100px;
     }
 
+    .Main-Logo-Container:hover .GameSelectButton:hover {
+        width: 400px;
+        transition: width .4s;
+    }
+
+    .Main-Logo-Container:hover .GameSelectButton:hover .description {
+        width: 340px;
+        letter-spacing: 0px;
+        color: rgb(165, 165, 165);
+        transition: width .4s, letter-spacing .4s, color .4s;
+    }
+    
     .Main-Container {
         height: 100vh;
         width: 100vw;
@@ -36,6 +50,7 @@
         align-items: center;
         justify-content: flex-end;
     }
+
 
     .Main-Logo {
         zoom: 0.7;
