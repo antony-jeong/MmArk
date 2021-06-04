@@ -30,7 +30,6 @@ class Community extends Component {
             this.setState({
                 tags
             });
-            console.log(articles);
         } catch (e) {
             console.log(e);
         }

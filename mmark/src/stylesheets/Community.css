@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 html {
     background: linear-gradient(to top, #3f4454, #0f0930);
+    font-family: 'Roboto', sans-serif;
 }
 
 .Community {
-    font-family: 'Roboto';
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -33,7 +33,6 @@ html {
     background-color: white;
     border: 2px inside white;
     margin: 0px 30px 0px 30px;
-    font-family: 'Roboto', sans-serif;
     font-size: 1.3rem;
     font-weight: 200;
     justify-content: center;
@@ -90,27 +89,106 @@ html {
     grid-template: "d b" 1fr "a c" 5fr / 1fr 10fr;
 }
 
+.itemWrapper.mine {
+    display: grid;
+    grid-template: "b d" 1fr "c a" 5fr / 10fr 1fr;
+}
+
+.itemWrapper.mine .titleWrapper .title {
+    color: #3855EC;
+    margin: 20px 15px 0px 25px;
+}
+
+.itemWrapper.mine .descWrapperWrapper {
+    margin: 10px 10px 10px 20px;
+}
+
+.itemWrapper.mine .authorWrapper {
+    margin: 20px 10px 0px 0px;
+}
+
 .authorWrapper {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     grid-area: a;
     flex-flow: column;
-    margin-left: 10px;
-    margin-top: 20px;
+    margin: 20px 0px 0px 10px;
 }
 
-.authorProfilePic {
+.authorWrapper .authorProfilePic {
     width: 50px;
     height: 50px;
+    min-height: 50px;
     background-color: #6a5aec;
     border-radius: 25px;
+}
+
+.authorWrapper .authorName {
+    font-weight: 300;
+    font-size: 1.125rem;
+    margin: 5px 0px 0px 0px;
+}
+
+.authorWrapper .authorSub {
+    display: flex;
+    height: stretch;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.authorWrapper .authorSub .deleteButton {
+    margin: 0px 0px 10px 0px;
+}
+
+.authorWrapper .authorSub .deleteButton svg {
+    cursor: pointer;
 }
 
 .titleWrapper {
     grid-area: b;
     display: flex;
     align-items: flex-end;
+}
+
+.titleWrapper .title {
+    font-weight: 400;
+    margin: 20px 15px 0px 15px;
+    font-size: 1.5125rem;
+    display: inline-block;
+    color: #494951;
+}
+
+.titleWrapper .titleSub {
+    width: stretch;
+    display: flex;
+    justify-content: space-between;
+}
+
+.titleWrapper .titleSub .date {
+    font-weight: 400;
+    font-size: 0.9375rem;
+    display: inline-block;
+    color: #6a5aec;
+    margin-bottom: 4px;
+}
+
+.titleWrapper .titleSub .editWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    cursor: pointer;
+}
+
+.titleWrapper .titleSub .editWrapper svg {
+    fill: #0033FF;
+    margin: 0px 10px 0px 0px;
+}
+
+.titleWrapper .editButton {
+    color: #0033FF;
+    font-size: 1rem;
+    margin: 0px 20px 0px 0px;
 }
 
 .descWrapperWrapper {
@@ -121,24 +199,6 @@ html {
     margin: 10px 20px 10px 10px;
     padding: 15px;
     height: fit-content;
-}
-
-.titleWrapper .title {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    margin: 20px 15px 0px 15px;
-    font-size: 1.5125rem;
-    display: inline-block;
-    color: #494951;
-}
-
-.titleWrapper .date {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 0.9375rem;
-    display: inline-block;
-    color: #6a5aec;
-    margin-bottom: 4px;
 }
 
 .descWrapper {
@@ -158,7 +218,6 @@ html {
 }
 
 .descWrapper .favNum {
-    font-family: 'Roboto', sans-serif;
     font-weight: 200;
     font-size: 1.125rem;
     height: max-content;
@@ -173,7 +232,6 @@ html {
 
 .descWrapper .tagWrapper .tag {
     font-size: 1.125rem;
-    font-family: 'Roboto', sans-serif;
     font-weight: 200;
     border-radius: 15px;
     background-color: #70b8ce;
@@ -189,10 +247,10 @@ html {
 }
 
 .descWrapper .descButtonWrapper .descButtonText {
-    font-family: 'Roboto', sans-serif;
     font-size: 1.125rem;
     color: #6a5aec;
     font-weight: 300;
+    cursor: pointer;
 }
 
 .hidden {
