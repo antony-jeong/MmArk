@@ -65,12 +65,12 @@ It’d be game-changing
 
 - Notes :
   1. This web-app is only tested on the latest version of Chrome. (We are not certain that this would show the same result for other browsers as well)
-  2. (Handling issues) For 4K resolution monitors, errors are not found, but with lower-resolution monitors, adjusting browser zoom to 80% is needed for better sheet music rendering
+  2. (Hot-fixed 3rd June, 2021 AM 10:46) (~~Handling issues) For 4K resolution monitors, errors are not found, but with lower-resolution monitors, adjusting browser zoom to 80% is needed for better sheet music rendering~~
 
 
 - Links:
   - Hi-Fi Prototype : http://bit.ly/CS374-MmArk
-  - Hi-Fi Prototype Back-end Server : http://3.36.217.44/ (Under construction; Unavailable for DP 4, DP 5)
+  - Hi-Fi Prototype Back-end Server : http://3.36.217.44:8000/ (Under construction; Unavailable for DP 4, DP 5)
 
   - GitHub Repository : http://bit.ly/CS374-MmArk-GitHub
 

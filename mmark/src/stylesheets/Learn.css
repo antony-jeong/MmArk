@@ -504,10 +504,16 @@ body {
 }
 
 .sheet-reset-button {
-    background-color: #ffa287;
+    background-color: #a692d3;
     width: 60px;
-    height: 30px;
-    text-align: center;
+    height: 24px;
+    text-align: -webkit-center;
+    border-radius: 4px;
+    color:rgb(237, 231, 240);
+    padding-top: 6px;
+    padding-bottom: 0px;
+    text-shadow: rgba(255, 255, 255, 0.2) 1px 0 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 @media screen and (max-width: 900px){
