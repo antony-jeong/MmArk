@@ -33,6 +33,7 @@ def main_page(request):
 
 @csrf_exempt
 def new_post(request):
+    print('hi')
     if request.method == 'POST':
         form_data = json.loads(request.body.decode())
         new_user=user_models.User.objects.get(
