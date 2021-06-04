@@ -39,18 +39,3 @@ class Article(models.Model):
 
     class Meta:
         verbose_name_plural = "Articles"
-
-@csrf_exempt
-def new_post(request):
-    if request.method == 'POST':
-        form_data = json.loads(request.body.decode())
-        new_user=user_models.User.objects.get(
-            username="user_1"
-        )
-        new_article=Article.objects.create(
-            title=form_data['title'],
-            description=form_data['description'],
-            sheet_ds=form_data['sheet_ds'],
-            author = new_user
-        )
-    return new_article;
