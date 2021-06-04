@@ -31,6 +31,11 @@
     fill: rgb(140, 82, 187);
     opacity: 0.2;
 }
+
+.cursor-blank {
+    stroke: none;
+    fill: none;
+}
 .anker {
     stroke:  rgb(140, 82, 187);
     fill: rgb(140, 82, 187);
@@ -42,21 +47,25 @@
     fill: rgb(140, 82, 187);
     stroke: rgb(140, 82, 187);
     z-index: 1;
-  }
+}
   
-  @keyframes blinker {
+@keyframes blinker {
     0% {opacity: 1}
 
     50% {opacity: 1}
     51% {opacity: 0}
     100% {opacity: 0}
-  }
+}
 
-  .scroll {
+.scroll {
     margin: 4px, 4px;
     padding: 4px;
     background-color: #08c708;
     width: 300px;
     overflow-x: auto;
     overflow-y: hidden;
+}
+#sheet-top {
+    padding-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
