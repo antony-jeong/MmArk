@@ -12,7 +12,6 @@ function handleErrors(response) {
         return response;
     }
 
-
 class Login extends Component {
   constructor(props) {
     super(props);

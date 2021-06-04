@@ -3,16 +3,16 @@ import GameSelectButton from '../components/GameSelectButton';
 import LoginNav from "../components/LoginNav";
 import Logo from '../components/Logo';
 import { Trans, useTranslation } from 'react-i18next';
+import { withCookies, useCookies } from 'react-cookie';
 import {BrowserRouter, Link} from 'react-router-dom';
 import '../stylesheets/Main.css';
-import { withCookies, useCookies } from 'react-cookie';
 
 const lngs = {
   en: { nativeName: "English" },
   kr: { nativeName: "Korean" }
 };
 
-const Main = (cookies) => {
+const Main = () => {
   const { t, i18n } = useTranslation();
   const [Cookie, setCookie, removeCookie] = useCookies(['token', 'name']);
   const [isLoggedIn, setIsLoggedIn] = useState(Cookie.token !== undefined);
@@ -23,7 +23,9 @@ const Main = (cookies) => {
           <Logo className={'Main-Logo'} isLink={false}/>
           <div className={'Learn-Music-by-Games'}>{t("main.slogan")}</div>
           <div className={'Made-by'}>{t("main.madeby")} ∙ <a href="https://github.com/antony-jeong/MmArk" target="_blank">GitHub</a></div>
-          <LoginNav logged_in={ Cookie.token !== undefined }/>
+          <LoginNav logged_in={Cookie.token !== undefined} />
+          {console.log(Cookie.name)}
+          {Cookie.name !== undefined ? <div className="loginIndicator">Logged in as {Cookie.name}</div> : <div className="logoutIndicator">Log In to use Community Tab</div>}
           <div className={'Language-Select'}>
             {Object.keys(lngs).map((lng) => (
               <button key={lng} className={i18n.language === lng ? "selected" : ""} type="submit" onClick={() => i18n.changeLanguage(lng)}>
@@ -51,9 +53,12 @@ const Main = (cookies) => {
           <GameSelectButton src={"Community"} name={t("main.name_community")}>
             <Trans i18nKey="main.desc_community"/>
           </GameSelectButton>
-          <GameSelectButton src={"login"} name={t("main.name_login")}>
-            <Trans i18nKey="main.desc_login"/>
-          </GameSelectButton>
+          {Cookie.name !== undefined ?  
+              <></>
+            : 
+              <GameSelectButton src={"login"} name={t("main.name_login")}>
+                <Trans i18nKey="main.desc_login"/>
+              </GameSelectButton>}
         </div>
       </div>
     );

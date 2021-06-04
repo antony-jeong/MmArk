@@ -1,6 +1,5 @@
 from django.db import models
 from users import models as user_models
-from django.views.decorators.csrf import csrf_exempt
 import json
 
 class Tag(models.Model):
@@ -30,6 +29,8 @@ class Article(models.Model):
         self.description = str.capitalize(self.description)
         super().save(*args, **kwargs) 
 
+    
+
     def total_favorites(self):
         all_favorites = self.favorites.all()
         user_ids = []
@@ -39,18 +40,3 @@ class Article(models.Model):
 
     class Meta:
         verbose_name_plural = "Articles"
-
-@csrf_exempt
-def new_post(request):
-    if request.method == 'POST':
-        form_data = json.loads(request.body.decode())
-        new_user=user_models.User.objects.get(
-            username="user_1"
-        )
-        new_article=Article.objects.create(
-            title=form_data['title'],
-            description=form_data['description'],
-            sheet_ds=form_data['sheet_ds'],
-            author = new_user
-        )
-    return new_article;

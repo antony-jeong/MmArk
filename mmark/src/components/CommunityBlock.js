@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
+import { withCookies, useCookies } from 'react-cookie';
 import Sheet from './Sheet';
 
-
 const CommunityBlock = ({articles, users, tags}) => {
-
+    const [Cookie, setCookie, removeCookie] = useCookies(['token', 'name']);
     const { t, i18n } = useTranslation();
     
     for (var i=0; i<articles.length; i++) {
@@ -75,7 +75,7 @@ const CommunityBlock = ({articles, users, tags}) => {
         <div className="listWrapper">
             {articles.map(item => (
                     <div key={item.id} className="itemWrapper">
-                        <div className="authorWrapper"><div className="authorProfilePic"></div><div className="authorName">{item.author !== undefined? item.author.username : "Anonymous"}</div></div>
+                        <div className="authorWrapper"><div className="authorProfilePic"></div><div className="authorName">{item.author_name !== undefined? item.author_name : "Anonymous"}</div></div>
                         <div className="titleWrapper">
                             <div className="title">
                                 {item.title}

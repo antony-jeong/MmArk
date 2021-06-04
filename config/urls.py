@@ -23,12 +23,12 @@ from articles import views as article_views
 #     path('api/', include("users.urls", namespace="users")),
 #     path('token-auth/', obtain_jwt_token)    
 
-from articles import models
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include("users.urls", namespace= "users")),
-    path('plz/', models.new_post),
+    path('plz/', article_views.new_post),
+    path('token-auth/', obtain_jwt_token),
     path('', article_views.main_page)
 ]
 
