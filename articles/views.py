@@ -36,7 +36,7 @@ def new_post(request):
     if request.method == 'POST':
         form_data = json.loads(request.body.decode())
         author=user_models.User.objects.get(
-            username=form_data['author']
+            username=form_data['username']
         )
         new_article=Article.objects.create(
             title=form_data['title'],
