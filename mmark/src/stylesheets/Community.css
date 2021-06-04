@@ -165,7 +165,7 @@ html {
     justify-content: space-between;
 }
 
-.titleWrapper .date {
+.titleWrapper .titleSub .date {
     font-weight: 400;
     font-size: 0.9375rem;
     display: inline-block;
@@ -173,8 +173,19 @@ html {
     margin-bottom: 4px;
 }
 
-.titleWrapper .editButton {
+.titleWrapper .titleSub .editWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
     cursor: pointer;
+}
+
+.titleWrapper .titleSub .editWrapper svg {
+    fill: #0033FF;
+    margin: 0px 10px 0px 0px;
+}
+
+.titleWrapper .editButton {
     color: #0033FF;
     font-size: 1rem;
     margin: 0px 20px 0px 0px;
