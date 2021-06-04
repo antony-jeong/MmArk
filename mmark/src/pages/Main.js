@@ -3,9 +3,9 @@ import GameSelectButton from '../components/GameSelectButton';
 import LoginNav from "../components/LoginNav";
 import Logo from '../components/Logo';
 import { Trans, useTranslation } from 'react-i18next';
+import { withCookies, useCookies } from 'react-cookie';
 import {BrowserRouter, Link} from 'react-router-dom';
 import '../stylesheets/Main.css';
-import { withCookies, useCookies } from 'react-cookie';
 
 const lngs = {
   en: { nativeName: "English" },
