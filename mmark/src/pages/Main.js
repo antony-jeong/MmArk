@@ -24,7 +24,6 @@ const Main = () => {
           <div className={'Learn-Music-by-Games'}>{t("main.slogan")}</div>
           <div className={'Made-by'}>{t("main.madeby")} ∙ <a href="https://github.com/antony-jeong/MmArk" target="_blank">GitHub</a></div>
           <LoginNav logged_in={Cookie.token !== undefined} />
-          {console.log(Cookie.name)}
           {Cookie.name !== undefined ? <div className="loginIndicator">Logged in as {Cookie.name}</div> : <div className="logoutIndicator">Log In to use Community Tab</div>}
           <div className={'Language-Select'}>
             {Object.keys(lngs).map((lng) => (
