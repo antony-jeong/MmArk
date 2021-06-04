@@ -1,6 +1,5 @@
 from django.db import models
 from users import models as user_models
-from django.views.decorators.csrf import csrf_exempt
 import json
 
 class Tag(models.Model):

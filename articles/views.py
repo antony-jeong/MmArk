@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import permissions, generics
 from .serializers import ArticleSerializer, TagSerializer
 from .models import Article, Tag
