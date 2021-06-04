@@ -1,6 +1,11 @@
+from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
+from rest_framework import permissions, status, generics
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from .models import User
-from .serializers import UserSerializer
-from rest_framework import generics
+from .serializers import UserSerializer, UserSerializerWithToken
 
 class UserListCreate(generics.ListCreateAPIView):
     queryset = User.objects.all()
@@ -10,13 +15,6 @@ class UserDetailCreate(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-from django.http import HttpResponseRedirect
-from django.contrib.auth.models import User
-from rest_framework import permissions, status
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from .serializers import UserSerializer, UserSerializerWithToken
 
 
 @api_view(['GET'])
