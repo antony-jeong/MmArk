@@ -25,6 +25,7 @@ import {ReactComponent as EditIcon} from "./edit_menu_bar_svg/edit.svg";
 import {ReactComponent as Cursor} from "./musical_symbols_svg/cursor.svg";
 import {ReactComponent as CursorBig} from "./musical_symbols_svg/cursor_big.svg";
 
+
 // dataStructure
     // objectType: (char) 
         // c - clef
@@ -172,11 +173,11 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
 
 
     const handleResize = debounce(() => {
-        setMinMargin(document.getElementById("top").clientWidth-31);
+        setMinMargin(document.getElementById("sheet-top").clientWidth-31);
       }, 500);
     
     useEffect(() => {
-        setMinMargin(document.getElementById("top").clientWidth-31);
+        setMinMargin(document.getElementById("sheet-top").clientWidth-31);
     }, []);
     useEffect(() => {
         window.addEventListener("resize", handleResize)
@@ -199,26 +200,27 @@ const Sheet = ({ dataStructure, className, updateDS }) => {
     const returnValue = data.map((obj, index) => {
         switch (obj.objectType) {
             case "c":
-                return (<Clef obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited ? cursorHeight : 50} />)
+                return (<Clef obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited ? cursorHeight : 50} />)
             case "t":
                 trebled = obj.treble;
-                return (<Time obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
+                return (<Time obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
             case "k":
-                return (<Key obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} treble={trebled} />)
+                return (<Key obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} treble={trebled} />)
             case "b":
-                return (<Barline obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
+                return (<Barline obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
             case "n":
-                return (<Note obj={obj} key={index} isPlaying={index === playingIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
+                
+                return (<Note obj={obj} key={index} index={index} isPlaying={index === playingIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} setCursorIndex={setCursorIndex}/>)
             case "p":
-                return (<Bpm obj={obj} key={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} isBeingEdited={isBeingEdited}/>)
+                return (<Bpm obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} isBeingEdited={isBeingEdited}/>)
             case "r":
-                return (<Triplet obj={obj} key={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
+                return (<Triplet obj={obj} key={index} index={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
             default:
                 return (<div key={index}>Invalid Object</div>)
         }
     });
     return (
-        <div id = "top" style = {{overflow: "hidden"}}>
+        <div id = "sheet-top" style = {{overflow: "hidden", "background-color": "white", "border-radius": "7px"}}>
         <div id = "sheet-menu" className={"sheet-menu-bar"}>
             <div className={"sheet-menu-section-left"}>
                 <div className={"sheet-audio-button"} onClick={!isPlaying ? (player ? player.play : () => {}) : (player ? player.stop : () => {})}>
