@@ -29,6 +29,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include("users.urls", namespace= "users")),
     path('plz/', models.new_post),
+    path('token-auth/', obtain_jwt_token),
     path('', article_views.main_page)
 ]
 
