@@ -43,14 +43,13 @@ def new_post(request):
             description=form_data['description'],
             sheet_ds=form_data['sheet_ds'],
             author=author,
-            tags=[]
         )
-        # for tag in form_data['tags']:
-        #     if (tag != ""):
-        #         tag_obj = Tag.objects.get(
-        #             name=tag
-        #         )
-        #         new_article.tags.add(tag_obj)
-        # new_article.save()
+        for tag in form_data['tags']:
+            if (tag != ""):
+                tag_obj = Tag.objects.get(
+                    name=tag
+                )
+                new_article.tags.add(tag_obj)
+        new_article.save()
     return new_article;
 
