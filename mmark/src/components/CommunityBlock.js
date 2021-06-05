@@ -71,6 +71,22 @@ const CommunityBlock = ({articles, users, tags}) => {
         }
     }
 
+    const handleDelete = (e) => {
+        //console.log(e.target.parentNode.getAttribute('value'));
+        e.preventDefault();
+        const articleKey = e.target.parentNode.getAttribute('value');
+        fetch(`http://3.36.217.44:8000/api/articles/:${articleKey}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                // 'X-CSRFToken' : csrftoken
+            },
+        }).then(
+            //this.props.history.push('/Community/')
+        )
+    }
+
     return (
         <div className="listWrapper">
             {articles.map(item => (
@@ -80,7 +96,7 @@ const CommunityBlock = ({articles, users, tags}) => {
                         <div className="authorSub">
                             <div className="authorName">{item.author_name !== undefined ? item.author_name : "Anonymous"}</div>
                             {Cookie.name == item.author_name ?
-                                <div className="deleteButton">
+                                <div className="deleteButton" onClick={handleDelete} value={item.id}>
                                     <svg version="1.1" id="Capa_1" x="0px" y="0px"
                                         width="30px" height="30px" viewBox="0 0 482.428 482.429" >
                                         <g>
