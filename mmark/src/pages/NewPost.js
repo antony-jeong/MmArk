@@ -14,11 +14,25 @@ class NewPost extends Component {
         this.state = {
             'title': ' ',
             'description': ' ',
+            'tags': [""],
+            'tags_total': [],
             'sheet_ds': JSON.stringify([]),
             'logged_in': cookies.get('token') ? true : false,
             'username': cookies.get('name')
         };
         const { t, i18n } = withTranslation();
+    }
+
+    async componentDidMount() {
+        try {
+            const res_tags = await fetch('http://3.36.217.44:8000/api/tags');
+            const tags_total = await res_tags.json();
+            this.setState({
+                tags_total
+            });
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     updateDS = (ds) =>{
@@ -54,6 +68,33 @@ class NewPost extends Component {
         )
     };
 
+    inTag = (tagName) => {
+        for (var i = 0; i < this.state.tags.length; i++) {
+            if(tagName == this.state.tags[i]) return true
+        }
+        return false
+    }
+
+    handleTagClick = (e) => {
+        const target_tag = e.target.innerText
+        if (target_tag != undefined) {            
+            if (this.inTag(target_tag)) {
+                this.setState(prevstate => {
+                    const newState = { ...prevstate };
+                    newState['tags'].pop(target_tag);
+                    e.target.classList.remove("clicked");
+                    return newState;
+                });
+            } else {
+                this.setState(prevstate => {
+                    const newState = { ...prevstate };
+                    newState['tags'].push(target_tag);
+                    e.target.classList.add("clicked");
+                    return newState;
+                });
+            }
+        }
+    }
 
     render() {
         const {t} = this.props;
@@ -64,11 +105,16 @@ class NewPost extends Component {
                     <form onSubmit={(e) => {this.handlePost(e, this.state)}}>
                         {t("post.title")}<br/>
                         <input className='textInput' type={"text"} name={"title"} onChange={this.handleChange} /><br />
-                        {t("post.author")} : {this.state.username}<br/>
-                        
+                        {t("post.author")} {this.state.username}<br />
+                        {t("post.tags")} <br />
+                        <div className="tagWrapper">
+                            {this.state.tags_total.map(item => (
+                                <div className="tagButton" style={{background: `${item.color}`}} onClick={this.handleTagClick}>{item.name}</div>
+                            ))}
+                        </div>
                         <Sheet className="Sheet" dataStructure={JSON.parse(this.state.sheet_ds)} name={"sheet_ds"} updateDS={this.updateDS}/>
                         {t("post.description")}<br/>
-                        <textarea className='textInput' rows={"10"} cols={"50"} name={"description"} onChange={this.handleChange}></textarea><br/>
+                        <textarea className='textInput' rows={"5"} cols={"50"} name={"description"} onChange={this.handleChange}></textarea><br/>
                         <div className='newPost-ButtonWrapper'>
                             <Link className='DiscardButton' to='/Community'>{t("post.discard")}</Link>
                             <input className="PostButton" type={"submit"} value={t("post.add")}/>
