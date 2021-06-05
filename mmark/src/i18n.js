@@ -58,7 +58,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     add: "Upload +",
                     description: "Description",
                     title: "Title",
-                    author: "Author"
+                    author: "Author",
+                    tags: "Tags"
                 }
             }
         },
@@ -110,7 +111,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     add: "업로드 +",
                     description: "내용",
                     title: "제목",
-                    author: "작성자"
+                    author: "작성자",
+                    tags: "태그"
                 }
             }
         }

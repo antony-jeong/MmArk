@@ -1,10 +1,9 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 html {
     background: linear-gradient(to top, #3f4454, #0f0930);
 }
 
-.NewPost{
+.NewPost {
     font-family: 'Roboto';
     width: 100vw;
     height: 100vh;
@@ -12,7 +11,7 @@ html {
     display: flex;
 }
 
-.Form{
+.Form {
     color: white;
     align-self: center;
     justify-self: center;
@@ -20,13 +19,13 @@ html {
     width: 60vw;
 }
 
-.NewPost .Sheet{
+.NewPost .Sheet {
     background-color: white;
     border-radius: 5px;
     margin-bottom: 10px;
 }
 
-.NewPost .sheet-menu-bar{
+.NewPost .sheet-menu-bar {
     border-bottom: none;
 }
 
@@ -46,30 +45,48 @@ html {
     margin-bottom: 10px;
 }
 
-.textInput[name='title']{
+.textInput[name='title'] {
     font-family: 'Roboto';
     font-size: 1.5rem;
 }
 
-.textInput[name='description']{
+.textInput[name='description'] {
     font-family: 'Roboto';
     font-size: 1.3rem;
 }
 
-Form div{
+Form div {
     color: rgb(173, 173, 173);
     font-family: 'Roboto';
     font-size: 1.2rem;
 }
 
-.newPost-ButtonWrapper{
+.tagWrapper {
+    display: flex;
+    margin: 20px 5px 20px 5px;
+}
+
+.tagWrapper .tagButton {
+    color: black;
+    font-size: 1.125rem;
+    font-weight: 200;
+    border-radius: 15px;
+    display: inline-block;
+    padding: 5px 20px 5px 20px;
+    margin: auto;
+    cursor: pointer;
+}
+
+.tagWrapper .tagButton+.tagButton {}
+
+.newPost-ButtonWrapper {
     margin-top: 10px;
     display: flex;
     width: 60vw;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
-.PostButton{
+.PostButton {
     cursor: pointer;
     display: inline-flex;
     text-align: center;
@@ -87,8 +104,7 @@ Form div{
     font-size: 1rem;
 }
 
-
-.DiscardButton{
+.DiscardButton {
     display: inline-flex;
     text-align: center;
     align-self: flex-start;

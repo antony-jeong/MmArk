@@ -38,11 +38,18 @@ def new_post(request):
         author=user_models.User.objects.get(
             username=form_data['username']
         )
+        tags=[]
+        for tag in form_data['tags']:
+            tag_obj = Tag.objects.get(
+                name=tag
+            )
+            tags.append(tag_obj)
         new_article=Article.objects.create(
             title=form_data['title'],
             description=form_data['description'],
             sheet_ds=form_data['sheet_ds'],
-            author = author
+            author=author,
+            tags=tags
         )
     return new_article;
 
