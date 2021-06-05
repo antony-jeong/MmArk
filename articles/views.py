@@ -51,8 +51,3 @@ def new_post(request):
                 new_article.tags.add(tag_obj)
         new_article.save()
     return new_article;
-
-
-class ArticleDeleteView(DeleteView):
-    model = Article
-    
