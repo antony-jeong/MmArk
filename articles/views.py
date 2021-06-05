@@ -66,9 +66,9 @@ def fav_post(request):
         curUser = user_models.User.objects.get(
             username=fav_data["user"]
         )
-        toFav.favorites.append(curUser)
+        toFav.favorites.add(curUser)
+        curUser.favorites.add(toFav)
         print(toFav.favorites)
-        toFav.save()
         return HttpResponse("fav success")
 
         
