@@ -69,7 +69,7 @@ class NewPost extends Component {
     };
 
     inTag = (tagName) => {
-        for (var i = 0; i < tagName.length; i++) {
+        for (var i = 0; i < this.state.tags.length; i++) {
             if(tagName == this.state.tags[i]) return true
         }
         return false
