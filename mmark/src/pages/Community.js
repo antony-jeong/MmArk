@@ -7,36 +7,16 @@ import Logo from '../components/Logo';
 import CommunityBlock from "../components/CommunityBlock";
 import Sheet from '../components/Sheet';
 import '../stylesheets/Community.css';
+import { Cookies, withCookies } from 'react-cookie';
 
 class Community extends Component {
+
     state = {
         articles: [],
         users: [],
         tags: [],
         total_articles: []
     };
-    
-    handleDelete = (e) => {
-        const articleId = Number(e.target.parentNode.getAttribute('value'));
-        e.preventDefault();
-        console.log(articleId);
-        fetch(`http://3.36.217.44:8000/plz`, {
-            method: 'DELETE',
-            headers: {
-            },
-            body: (articleId)
-        }).then(() => {
-            this.setState(prevState => {
-                const total_articles = prevState.total_articles.filter(article => article.id !== articleId)
-                const show_articles = prevState.articles.filter(article => article.id !== articleId)
-                return {
-                    ...prevState,
-                    total_articles: total_articles,
-                    articles: show_articles
-                }
-            })
-        });
-    }
 
     async componentDidMount() {
         try {
@@ -107,6 +87,38 @@ class Community extends Component {
         return true
     }
 
+    
+    handleDelete = (e) => {
+        const articleId = Number(e.currentTarget.getAttribute('value'));
+        e.preventDefault();
+        console.log(articleId);
+        fetch(`http://3.36.217.44:8000/plz/`, {
+            method: 'DELETE',
+            body: (articleId)
+        }).then(() => {
+            this.setState(prevState => {
+                const total_articles = prevState.total_articles.filter(article => article.id !== articleId)
+                const show_articles = prevState.articles.filter(article => article.id !== articleId)
+                return {
+                    ...prevState,
+                    total_articles: total_articles,
+                    articles: show_articles
+                }
+            })
+        });
+    };
+
+    handleFav = (e) => {
+        e.preventDefault();
+        const { cookies } = this.props;
+        const articleId = Number(e.currentTarget.getAttribute('value'));
+        console.log(articleId);
+        console.log(JSON.stringify({ articleId: articleId, user: cookies.get('name') }));
+        fetch(`http://3.36.217.44:8000/fav/`, {
+            method: 'POST',
+            body: JSON.stringify({ articleId: articleId, user: cookies.get('name') })
+        })
+    }
 
     render() {
         const {t} = this.props;
@@ -125,10 +137,10 @@ class Community extends Component {
                     </div>
                 </div>
                 <Link className='newPostButton' to='/Community/newPost'>{t("community.new_post")}</Link>
-                <CommunityBlock className="listWrapper" articles={this.state.articles} users={this.state.users} tags={this.state.tags} handleDelete={this.handleDelete}/>
+                <CommunityBlock className="listWrapper" articles={this.state.articles} users={this.state.users} tags={this.state.tags} handleDelete={this.handleDelete} handleFav={this.handleFav}/>
             </div>
         );
     }
 }
 
-export default withRouter(withTranslation()(Community));
+export default withCookies(withRouter(withTranslation()(Community)));

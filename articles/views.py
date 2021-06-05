@@ -68,7 +68,6 @@ def fav_post(request):
         )
         toFav.favorites.add(curUser)
         curUser.favorites.add(toFav)
-        print(toFav.favorites)
         return HttpResponse("fav success")
 
         
