@@ -34,40 +34,38 @@ def main_page(request):
 @csrf_exempt
 def new_post(request):
     if request.method == 'POST':
-        form_data = json.loads(request.body.decode())
-        author=user_models.User.objects.get(
-            username=form_data['username']
-        )
-        new_article=Article.objects.create(
-            title=form_data['title'],
-            description=form_data['description'],
-            sheet_ds=form_data['sheet_ds'],
-            author=author,
-        )
-        for tag in form_data['tags']:
-            if (tag != ""):
-                tag_obj = Tag.objects.get(
-                    name=tag
-                )
-                new_article.tags.add(tag_obj)
-        new_article.save()
-        return HttpResponse("post success")
-
+        if request.type == 'NEW':
+            form_data = json.loads(request.body.decode())
+            author=user_models.User.objects.get(
+                username=form_data['username']
+            )
+            new_article=Article.objects.create(
+                title=form_data['title'],
+                description=form_data['description'],
+                sheet_ds=form_data['sheet_ds'],
+                author=author,
+            )
+            for tag in form_data['tags']:
+                if (tag != ""):
+                    tag_obj = Tag.objects.get(
+                        name=tag
+                    )
+                    new_article.tags.add(tag_obj)
+            new_article.save()
+            return HttpResponse("post success")
+        if request.type == "FAV":
+            toFav = Article.objects.get(id=request.body.articleID)
+            curUser = user_models.User.objects.get(
+                username=request.body.user
+            )
+            toFav.favorites.append(curUser)
+            print(toFav.favorites)
+            toFav.save()
+            return HttpResponse("fav success")
     elif request.method == 'DELETE':
         toDelete = Article.objects.get(id=request.body)
         toDelete.delete()
         return HttpResponse("delete success")
-    
-    elif request.method == 'FAV':
-        toFav = Article.objects.get(id=request.body.articleID)
-        curUser = user_models.User.objects.get(
-            username=request.body.user
-        )
-        toFav.favorites.append(curUser)
-        print(toFav.favorites)
-        toFav.save()
-        return HttpResponse("fav success")
-
 
         
     
