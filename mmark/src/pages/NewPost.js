@@ -81,17 +81,15 @@ class NewPost extends Component {
             if (this.inTag(target_tag)) {
                 this.setState(prevstate => {
                     const newState = { ...prevstate };
-                    newState['tag'].pop(target_tag);
+                    newState['tags'].pop(target_tag);
                     e.target.classList.remove("clicked");
-                    console.log("- click" + newState['tag'])
                     return newState;
                 });
             } else {
                 this.setState(prevstate => {
                     const newState = { ...prevstate };
-                    newState['tag'].push(target_tag);
+                    newState['tags'].push(target_tag);
                     e.target.classList.add("clicked");
-                    console.log("+ click" + newState['tag'])
                     return newState;
                 });
             }
@@ -116,7 +114,7 @@ class NewPost extends Component {
                         </div>
                         <Sheet className="Sheet" dataStructure={JSON.parse(this.state.sheet_ds)} name={"sheet_ds"} updateDS={this.updateDS}/>
                         {t("post.description")}<br/>
-                        <textarea className='textInput' rows={"10"} cols={"50"} name={"description"} onChange={this.handleChange}></textarea><br/>
+                        <textarea className='textInput' rows={"5"} cols={"50"} name={"description"} onChange={this.handleChange}></textarea><br/>
                         <div className='newPost-ButtonWrapper'>
                             <Link className='DiscardButton' to='/Community'>{t("post.discard")}</Link>
                             <input className="PostButton" type={"submit"} value={t("post.add")}/>

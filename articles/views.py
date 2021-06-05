@@ -44,7 +44,7 @@ def new_post(request):
                 tag_obj = Tag.objects.get(
                     name=tag
                 )
-                tags.append(tag_obj)
+                tags.add(tag_obj)
         new_article=Article.objects.create(
             title=form_data['title'],
             description=form_data['description'],
