@@ -43,7 +43,6 @@ def new_post(request):
             description=form_data['description'],
             sheet_ds=form_data['sheet_ds'],
             author=author,
-            tags=[]
         )
         for tag in form_data['tags']:
             if (tag != ""):
