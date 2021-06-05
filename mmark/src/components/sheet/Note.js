@@ -773,7 +773,6 @@ const NoteObj = ({ obj, index, isPlaying, margin, cursorHeight, setCursorIndex }
       objDataStack.push(newObj);
     }
   }
-  console.log(objDataStackAlloc);
   const returnValue = objData.map((obj) => {
     return direction === "up" ? (
       <IndivNoteUpObj
