@@ -192,7 +192,7 @@ const LearnRhythmData = [{
 }, {
     "pageId": 3,
     "inst": `The vertical lines are called <term>bar line</term>${Img_barline}. Between bar lines are called a <term>measure</term>.<br></br>However, the first measure doesn't have a starting bar line. At the end of the sheet music, there's a <term>terminal bar line</term>${Img_barline_t}<br></br>How many measures are there in the sheet music below?`,
-    "inst_kr": `세로로 그어진 선들은 <term>세로줄</term></term><svg>barline</svg>이라고 부릅니다. 세로줄 사이는 <term>마디</term>라고 부릅니다.<br></br> 다만, 첫번째 마디의 경우에는 예외적으로 시작하는 세로줄이 없습니다. 악보의 끝에는 <term>끝세로줄</term>${Img_barline_t}이 있습니다. <br></br>아래 악보에는 몇 개의 마디가 있을까요?`,
+    "inst_kr": `세로로 그어진 선들은 <term>세로줄</term><svg>barline</svg>이라고 부릅니다. 세로줄 사이는 <term>마디</term>라고 부릅니다.<br></br> 다만, 첫번째 마디의 경우에는 예외적으로 시작하는 세로줄이 없습니다. 악보의 끝에는 <term>끝세로줄</term>${Img_barline_t}이 있습니다. <br></br>아래 악보에는 몇 개의 마디가 있을까요?`,
     "ds": [{
         "objectType": "c",
         "treble": true

@@ -87,10 +87,12 @@ class EmbeddedLogin extends Component {
                   :
                   <div className="embedded-login-loggedout">
                     <LoginForm handle_login={this.handle_login} />
-                    'Please Log In to use Community Tab'
-                    <Link to = {`/signup`}>
-                    <button className="signupButton">Sign Up</button>
-                    </Link>
+                    <div className="login-signup">
+                      <div>don't have an acount?</div>
+                      <Link to = {`/signup`}>
+                        <button className="signupButton">Sign Up</button>
+                      </Link>
+                    </div>
                   </div>
                 }
             </div>
