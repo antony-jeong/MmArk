@@ -74,11 +74,12 @@ const CommunityBlock = ({articles, users, tags}) => {
     const handleDelete = (e) => {
         const articleId = e.target.parentNode.getAttribute('value');
         e.preventDefault();
-        fetch(`http://3.36.217.44:8000/api/articles/${articleId}/delete`, {
+        fetch(`http://3.36.217.44:8000/api/plz`, {
           method: 'DELETE',
           headers: {
               'Content-Type': 'application/json'
-          },
+            },
+          body: articleId
         })
     }
 
