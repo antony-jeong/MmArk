@@ -61,9 +61,10 @@ def new_post(request):
 @csrf_exempt
 def fav_post(request):
     if request.method == 'POST':
-        toFav = Article.objects.get(id=request.body.articleID)
+        fav_data = json.loads(request.body.decode())
+        toFav = fav_data['articleID']
         curUser = user_models.User.objects.get(
-            username=request.body.user
+            username=fav_data['user']
         )
         toFav.favorites.append(curUser)
         print(toFav.favorites)
