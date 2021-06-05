@@ -79,13 +79,7 @@ const CommunityBlock = ({articles, users, tags}) => {
           headers: {
               'Content-Type': 'application/json'
           },
-        }).then(res => res.json())
-          .then(json => {
-              console.log(json);
-          })
-          .catch(function (error) {
-              console.log(error);
-          });
+        })
     }
 
     return (

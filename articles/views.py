@@ -3,7 +3,6 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import permissions, generics
 from .serializers import ArticleSerializer, TagSerializer
 from .models import Article, Tag
-from .serializers import ArticleSerializer, TagSerializer
 from .permissions import IsOwnerOrReadOnly
 from users import models as user_models
 import json
@@ -16,11 +15,7 @@ class ArticleListCreate(generics.ListCreateAPIView):
 class ArticleDetailCreate(generics.RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly, permissions.AllowAny)
-    def delete(self, request, *args, **kwargs):
-        return super().delete(request, *args, **kwargs)
-
-    
+    permission_classes = (permissions.AllowAny)    
 
 class TagListCreate(generics.ListCreateAPIView):
     queryset = Tag.objects.all()
@@ -56,3 +51,8 @@ def new_post(request):
                 new_article.tags.add(tag_obj)
         new_article.save()
     return new_article;
+
+
+class ArticleDeleteView(DeleteView):
+    model = Article
+    

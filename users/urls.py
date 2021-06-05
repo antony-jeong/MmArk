@@ -9,7 +9,7 @@ urlpatterns = [
     path('users/<int:pk>/', views.UserDetailCreate.as_view() ),
     path('articles/', article_views.ArticleListCreate.as_view()),
     path('articles/<int:pk>/', article_views.ArticleDetailCreate.as_view()),
-    path('articles/<int:pk>/delete', article_views.ArticleDetailCreate.delete),
+    path('articles/<int:pk>/delete', article_views.ArticleDeleteView.as_view(), name='delete'),
     path('tags/', article_views.TagListCreate.as_view()),
     path('tags/<int:pk>/', article_views.TagDetailCreate.as_view() ),
     path('test/current_user/', views.current_user),
