@@ -16,7 +16,27 @@ class Community extends Component {
         total_articles: []
     };
     
-
+    handleDelete = (e) => {
+        const articleId = Number(e.target.parentNode.getAttribute('value'));
+        e.preventDefault();
+        console.log(articleId);
+        fetch(`http://3.36.217.44:8000/plz`, {
+            method: 'DELETE',
+            headers: {
+            },
+            body: (articleId)
+        }).then(() => {
+            this.setState(prevState => {
+                const total_articles = prevState.total_articles.filter(article => article.id !== articleId)
+                const show_articles = prevState.articles.filter(article => article.id !== articleId)
+                return {
+                    ...prevState,
+                    total_articles: total_articles,
+                    articles: show_articles
+                }
+            })
+        });
+    }
 
     async componentDidMount() {
         try {
@@ -83,7 +103,7 @@ class Community extends Component {
                 articles: this.searchArticles(searchText.value)
             };
         });
-        this.props.history.push("/Community/"+searchText.value);
+        this.props.history.push("/Community/" + searchText.value);
         return true
     }
 
@@ -105,7 +125,7 @@ class Community extends Component {
                     </div>
                 </div>
                 <Link className='newPostButton' to='/Community/newPost'>{t("community.new_post")}</Link>
-                <CommunityBlock className="listWrapper" articles={this.state.articles} users={this.state.users} tags={this.state.tags}/>
+                <CommunityBlock className="listWrapper" articles={this.state.articles} users={this.state.users} tags={this.state.tags} handleDelete={this.handleDelete}/>
             </div>
         );
     }

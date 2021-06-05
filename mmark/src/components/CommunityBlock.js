@@ -3,10 +3,9 @@ import { Trans, useTranslation } from 'react-i18next';
 import { withCookies, useCookies } from 'react-cookie';
 import Sheet from './Sheet';
 
-const CommunityBlock = ({articles, users, tags}) => {
+const CommunityBlock = ({articles, users, tags, handleDelete}) => {
     const [Cookie, setCookie, removeCookie] = useCookies(['token', 'name']);
     const { t, i18n } = useTranslation();
-    
     for (var i=0; i<articles.length; i++) {
         const raw_time = articles[i].modified_time.toString();
         articles[i].year = raw_time.split("T")[0].split("-")[0];
@@ -69,17 +68,6 @@ const CommunityBlock = ({articles, users, tags}) => {
             descButtonWrapper.innerText = t("community.show_description");
             descriptionWrapper.classList.add("hidden");
         }
-    }
-
-    const handleDelete = (e) => {
-        const articleId = e.target.parentNode.getAttribute('value');
-        e.preventDefault();
-        fetch(`http://3.36.217.44:8000/plz`, {
-          method: 'DELETE',
-          headers: {
-            },
-          body: articleId
-        })
     }
 
     return (
