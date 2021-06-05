@@ -28,6 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include("users.urls", namespace= "users")),
     path('plz/', article_views.new_post),
+    path('fav/', article_views.fav_post),
     path('token-auth/', obtain_jwt_token),
     path('', article_views.main_page)
 ]
