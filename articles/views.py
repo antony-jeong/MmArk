@@ -62,8 +62,7 @@ def new_post(request):
 def fav_post(request):
     if request.method == 'POST':
         fav_data = json.loads(request.body.decode())
-        print(fav_data)
-        toFav = fav_data["articleId"]
+        toFav = Article.objects.get(id=fav_data["articleId"])
         curUser = user_models.User.objects.get(
             username=fav_data["user"]
         )
