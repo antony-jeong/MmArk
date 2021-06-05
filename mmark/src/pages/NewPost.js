@@ -14,7 +14,7 @@ class NewPost extends Component {
         this.state = {
             'title': ' ',
             'description': ' ',
-            'tags': [],
+            'tags': [""],
             'tags_total': [],
             'sheet_ds': JSON.stringify([]),
             'logged_in': cookies.get('token') ? true : false,
@@ -76,19 +76,25 @@ class NewPost extends Component {
     }
 
     handleTagClick = (e) => {
-        const target_tag = e.target.value
-        if (this.inTag(target_tag)) {
-            this.setState(prevstate => {
-                const newState = { ...prevstate };
-                newState['tag'] -= target_tag;
-                return newState;
-            });
-        } else {
-            this.setState(prevstate => {
-                const newState = { ...prevstate };
-                newState['tag'] += target_tag;
-                return newState;
-            });
+        const target_tag = e.target.innerText
+        if (target_tag != undefined) {            
+            if (this.inTag(target_tag)) {
+                this.setState(prevstate => {
+                    const newState = { ...prevstate };
+                    newState['tag'].pop(target_tag);
+                    e.target.classList.remove("clicked");
+                    console.log("- click" + newState['tag'])
+                    return newState;
+                });
+            } else {
+                this.setState(prevstate => {
+                    const newState = { ...prevstate };
+                    newState['tag'].push(target_tag);
+                    e.target.classList.add("clicked");
+                    console.log("+ click" + newState['tag'])
+                    return newState;
+                });
+            }
         }
     }
 

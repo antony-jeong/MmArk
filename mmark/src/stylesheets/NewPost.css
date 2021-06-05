@@ -75,9 +75,12 @@ Form div {
     padding: 5px 20px 5px 20px;
     margin: auto;
     cursor: pointer;
+    opacity: 50%;
 }
 
-.tagWrapper .tagButton+.tagButton {}
+.tagWrapper .tagButton.clicked {
+    opacity: 100%;
+}
 
 .newPost-ButtonWrapper {
     margin-top: 10px;

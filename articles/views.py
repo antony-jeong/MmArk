@@ -40,10 +40,11 @@ def new_post(request):
         )
         tags=[]
         for tag in form_data['tags']:
-            tag_obj = Tag.objects.get(
-                name=tag
-            )
-            tags.append(tag_obj)
+            if (tag != ""):
+                tag_obj = Tag.objects.get(
+                    name=tag
+                )
+                tags.append(tag_obj)
         new_article=Article.objects.create(
             title=form_data['title'],
             description=form_data['description'],
