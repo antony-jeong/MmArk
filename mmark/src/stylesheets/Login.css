@@ -15,9 +15,13 @@ form {
     margin-right: 10px;
 }
 
-.embedded-login input[type="submit"],
-.login input[type="submit"]{
+.embedded-login input[type="submit"]{
     display: none;
+}
+
+.embedded-login label svg{
+    cursor: pointer;
+    margin-right: 20px;
 }
 
 .login-username,
@@ -26,16 +30,40 @@ form {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin: 5px;
+    margin: 4px;
 }
 
 .login-username input,
 .login-password input{
-    font-size: 1.2rem;
+    box-shadow: inset 1px 1px 3px 1px rgb(175, 175, 175);
+    font-size: 1.1rem;
     width: 150px;
     margin-left: 5px;
     padding: 3px;
+    padding-left: 5px;
     outline: none;
     border-radius: 4px;
+    border: none;
+}
+
+.login-username label,
+.login-password label{
+    color: rgb(219, 219, 219);
+}
+
+.login-signup {
+    margin-top: 10px;
+    display: flex;
+    font-size: 0.8rem;
+    color: rgb(219, 219, 219);
+    align-items: center;
+    justify-content: center;
+}
+.login-signup button{
+    cursor: pointer;
+    font-weight: bold;
+    color: rgb(121, 179, 255);
+    background-color: rgba(0, 0, 0, 0);
+    outline: none;
     border: none;
 }
