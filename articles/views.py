@@ -54,6 +54,7 @@ def new_post(request):
     elif request.method == 'DELETE':
         toDelete = Article.objects.get(id=request.body)
         toDelete.delete()
-        return toDelete;
+
+        return True;
         
     
