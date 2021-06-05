@@ -49,6 +49,8 @@ class Community extends Component {
                         articles: search_articles
                     }
                 });
+                const searchText = document.getElementById("searchInput");
+                searchText.value = this.props.match.params.keyword;
             } else {
                 this.setState(prevState => {
                     return {
