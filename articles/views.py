@@ -57,6 +57,16 @@ def new_post(request):
         toDelete = Article.objects.get(id=request.body)
         toDelete.delete()
         return HttpResponse("delete success")
+    
+    elif request.method == 'FAV':
+        toFav = Article.objects.get(id=request.body.articleID)
+        curUser = user_models.User.objects.get(
+            username=request.body.user
+        )
+        toFav.favorites.append(curUser)
+        print(toFav.favorites)
+        toFav.save()
+        return HttpResponse("fav success")
 
 
         
