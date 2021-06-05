@@ -5,6 +5,7 @@ from .serializers import ArticleSerializer, TagSerializer
 from .models import Article, Tag
 from .permissions import IsOwnerOrReadOnly
 from users import models as user_models
+from django.http.response import HttpResponse
 import json
 
 class ArticleListCreate(generics.ListCreateAPIView):
@@ -50,10 +51,12 @@ def new_post(request):
                 )
                 new_article.tags.add(tag_obj)
         new_article.save()
+        return HttpResponse("post success")
 
     elif request.method == 'DELETE':
         toDelete = Article.objects.get(id=request.body)
         toDelete.delete()
+        return HttpResponse("delete success")
 
 
         
