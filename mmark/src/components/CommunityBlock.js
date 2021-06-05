@@ -77,7 +77,6 @@ const CommunityBlock = ({articles, users, tags}) => {
         fetch(`http://3.36.217.44:8000/plz`, {
           method: 'DELETE',
           headers: {
-              'Content-Type': 'application/json'
             },
           body: articleId
         })

@@ -50,11 +50,11 @@ def new_post(request):
                 )
                 new_article.tags.add(tag_obj)
         new_article.save()
-        return new_article;
+
     elif request.method == 'DELETE':
         toDelete = Article.objects.get(id=request.body)
         toDelete.delete()
 
-        return True;
+
         
     
