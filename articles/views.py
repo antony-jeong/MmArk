@@ -16,7 +16,7 @@ class ArticleListCreate(generics.ListCreateAPIView):
 class ArticleDetailCreate(generics.RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly, permissions.IsOwnerOrReadOnly, permissions.AllowAny)
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly, permissions.AllowAny)
     def delete(self, request, *args, **kwargs):
         return super().delete(request, *args, **kwargs)
 
