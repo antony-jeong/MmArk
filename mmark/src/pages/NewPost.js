@@ -19,7 +19,8 @@ class NewPost extends Component {
             'sheet_ds': JSON.stringify([]),
             'logged_in': cookies.get('token') ? true : false,
             'username': cookies.get('name'),
-            focusNow: "o"
+            focusNow: "o",
+            initialDs: []
         };
         const { t, i18n } = withTranslation();
     }
@@ -74,14 +75,14 @@ class NewPost extends Component {
             body: JSON.stringify(data)
         }).then(
             this.props.history.push('/Community/')
-        )
+        );
     };
 
     inTag = (tagName) => {
         for (var i = 0; i < this.state.tags.length; i++) {
-            if(tagName == this.state.tags[i]) return true
+            if(tagName == this.state.tags[i]) return true;
         }
-        return false
+        return false;
     }
 
     handleTagClick = (e) => {
@@ -122,7 +123,7 @@ class NewPost extends Component {
                                 <div className="tagButton" style={{background: `${item.color}`}} onClick={this.handleTagClick}>{item.name}</div>
                             ))}
                         </div>
-                        <Sheet className="Sheet" dataStructure={[]} updateDS={this.updateDS} viewMode={"create"} focusNow={this.state.focusNow} getFocusNow={this.genGetFocusNow("s")}/>
+                        <Sheet className="Sheet" dataStructure={this.state.initialDs} updateDS={this.updateDS} viewMode={"create"} focusNow={this.state.focusNow} getFocusNow={this.genGetFocusNow("s")}/>
                         {t("post.description")}<br/>
                         <textarea className='textInput' rows={"5"} cols={"50"} name={"description"} onChange={this.handleChange} onClick={this.genGetFocusNow("o")}></textarea><br/>
                         <div className='newPost-ButtonWrapper'>
