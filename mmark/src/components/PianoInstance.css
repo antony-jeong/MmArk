@@ -24,7 +24,7 @@
   border: rgba(113, 71, 203, 0.5) solid 6px;
 }
 .piano-container:hover {
-  border: rgba(113, 71, 203, 0.5) solid 6px;
+  border: rgba(113, 71, 203, 0.2) solid 6px;
 }
 .piano-container.focused:hover {
   border: rgba(113, 71, 203, 1) solid 6px;
