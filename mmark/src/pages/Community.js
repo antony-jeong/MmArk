@@ -56,6 +56,7 @@ class Community extends Component {
                     }
                 });
                 const searchText = document.getElementById("searchInput");
+                console.log(this.state.total_articles, this.state.search, searchText, this.state.articles)
                 searchText.value = this.props.match.params.keyword;
             } else {
                 this.setState(prevState => {
@@ -203,7 +204,7 @@ class Community extends Component {
                 <Logo className="logo" isLink={true} />
                 <div className="searchWrapper">
                     <form className="search" onSubmit={this.handleSubmit}>
-                        <input type="text" className="searchInput" id="searchInput" placeholder="Search Placeholder"></input>
+                        <input type="text" className="searchInput" id="searchInput" placeholder="Search Title, Author, and Description in English"></input>
                     </form>
                     <div className="searchButtonWrapper" onClick={this.handleSubmit}>
                         <svg className="searchButton" width="33" height="31" viewBox="0 0 33 31" fill="none" xmlns="http://www.w3.org/2000/svg">

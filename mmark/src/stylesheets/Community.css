@@ -41,6 +41,21 @@ html {
     align-items: center;
 }
 
+.searchInput {
+    border: none;
+    background: none;
+    width: stretch;
+    margin: 0px 10px 0px 10px;
+    padding: 0px 15px 0px 15px;
+    font-weight: 200;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+}
+
+.searchInput:focus {
+    outline: solid black 2px;
+}
+
 .searchButton {
     cursor: pointer;
 }
@@ -88,13 +103,13 @@ html {
 }
 
 .itemWrapper {
-    display: grid;
-    grid-template: "d b" 1fr "a c" 5fr / 1fr 10fr;
+    display: flex;
+    flex-direction: column;
 }
 
 .itemWrapper.mine {
-    display: grid;
-    grid-template: "b d" 1fr "c a" 5fr / 10fr 1fr;
+    display: flex;
+    flex-direction: column;
 }
 
 .itemWrapper.mine .titleWrapper .title {
@@ -110,13 +125,22 @@ html {
     margin: 20px 10px 0px 0px;
 }
 
+.itemWrapper.mine .bottomWrapper {
+    flex-direction: row-reverse;
+}
+
+.bottomWrapper {
+    display: flex;
+}
+
 .authorWrapper {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    grid-area: a;
     flex-flow: column;
     margin: 20px 0px 0px 10px;
+    width: 100%;
+    max-width: 10%;
 }
 
 .authorWrapper .authorProfilePic {
@@ -128,9 +152,11 @@ html {
 }
 
 .authorWrapper .authorName {
+    white-space: pre-wrap;
     font-weight: 300;
     font-size: 1.125rem;
     margin: 5px 0px 0px 0px;
+    flex-wrap: wrap;
 }
 
 .authorWrapper .authorSub {
@@ -149,7 +175,6 @@ html {
 }
 
 .titleWrapper {
-    grid-area: b;
     display: flex;
     align-items: flex-end;
 }
@@ -195,7 +220,6 @@ html {
 }
 
 .descWrapperWrapper {
-    grid-area: c;
     border-radius: 10px;
     box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.25);
     background: white;
