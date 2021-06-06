@@ -133,7 +133,7 @@ const CommunityBlock = ({articles, users, curUser, tags, handleDelete, handleFav
                     <div className="descWrapperWrapper">
                         <div className="descWrapper">
                             <div className="sheetWrapper">
-                                <Sheet dataStructure={JSON.parse(item.sheet_ds)}></Sheet>
+                                <Sheet dataStructure={JSON.parse(item.sheet_ds)} viewMode={"read"}></Sheet>
                             </div>
                             {
                                 curUser.favorites.includes(item.id) ?

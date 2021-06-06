@@ -224,7 +224,7 @@ const convertObjects = (ds) => {
 
 const unwrapSheet = (converted, setIsPlaying) => {
   var nowBy128 = 0;
-  var baseTime = 500;
+  var baseTime = 250;
   var currentDurOf4 = 750; // useless 750
   var afterDSorDC = false;
   var sequence = [];
@@ -354,6 +354,8 @@ const unwrapSheet = (converted, setIsPlaying) => {
 };
 
 const executeSequence = (soundPlayer, sequence, reservation, changeHighlight, changeTripletHighlight) => {
+  setTimeout(()=>{
+  
   for(var i in sequence) {
     const note = sequence[i].note;
     const time = sequence[i].time;
@@ -389,6 +391,7 @@ const executeSequence = (soundPlayer, sequence, reservation, changeHighlight, ch
       }, time));
     }
   }
+  }, 250);
 };
 
 const SheetPlayer = (soundPlayer, changeHighlight, changeTripletHighlight, setIsPlaying) => {

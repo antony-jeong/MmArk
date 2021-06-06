@@ -157,21 +157,26 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
         inputWrapper.value = "";
     }
 
-
+    const [focusNow, setFocusNow] = useState("o");  // o for outside, p for piano, s for sheet, n for navigator, i for textInput
+    const genSetFocusNow = (f) => {
+        return () => {
+            setFocusNow(f);
+        };
+    };
 
     const inputSubject = () => {
         switch (pageData.inputMode) {
             case ("text"):
-                return (<div className="textInputWrapper">
+                return (<div className="textInputWrapper" onClick={genSetFocusNow("i")}>
                     <input type="text" id="textInput" autoComplete="off" onKeyPress={(e)=>{if (e.key==='Enter') handleOnClick()}}/>
                     <button type="submit" id="textButton" onClick={handleOnClick}>{t("learn.submit")}</button>
                 </div>);
             case ("oneKey"):
-                return (<PianoInstance className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} />);
+                return (<PianoInstance className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} focusNow={focusNow} getFocusNow={genSetFocusNow("p")} />);
             case ("whiteKeys"):
-                return (<PianoInstance className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} />);
+                return (<PianoInstance className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} focusNow={focusNow} getFocusNow={genSetFocusNow("p")} />);
             case ("allKeys"):
-                return (<PianoInstance className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} />);
+                return (<PianoInstance className="Piano" startNote="C3" endNote="C5" addPlayHistory={addPlayHistory} inputMode={pageData.inputMode} focusNow={focusNow} getFocusNow={genSetFocusNow("p")} />);
             default:
                 return (<div>inputMode Error</div>)
         }
@@ -184,12 +189,12 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
                 <Logo className={`Logo`}isLink={true}/>
                 <span className={'GameName'}>{i18n.language === "en" ? game : i18n.language === "kr" ? game_kor : "i18n error"}</span>
             </span>
-            <PageNavigator className="PageNavigator" pageNum={pageNum} pageEnd={pageEnd} parentCallback={callback}/>
+            <PageNavigator className="PageNavigator" pageNum={pageNum} pageEnd={pageEnd} parentCallback={callback} getFocusNow={genSetFocusNow("n")} />
             <div className={`LearnPage`}>
                 <Instruction className="Instruction" inst={i18n.language === "en" ? pageData.inst : (i18n.language === "kr"? pageData.inst_kr : "Internationalization Error")}/>
                 <ProgressBar cur={progressCur} end={progressEnd} onClick={handleNext}/>
                 <div className="InputHistory">{slicedInput.map((item)=>{return <span>{item}</span>})}</div>
-                <Sheet className="Sheet" dataStructure={pageData.ds} />
+                <Sheet dataStructure={pageData.ds} focusNow={focusNow} getFocusNow={genSetFocusNow("s")} viewMode={"learn"} />
                 {inputSubject()}
             </div>
             <div className={"Language-Select-Learn"}>
