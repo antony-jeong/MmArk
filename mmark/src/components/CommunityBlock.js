@@ -74,7 +74,6 @@ const CommunityBlock = ({articles, users, curUser, tags, handleDelete, handleFav
 
     return (
         <div className="listWrapper">
-            {console.log(curUser.favorites)}
             {articles.map(item => (
                 <div key={item.id} className={`itemWrapper ${Cookie.name == item.author_name ? "mine" : ""}`}>
                     <div className={`authorWrapper`}>
@@ -137,7 +136,7 @@ const CommunityBlock = ({articles, users, curUser, tags, handleDelete, handleFav
                                 <Sheet dataStructure={JSON.parse(item.sheet_ds)} viewMode={"read"}></Sheet>
                             </div>
                             {
-                                curUser.favorites.includes(item.id) ?
+                                Cookie.name && curUser.favorites.includes(item.id) ?
                                 <div className="favWrapper favved" onClick={handleFav} value={item.id}>
                                     <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g filter="url(#filter0_i)">

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ReactDom from 'react-dom';
+import Popup from 'react-popup';
 import { Link } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
@@ -7,6 +9,7 @@ import Logo from '../components/Logo';
 import CommunityBlock from "../components/CommunityBlock";
 import Sheet from '../components/Sheet';
 import '../stylesheets/Community.css';
+import '../stylesheets/Popup.css';
 import { Cookies, withCookies } from 'react-cookie';
 
 class Community extends Component {
@@ -49,7 +52,7 @@ class Community extends Component {
                         ...prevState,
                         search: this.props.match.params.keyword,
                         articles: search_articles,
-                        curUser: users.find(obj => { return obj.username === cookies.get('name') })
+                        curUser: users.find(obj => { return obj.username === cookies.get('name') }) || ""
                     }
                 });
                 const searchText = document.getElementById("searchInput");
@@ -59,7 +62,7 @@ class Community extends Component {
                     return {
                         ...prevState,
                         articles: total_articles,
-                        curUser: users.find(obj => { return obj.username === cookies.get('name') })
+                        curUser: users.find(obj => { return obj.username === cookies.get('name') }) || ""
                     }
                 })
             }
@@ -116,8 +119,7 @@ class Community extends Component {
         e.preventDefault();
         const { cookies } = this.props;
         const articleId = Number(e.currentTarget.getAttribute('value'));
-        console.log(articleId);
-        console.log(JSON.stringify({ articleId: articleId, user: cookies.get('name') }));
+        if (cookies.get('name')){
         fetch(`http://3.36.217.44:8000/fav/`, {
             method: 'POST',
             body: JSON.stringify({ articleId: articleId, user: cookies.get('name') })
@@ -141,16 +143,63 @@ class Community extends Component {
                     total_articles: total_articles,
                     articles: show_articles,
                     users: users,
-                    curUser: users.find(obj => { return obj.username === cookies.get('name') })
+                    curUser: users.find(obj => { return obj.username === cookies.get('name') }) || ""
                 }
             });
+        });}
+        else {Popup.create({
+            content: 'Please Log In to use Favorites',
+            buttons: {
+                left: [{
+                    text: 'Cancel',
+                    action: function () {
+                        Popup.close();
+                    }
+                }],
+                right: [{
+                    text: 'Move to Login Page',
+                    className: 'success',
+                    action: this.goToLogin
+                }]
+            }
         });
+        }
+    }
+
+    handleNewPost = () => {
+        if (this.props.cookies.get('name'))
+            this.props.history.push('/Community/newPost');
+        else {
+            {Popup.create({
+                content: 'Please Log In to Post',
+                buttons: {
+                    left: [{
+                        text: 'Cancel',
+                        action: function () {
+                            Popup.close();
+                        }
+                    }],
+                    right: [{
+                        text: 'Move to Login Page',
+                        className: 'success',
+                        action: this.goToLogin
+                    }]
+                }
+            });
+            }
+        }
+    }
+
+    goToLogin = () => {
+        Popup.close();
+        this.props.history.push('/login');
     }
 
     render() {
         const {t} = this.props;
         return (
             <div className='Community'>
+                <Popup />
                 <Logo className="logo" isLink={true} />
                 <div className="searchWrapper">
                     <form className="search" onSubmit={this.handleSubmit}>
@@ -163,9 +212,14 @@ class Community extends Component {
                         </svg>
                     </div>
                 </div>
-                <Link className='newPostButton' to='/Community/newPost'>{t("community.new_post")}</Link>
-                <CommunityBlock className="listWrapper" articles={this.state.articles} users={this.state.users} curUser={this.state.curUser} tags={this.state.tags} handleDelete={this.handleDelete} handleFav={this.handleFav}/>
+                <button className='newPostButton' onClick={this.handleNewPost}>{t("community.new_post")}</button>
+                {
+                    this.state.curUser
+                    ?<CommunityBlock className="listWrapper" articles={this.state.articles} users={this.state.users} curUser={this.state.curUser} tags={this.state.tags} handleDelete={this.handleDelete} handleFav={this.handleFav}/>
+                    :<CommunityBlock className="listWrapper" articles={this.state.articles} users={this.state.users} tags={this.state.tags} handleFav={this.handleFav}/>
+                }
             </div>
+            
         );
     }
 }
