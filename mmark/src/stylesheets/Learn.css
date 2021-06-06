@@ -416,8 +416,6 @@ body {
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-    border: rgba(113, 71, 203, 1) solid 6px;
 }
 
 .sheet-top {

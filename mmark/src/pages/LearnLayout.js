@@ -67,14 +67,14 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
         const removeUpdate = () => {
             if (document.querySelector('.Instruction') && document.querySelector('.Sheet')){
                 document.querySelector('.Instruction').classList.remove('updated');
-                document.querySelector('.Sheet').classList.remove('updated');
+                document.querySelector('.sheet-top-wrapper').classList.remove('updated');
                 document.querySelector('.ProgressBarWrapper').classList.remove('updated');
                 document.querySelector('.ProgressBarWrapper').classList.remove('Wrong');
             }
         }
 
         document.querySelector('.Instruction').classList.add('updated');
-        document.querySelector('.Sheet').classList.add('updated');
+        document.querySelector('.sheet-top-wrapper').classList.add('updated');
         document.querySelector('.ProgressBarWrapper').classList.add('updated');
         updateTimer = setTimeout(removeUpdate, 1000);
     }
