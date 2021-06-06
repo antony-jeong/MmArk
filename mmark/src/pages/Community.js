@@ -169,7 +169,7 @@ class Community extends Component {
 
     handleNewPost = () => {
         if (this.props.cookies.get('name'))
-            this.props.history.push('/Community/newPost');
+            this.props.history.push('/Community/newPost/');
         else {
             {Popup.create({
                 content: 'Please Log In to Post',

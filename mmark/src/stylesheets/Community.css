@@ -18,6 +18,8 @@ html {
     left: 50px;
 }
 
+
+
 .searchWrapper {
     display: flex;
     width: 60vw;
@@ -74,6 +76,7 @@ html {
     margin: 20px auto;
     border: none;
     outline: none;
+    cursor: pointer;
 }
 
 .listWrapper {
@@ -282,4 +285,16 @@ html {
 
 .hidden {
     display: none;
+}
+
+.favWrapper{
+    cursor: pointer;
+}
+
+.favWrapper svg{
+    fill: #E2E3EC
+}
+
+.favved.favWrapper svg{
+    fill: #ffe135
 }
