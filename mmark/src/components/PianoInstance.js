@@ -23,17 +23,18 @@ const AlwaysScrollSection = memo(props => {
     return <StyledAlwaysScrollSection>{children}</StyledAlwaysScrollSection>;
   });
 
-function PianoContainer({children}) {
+function PianoContainer({children, focusNow, getFocusNow}) {
   return (
     <div className={"piano-container-wrapper"}>
-      <AlwaysScrollSection>
+      {/* <AlwaysScrollSection> */}
       <div
-        className={"piano-container"}
+        className={"piano-container"+(focusNow==="p"?" focused":"")}
+        onClick={getFocusNow}
         onMouseDown={event => event.preventDefault()}
       >
         {children}
       </div>
-      </AlwaysScrollSection>
+      {/* </AlwaysScrollSection> */}
     </div>
   );
 }
@@ -117,9 +118,9 @@ function PianoKeyComponent({isAccidental, isPlaying, play, stop, keyBindings, is
   );
 }
 
-const PianoInstance = ({startNote, endNote, keyToNote, inputMode, addPlayHistory}) => {
+const PianoInstance = ({startNote, endNote, keyToNote, inputMode, addPlayHistory, focusNow, getFocusNow}) => {
   return (
-    <PianoContainer>
+    <PianoContainer focusNow={focusNow} getFocusNow={getFocusNow}>
       <Piano
         startNote={startNote}
         endNote={endNote}

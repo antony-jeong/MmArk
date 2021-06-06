@@ -1,32 +1,45 @@
-.piano-container {
-  display: flex;
-  align-items: flex-start;
-  justify-self: center;
-  justify-content: center;
-  width: fit-content;
-  margin: 0px;
-}
-
 .piano-container-wrapper{
   width: 100%;
-  display: flex;
-
-  justify-content: center;
-  margin: 5vh auto;
-  padding: 0 auto;
+  height: 100%;
   overflow: auto visible;
-  white-space:nowrap;
-  -webkit-appearance: none
+  white-space: nowrap;
+  -webkit-appearance: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 2;
+}
+
+.piano-container {
+  border: transparent solid 6px;
+  border-radius: 15px;
+  height: 90%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1;
+}
+.piano-container.focused {
+  border: rgba(113, 71, 203, 0.5) solid 6px;
+}
+.piano-container:hover {
+  border: rgba(113, 71, 203, 0.2) solid 6px;
+}
+.piano-container.focused:hover {
+  border: rgba(113, 71, 203, 1) solid 6px;
 }
 
 .piano-black-key-wrapper {
   width: 0px;
+  height: 100%;
 }
 
 .piano-black-key {
   position: relative;
-  width: 2rem;
-  height: 9rem;
+  width: 3.6vw;
+  height: 60%;
+  box-sizing: border-box;
   transform: translateX(-50%);
   display: flex;
   align-items: flex-end;
@@ -59,8 +72,9 @@
 }
 
 .piano-white-key {
-  width: 3rem;
-  height: 15rem;
+  width: 5.4vw;
+  box-sizing: border-box;
+  height: 100%;
   display: flex;
   align-items: flex-end;
   margin-left: 0.1rem;
@@ -93,8 +107,9 @@
 
 .piano-black-key-disabled{
   position: relative;
-  width: 2rem;
-  height: 9rem;
+  width: 3.6vw;
+  height: 60%;
+  box-sizing: border-box;
   transform: translateX(-50%);
   display: flex;
   align-items: flex-end;
@@ -106,8 +121,9 @@
 }
 
 .piano-white-key-disabled{
-  width: 3rem;
-  height: 15rem;
+  width: 5.4vw;
+  height: 100%;
+  box-sizing: border-box;
   display: flex;
   align-items: flex-end;
   margin-left: 0.1rem;

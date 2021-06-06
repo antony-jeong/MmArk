@@ -18,7 +18,9 @@ class NewPost extends Component {
             'tags_total': [],
             'sheet_ds': JSON.stringify([]),
             'logged_in': cookies.get('token') ? true : false,
-            'username': cookies.get('name')
+            'username': cookies.get('name'),
+            focusNow: "o",
+            initialDs: []
         };
         const { t, i18n } = withTranslation();
     }
@@ -33,6 +35,14 @@ class NewPost extends Component {
         } catch (e) {
             console.log(e);
         }
+    }
+
+    genGetFocusNow = (f) => {
+        return () => {
+            this.setState(prevstate => {
+                return {...prevstate, focusNow: f};
+            });
+        };
     }
 
     updateDS = (ds) =>{
@@ -65,17 +75,18 @@ class NewPost extends Component {
             body: JSON.stringify(data)
         }).then(
             this.props.history.push('/Community/')
-        )
+        );
     };
 
     inTag = (tagName) => {
         for (var i = 0; i < this.state.tags.length; i++) {
-            if(tagName == this.state.tags[i]) return true
+            if(tagName == this.state.tags[i]) return true;
         }
-        return false
+        return false;
     }
 
     handleTagClick = (e) => {
+        (this.genGetFocusNow("o"))();
         const target_tag = e.target.innerText
         if (target_tag != undefined) {            
             if (this.inTag(target_tag)) {
@@ -104,7 +115,7 @@ class NewPost extends Component {
                 <div className='Form'>
                     <form onSubmit={(e) => {this.handlePost(e, this.state)}}>
                         {t("post.title")}<br/>
-                        <input className='textInput' type={"text"} name={"title"} onChange={this.handleChange} /><br />
+                        <input className='textInput' type={"text"} name={"title"} onChange={this.handleChange} onClick={this.genGetFocusNow("o")}/><br />
                         {t("post.author")} {this.state.username}<br />
                         {t("post.tags")} <br />
                         <div className="tagWrapper">
@@ -112,9 +123,9 @@ class NewPost extends Component {
                                 <div className="tagButton" style={{background: `${item.color}`}} onClick={this.handleTagClick}>{item.name}</div>
                             ))}
                         </div>
-                        <Sheet className="Sheet" dataStructure={JSON.parse(this.state.sheet_ds)} name={"sheet_ds"} updateDS={this.updateDS}/>
+                        <Sheet className="Sheet" dataStructure={this.state.initialDs} updateDS={this.updateDS} viewMode={"create"} focusNow={this.state.focusNow} getFocusNow={this.genGetFocusNow("s")}/>
                         {t("post.description")}<br/>
-                        <textarea className='textInput' rows={"5"} cols={"50"} name={"description"} onChange={this.handleChange}></textarea><br/>
+                        <textarea className='textInput' rows={"5"} cols={"50"} name={"description"} onChange={this.handleChange} onClick={this.genGetFocusNow("o")}></textarea><br/>
                         <div className='newPost-ButtonWrapper'>
                             <Link className='DiscardButton' to='/Community'>{t("post.discard")}</Link>
                             <input className="PostButton" type={"submit"} value={t("post.add")}/>

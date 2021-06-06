@@ -22,7 +22,6 @@ class UserDetailCreate(generics.RetrieveUpdateDestroyAPIView):
 
 
 @api_view(['GET'])
-@permission_classes([AllowAny])
 def current_user(request):
     """
     Determine the current user by their token, and return their data

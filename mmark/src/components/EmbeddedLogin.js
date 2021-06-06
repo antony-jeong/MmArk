@@ -27,18 +27,7 @@ class EmbeddedLogin extends Component {
     
   componentDidMount() {
     const { cookies } = this.props;
-    if (this.state.logged_in) {
-      fetch('http://3.36.217.44:8000/api/test/current_user/', {
-        headers: {
-          Authorization: `JWT ${cookies.get('token')}`
-        }
-      })
-        .then(res => res.json())
-        .then(json => {
-          this.setState({ username: json.username });
-        });
-    }
-}
+  }
 
   handle_login = (e, data) => {
     const { cookies } = this.props;

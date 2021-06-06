@@ -283,7 +283,7 @@ const IndivStackLineObj = ({height}) => {
         }
         style={{
           position: "relative",
-          top: -14.5 + 6 -toptop - 12.245 * (newHeight) + "px",
+          top: -2.3 -14.5 + 6 -toptop - 12.245 * (newHeight) + "px",
           left: "0px",
           display: "inline-flex"
         }}
@@ -566,7 +566,7 @@ const IndivNoteDownObj = ({ type, index, height, deco, acc, cursorHeight, margin
 
 const IndivAccStackObj = ({ acc, accHori, height, overLap}) => {
   return (
-    <div style={{ width: overLap ? "0px" : "8px", display: "inline-flex" }}>
+    <div style={{ width: overLap ? "0px" : (acc === "x" ? "0px" : "8px"), display: "inline-flex" }}>
       <AccidentalObj type={acc} height={height} direction="up"/>
     </div>
   )
@@ -581,7 +581,7 @@ const IndivNoteStackObj = ({ type, realloc, accAlloc, accHori, accHoriMax, isRea
         <StackLineObj height = {height} />
       </div>
       <div className="up" style={{ width: "0px", display: "inline" }}>
-        <div  style = {{width: "0px", display: "inline", position: "relative", top : -19.5 - 6.1225 * (height ) + "px"}}>
+        <div  style = {{width: "0px", display: "inline", position: "relative", top : -2.3 -19.5 - 6.1225 * (height ) + "px"}}>
           <NoteComponent style = {{display: "inline", position: "relative"}} height = "45px"/>
         </div>
       </div>
@@ -598,7 +598,7 @@ const IndivNoteAllocObj = ({ type, realloc, accAlloc, accHori, accHoriMax, isRea
         <StackLineObj height = {height} />
       </div>
       <div className="up" style={{ width: "0px", display: "inline" }}>
-        <div  style = {{width: "0px", display: "inline", position: "relative", top : -19.5 - 6.1225 * (height) + "px"}}>
+        <div  style = {{width: "0px", display: "inline", position: "relative", top : -2.3 -19.5 - 6.1225 * (height) + "px"}}>
           <NoteComponent style = {{display: "inline", position: "relative"}} height = "45px"/>
         </div>
       </div>
@@ -737,6 +737,7 @@ const NoteObj = ({ obj, index, isPlaying, margin, cursorHeight, setCursorIndex }
     }
     return 0;
   });
+  objDataAcc[0].overLap = false;
   for (var i = 0; i < objDataAcc.length - 1; i++) {
     if (objDataAcc[i].accHori === objDataAcc[i+1].accHori) {
       objDataAcc[i].overLap = true;
@@ -857,9 +858,9 @@ const NoteObj = ({ obj, index, isPlaying, margin, cursorHeight, setCursorIndex }
   else if (type < 2) cursorAlloc = 15;
   else if (type >=2 && thereIsRealloc) cursorAlloc = 19;
   return (
-    <div className = {isPlaying ? "skyBlue" : "black"} style={{ width: "15px", display: "inline", "margin-right":margin}}>
-      <div style={{ width: "15px", display: "inline"}} height = "55px">
-        <div style={{ width: "15px", display: "inline"}}>
+    <div className = {isPlaying ? "skyBlue" : "black"} style={{ width: "8px", display: "inline", "margin-right":margin}}>
+      <div style={{ width: "8px", display: "inline"}} height = "55px">
+        <div style={{ width: "8px", display: "inline"}}>
           {accReturnValue}
         </div>
       </div>
