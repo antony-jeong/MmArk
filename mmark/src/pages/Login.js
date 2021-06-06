@@ -84,8 +84,6 @@ class Login extends Component {
       });
   };
 
-  
-
   display_form = form => {
     this.setState({
       displayed_form: form
