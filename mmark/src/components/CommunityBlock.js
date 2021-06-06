@@ -133,7 +133,7 @@ const CommunityBlock = ({articles, users, tags}) => {
                         <div className="descWrapperWrapper">
                             <div className="descWrapper">
                                 <div className="sheetWrapper">
-                                    <Sheet dataStructure={JSON.parse(item.sheet_ds)}></Sheet>
+                                    <Sheet dataStructure={JSON.parse(item.sheet_ds)} viewMode={"read"}></Sheet>
                                 </div>
                                 <div className="favWrapper">
                                     <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
