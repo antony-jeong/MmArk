@@ -71,21 +71,6 @@ const CommunityBlock = ({articles, users, curUser, tags, handleDelete, handleFav
         }
     }
 
-    const handleDelete = (e) => {
-        //console.log(e.target.parentNode.getAttribute('value'));
-        e.preventDefault();
-        const articleKey = e.target.parentNode.getAttribute('value');
-        fetch(`http://3.36.217.44:8000/api/articles/:${articleKey}`, {
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                // 'X-CSRFToken' : csrftoken
-            },
-        }).then(
-            //this.props.history.push('/Community/')
-        )
-    }
 
     return (
         <div className="listWrapper">

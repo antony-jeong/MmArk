@@ -122,7 +122,7 @@ class NewPost extends Component {
                                 <div className="tagButton" style={{background: `${item.color}`}} onClick={this.handleTagClick}>{item.name}</div>
                             ))}
                         </div>
-                        <Sheet className="Sheet" dataStructure={JSON.parse(this.state.sheet_ds)} name={"sheet_ds"} updateDS={this.updateDS} viewMode={"create"} focusNow={this.state.focusNow} getFocusNow={this.genGetFocusNow("s")}/>
+                        <Sheet className="Sheet" dataStructure={[]} updateDS={this.updateDS} viewMode={"create"} focusNow={this.state.focusNow} getFocusNow={this.genGetFocusNow("s")}/>
                         {t("post.description")}<br/>
                         <textarea className='textInput' rows={"5"} cols={"50"} name={"description"} onChange={this.handleChange} onClick={this.genGetFocusNow("o")}></textarea><br/>
                         <div className='newPost-ButtonWrapper'>
