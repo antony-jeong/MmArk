@@ -26,41 +26,45 @@ handleRoute() {
 	this.props.history.push('/');
 }
 
-componentDidMount = () => {
-	const { cookies } = this.props;
-	if (cookies.name) this.setState({
-	logged_in: true,
-	username: cookies.name
-	});
-}
-	
-handle_login = (e, data) => {
-	const { cookies } = this.props;
-	e.preventDefault();
-	fetch('http://3.36.217.44:8000/token-auth/', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(data)
-	}).then(handleErrors)
-		.then(res => res.json())
-		.then(json => {
-			//localStorage.setItem('token', json.token);
-			cookies.set('name', json.user.username, { path: '/' });
-			cookies.set('token', json.token, { path: '/' });
-			if (typeof json.user != "undefined") {
-				this.setState({
-					logged_in: true,
-					username: json.user.username
-				});
-				this.handleRoute();
-			}
-		})
-		.catch(function (error) {
-			console.log(error);
-		});
-};
+  handleRoute() {
+    this.props.history.goBack();
+  }
+  
+  componentDidMount = () => {
+    const { cookies } = this.props;
+    if (cookies.name) this.setState({
+      logged_in: true,
+      username: cookies.name
+    });
+  }
+    
+  handle_login = (e, data) => {
+    const { cookies } = this.props;
+    e.preventDefault();
+      fetch('http://3.36.217.44:8000/token-auth/', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+      }).then(handleErrors)
+          .then(res => res.json())
+          .then(json => {
+              //localStorage.setItem('token', json.token);
+            cookies.set('name', json.user.username, { path: '/' });
+            cookies.set('token', json.token, { path: '/' });
+              if (typeof json.user != "undefined") {
+                this.setState({
+                    logged_in: true,
+                    username: json.user.username
+                });
+                this.handleRoute();
+              }
+          })
+          .catch(function (error) {
+              console.log(error);
+          });
+  };
 
 handle_signup = (e, data) => {
 	const { cookies } = this.props;

@@ -4,6 +4,7 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
+
 .Community {
     width: 100vw;
     height: 100vh;
@@ -16,6 +17,8 @@ html {
     top: 40px;
     left: 50px;
 }
+
+
 
 .searchWrapper {
     display: flex;
@@ -71,6 +74,9 @@ html {
     text-decoration: none;
     border-radius: 10px;
     margin: 20px auto;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 .listWrapper {
@@ -280,4 +286,16 @@ html {
 
 .hidden {
     display: none;
+}
+
+.favWrapper{
+    cursor: pointer;
+}
+
+.favWrapper svg{
+    fill: #E2E3EC
+}
+
+.favved.favWrapper svg{
+    fill: #ffe135
 }

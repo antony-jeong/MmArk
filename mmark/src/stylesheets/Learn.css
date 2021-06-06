@@ -465,6 +465,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     vertical-align: middle;
+    overflow: hidden;
 }
 
 .sheet-edit-control-button:hover {
@@ -472,7 +473,7 @@ body {
 }
 
 .sheet-edit-control-button.chosen {
-    background: rgba(194, 174, 236, 0.5);
+    background: rgba(113, 71, 203, 0.3);
 }
 
 .sheet-edit-control-dropup {
@@ -491,7 +492,7 @@ body {
     z-index: 1;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 0px 0px 10px rgba(159, 131, 221, 0.5);
+    box-shadow: 0px 0px 10px rgba(113, 71, 203, 0.5);
 }
 
 .sheet-edit-control-dropup .content .option-cell {
@@ -502,6 +503,7 @@ body {
     text-align: center;
     color: black;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .sheet-edit-control-dropup .content .option-cell:hover {background-color: #ccc}
@@ -515,6 +517,7 @@ body {
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
+    overflow: hidden;
 }
 
 .sheet-edit-control-dropup .button:hover {
@@ -522,7 +525,7 @@ body {
 }
 
 .sheet-edit-control-dropup .button.chosen {
-    background-color: rgba(159, 131, 221, 0.5);
+    background-color: rgba(113, 71, 203, 0.3);
 }
 
 .sheet-audio-button {
