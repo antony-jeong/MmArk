@@ -1,10 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { withTranslation } from 'react-i18next';
 
 class SignupForm extends React.Component {
+
 	state = {
-		username: '',
-		password: ''
+		checked: true,
 	};
 
 	handle_change = e => {
@@ -21,33 +22,57 @@ class SignupForm extends React.Component {
 		this.props.history.goBack();
 	}
 
+	checkUsername = (username) => {
+		return true;
+	}
+
+	checkPassword = (password) => {
+		return true;
+	}
+
+	handleSubmit = (e) => {
+		if (!this.checkUsername(this.state.username)) {
+			return;
+		}
+		if (!this.checkPassword(this.state.password)) {
+			return;
+		}
+		if (this.state.password != this.state.confirm_password) {
+			return;
+		}
+		this.props.post_signup(e, this.state)
+	}
+
 	render() {
+		const { t } = this.props;
 		return (
 		<>
-			<h3>Sign Up</h3>
-			<form onSubmit={e => this.props.handle_signup(e, this.state)}>
+			<h3>{t("signup.signup")}</h3>
+				<form onSubmit={this.handleSubmit}>
 				<div className="requiredWrapper">
-					<h4>Required Fields</h4>
+					<h4>{t("signup.top_req")}</h4>
 					<div className="usernameWrapper">
-						<label htmlFor="username">Username</label>
+						<label htmlFor="username">{t("signup.username")}</label>
 						<input
 							type="text"
 							name="username"
 							value={this.state.username}
 							onChange={this.handle_change}
-						/>	
+						/>
+						<div className="inst usernameInstructions">{t("signup.username_inst")}</div>	
 					</div>
 					<div className="passwordWrapper">
-						<label htmlFor="password">Password</label>
+						<label htmlFor="password">{t("signup.password")}</label>
 						<input
 							type="password"
 							name="password"
 							value={this.state.password}
 							onChange={this.handle_change}
-						/>							
+						/>
+						<div className="inst passwordInstructions">{t("signup.password_inst")}</div>	
 					</div>
 					<div className="confirmPasswordWrapper">
-						<label htmlFor="confirm_password">Confirm Password</label>
+						<label htmlFor="confirm_password">{t("signup.confirm_password")}</label>
 						<input
 							type="password"
 							name="confirm_password"
@@ -57,24 +82,26 @@ class SignupForm extends React.Component {
 					</div>
 				</div>
 				<div className="profileWrapper">
-					<h4>Account Profile</h4>
+					<h4>{t("signup.top_pro")}</h4>
 					<div className="imageWrapper">
-						<label htmlFor="image">Profile Image</label>
+						<label htmlFor="image">{t("signup.image")}</label>
 						<input
 							type="file"
 							name="image"
 							value={this.state.image}
 							onChange={this.handle_change}
-						/>							
+						/>
+						<div className="inst imageInstructions">{t("signup.image_inst")}</div>	
 					</div>
 					<div className="descWrapper">
-						<label htmlFor="desc">User Description</label>
+						<label htmlFor="desc">{t("signup.desc")}</label>
 						<input
 							type="text"
 							name="desc"
 							value={this.state.desc}
 							onChange={this.handle_change}
-						/>		
+						/>
+						<div className="inst descInstructions">{t("signup.desc_inst")}</div>
 					</div>
 					<div className="acceptWrapper">
 						<input
@@ -82,10 +109,10 @@ class SignupForm extends React.Component {
 							name="acceptance"
 							checked readonly
 						/>
-						<label htmlFor="acceptance">Since MmArk doesn't handle any of the user's private info, we regard Privacy Terms are accepted by all users</label>
+						<label htmlFor="acceptance">{t("signup.accept")}</label>
 					</div>
 				</div>
-					<button onClick={this.handleBack}>Back</button>
+					<button onClick={this.handleBack}>{t("signup.back")}</button>
 				<label>
 				<input type="submit" />
 					<svg width="25" height="25" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -99,4 +126,4 @@ class SignupForm extends React.Component {
 	}
 }
 
-export default withRouter(SignupForm);
+export default withRouter(withTranslation()(SignupForm));

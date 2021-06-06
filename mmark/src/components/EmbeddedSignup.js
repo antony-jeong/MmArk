@@ -2,6 +2,7 @@
 import {Link} from 'react-router-dom';
 import React, { Component } from 'react';
 import SignupForm from './SignupForm';
+import { withTranslation } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
 import { withCookies, Cookies } from "react-cookie";
 import '../stylesheets/Signup.css'
@@ -33,8 +34,7 @@ class EmbeddedSignup extends Component {
 		});
 	};
 
-	handle_signup = (e, data) => {
-		console.log(data);
+	post_signup = (e, data) => {
         const { cookies } = this.props;
         e.preventDefault();
         fetch('http://3.36.217.44:8000/api/test/users/', {
@@ -44,20 +44,19 @@ class EmbeddedSignup extends Component {
             },
             body: JSON.stringify(data)
         })
-		.then(res => res.json())
-		.then(json => {
-			console.log(json)
-		});
+		.then(res => res.json());
+		this.props.history.push("/");
     };
 
 	render() {
+		const { t } = this.props;
 		return (
 			<div className="embedded-signup">
-				<SignupForm handle_signup={this.handle_signup} />
+				<SignupForm post_signup={this.post_signup} />
 				<div className="login-signup">
-				<div>Do you have an account?</div>
+				<div>{t("signup.message")}</div>
 				<Link to = {`/login`}>
-					<button className="signupButton">Log In</button>
+					<button className="signupButton">{t("signup.login")}</button>
 				</Link>
 				</div>
 			</div>
@@ -65,4 +64,4 @@ class EmbeddedSignup extends Component {
 	}
 }
 
-export default withCookies(withRouter(EmbeddedSignup));
+export default withCookies(withRouter(withTranslation()(EmbeddedSignup)));
