@@ -203,28 +203,6 @@ const Sheet = ({ dataStructure, className, updateDS, focusNow, getFocusNow, view
                 break;
         }
     });
-    // const returnValue = data.map((obj, index) => {
-    //     switch (obj.objectType) {
-    //         case "c":
-    //             return (<Clef obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited ? cursorHeight : 50} />)
-    //         case "t":
-    //             trebled = obj.treble;
-    //             return (<Time obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
-    //         case "k":
-    //             return (<Key obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} treble={trebled} />)
-    //         case "b":
-    //             return (<Barline obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
-    //         case "n":
-                
-    //             return (<Note obj={obj} key={index} index={index} isPlaying={index === playingIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} setCursorIndex={setCursorIndex}/>)
-    //         case "p":
-    //             return (<Bpm obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} isBeingEdited={isBeingEdited}/>)
-    //         case "r":
-    //             return (<Triplet obj={obj} key={index} index={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
-    //         default:
-    //             return (<div key={index}>Invalid Object</div>)
-    //     }
-    // });
     return (
         <div className={
             "sheet-top-wrapper"+(viewMode==="read"?"--read":viewMode==="create"?"--create":"")+(focusNow==="s"?" focused":"")
