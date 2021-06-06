@@ -181,6 +181,7 @@ html {
     margin: 20px 15px 0px 15px;
     font-size: 1.5125rem;
     display: inline-block;
+    white-space: pre-line;
     color: #494951;
 }
 

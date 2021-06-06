@@ -19,7 +19,6 @@ class EmbeddedLogin extends Component {
     super(props);
     const { cookies } = props;
     this.state = {
-      //logged_in: localStorage.getItem('token') ? true : false,
       logged_in: cookies.get('token') ? true : false,
       username: cookies.get('name')
     };
@@ -77,7 +76,7 @@ class EmbeddedLogin extends Component {
                   <div className="embedded-login-loggedout">
                     <LoginForm handle_login={this.handle_login} />
                     <div className="login-signup">
-                      <div>don't have an acount?</div>
+                      <div>Ain't got an account?</div>
                       <Link to = {`/signup`}>
                         <button className="signupButton">Sign Up</button>
                       </Link>

@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+label {
+    color: rgb(219, 219, 219);
+}
+
+.requiredWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.profileWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.embedded-signup form input[type="submit"] {
+    display: none;
+}
+
+label svg {
+    cursor: pointer;
+    margin-right: 20px;
+}

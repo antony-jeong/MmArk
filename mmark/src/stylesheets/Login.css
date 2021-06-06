@@ -1,4 +1,4 @@
-html{
+html {
     font-family: "Roboto", sans-serif;
 }
 
@@ -8,24 +8,24 @@ html{
     align-items: center;
 }
 
-.login-form{
+.login-form {
     display: flex;
     flex-direction: column;
     width: 260px;
     margin-right: 10px;
 }
 
-.embedded-login input[type="submit"]{
+.embedded-login input[type="submit"] {
     display: none;
 }
 
-.embedded-login label svg{
+.embedded-login label svg {
     cursor: pointer;
     margin-right: 20px;
 }
 
 .login-username,
-.login-password{
+.login-password {
     font-size: 1rem;
     display: flex;
     justify-content: flex-end;
@@ -34,7 +34,7 @@ html{
 }
 
 .login-username input,
-.login-password input{
+.login-password input {
     box-shadow: inset 1px 1px 3px 1px rgb(175, 175, 175);
     font-size: 1.1rem;
     width: 150px;
@@ -47,7 +47,7 @@ html{
 }
 
 .login-username label,
-.login-password label{
+.login-password label {
     color: rgb(219, 219, 219);
 }
 
@@ -59,7 +59,8 @@ html{
     align-items: center;
     justify-content: center;
 }
-.login-signup button{
+
+.login-signup button {
     cursor: pointer;
     font-weight: bold;
     color: rgb(121, 179, 255);
