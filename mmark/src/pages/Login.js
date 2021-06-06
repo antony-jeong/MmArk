@@ -23,7 +23,7 @@ class Login extends Component {
   }
 
   handleRoute() {
-    this.props.history.push('/');
+    this.props.history.goBack();
   }
   
   componentDidMount = () => {
