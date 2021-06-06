@@ -71,6 +71,7 @@ const CommunityBlock = ({articles, users, curUser, tags, handleDelete, handleFav
         }
     }
 
+
     return (
         <div className="listWrapper">
             {console.log(curUser.favorites)}
