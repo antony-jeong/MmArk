@@ -5,6 +5,7 @@ from .serializers import ArticleSerializer, TagSerializer
 from .models import Article, Tag
 from .permissions import IsOwnerOrReadOnly
 from users import models as user_models
+from django.http.response import HttpResponse
 import json
 
 class ArticleListCreate(generics.ListCreateAPIView):
@@ -50,4 +51,29 @@ def new_post(request):
                 )
                 new_article.tags.add(tag_obj)
         new_article.save()
-    return new_article;
+        return HttpResponse("post success")
+
+    elif request.method == 'DELETE':
+        toDelete = Article.objects.get(id=request.body)
+        toDelete.delete()
+        return HttpResponse("delete success")
+
+@csrf_exempt
+def fav_post(request):
+    if request.method == 'POST':
+        fav_data = json.loads(request.body.decode())
+        toFav = Article.objects.get(id=fav_data["articleId"])
+        curUser = user_models.User.objects.get(
+            username=fav_data["user"]
+        )
+        if (toFav.favorites.filter(username=curUser.username)):
+            toFav.favorites.remove(curUser)
+            curUser.favorites.remove(toFav)
+        else:
+            toFav.favorites.add(curUser)
+            curUser.favorites.add(toFav)
+            
+        return HttpResponse("fav success")
+
+        
+    

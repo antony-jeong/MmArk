@@ -7,18 +7,20 @@ import Logo from '../components/Logo';
 import CommunityBlock from "../components/CommunityBlock";
 import Sheet from '../components/Sheet';
 import '../stylesheets/Community.css';
+import { Cookies, withCookies } from 'react-cookie';
 
 class Community extends Component {
+
     state = {
         articles: [],
         users: [],
         tags: [],
-        total_articles: []
+        total_articles: [],
+        curUser: ''
     };
-    
-
 
     async componentDidMount() {
+        const { cookies } = this.props;
         try {
             const res_articles = await fetch('http://3.36.217.44:8000/api/articles');
             const total_articles = await res_articles.json();
@@ -46,7 +48,8 @@ class Community extends Component {
                     return {
                         ...prevState,
                         search: this.props.match.params.keyword,
-                        articles: search_articles
+                        articles: search_articles,
+                        curUser: users.find(obj => { return obj.username === cookies.get('name') })
                     }
                 });
                 const searchText = document.getElementById("searchInput");
@@ -55,7 +58,8 @@ class Community extends Component {
                 this.setState(prevState => {
                     return {
                         ...prevState,
-                        articles: total_articles
+                        articles: total_articles,
+                        curUser: users.find(obj => { return obj.username === cookies.get('name') })
                     }
                 })
             }
@@ -83,10 +87,65 @@ class Community extends Component {
                 articles: this.searchArticles(searchText.value)
             };
         });
-        this.props.history.push("/Community/"+searchText.value);
+        this.props.history.push("/Community/" + searchText.value);
         return true
     }
 
+    
+    handleDelete = (e) => {
+        const articleId = Number(e.currentTarget.getAttribute('value'));
+        e.preventDefault();
+        console.log(articleId);
+        fetch(`http://3.36.217.44:8000/plz/`, {
+            method: 'DELETE',
+            body: (articleId)
+        }).then(() => {
+            this.setState(prevState => {
+                const total_articles = prevState.total_articles.filter(article => article.id !== articleId)
+                const show_articles = prevState.articles.filter(article => article.id !== articleId)
+                return {
+                    ...prevState,
+                    total_articles: total_articles,
+                    articles: show_articles
+                }
+            })
+        });
+    };
+
+    handleFav = (e) => {
+        e.preventDefault();
+        const { cookies } = this.props;
+        const articleId = Number(e.currentTarget.getAttribute('value'));
+        console.log(articleId);
+        console.log(JSON.stringify({ articleId: articleId, user: cookies.get('name') }));
+        fetch(`http://3.36.217.44:8000/fav/`, {
+            method: 'POST',
+            body: JSON.stringify({ articleId: articleId, user: cookies.get('name') })
+        }).then(async () => {
+            const res_articles = await fetch('http://3.36.217.44:8000/api/articles');
+            const total_articles = await res_articles.json();
+            const res_users = await fetch('http://3.36.217.44:8000/api/users');
+            const users = await res_users.json();
+            let show_articles = total_articles;
+            if (this.props.match.params.keyword) {
+                var search = new JsSearch.Search('title');
+                search.addIndex('author_name');
+                search.addIndex('description');
+                search.addIndex('title');
+                search.addDocuments(total_articles);
+                show_articles = search.search(this.props.match.params.keyword.trim());
+            }
+            this.setState(prevState => {
+                return {
+                    ...prevState,
+                    total_articles: total_articles,
+                    articles: show_articles,
+                    users: users,
+                    curUser: users.find(obj => { return obj.username === cookies.get('name') })
+                }
+            });
+        });
+    }
 
     render() {
         const {t} = this.props;
@@ -105,10 +164,10 @@ class Community extends Component {
                     </div>
                 </div>
                 <Link className='newPostButton' to='/Community/newPost'>{t("community.new_post")}</Link>
-                <CommunityBlock className="listWrapper" articles={this.state.articles} users={this.state.users} tags={this.state.tags}/>
+                <CommunityBlock className="listWrapper" articles={this.state.articles} users={this.state.users} curUser={this.state.curUser} tags={this.state.tags} handleDelete={this.handleDelete} handleFav={this.handleFav}/>
             </div>
         );
     }
 }
 
-export default withRouter(withTranslation()(Community));
+export default withCookies(withRouter(withTranslation()(Community)));
