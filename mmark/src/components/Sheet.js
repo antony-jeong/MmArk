@@ -175,20 +175,18 @@ const Sheet = ({ dataStructure, className, updateDS, focusNow, getFocusNow, view
     const [isBeingEdited, setIsBeingEdited] = useState(false);
     const data = ds || dataStructure;
     var trebled = true;
-    console.log("isMutated: ", isMutated);
     const returnValue = data.map((obj, index) => {
         switch (obj.objectType) {
             case "c":
+                trebled = obj.treble;
                 return (<Clef obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited ? cursorHeight : 50} />)
             case "t":
-                trebled = obj.treble;
                 return (<Time obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
             case "k":
                 return (<Key obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} treble={trebled} />)
             case "b":
                 return (<Barline obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
             case "n":
-                
                 return (<Note obj={obj} key={index} index={index} isPlaying={index === playingIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} setCursorIndex={setCursorIndex}/>)
             case "p":
                 return (<Bpm obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} isBeingEdited={isBeingEdited}/>)
