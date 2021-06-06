@@ -174,17 +174,13 @@ const Sheet = ({ dataStructure, className, updateDS, focusNow, getFocusNow, view
     const [isBeingEdited, setIsBeingEdited] = useState(false);
     const data = ds || dataStructure;
     var trebled = true;
-    const returnValue = [];
-    for (let index = 0; index < data.length; index++) {
-        let obj = data[index];
+    const returnValue = data.map((obj, index) => {
         switch (obj.objectType) {
             case "c":
-                returnValue.push(<Clef obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited ? cursorHeight : 50} />);
-                break;
-            case "t":
                 trebled = obj.treble;
-                returnValue.push(<Time obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />);
-                break;
+                return (<Clef obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited ? cursorHeight : 50} />)
+            case "t":
+                return (<Time obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
             case "k":
                 returnValue.push(<Key obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} treble={trebled} />);
                 break;
@@ -192,8 +188,7 @@ const Sheet = ({ dataStructure, className, updateDS, focusNow, getFocusNow, view
                 returnValue.push(<Barline obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />);
                 break;
             case "n":
-                returnValue.push(<Note obj={obj} key={index} index={index} isPlaying={index === playingIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} setCursorIndex={setCursorIndex}/>);
-                break;
+                return (<Note obj={obj} key={index} index={index} isPlaying={index === playingIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} setCursorIndex={setCursorIndex}/>)
             case "p":
                 returnValue.push(<Bpm obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} isBeingEdited={isBeingEdited}/>);
                 break;
