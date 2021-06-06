@@ -383,7 +383,7 @@ body {
     border: rgba(113, 71, 203, 0.5) solid 6px;
 }
 .sheet-top-wrapper:hover {
-    border: rgba(113, 71, 203, 0.5) solid 6px;
+    border: rgba(113, 71, 203, 0.2) solid 6px;
 }
 .sheet-top-wrapper.focused:hover {
     border: rgba(113, 71, 203, 1) solid 6px;
@@ -403,7 +403,7 @@ body {
     border: rgba(113, 71, 203, 0.5) solid 6px;
 }
 .sheet-top-wrapper--create:hover {
-    border: rgba(113, 71, 203, 0.5) solid 6px;
+    border: rgba(113, 71, 203, 0.2) solid 6px;
 }
 .sheet-top-wrapper--create.focused:hover {
     border: rgba(113, 71, 203, 1) solid 6px;
