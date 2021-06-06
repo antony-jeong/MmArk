@@ -178,28 +178,31 @@ const Sheet = ({ dataStructure, className, updateDS, focusNow, getFocusNow, view
         switch (obj.objectType) {
             case "c":
                 trebled = obj.treble;
-                return (<Clef obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited ? cursorHeight : 50} />)
+                return (<Clef obj={obj} key={index} index={index} margin={margin ? margin[index] : 0} cursorHeight={cursorIndex - 1 === index && isBeingEdited ? cursorHeight : 50} />)
+                break;
             case "t":
-                return (<Time obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />)
+                return (<Time obj={obj} key={index} index={index} margin={margin ? margin[index] : 0} cursorHeight={cursorIndex - 1 === index && isBeingEdited ? cursorHeight : 50} />)
+                break;
             case "k":
-                returnValue.push(<Key obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} treble={trebled} />);
+                return (<Key obj={obj} key={index} index={index} margin={margin ? margin[index] : 0} cursorHeight={cursorIndex - 1 === index && isBeingEdited ? cursorHeight : 50} treble={trebled} />);
                 break;
             case "b":
-                returnValue.push(<Barline obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />);
+                return (<Barline obj={obj} key={index} index={index} margin={margin ? margin[index] : 0} cursorHeight={cursorIndex - 1 === index && isBeingEdited ? cursorHeight : 50} />);
                 break;
             case "n":
-                return (<Note obj={obj} key={index} index={index} isPlaying={index === playingIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} setCursorIndex={setCursorIndex}/>)
+                return (<Note obj={obj} key={index} index={index} isPlaying={index === playingIndex} margin={margin ? margin[index] : 0} cursorHeight={cursorIndex - 1 === index && isBeingEdited ? cursorHeight : 50} setCursorIndex={setCursorIndex} />)
+                break;
             case "p":
-                returnValue.push(<Bpm obj={obj} key={index} index={index} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} isBeingEdited={isBeingEdited}/>);
+                return (<Bpm obj={obj} key={index} index={index} margin={margin ? margin[index] : 0} cursorHeight={cursorIndex - 1 === index && isBeingEdited ? cursorHeight : 50} isBeingEdited={isBeingEdited} />);
                 break;
             case "r":
-                returnValue.push(<Triplet obj={obj} key={index} index={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex} margin = {margin ? margin[index] : 0} cursorHeight={cursorIndex-1 === index && isBeingEdited  ? cursorHeight : 50} />);
+                return (<Triplet obj={obj} key={index} index={index} isPlaying={index === playingIndex} playingTripletIndex={playingTripletIndex} margin={margin ? margin[index] : 0} cursorHeight={cursorIndex - 1 === index && isBeingEdited ? cursorHeight : 50} />);
                 break;
             default:
-                returnValue.push(<div key={index}>Invalid Object</div>);
+                return (<div key={index}>Invalid Object</div>);
                 break;
         }
-    }
+    });
     // const returnValue = data.map((obj, index) => {
     //     switch (obj.objectType) {
     //         case "c":
