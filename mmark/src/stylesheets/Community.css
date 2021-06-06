@@ -256,3 +256,7 @@ html {
 .hidden {
     display: none;
 }
+
+.favved svg {
+    fill: yellow;
+}

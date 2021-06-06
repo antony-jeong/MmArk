@@ -15,10 +15,12 @@ class Community extends Component {
         articles: [],
         users: [],
         tags: [],
-        total_articles: []
+        total_articles: [],
+        curUser: ''
     };
 
     async componentDidMount() {
+        const { cookies } = this.props;
         try {
             const res_articles = await fetch('http://3.36.217.44:8000/api/articles');
             const total_articles = await res_articles.json();
@@ -46,7 +48,8 @@ class Community extends Component {
                     return {
                         ...prevState,
                         search: this.props.match.params.keyword,
-                        articles: search_articles
+                        articles: search_articles,
+                        curUser: users.find(obj => { return obj.username === cookies.get('name') })
                     }
                 });
                 const searchText = document.getElementById("searchInput");
@@ -55,7 +58,8 @@ class Community extends Component {
                 this.setState(prevState => {
                     return {
                         ...prevState,
-                        articles: total_articles
+                        articles: total_articles,
+                        curUser: users.find(obj => { return obj.username === cookies.get('name') })
                     }
                 })
             }
@@ -117,7 +121,26 @@ class Community extends Component {
         fetch(`http://3.36.217.44:8000/fav/`, {
             method: 'POST',
             body: JSON.stringify({ articleId: articleId, user: cookies.get('name') })
-        })
+        }).then(async () => {
+            const res_articles = await fetch('http://3.36.217.44:8000/api/articles');
+            const total_articles = await res_articles.json();
+            let show_articles = total_articles;
+            if (this.props.match.params.keyword) {
+                var search = new JsSearch.Search('title');
+                search.addIndex('author_name');
+                search.addIndex('description');
+                search.addIndex('title');
+                search.addDocuments(total_articles);
+                show_articles = search.search(this.props.match.params.keyword.trim());
+            }
+            this.setState(prevState => {
+                return {
+                    ...prevState,
+                    total_articles: total_articles,
+                    articles: show_articles
+                }
+            });
+        });
     }
 
     render() {
@@ -137,7 +160,7 @@ class Community extends Component {
                     </div>
                 </div>
                 <Link className='newPostButton' to='/Community/newPost'>{t("community.new_post")}</Link>
-                <CommunityBlock className="listWrapper" articles={this.state.articles} users={this.state.users} tags={this.state.tags} handleDelete={this.handleDelete} handleFav={this.handleFav}/>
+                <CommunityBlock className="listWrapper" articles={this.state.articles} users={this.state.users} curUser={this.state.curUser} tags={this.state.tags} handleDelete={this.handleDelete} handleFav={this.handleFav}/>
             </div>
         );
     }
