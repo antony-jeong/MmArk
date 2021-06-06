@@ -354,6 +354,11 @@ const unwrapSheet = (converted, setIsPlaying) => {
 };
 
 const executeSequence = (soundPlayer, sequence, reservation, changeHighlight, changeTripletHighlight) => {
+  setTimeout(()=>{}, 100);
+  setTimeout(()=>{}, 200);
+  setTimeout(()=>{}, 300);
+  setTimeout(()=>{}, 50);
+  setTimeout(()=>{}, 150);
   for(var i in sequence) {
     const note = sequence[i].note;
     const time = sequence[i].time;

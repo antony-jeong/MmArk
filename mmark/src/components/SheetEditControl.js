@@ -18,7 +18,7 @@ const isControlKey = (e) => {
   return e.ctrlKey && !e.metaKey && !e.shiftKey;
 };
 
-const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
+const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH, focusNow, setIsMutated}) => {
   const [editLength, setEditLength] = useState(2);
   const [editExtend, setEditExtend] = useState(false);
   const [editAccidental, setEditAccidental] = useState("x");
@@ -30,95 +30,97 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
     }
   };
   const handleKeyDown = (e) => {
-    if (isBeingEdited) {
-      if (isRegularKey(e)) {
-        const code = e.keyCode;
-        switch (code) {
-          case 35:  // end
-            setIdx(ds.length);
-            break;
-          case 36:  // home
-            setIdx(0);
-            break;
-          case 37:  // left
-            if (idx > 0) { setIdx(idx-1); }
-            break;
-          case 39:  // right
-            if (idx < ds.length) { setIdx(idx+1); }
-            break;
-          case 38:  // up
-            if (h < 15) { setH(h+1); }
-            break;
-          case 40:  // down
-            if (h > -7) { setH(h-1); }
-            break;
-          case 8:  // backspace
-            if (idx > 0) { delObj(); }
-            break;
-          case 49:  // 1
-            setEditLength(0);
-            break;
-          case 50:  // 2
-            setEditLength(1);
-            break;
-          case 51:  // 3
-            setEditLength(2);
-            break;
-          case 52:  // 4
-            setEditLength(3);
-            break;
-          case 53:  // 5
-            setEditLength(4);
-            break;
-          case 54:  // 6
-            setEditLength(5);
-            break;
-          case 55:  // 7
-            setEditAccidental(editAccidental==="n"?"x":"n");
-            break;
-          case 56:  // 8
-            setEditAccidental(editAccidental==="f"?"x":"f");
-            break;
-          case 57:  // 9
-            setEditAccidental(editAccidental==="s"?"x":"s");
-            break;
-          case 190:  // .
-            setEditExtend(!editExtend);
-            break;
-          case 13:  // Enter
-            addNote(false);
-            break;
-          case 32:  // Space
-            addNote(true);
-            break;
-          case 9:  // Tab
-            addObj({objectType: 'b', type: 'b', barlineDecoration: "x"});
-            break;
-        }
-      } else if (isControlKey(e)) {
-        const code = e.keyCode;
-        switch (code) {
-          case 35:  // end
-            setIdx(ds.length);
-            break;
-          case 36:  // home
-            setIdx(0);
-            break;
-          case 37:  // left
-            if (idx > 0) { setIdx(measureHome()); }
-            break;
-          case 39:  // right
-            if (idx < ds.length) { setIdx(measureEnd()); }
-            break;
-          case 38:  // up
-            if (h < 15-6) { setH(h+7); }
-            break;
-          case 40:  // down
-            if (h > -7+6) { setH(h-7); }
-            break;
-          case 8:  // backspace
-            if (idx > 0) { deleteMeasure(); }
-            break;
+    if (focusNow === "s") {
+      if (isBeingEdited) {
+        if (isRegularKey(e)) {
+          const code = e.keyCode;
+          switch (code) {
+            case 35:  // end
+              setIdx(ds.length);
+              break;
+            case 36:  // home
+              setIdx(0);
+              break;
+            case 37:  // left
+              if (idx > 0) { setIdx(idx-1); }
+              break;
+            case 39:  // right
+              if (idx < ds.length) { setIdx(idx+1); }
+              break;
+            case 38:  // up
+              if (h < 15) { setH(h+1); }
+              break;
+            case 40:  // down
+              if (h > -7) { setH(h-1); }
+              break;
+            case 8:  // backspace
+              if (idx > 0) { delObj(); }
+              break;
+            case 49:  // 1
+              setEditLength(0);
+              break;
+            case 50:  // 2
+              setEditLength(1);
+              break;
+            case 51:  // 3
+              setEditLength(2);
+              break;
+            case 52:  // 4
+              setEditLength(3);
+              break;
+            case 53:  // 5
+              setEditLength(4);
+              break;
+            case 54:  // 6
+              setEditLength(5);
+              break;
+            case 55:  // 7
+              setEditAccidental(editAccidental==="n"?"x":"n");
+              break;
+            case 56:  // 8
+              setEditAccidental(editAccidental==="f"?"x":"f");
+              break;
+            case 57:  // 9
+              setEditAccidental(editAccidental==="s"?"x":"s");
+              break;
+            case 190:  // .
+              setEditExtend(!editExtend);
+              break;
+            case 13:  // Enter
+              addNote(false);
+              break;
+            case 32:  // Space
+              addNote(true);
+              break;
+            case 9:  // Tab
+              addObj({objectType: 'b', type: 'b', barlineDecoration: "x"});
+              break;
+          }
+        } else if (isControlKey(e)) {
+          const code = e.keyCode;
+          switch (code) {
+            case 35:  // end
+              setIdx(ds.length);
+              break;
+            case 36:  // home
+              setIdx(0);
+              break;
+            case 37:  // left
+              if (idx > 0) { setIdx(measureHome()); }
+              break;
+            case 39:  // right
+              if (idx < ds.length) { setIdx(measureEnd()); }
+              break;
+            case 38:  // up
+              if (h < 15-6) { setH(h+7); }
+              break;
+            case 40:  // down
+              if (h > -7+6) { setH(h-7); }
+              break;
+            case 8:  // backspace
+              if (idx > 0) { deleteMeasure(); }
+              break;
+          }
         }
       }
     }
@@ -134,10 +136,12 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
   const addObj = (o) => {
     setDs([...ds.slice(0, idx), o, ...ds.slice(idx)]);
     setIdx(idx+1);
+    setIsMutated(true);
   };
   const delObj = () => {
     setDs([...ds.slice(0, idx-1), ...ds.slice(idx)]);
     setIdx(idx-1);
+    setIsMutated(true);
   };
   const measureHome = () => {
     let start = idx-1;
@@ -167,6 +171,7 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
     let home = measureHome();
     setDs([...ds.slice(0, home), ...ds.slice(idx)]);
     setIdx(home);
+    setIsMutated(true);
   }
   const addNote = (isRest) => {
     addObj({
@@ -238,12 +243,22 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
       <div className={"sheet-edit-control-button"}>tnt</div>
       <div className={"sheet-edit-control-button"}>frmt</div>
     </div> */}
+    {/* <div className={"sheet-edit-control-bundle"}>
+      <div className={"sheet-edit-control-button"}>stack</div>
+    </div> */}
     <div className={"sheet-edit-control-bundle"}>
-      <div
-        className={"sheet-edit-control-button"+(editExtend?" chosen":"")}
-        onClick={()=>setEditExtend(!editExtend)}
-        style={{width: "40px", textAlign: "center", font: "Roboto"}}
-      >Dot</div>
+      <div className={"sheet-edit-control-button"+(editLength===0?" chosen":"")} onClick={()=>setEditLength(0)} style={{width: "30px"}}
+      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_1 className={"black"} height={"24px"} /></div></div>
+      <div className={"sheet-edit-control-button"+(editLength===1?" chosen":"")} onClick={()=>setEditLength(1)} style={{width: "30px"}}
+      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_2 className={"black"} height={"24px"} /></div></div>
+      <div className={"sheet-edit-control-button"+(editLength===2?" chosen":"")} onClick={()=>setEditLength(2)} style={{width: "30px"}}
+      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_4 className={"black"} height={"24px"} /></div></div>
+      <div className={"sheet-edit-control-button"+(editLength===3?" chosen":"")} onClick={()=>setEditLength(3)} style={{width: "30px"}}
+      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_8 className={"black"} height={"24px"} /></div></div>
+      <div className={"sheet-edit-control-button"+(editLength===4?" chosen":"")} onClick={()=>setEditLength(4)} style={{width: "30px"}}
+      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_16 className={"black"} height={"24px"} /></div></div>
+      <div className={"sheet-edit-control-button"+(editLength===5?" chosen":"")} onClick={()=>setEditLength(5)} style={{width: "30px"}}
+      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_32 className={"black"} height={"24px"} /></div></div>
     </div>
     <div className={"sheet-edit-control-bundle"}>
       <div
@@ -268,22 +283,12 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
         <div style={{transform: "translate(40%, 10%)"}}><AccSharp height={"24px"} fill={"#1f1f1f"}/></div>
       </div>
     </div>
-    {/* <div className={"sheet-edit-control-bundle"}>
-      <div className={"sheet-edit-control-button"}>stack</div>
-    </div> */}
     <div className={"sheet-edit-control-bundle"}>
-      <div className={"sheet-edit-control-button"+(editLength===0?" chosen":"")} onClick={()=>setEditLength(0)} style={{width: "30px"}}
-      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_1 className={"black"} height={"24px"} /></div></div>
-      <div className={"sheet-edit-control-button"+(editLength===1?" chosen":"")} onClick={()=>setEditLength(1)} style={{width: "30px"}}
-      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_2 className={"black"} height={"24px"} /></div></div>
-      <div className={"sheet-edit-control-button"+(editLength===2?" chosen":"")} onClick={()=>setEditLength(2)} style={{width: "30px"}}
-      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_4 className={"black"} height={"24px"} /></div></div>
-      <div className={"sheet-edit-control-button"+(editLength===3?" chosen":"")} onClick={()=>setEditLength(3)} style={{width: "30px"}}
-      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_8 className={"black"} height={"24px"} /></div></div>
-      <div className={"sheet-edit-control-button"+(editLength===4?" chosen":"")} onClick={()=>setEditLength(4)} style={{width: "30px"}}
-      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_16 className={"black"} height={"24px"} /></div></div>
-      <div className={"sheet-edit-control-button"+(editLength===5?" chosen":"")} onClick={()=>setEditLength(5)} style={{width: "30px"}}
-      ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_32 className={"black"} height={"24px"} /></div></div>
+      <div
+        className={"sheet-edit-control-button"+(editExtend?" chosen":"")}
+        onClick={()=>setEditExtend(!editExtend)}
+        style={{width: "30px", textAlign: "center", font: "Roboto"}}
+      >Dot</div>
     </div>
     <div className={"sheet-edit-control-bundle"}>
       <div
@@ -305,7 +310,7 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH}) => {
       </div>
       <div
         className={"sheet-edit-control-button"}
-        onClick={delObj}
+        onClick={()=>{if (idx > 0) { delObj(); }}}
         style={{width: "60px", textAlign: "center", font: "Roboto", background: "#ffc2a7"}}
       >
         Delete
