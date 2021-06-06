@@ -44,7 +44,7 @@ const Main = () => {
           <GameSelectButton src={'LearnNote'} name={t("main.name_notes")}>
             <Trans i18nKey="main.desc_notes"/>
           </GameSelectButton>
-          <GameSelectButton /*src={'LearnInterval'}*/ name={t("main.name_intervals")}>
+          <GameSelectButton src={'LearnInterval'} name={t("main.name_intervals")}>
             <Trans i18nKey="main.desc_intervals"/>  
           </GameSelectButton>
           <GameSelectButton /*src={'LearnChord'}*/ name={t("main.name_chord")}>

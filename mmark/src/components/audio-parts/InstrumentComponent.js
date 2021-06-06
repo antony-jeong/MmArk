@@ -62,10 +62,10 @@ class InstrumentComponent extends Component {
     const instrumentName = this.props.instrumentName;
     const playingNotes = this.state.playingNotes;
     return (
-      <Fragment>
+      <>
         {renderer({playingNotes: playingNotes, play: this.play, stop: this.stop,})}
         <InstrumentAudioComponent instrumentName={instrumentName} notes={playingNotes} />
-      </Fragment>
+      </>
     );
   }
 }

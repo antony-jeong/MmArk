@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PageButton from '../components/PageButton';
 
 
-const PageNavigator = ({pageNum, className, pageEnd, parentCallback}) => {
+const PageNavigator = ({pageNum, className, pageEnd, parentCallback, getFocusNow}) => {
     const [inputVal, setInput] = useState(`${pageNum}`);
     const [leftShow, setLeftShow] = useState(pageNum!==1);
     const [RightShow, setRightShow] = useState(pageNum!==pageEnd);
@@ -51,7 +51,7 @@ const PageNavigator = ({pageNum, className, pageEnd, parentCallback}) => {
     };
     
     return (
-        <div className={`${className}`===undefined?'':`${className}`}>
+        <div className={`${className}`===undefined?'':`${className}`} onClick={getFocusNow}>
             <PageButton text = {leftSvg} className = "GoLeft" onClick={handleLeft} show={leftShow}/>
             <span className = {"PageIndicator"}><input value={inputVal} onFocus={e => e.target.select()} onChange={handleChange} onKeyPress={MoveTo}/> / {pageEnd}</span>
             <PageButton text = {rightSvg} className = "GoRight" onClick={handleRight} show={RightShow}/>

@@ -17,31 +17,23 @@ class Login extends Component {
     super(props);
     const { cookies } = props;
     this.state = {
-      //logged_in: localStorage.getItem('token') ? true : false,
       logged_in: cookies.get('token') ? true : false,
       username: cookies.get('name')
     };
   }
 
-    handleRoute() {
-        this.props.history.push('/');
-    }
-    
-  componentDidMount() {
+  handleRoute() {
+    this.props.history.push('/');
+  }
+  
+  componentDidMount = () => {
     const { cookies } = this.props;
-    if (this.state.logged_in) {
-      fetch('http://3.36.217.44:8000/api/test/current_user/', {
-        headers: {
-          Authorization: `JWT ${cookies.get('token')}`
-        }
-      })
-        .then(res => res.json())
-        .then(json => {
-          this.setState({ username: json.username });
-        });
-    }
-}
-
+    if (cookies.name) this.setState({
+      logged_in: true,
+      username: cookies.name
+    });
+  }
+    
   handle_login = (e, data) => {
     const { cookies } = this.props;
     e.preventDefault();
@@ -58,11 +50,11 @@ class Login extends Component {
             cookies.set('name', json.user.username, { path: '/' });
             cookies.set('token', json.token, { path: '/' });
               if (typeof json.user != "undefined") {
-                  this.setState({
-                      logged_in: true,
-                      username: json.user.username
-                  });
-                  this.handleRoute();
+                this.setState({
+                    logged_in: true,
+                    username: json.user.username
+                });
+                this.handleRoute();
               }
           })
           .catch(function (error) {
@@ -100,7 +92,8 @@ class Login extends Component {
     });
   };
 
-    render() {
+  render() {
+        const { cookies } = this.props;
         return (
             <div className="login">
                 <LoginNav
@@ -109,7 +102,7 @@ class Login extends Component {
                 />
                 <LoginForm handle_login={this.handle_login} />
                 <h3>
-                    {this.state.logged_in
+                    {this.state.username
                         ? `Hello, ${this.state.username}`
                         : 'Please Log In'}
                 </h3>
