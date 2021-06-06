@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import ReactDom from 'react-dom';
-import Popup from 'react-popup';
 import { Link } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
+import { Cookies, withCookies } from 'react-cookie';
 import * as JsSearch from 'js-search';
+import ReactDom from 'react-dom';
+import Popup from 'react-popup';
 import Logo from '../components/Logo';
 import CommunityBlock from "../components/CommunityBlock";
 import Sheet from '../components/Sheet';
 import '../stylesheets/Community.css';
 import '../stylesheets/Popup.css';
-import { Cookies, withCookies } from 'react-cookie';
 
 class Community extends Component {
 

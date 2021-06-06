@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import LoginNav from '../components/LoginNav';
-import LoginForm from '../components/LoginForm';
 import { withRouter } from 'react-router-dom';
 import { withCookies, Cookies } from "react-cookie";
+import Popup from 'react-popup';
+import LoginNav from '../components/LoginNav';
+import LoginForm from '../components/LoginForm';
 
 
 function handleErrors(response) {

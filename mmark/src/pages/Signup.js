@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import EmbeddedSignup from '../components/EmbeddedSignup';
 import { withCookies, Cookies } from "react-cookie";
+import EmbeddedSignup from '../components/EmbeddedSignup';
 
 class Signup extends Component{
     
