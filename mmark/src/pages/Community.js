@@ -124,6 +124,8 @@ class Community extends Component {
         }).then(async () => {
             const res_articles = await fetch('http://3.36.217.44:8000/api/articles');
             const total_articles = await res_articles.json();
+            const res_users = await fetch('http://3.36.217.44:8000/api/users');
+            const users = await res_users.json();
             let show_articles = total_articles;
             if (this.props.match.params.keyword) {
                 var search = new JsSearch.Search('title');
@@ -137,7 +139,9 @@ class Community extends Component {
                 return {
                     ...prevState,
                     total_articles: total_articles,
-                    articles: show_articles
+                    articles: show_articles,
+                    users: users,
+                    curUser: users.find(obj => { return obj.username === cookies.get('name') })
                 }
             });
         });

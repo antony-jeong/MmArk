@@ -73,6 +73,7 @@ const CommunityBlock = ({articles, users, curUser, tags, handleDelete, handleFav
 
     return (
         <div className="listWrapper">
+            {console.log(curUser.favorites)}
             {articles.map(item => (
                 <div key={item.id} className={`itemWrapper ${Cookie.name == item.author_name ? "mine" : ""}`}>
                     <div className={`authorWrapper`}>
