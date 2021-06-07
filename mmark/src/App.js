@@ -12,6 +12,7 @@ import Signup from "./pages/Signup";
 import Logout from "./pages/Logout";
 import Main from "./pages/Main";
 import NewPost from "./pages/NewPost";
+import CommunityEdit from './pages/CommunityEdit';
 
 function App() {
     // const [user, setUser] = useState("");
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/LearnRoadmapSign/:pagenum" component={LearnRoadmapSign} />
                 <Route path="/Community/NewPost" component={NewPost} />
                 <Route path="/Community/:keyword" component={Community} />
+                <Route path="/Community/edit/:id" component={CommunityEdit} />
                 <Route path="/Community" component={Community} />
                 <Route path="/login" component={Login} />
                 <Route path="/logout" component={Logout} />
