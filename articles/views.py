@@ -53,6 +53,27 @@ def new_post(request):
         new_article.save()
         return HttpResponse("post success")
 
+    elif request.method == 'PATCH':
+        form_data = json.loads(request.body.decode())
+        article = Article.obejects.get(
+            id=form_data['id']
+        )
+        author=user_models.User.objects.get(
+            username=form_data['username']
+        )
+        article.title = form_data['title']
+        article.description=form_data['description']
+        article.sheet_ds=form_data['sheet_ds']
+        article.author=author
+        for tag in form_data['tags']:
+            if (tag != ""):
+                tag_obj = Tag.objects.get(
+                    name=tag
+                )
+            article.tags.add(tag_obj)
+        article.save()
+        return HttpResponse("post success")
+
     elif request.method == 'DELETE':
         toDelete = Article.objects.get(id=request.body)
         toDelete.delete()

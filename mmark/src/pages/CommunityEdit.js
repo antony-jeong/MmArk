@@ -6,7 +6,7 @@ import Sheet from '../components/Sheet';
 import Logo from '../components/Logo';
 import '../stylesheets/NewPost.css';
 
-class NewPost extends Component {
+class CommunityEdit extends Component {
 
     constructor(props) {
         super(props);
@@ -25,6 +25,15 @@ class NewPost extends Component {
         const { t, i18n } = withTranslation();
     }
 
+    find_current = (total, id) => {
+        for (var i = 0; i < total.length; i++) {
+            if (total[i].id == id) {
+                return total[i];
+            }
+        }
+        return false;
+    }
+
     async componentDidMount() {
         try {
             const res_tags = await fetch('http://3.36.217.44:8000/api/tags');
@@ -32,6 +41,19 @@ class NewPost extends Component {
             this.setState({
                 tags_total
             });
+            const res_articles = await fetch('http://3.36.217.44:8000/api/articles');
+            const total_articles = await res_articles.json();
+            this.setState(prevState => {
+                    const current = this.find_current(total_articles, this.props.match.params.id)
+                    return {
+                        ...prevState,
+                        title: current.title,
+                        description: current.description,
+                        tags: current.tags,
+                        sheet_ds: JSON.parse(current.sheet_ds),
+                        initialDs: JSON.parse(current.sheet_ds)
+                    }
+                });
         } catch (e) {
             console.log(e);
         }
@@ -66,7 +88,7 @@ class NewPost extends Component {
     handlePost = (e, data) => {
         e.preventDefault();
         fetch('http://3.36.217.44:8000/plz/', {
-            method: 'POST',
+            method: 'PATCH',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -80,7 +102,9 @@ class NewPost extends Component {
 
     inTag = (tagName) => {
         for (var i = 0; i < this.state.tags.length; i++) {
-            if(tagName == this.state.tags[i]) return true;
+            if (this.state.tags_total[this.state.tags[i]] !== undefined) {
+                if(tagName == this.state.tags_total[this.state.tags[i]].name) return true;
+            }
         }
         return false;
     }
@@ -89,7 +113,7 @@ class NewPost extends Component {
         (this.genGetFocusNow("o"))();
         const target_tag = e.target.innerText
         if (target_tag != undefined) {            
-            if (this.inTag(target_tag)) {
+            if (this.inTag(target_tag.name)) {
                 this.setState(prevstate => {
                     const newState = { ...prevstate };
                     newState['tags'].pop(target_tag);
@@ -115,17 +139,16 @@ class NewPost extends Component {
                 <div className='Form'>
                     <form onSubmit={(e) => {this.handlePost(e, this.state)}}>
                         {t("post.title")}<br/>
-                        <input className='textInput' type={"text"} name={"title"} onChange={this.handleChange} onClick={this.genGetFocusNow("o")}/><br />
-                        {t("post.author")} {this.state.username}<br />
+                        <input className='textInput' type={"text"} name={"title"} value={this.state.title} onChange={this.handleChange} onClick={this.genGetFocusNow("o")}/><br />
                         {t("post.tags")} <br />
                         <div className="tagWrapper">
                             {this.state.tags_total.map(item => (
-                                <div className="tagButton" style={{background: `${item.color}`}} onClick={this.handleTagClick}>{item.name}</div>
+                                <div className={`tagButton ${this.inTag(item.name)? "clicked" : ""}`} style={{background: `${item.color}`}} onClick={this.handleTagClick}>{item.name}</div>
                             ))}
                         </div>
                         <Sheet className="Sheet" dataStructure={this.state.initialDs} updateDS={this.updateDS} viewMode={"create"} focusNow={this.state.focusNow} getFocusNow={this.genGetFocusNow("s")}/>
                         {t("post.description")}<br/>
-                        <textarea className='textInput' rows={"5"} cols={"50"} name={"description"} onChange={this.handleChange} onClick={this.genGetFocusNow("o")}></textarea><br/>
+                        <textarea className='textInput' rows={"5"} cols={"50"} name={"description"} value={this.state.description} onChange={this.handleChange} onClick={this.genGetFocusNow("o")}></textarea><br/>
                         <div className='newPost-ButtonWrapper'>
                             <Link className='DiscardButton' to='/Community'>{t("post.discard")}</Link>
                             <input className="PostButton" type={"submit"} value={t("post.add")}/>
@@ -137,4 +160,4 @@ class NewPost extends Component {
     }
 }
 
-export default withCookies(withTranslation()(NewPost));
+export default withCookies(withTranslation()(CommunityEdit));
