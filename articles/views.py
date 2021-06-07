@@ -71,7 +71,6 @@ def new_post(request):
                     name=tag
                 )
             article.tags.add(tag_obj)
-        article.save()
         return HttpResponse("patch success")
 
     elif request.method == 'DELETE':
