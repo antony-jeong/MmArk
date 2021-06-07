@@ -977,8 +977,97 @@ const LearnNoteData = [{
 
 {
     "pageId": 14,
-    "inst": "A <term>scale</term> is a group of frequently used notes. What we're using now is <term>C major</term>.<br></br>The <term>musical key</term> of <note>Do</note>-<note>Re</note>-<note>Mi</note>-<note>Fa</note>-<note>Sol</note>-<note>La</note>-<note>Ti</note>-<note>Do</note> in C Major is <absolute>C</absolute>-<absolute>D</absolute>-<absolute>E</absolute>-<absolute>F</absolute>-<absolute>G</absolute>-<absolute>A</absolute>-<absolute>B</absolute>-<absolute>C</absolute>, respectively.<br></br>Play <absolute>C</absolute>-<absolute>A</absolute>-<absolute>G</absolute>-<absolute>E</absolute>.",
-    "inst_kr": "<term>음계</term>는 자주 사용되는 음들의 집합입니다. 현재 사용하는 것은 <term>C 장조</term>입니다.<br></br><note>도</note>-<note>레</note>-<note>미</note>-<note>파</note>-<note>솔</note>-<note>라</note>-<note>시</note>-<note>도</note>는 C 장조에서 <absolute>C</absolute>-<absolute>D</absolute>-<absolute>E</absolute>-<absolute>F</absolute>-<absolute>G</absolute>-<absolute>A</absolute>-<absolute>B</absolute>-<absolute>C</absolute>라는 <term>음이름</term>을 가집니다.<br></br><absolute>C</absolute>-<absolute>A</absolute>-<absolute>G</absolute>-<absolute>E</absolute>를 연주해보세요.",
+    "inst": `A <term>scale</term> is a group of frequently used notes. A <term>scale</term> is composed of 8 notes, and the name of the notes from low to high are <br></br>
+            <term>Tonic</term>, <term>Supertonic</term>, <term>Mediant</term>, <term>Subdominant</term>, <term>Dominant</term>, <term>Submediant</term>, <term>Leading tone</term>, <term>Octave</term>. <br></br>
+            Can you find and play the <term>Tonic</term>, <term>Subdominant</term> and  <term>Dominant</term> notes from the scale below?`,
+    "inst_kr": `<term>음계</term>는 자주 사용되는 음의 집합입니다. <term>음계</term>는 8개의 음으로 구성되어 있으며, 낮은 음부터 높은 음의 순서대로 <br></br>
+                <term>으뜸음</term>, <term>위으뜸음</term>, <term>가온음</term>, <term>버금딸림음</term>, <term>딸림음</term>, <term>버금가온음</term>, <term>이끎음</term>, <term>옥타브</term>라고 합니다. <br></br>
+                아래 악보에서 <term>으뜸음</term>, <term>버금딸림음</term>, <term>딸림음</term>을 찾아 연주해보세요.`,
+    "ds": [{
+            "objectType": "p",
+            "bpm": 600,
+            "bpmUnit8": 2
+        }, {
+            "objectType": "c",
+            "treble": true
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [-2],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [-1],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [1],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [2],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [3],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [4],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [5],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "b",
+            "type": "t"
+        }
+    ],
+    "checkType": "Play",
+    "checkAnswer": [["C4", "F4", "G4"]],
+    "inputMode": "allKeys"
+},
+
+{
+    "pageId": 15,
+    "inst": `What we're using now is <term>C major</term> scale.<br></br>The <term>musical key</term> of <note>Do</note>-<note>Re</note>-<note>Mi</note>-<note>Fa</note>-<note>Sol</note>-<note>La</note>-<note>Ti</note>-<note>Do</note> in C Major is <absolute>C</absolute>-<absolute>D</absolute>-<absolute>E</absolute>-<absolute>F</absolute>-<absolute>G</absolute>-<absolute>A</absolute>-<absolute>B</absolute>-<absolute>C</absolute>, respectively.<br></br>Play <absolute>C</absolute>-<absolute>A</absolute>-<absolute>G</absolute>-<absolute>E</absolute>.`,
+    "inst_kr": "현재 사용하는 것은 <term>C 장조</term>입니다.<br></br><note>도</note>-<note>레</note>-<note>미</note>-<note>파</note>-<note>솔</note>-<note>라</note>-<note>시</note>-<note>도</note>는 C 장조에서 <absolute>C</absolute>-<absolute>D</absolute>-<absolute>E</absolute>-<absolute>F</absolute>-<absolute>G</absolute>-<absolute>A</absolute>-<absolute>B</absolute>-<absolute>C</absolute>라는 <term>음이름</term>을 가집니다.<br></br><absolute>C</absolute>-<absolute>A</absolute>-<absolute>G</absolute>-<absolute>E</absolute>를 연주해보세요.",
     "ds": [{
             "objectType": "p",
             "bpm": 600,
@@ -1128,8 +1217,430 @@ const LearnNoteData = [{
     "checkType": "Play",
     "checkAnswer": [["C4", "A4", "G4", "E4"]],
     "inputMode": "allKeys"
-}
+},
 
+{
+    "pageId": 16,
+    "inst": `A scale is <term>Major</term> when <term>Mediant</term>-<term>Subdominant</term> and <term>Leading tone</term>-<term>Octave</term> span a semitone and others span a wholetone, <br></br>
+            and is <term>minor</term> when <term>Supertonic</term>-<term>Mediant</term> and <term>Dominant</term>-<term>Submediant</term> span a semitone and others span a wholetone. <br></br>
+            There are two scales in the sheet below. Can you find and play the one that is <term>minor scale</term>?`,
+    "inst_kr": `음계는 <term>가온음</term>-<term>버금딸림음</term>과 <term>이끎음</term>-<term>옥타브</term>가 반음 하나 차이이고 나머지가 온음 하나 차이일 때 <term>장조</term>라고 하며, <br></br>
+                <term>위으뜸음</term>-<term>가온음</term>과 <term>딸림음</term>-<term>버금가온음</term>이 반음 하나 차이이고 나머지가 온음 하나 차이일 때 <term>단조</term>라고 합니다. <br></br>
+                아래 악보에는 두 개의 음계가 그려져 있습니다. <term>단조</term>인 것을 찾아서 연주해보세요.`,
+    "ds": [{
+            "objectType": "p",
+            "bpm": 600,
+            "bpmUnit8": 2
+        }, {
+            "objectType": "c",
+            "treble": true
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [-2],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [-1],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [1],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [2],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [3],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [4],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [5],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "b",
+            "type": "b"
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [-2],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [-1],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["f"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [1],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [2],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [3],
+            "accidental": ["f"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [4],
+            "accidental": ["f"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [5],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "b",
+            "type": "t"
+        }
+    ],
+    "checkType": "Play",
+    "checkAnswer": [["C4", "D4", "D#4", "F4", "G4", "G#4", "A#4", "C5"]],
+    "inputMode": "allKeys"
+},
+
+{
+    "pageId": 17,
+    "inst": `A <term>key signature</term> is a group of sharps or flats that permanently raises or lowers certain notes in the sheet. <br></br>
+            Sharps can be accumulated in <absolute>F</absolute>-<absolute>C</absolute>-<absolute>G</absolute>-<absolute>D</absolute>-<absolute>A</absolute>-<absolute>E</absolute>-<absolute>B</absolute>, and flats in backwards. <br></br>
+            For example, A key with four sharps can only have sharps in <absolute>F</absolute>-<absolute>C</absolute>-<absolute>G</absolute>-<absolute>D</absolute>. Can you play the sheet below?`,
+    "inst_kr": `<term>조표</term>는 샤프나 플랫이 모인 것으로, 악보의 특정 음을 영구적으로 높이거나 낮춥니다. <br></br>
+                샤프는 <absolute>F</absolute>-<absolute>C</absolute>-<absolute>G</absolute>-<absolute>D</absolute>-<absolute>A</absolute>-<absolute>E</absolute>-<absolute>B</absolute> 의 순서대로 쌓이며, 플랫은 그 반대의 순서로 쌓입니다. <br></br>
+                예를 들어, 샤프가 4개인 조표는 <absolute>F</absolute>-<absolute>C</absolute>-<absolute>G</absolute>-<absolute>D</absolute>의 순서대로만 쌓일 수 있습니다. 아래의 악보를 연주해보세요.`,
+    "ds": [{
+            "objectType": "p",
+            "bpm": 600,
+            "bpmUnit8": 2
+        }, {
+            "objectType": "c",
+            "treble": true
+        }, {
+            "objectType": "k",
+            "key": 4
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [-2],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [-1],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [1],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [2],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [3],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [4],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [5],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }
+    ],
+    "checkType": "Play",
+    "checkAnswer": [["C#4", "D#4", "E4", "F#4", "G#4", "A4", "B4", "C5"]],
+    "inputMode": "allKeys"
+},
+
+{
+    "pageId": 18,
+    "inst": `A <term>key</term> also changes the <term>scale</term> of the sheet by altering the semitones that adjacent two notes span. <br></br>
+            For example, the <term>key</term> with 5 sharp makes the <absolute>D#</absolute>-<absolute>E</absolute> and <absolute>A#</absolute>-<absolute>B</absolute> span a semitone and others a wholetone. <br></br>
+            This makes the <term>tonic note</term> to be <absolute>B</absolute>. Can you find and play the <term>Subdominant</term> and <term>Dominant</term> notes?`,
+    "inst_kr": `<term>조표</term>는 음 간의 차이가 온음인지 반음인지를 바꿔서 악보의 <term>음계</term> 또한 바꿉니다. <br></br>
+                예를 들어, 5개의 샤프가 있는 <term>조표</term>는 <absolute>D#</absolute>-<absolute>E</absolute>와 <absolute>A#</absolute>-<absolute>B</absolute> 사이의 간격을 반음 하나로, 나머지를 온음 하나로 바꿉니다. <br></br>
+                따라서 으뜸음은 <absolute>B</absolute>가 됩니다. <term>버금딸림음</term>과 <term>딸림음</term>을 찾아 연주해보세요.`,
+    "ds": [{
+            "objectType": "p",
+            "bpm": 600,
+            "bpmUnit8": 2
+        }, {
+            "objectType": "c",
+            "treble": true
+        }, {
+            "objectType": "k",
+            "key": 5
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [-3],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [-2],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [-1],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [1],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [2],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [3],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [4],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }
+    ],
+    "checkType": "Play",
+    "checkAnswer": [["E4", "F#4"]],
+    "inputMode": "allKeys"
+},
+
+{
+    "pageId": 19,
+    "inst": `A <term>scale</term> is named after its <term>tonic note</term> and whether it is Major or minor. <br></br>
+            For example, the Major scale which <term>tonic note</term> is <absolute>B</absolute> is named <term>B Major</term>. <br></br>
+            The name of the scale of sheet below is <term>(_ ____) Major.</term> Can you fill in the blank?`,
+    "inst_kr": `<term>음계</term>는 그 <term>으뜸음</term>과 장조인지 단조인지에 따라서 이름이 붙습니다. <br></br>
+                예를 들어, <term>으뜸음</term>이 <absolute>B</absolute>인 장조는 <term>B 장조</term>라고 합니다. <br></br>
+                아래 악보의 음계는 <term>(__ _) 장조</term>입니다. 빈칸을 채워보세요. (으뜸음에 플랫이 붙으면 내림, 샤프가 붙으면 올림을 추가합니다.)`,
+    "ds": [{
+            "objectType": "p",
+            "bpm": 600,
+            "bpmUnit8": 2
+        }, {
+            "objectType": "c",
+            "treble": true
+        }, {
+            "objectType": "k",
+            "key": -2
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [-3],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [-2],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [-1],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [0],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [1],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [2],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [3],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }, {
+            "objectType": "n",
+            "length": standardLen,
+            "extend": false,
+            "rest": false,
+            "height": [4],
+            "accidental": ["x"],
+            "noteDecoration": ["x"]
+        }
+    ],
+    "checkType": "Input",
+    "checkAnswer": ["B flat", "내림 B"],
+    "inputMode": "text"
+}
 ];
 
 export default LearnNoteData;
