@@ -57,7 +57,7 @@ def new_post(request):
     elif request.method == 'PUT':
         form_data = json.loads(request.body.decode())
         try:
-            article = Article.obejects.get(
+            article = Article.objects.get(
                 id=form_data['id']
             )
         except Article.DoesNotExist:

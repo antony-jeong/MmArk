@@ -88,7 +88,7 @@ class CommunityEdit extends Component {
     handlePost = (e, data) => {
         e.preventDefault();
         fetch('http://3.36.217.44:8000/plz/', {
-            method: 'PATCH',
+            method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
