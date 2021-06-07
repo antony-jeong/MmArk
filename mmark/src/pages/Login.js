@@ -18,8 +18,8 @@ constructor(props) {
 	super(props);
 	const { cookies } = props;
 	this.state = {
-	logged_in: cookies.get('token') ? true : false,
-	username: cookies.get('name')
+		logged_in: cookies.get('token') ? true : false,
+		username: cookies.get('name')
 	};
 }
 

@@ -2,6 +2,7 @@
 import {Link} from 'react-router-dom';
 import React, { Component } from 'react';
 import SignupForm from './SignupForm';
+import Popup from 'react-popup';
 import { withTranslation } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
 import { withCookies, Cookies } from "react-cookie";

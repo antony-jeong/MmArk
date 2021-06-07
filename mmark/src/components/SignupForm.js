@@ -1,4 +1,6 @@
 import React from 'react';
+import Popup from 'react-popup';
+import { Cookies, withCookies } from 'react-cookie';
 import { withRouter } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
 
@@ -7,6 +9,92 @@ class SignupForm extends React.Component {
 	state = {
 		checked: true,
 	};
+
+	constructor(props) {
+		super(props);
+		const { cookies } = this.props;
+		this.state = {
+			signup_error: cookies.get('signup_error')
+		};
+		if (this.state.signup_error) {
+			switch (this.state.signup_error) {
+				case "no_username":
+					Popup.create({
+						title: 'ERROR?',
+						content: 'Username Field is Required!',
+						buttons: {
+							right: [{
+								text: 'Back',
+								className: 'back',
+								action: function () {
+									Popup.close();
+								}
+							}]
+						}
+					});
+				case "alphabet":
+					Popup.create({
+						title: 'ERROR?',
+						content: 'Only alphabet is allowed for Username Field!',
+						buttons: {
+							right: [{
+								text: 'Back',
+								className: 'back',
+								action: function () {
+									Popup.close();
+								}
+							}]
+						}
+					});
+				case "length":
+					Popup.create({
+						title: 'ERROR?',
+						content: 'The length of Username Field is limited to 10 characters!',
+						buttons: {
+							right: [{
+								text: 'Back',
+								className: 'back',
+								action: function () {
+									Popup.close();
+								}
+							}]
+						}
+					});
+				case "password":
+					Popup.create({
+						title: 'ERROR?',
+						content: 'Invalid characters are found on Password Field',
+						buttons: {
+							right: [{
+								text: 'Back',
+								className: 'back',
+								action: function () {
+									Popup.close();
+								}
+							}]
+						}
+					});
+				case "confirm":
+					Popup.create({
+						title: 'ERROR?',
+						content: 'Password Field and Confirm Password Field must match!',
+						buttons: {
+							right: [{
+								text: 'Back',
+								className: 'back',
+								action: function () {
+									Popup.close();
+								}
+							}]
+						}
+					});
+				default:
+					console.error(this.state.signup_error);
+					// console.error("Invalid Signup Error Cookie");
+			}
+			// cookies.remove('signup_error');
+		} 
+	}
 
 	handle_change = e => {
 		const name = e.target.name;
@@ -23,24 +111,41 @@ class SignupForm extends React.Component {
 	}
 
 	checkUsername = (username) => {
-		return true;
+		if (username === undefined) return "no_username";
+		if (username.length > 10) return "length";
+		for (var i = 0; i < username.length; i++) {
+			const char = username.charAt(i)
+			if (!char.match(/[a-zA-Z]/i)) {
+				return "alphabet";
+			}
+		}
+		return "valid";
 	}
 
 	checkPassword = (password) => {
+		for (var i = 0; i < password.length; i++) {
+			const char = password.charAt(i)
+			if (!(char.match(/[a-zA-Z]/i) || /^\d+$/.test(char) || char == "." || char == "@" || char == "+" || char =="-" || char=="_")) {
+				return false;
+			}
+		}
 		return true;
 	}
 
 	handleSubmit = (e) => {
-		if (!this.checkUsername(this.state.username)) {
-			return;
+		const { cookies } = this.props;
+		const checkUsername = this.checkUsername(this.state.username);
+		if (checkUsername === "no_username" || checkUsername == "alphabet" || checkUsername ==="length") {
+			cookies.set('signup_error', checkUsername, { path: '/' });
+			console.log(checkUsername);
 		}
 		if (!this.checkPassword(this.state.password)) {
-			return;
+			cookies.set('signup_error', "password", { path: '/' });
 		}
 		if (this.state.password != this.state.confirm_password) {
-			return;
+			cookies.set('signup_error', "confirm", { path: '/' });
 		}
-		this.props.post_signup(e, this.state)
+		// this.props.post_signup(e, this.state)
 	}
 
 	render() {
@@ -126,4 +231,4 @@ class SignupForm extends React.Component {
 	}
 }
 
-export default withRouter(withTranslation()(SignupForm));
+export default withCookies(withRouter(withTranslation()(SignupForm)));
