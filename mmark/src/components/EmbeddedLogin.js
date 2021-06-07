@@ -29,31 +29,33 @@ class EmbeddedLogin extends Component {
     const { cookies } = this.props;
   }
 
+
   handle_login = (e, data) => {
     const { cookies } = this.props;
     e.preventDefault();
-      fetch('http://3.36.217.44:8000/token-auth/', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-      }).then(handleErrors)
-          .then(res => res.json())
-          .then(json => {
-              //localStorage.setItem('token', json.token);
-            cookies.set('name', json.user.username, { path: '/' });
-            cookies.set('token', json.token, { path: '/' });
-              if (typeof json.user != "undefined") {
-                  this.setState({
-                      logged_in: true,
-                      username: json.user.username
-                  });
-              }
-          })
-          .catch(function (error) {
-              console.log(error);
-          });
+    fetch('http://3.36.217.44:8000/token-auth/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(handleErrors)
+        .then(res => res.json())
+        .then(json => {
+            //localStorage.setItem('token', json.token);
+          cookies.set('name', json.user.username, { path: '/' });
+          cookies.set('token', json.token, { path: '/' });
+            if (typeof json.user != "undefined") {
+                this.setState({
+                    logged_in: true,
+                    username: json.user.username
+                });
+            }
+        })
+        .catch(function () {
+            document.querySelector('.wrong-account').classList.add('show');
+            document.querySelector('.login-form').classList.add('shake');
+        });
   };
 
   display_form = form => {
