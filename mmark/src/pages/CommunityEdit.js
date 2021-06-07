@@ -51,7 +51,8 @@ class CommunityEdit extends Component {
                         description: current.description,
                         tags: current.tags,
                         sheet_ds: JSON.parse(current.sheet_ds),
-                        initialDs: JSON.parse(current.sheet_ds)
+                        initialDs: JSON.parse(current.sheet_ds),
+                        id: current.id
                     }
                 });
         } catch (e) {

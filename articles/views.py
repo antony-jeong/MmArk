@@ -73,7 +73,7 @@ def new_post(request):
         for tag in form_data['tags']:
             if (tag != ""):
                 tag_obj = Tag.objects.get(
-                    name=tag
+                    id=tag
                 )
             article.tags.add(tag_obj)
         article.save()
