@@ -313,20 +313,6 @@ const AccidentalObj = ({ type, height, direction }) => {
       case "up":
         return (
           <div style={{ width: "8px", display: "inline"}}>
-            {/* <img
-              src={
-                process.env.PUBLIC_URL +
-                "/musical_symbols_svg/accidental_" +
-                type +
-                ".svg"
-              }
-              style={{
-                position: "relative",
-                top: -11.5 - 6.1225 * (height + 1) + "px",
-								left: 0 + "px"
-              }}
-              height={28 + (type == "f" ? 7.2 : 0) + "px"}
-            /> */}
 						<div style = {{width: "10px", display: "inline", position: "relative", top : -11.5 - 6.1225 * (height + 1) + (type === "f" ? -2 : 0) + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = {type_height + "px"}/>
             </div>
@@ -335,19 +321,6 @@ const AccidentalObj = ({ type, height, direction }) => {
       case "down":
         return (
           <div style={{ width: "8px", display: "inline" }}>
-            {/* <img
-              src={
-                process.env.PUBLIC_URL +
-                "/musical_symbols_svg/accidental_" +
-                type +
-                ".svg"
-              }
-              style={{
-                position: "relative",
-                top: -11.5 - 6.1225 * (height + 1) + "px",
-              }}
-              height={28 + (type == "f" ? 7.2 : 0) + "px"}
-            /> */}
             <div style = {{width: "10px", display: "inline", position: "relative", top : -11.5 - 6.1225 * (height + 1) + (type === "f" ? -2 : 0) + "px"}}>
               <NoteComponent style = {{display: "inline", position: "relative"}} height = {type_height + "px"}/>
             </div>
@@ -358,56 +331,6 @@ const AccidentalObj = ({ type, height, direction }) => {
   if (type == "x") {
     return <div style={{ width: "0px", display: "inline" }}></div>;
   }
-  return f(direction);
-};
-
-const AccidentalStackObj = ({ type, height, direction, realloc, Hori }) => {
-	const alloc = realloc ? "_alloc_1" : "_noAlloc_1" ;
-	//console.log(Hori)
- 
-  var f = (direction) => {
-    switch (direction) {
-      case "up":
-        return (
-          <div style={{ width: "60px", display: "inline" , "margin-right": "1px" }}>
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/musical_symbols_svg/accidental_" +
-                type + "_alloc_" + Hori +
-                ".svg"
-              }
-              style={{
-                position: "relative",
-                top: -11.5 - 6.1225 * (height + 1) + "px",
-								left: alloc + "px",
-              }}
-              height={28 + (type == "f" ? 7.2 : 0) + "px"}
-            />
-						
-          </div>
-        );
-      case "down":
-        return (
-          <div style={{ width: "8px", display: "inline" }}>
-            <img
-              src={
-                process.env.PUBLIC_URL +
-                "/musical_symbols_svg/accidental_" +
-                type +
-                ".svg"
-              }
-              style={{
-                position: "relative",
-                top: -11.5 - 6.1225 * (height + 1) + "px",
-              }}
-              height={28 + (type == "f" ? 7.2 : 0) + "px"}
-            />
-          </div>
-        );
-    }
-  };
-
   return f(direction);
 };
 
@@ -437,7 +360,7 @@ const NoteDecorationObj = ({ type, height, direction }) => {
               style={{
                 position: "relative",
                 top: -14 - 6.1225 * height + "px",
-                left: "-21px",
+                left: "2px",
               }}
               height="9px"
             />
@@ -456,7 +379,7 @@ const NoteDecorationObj = ({ type, height, direction }) => {
               style={{
                 position: "relative",
                 top: -40 - 6.1225 * height + "px",
-                left: "-21px",
+                left: "2px",
               }}
               height="9px"
             />
@@ -464,30 +387,28 @@ const NoteDecorationObj = ({ type, height, direction }) => {
         );
     }
   };
-
-  if (type === "3" || type === "o" || type ===  "c") {
-    if (height > 11) {
-      return (
-        <div style={{ width: "0px", display: "inline-flex" }}>
-
-          <div style = {{width: "10px", display: "inline", position: "relative", top : -100 - 6.1225 * height + "px"}}>
-              <NoteComponent style = {{display: "inline", position: "relative"}} height = "9px"/>
-            </div>
-        </div>
-      );
-    }
+  if (type === "x") {
+    return <div style={{ width: "5px", display: "inline" }}></div>;
+  }
+  if (type === "f") {
     return (
       <div style={{ width: "0px", display: "inline-flex" }}>
-            <div style = {{width: "10px", display: "inline", position: "relative", 
-                          top : -80 - 6.1225 * height - (type ==="3" ? 4 : 0) + "px", 
-                          left: type==="3" ? "5px" : "0px"}}>
-              <NoteComponent style = {{display: "inline", position: "relative"}} height = "9px"/>
-            </div>
+        <img
+          src={
+            process.env.PUBLIC_URL +
+            "/musical_symbols_svg/deco_" +
+            type +
+            ".svg"
+          }
+          style={{
+            position: "relative",
+            top: -100 + (height >= 10 ? -6.1225*(height - 9) : 0) + "px",
+            left: "0px",
+          }}
+          height="9px"
+        />
       </div>
     );
-  }
-  if (type == "x") {
-    return <div style={{ width: "5px", display: "inline" }}></div>;
   }
   return f(direction);
 };
@@ -576,7 +497,7 @@ const IndivNoteStackObj = ({ type, realloc, accAlloc, accHori, accHoriMax, isRea
   const NoteComponent = finished ? noteComponents[type] : stackComponents[type];
   return (
     <div style={{ width: "0px", display: "inline-flex" }}>
-      <NoteDecorationObj type={deco} height={height} direction="up" />
+        <NoteDecorationObj type={"x"} height={height} direction="up" />
       <div style={{ width: "0px", display: "inline-flex", "margin-right": "0px" }}>
         <StackLineObj height = {height} />
       </div>
@@ -593,7 +514,7 @@ const IndivNoteAllocObj = ({ type, realloc, accAlloc, accHori, accHoriMax, isRea
   const NoteComponent = allocComponents[type];
   return (
     <div style={{ width: "0px", display: "inline-flex" }}>
-      <NoteDecorationObj type={deco} height={height} direction="up" />
+      <NoteDecorationObj type={"x"} height={height} direction="up" />
       <div style={{ width: "0px", display: "inline-flex", "margin-right": "0px" }}>
         <StackLineObj height = {height} />
       </div>
@@ -864,6 +785,7 @@ const NoteObj = ({ obj, index, isPlaying, margin, cursorHeight, setCursorIndex }
           {accReturnValue}
         </div>
       </div>
+      <NoteDecorationObj type={objData[0].deco} height={obj.height[0]} direction="up" />
       <div style={{ width: "15px", display: "inline"}} height = "55px">
         <div style={{ width: "15px", display: "inline"}}>
           {stackReturnValue}
