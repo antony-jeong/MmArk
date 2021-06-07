@@ -24,7 +24,7 @@ import Checker from '../Checker';
 
 const lngs = {
   en: { nativeName: "English" },
-  kr: { nativeName: "Korean" }
+  kr: { nativeName: "한국어" }
 };
 
 

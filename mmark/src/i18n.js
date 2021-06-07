@@ -12,6 +12,9 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
     resources: {
         en: {
             translation: {
+                lang: {
+                    name: 'English',
+                },
                 main: {
                     slogan: 'Learn Music by Games',
                     madeby: 'Made by Team MmArk',
@@ -83,6 +86,9 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
         },
         kr: {
             translation: {
+                lang: {
+                    name: '한국어',
+                },
                 main: {
                     slogan: 'MmArk: 음악을 배우는 가장 간단한 방법',
                     madeby: '팀 MmArk 제작',
