@@ -71,7 +71,7 @@ class CommunityEdit extends Component {
     updateDS = (ds) =>{
         this.setState(prevstate => {
             const newState = { ...prevstate };
-            newState['sheet_ds'] = JSON.stringify(ds);
+            newState['sheet_ds'] = ds;
             return newState;
         });
     }
@@ -86,8 +86,13 @@ class CommunityEdit extends Component {
         });
     };
 
-    handlePost = (e, data) => {
+    async handlePost(e) {
         e.preventDefault();
+        this.setState(await function a(prevstate) {
+            const newState = { ...prevstate };
+            newState["sheet_ds"] = JSON.stringify(prevstate["sheet_ds"]);
+            return newState;
+        });
         fetch('http://3.36.217.44:8000/plz/', {
             method: 'PUT',
             headers: {
@@ -95,7 +100,7 @@ class CommunityEdit extends Component {
                 'Content-Type': 'application/json',
                 // 'X-CSRFToken' : csrftoken
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(this.state)
         }).then(
             this.props.history.push('/Community/')
         );
@@ -150,7 +155,7 @@ class CommunityEdit extends Component {
             <div className='NewPost'>
                 <Logo className='logo' isLink={true}/>
                 <div className='Form'>
-                    <form onSubmit={(e) => {this.handlePost(e, this.state)}}>
+                    <form onSubmit={(e) => {this.handlePost(e)}}>
                         {t("post.title")}<br/>
                         <input className='textInput' type={"text"} name={"title"} value={this.state.title} onChange={this.handleChange} onClick={this.genGetFocusNow("o")}/><br />
                         {t("post.tags")} <br />
