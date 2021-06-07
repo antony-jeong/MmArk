@@ -71,6 +71,10 @@ const CommunityBlock = ({articles, users, tags, curUser, handleDelete, handleFav
         }
     }
 
+    const handleEdit = function (item) {
+        return;
+    }
+
     return (
         <div className="listWrapper">
             {articles.map(item => (
@@ -82,7 +86,7 @@ const CommunityBlock = ({articles, users, tags, curUser, handleDelete, handleFav
                         <div className="titleSub">
                             <div className="date">{handleDate(item)}</div>
                             {Cookie.name == item.author_name ?
-                                <div className="editWrapper">
+                                <div className="editWrapper" onClick={handleEdit(item)}>
                                     <svg version="1.1" id="Layer_1" x="0px" y="0px" height="1.25rem" width="1.25rem" viewBox="0 0 512 512">
                                         <g>
                                             <g>

@@ -4,7 +4,6 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
-
 .Community {
     width: 100vw;
     height: 100vh;
@@ -17,8 +16,6 @@ html {
     top: 40px;
     left: 50px;
 }
-
-
 
 .searchWrapper {
     display: flex;
@@ -115,6 +112,10 @@ html {
     flex-direction: column;
 }
 
+.itemWrapper.mine .titleWrapper {
+    margin: 0px 10% 0px 0px;
+}
+
 .itemWrapper.mine .titleWrapper .title {
     color: #3855EC;
     margin: 20px 15px 0px 25px;
@@ -180,6 +181,7 @@ html {
 .titleWrapper {
     display: flex;
     align-items: flex-end;
+    margin: 0px 0px 0px 12%;
 }
 
 .titleWrapper .title {
@@ -187,6 +189,7 @@ html {
     margin: 20px 15px 0px 15px;
     font-size: 1.5125rem;
     display: inline-block;
+    white-space: pre-line;
     color: #494951;
 }
 
@@ -287,14 +290,14 @@ html {
     display: none;
 }
 
-.favWrapper{
+.favWrapper {
     cursor: pointer;
 }
 
-.favWrapper svg{
+.favWrapper svg {
     fill: #E2E3EC
 }
 
-.favved.favWrapper svg{
+.favved.favWrapper svg {
     fill: #ffe135
 }

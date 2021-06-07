@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-html{
+html {
     font-family: "Roboto", sans-serif;
 }
 
-.login-form-with-message{
+.login-form-with-message {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.username-empty{
+.username-empty {
     visibility: hidden;
     align-self: flex-end;
     height: 0;
@@ -17,7 +17,7 @@ html{
     overflow: visible;
 }
 
-.username-char{
+.username-char {
     position: relative;
     visibility: hidden;
     align-self: flex-end;
@@ -27,7 +27,7 @@ html{
     top: -17px;
 }
 
-.password-empty{
+.password-empty {
     visibility: hidden;
     align-self: flex-end;
     height: 0;
@@ -35,7 +35,7 @@ html{
     overflow: visible;
 }
 
-.password-char{
+.password-char {
     position: relative;
     visibility: hidden;
     align-self: flex-end;
@@ -44,11 +44,11 @@ html{
     overflow: visible;
 }
 
-.show{
+.show {
     visibility: visible;
 }
 
-.speech-bubble-up{
+.speech-bubble-up {
     text-align: center;
     color: rgb(194, 18, 18);
     position: relative;
@@ -67,8 +67,7 @@ html{
     bottom: 45px;
 }
 
-
-.speech-bubble-up::after{
+.speech-bubble-up::after {
     position: absolute;
     bottom: -16px;
     right: 5px;
@@ -80,7 +79,7 @@ html{
     filter: drop-shadow(0, 0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
 }
 
-.speech-bubble-down{
+.speech-bubble-down {
     text-align: center;
     color: rgb(194, 18, 18);
     position: relative;
@@ -99,8 +98,7 @@ html{
     top: 13px;
 }
 
-
-.speech-bubble-down::after{
+.speech-bubble-down::after {
     position: absolute;
     top: -16px;
     right: 5px;
@@ -112,14 +110,14 @@ html{
     filter: drop-shadow(0, 0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
 }
 
-.wrong-account{
+.wrong-account {
     visibility: hidden;
     margin-top: 5px;
     font-size: 0.8rem;
     color: rgb(255, 106, 106);
 }
 
-.wrong-account.show{
+.wrong-account.show {
     visibility: visible;
 }
 
@@ -129,7 +127,7 @@ html{
     align-items: center;
 }
 
-.login-form{
+.login-form {
     display: flex;
     flex-direction: column;
     width: 260px;
@@ -137,34 +135,56 @@ html{
 }
 
 @keyframes shake {
-    0% { transform: translate(2px, 0);}
-    10% { transform: translate(-2px, 0);}
-    20% { transform: translate(-5px, 0);}
-    30% { transform: translate(-2px, 0);}
-    40% { transform: translate(2px, 0);}
-    50% { transform: translate(5px, 0);}
-    60% { transform: translate(2px, 0);}
-    70% { transform: translate(-2px, 0);}
-    80% { transform: translate(5px, 0);}
-    90% { transform: translate(2px, 0);}
-    100% { transform: translate(1px, 0);}
+    0% {
+        transform: translate(2px, 0);
+    }
+    10% {
+        transform: translate(-2px, 0);
+    }
+    20% {
+        transform: translate(-5px, 0);
+    }
+    30% {
+        transform: translate(-2px, 0);
+    }
+    40% {
+        transform: translate(2px, 0);
+    }
+    50% {
+        transform: translate(5px, 0);
+    }
+    60% {
+        transform: translate(2px, 0);
+    }
+    70% {
+        transform: translate(-2px, 0);
+    }
+    80% {
+        transform: translate(5px, 0);
+    }
+    90% {
+        transform: translate(2px, 0);
+    }
+    100% {
+        transform: translate(1px, 0);
+    }
 }
 
-.login-form.shake{
+.login-form.shake {
     animation: shake 0.2s
 }
 
-.embedded-login input[type="submit"]{
+.embedded-login input[type="submit"] {
     display: none;
 }
 
-.embedded-login label svg{
+.embedded-login label svg {
     cursor: pointer;
     margin-right: 20px;
 }
 
 .login-username,
-.login-password{
+.login-password {
     font-size: 1rem;
     display: flex;
     justify-content: flex-end;
@@ -172,7 +192,7 @@ html{
     margin: 4px;
 }
 
-.password-input{
+.password-input {
     display: flex;
     box-shadow: inset 1px 1px 3px 1px rgb(175, 175, 175);
     width: 150px;
@@ -185,7 +205,7 @@ html{
     height: 26px;
 }
 
-.password-input input{
+.password-input input {
     padding: none;
     margin: none;
     font-size: 1.1rem;
@@ -195,13 +215,13 @@ html{
     background: none;
 }
 
-.password-input svg{
+.password-input svg {
     padding-top: 1px;
     fill: gray;
     width: 22px;
 }
 
-.login-username input{
+.login-username input {
     box-shadow: inset 1px 1px 3px 1px rgb(175, 175, 175);
     font-size: 1.1rem;
     width: 150px;
@@ -214,7 +234,7 @@ html{
 }
 
 .login-username label,
-.login-password label{
+.login-password label {
     color: rgb(219, 219, 219);
 }
 
@@ -226,7 +246,8 @@ html{
     align-items: center;
     justify-content: center;
 }
-.login-signup button{
+
+.login-signup button {
     cursor: pointer;
     font-weight: bold;
     color: rgb(121, 179, 255);

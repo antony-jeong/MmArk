@@ -1,12 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import "../stylesheets/Login.css";
 
 class LoginForm extends React.Component {
-  state = {
-    username: '',
-    password: ''
-  };
+	state = {
+		username: '',
+		password: ''
+	};
 
   handle_change = e => {
     const name = e.target.name;

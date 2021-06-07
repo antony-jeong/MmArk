@@ -11,7 +11,7 @@ class User(AbstractUser):
 
     LANGUAGE_CHOICES = ((LANGUAGE_ENGLISH, "English"), (LANGUAGE_KOREAN, "Korean"))
 
-    email = models.EmailField()
+    email = models.EmailField(blank=True)
     avatar = models.ImageField(blank=True, upload_to="avatars")
     language = models.CharField(
         choices=LANGUAGE_CHOICES, max_length=2, blank=False, default=LANGUAGE_ENGLISH

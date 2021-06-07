@@ -11,7 +11,7 @@ import EmbeddedLogin from '../components/EmbeddedLogin';
 
 const lngs = {
   en: { nativeName: "English" },
-  kr: { nativeName: "Korean" }
+  kr: { nativeName: "한국어" }
 };
 
 const Main = () => {

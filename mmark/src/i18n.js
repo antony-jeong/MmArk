@@ -12,6 +12,9 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
     resources: {
         en: {
             translation: {
+                lang: {
+                    name: 'English',
+                },
                 main: {
                     slogan: 'Learn Music by Games',
                     madeby: 'Made by Team MmArk',
@@ -60,11 +63,32 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     title: "Title",
                     author: "Author",
                     tags: "Tags"
+                },
+                signup: {
+                    signup: "Sign Up",
+                    top_req: "Required Fields",
+                    top_pro: "Account Profile",
+                    username: "Username",
+                    username_inst: "Maximum of 10 Letters, in Roman Alphabet",
+                    password: "Password",
+                    password_inst: "Only Alphabet, Numbers, +, -, _, @, . can be used",
+                    confirm_password: "Confirm Password",
+                    image: "Profile Image",
+                    image_inst: "Uploading Profile Images are currently under construction",
+                    desc: "User Description",
+                    desc_inst: "Describe your account freely!~~",
+                    accept: "Since MmArk doesn't handle any of the user's private info, we regard Privacy Terms are accepted by all users",
+                    back: "Back",
+                    message: "Do you already have an account?",
+                    login: "Log In"
                 }
             }
         },
         kr: {
             translation: {
+                lang: {
+                    name: '한국어',
+                },
                 main: {
                     slogan: 'MmArk: 음악을 배우는 가장 간단한 방법',
                     madeby: '팀 MmArk 제작',
@@ -113,6 +137,24 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     title: "제목",
                     author: "작성자",
                     tags: "태그"
+                },
+                signup: {
+                    signup: "회원가입",
+                    top_req: "필수 정보",
+                    top_pro: "계정 프로필",
+                    username: "계정 이름",
+                    username_inst: "영문 알파벳으로 최대 10자",
+                    password: "비밀번호",
+                    password_inst: "영문 알파벳, 아라비아 숫자, +, -, _, @, . 만 사용 가능",
+                    confirm_password: "비밀번호 확인",
+                    image: "프로필 사진",
+                    image_inst: "프로필 사진은 현재 업로드할 수 없습니다",
+                    desc: "상태 메시지",
+                    desc_inst: "자신을 자유롭게 소개해보세요!",
+                    accept: "MmArk는 사용자의 어떠한 개인 정보도 다루지 않기 때문에, 회원가입시 개인정보 관련 취급 동의를 받은 것으로 간주합니다",
+                    back: "뒤로",
+                    message: "계정이 이미 있으신가요?",
+                    login: "로그인하기"
                 }
             }
         }
