@@ -72,7 +72,7 @@ def new_post(request):
                 )
             article.tags.add(tag_obj)
         article.save()
-        return HttpResponse("post success")
+        return HttpResponse("patch success")
 
     elif request.method == 'DELETE':
         toDelete = Article.objects.get(id=request.body)

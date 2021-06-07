@@ -102,8 +102,20 @@ class CommunityEdit extends Component {
 
     inTag = (tagName) => {
         for (var i = 0; i < this.state.tags.length; i++) {
-            if (this.state.tags_total[this.state.tags[i]] !== undefined) {
-                if(tagName == this.state.tags_total[this.state.tags[i]].name) return true;
+            if (this.state.tags_total[this.state.tags[i]-1] !== undefined) {
+                if (tagName == this.state.tags_total[this.state.tags[i] - 1].name) {
+                    i = 0;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    findTagId = (tagName) => {
+        for (var i = 0; i < this.state.tags_total.length; i++) {
+            if (this.state.tags_total[i].name === tagName) {
+                return i + 1;
             }
         }
         return false;
@@ -113,17 +125,17 @@ class CommunityEdit extends Component {
         (this.genGetFocusNow("o"))();
         const target_tag = e.target.innerText
         if (target_tag != undefined) {            
-            if (this.inTag(target_tag.name)) {
+            if (this.inTag(target_tag)) {
                 this.setState(prevstate => {
                     const newState = { ...prevstate };
-                    newState['tags'].pop(target_tag);
+                    newState['tags'].pop(this.findTagId(target_tag));
                     e.target.classList.remove("clicked");
                     return newState;
                 });
             } else {
                 this.setState(prevstate => {
                     const newState = { ...prevstate };
-                    newState['tags'].push(target_tag);
+                    newState['tags'].push(this.findTagId(target_tag));
                     e.target.classList.add("clicked");
                     return newState;
                 });
