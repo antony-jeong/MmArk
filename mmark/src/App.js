@@ -33,8 +33,8 @@ function App() {
                 <Route path="/LearnChord/:pagenum" component={LearnChord}/>
                 <Route path="/LearnRoadmapSign/:pagenum" component={LearnRoadmapSign} />
                 <Route path="/Community/NewPost" component={NewPost} />
-                <Route path="/Community/:keyword" component={Community} />
                 <Route path="/Community/edit/:id" component={CommunityEdit} />
+                <Route path="/Community/:keyword" component={Community} />
                 <Route path="/Community" component={Community} />
                 <Route path="/login" component={Login} />
                 <Route path="/logout" component={Logout} />
