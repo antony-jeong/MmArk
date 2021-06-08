@@ -55,14 +55,11 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     new_post: "+ NEW POST",
                     show_description: "Show Description ▽",
                     hide_description: "Hide Description △",
-<<<<<<< HEAD
                     popup_fav_desc: "Please Log In to use Like",
                     popup_cancel: "Cancel",
                     popup_move_login: "Move to Login Page",
                     popup_post_desc: "Please Log In to Post",
-=======
                     search_placeholder: "Search Title, Author, and Description in English"
->>>>>>> ee6616034f338dd4dabeeae36a6d6874101dfe48
                 }, 
                 post: {
                     discard: "Discard and Go Back",
@@ -157,14 +154,11 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     new_post: "+ 글쓰기",
                     show_description: "더보기 ▽",
                     hide_description: "접기 △",
-<<<<<<< HEAD
                     popup_fav_desc: "좋아요 하려면 로그인하세요",
                     popup_cancel: "취소",
                     popup_move_login: "로그인하러 가기",
                     popup_post_desc: "글을 쓰려면 로그인하세요",
-=======
                     search_placeholder: "제목, 작성자, 내용을 영어로 검색하세요."
->>>>>>> ee6616034f338dd4dabeeae36a6d6874101dfe48
                 }, 
                 post: {
                     discard: "취소",
