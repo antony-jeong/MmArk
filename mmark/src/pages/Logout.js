@@ -20,7 +20,7 @@ class Logout extends Component {
         cookies.remove('token');
         cookies.remove('name');
         this.setState({ logged_in: false, username: undefined });
-        this.props.history.push("/login");
+        this.props.history.push("/");
     };
 
     render() {

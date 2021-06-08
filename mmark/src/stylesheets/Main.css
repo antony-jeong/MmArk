@@ -138,31 +138,6 @@
         transition: width .4s, letter-spacing .4s, color .4s;
     }
 
-    .Language-Select {
-        margin-top: 20px;
-    }
-
-    .Language-Select button {
-        border: none;
-        background: none;
-        color: white;
-        padding: 0px 20px 0px 20px;
-        cursor: pointer;
-        outline: none;
-    }
-
-    .Language-Select button+button {
-        border-left: #cdbfda 1px solid;
-    }
-
-    .selected {
-        font-weight: bold;
-    }
-
-    .unselected {
-        opacity: 70%;
-    }
-
 }
 
 @media screen and (max-width: 900px){

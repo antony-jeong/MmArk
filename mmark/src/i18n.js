@@ -82,6 +82,13 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     back: "Back",
                     message: "Do you already have an account?",
                     login: "Log In"
+                },
+                page404: {
+                    title: "Page not found",
+                    message1: "The page you're looking for doesn't exist or other error occured.",
+                    message2: "Go back, or go to Main Page.",
+                    goback: "Go back",
+                    gohome: "Go to Main Page"
                 }
             }
         },
@@ -156,7 +163,15 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     accept: "MmArk는 사용자의 어떠한 개인 정보도 다루지 않기 때문에, 회원가입시 개인정보 관련 취급 동의를 받은 것으로 간주합니다",
                     back: "뒤로",
                     message: "계정이 이미 있으신가요?",
-                    login: "로그인하기",
+                    login: "로그인하기"
+                },
+                page404: {
+                    title: "페이지를 찾을 수 없습니다.",
+                    message1: "요청한 페이지가 존재하지 않거나, 다른 오류가 발생했을 수 있습니다.",
+                    message2: "메인 화면이나 이전 페이지로 돌아가세요.",
+                    goback: "이전 페이지",
+                    gohome: "메인 화면"
+
                 }
             }
         }

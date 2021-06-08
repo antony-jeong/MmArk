@@ -19,13 +19,7 @@ import LearnIntervalData from '../LearnIntervalData';
 import LearnChordData from '../LearnChordData';          //because the corresponding json is not written yet
 import LearnRoadmapSignData from '../LearnRoadmapSignData';    //
 import Checker from '../Checker';
-
-
-
-const lngs = {
-  en: { nativeName: "English" },
-  kr: { nativeName: "한국어" }
-};
+import LanguageSelectButton from '../components/LanguageSelectButton';
 
 
 const LearnLayout = ({game, gameName, pageNum, history}) => {
@@ -186,7 +180,7 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
         (pageNum >= 1) && (pageNum <= pageEnd)
         ?<div className={'LearnLayout'}>
             <span className={`LogoContainer`}>
-                <Logo className={`Logo`}isLink={true}/>
+                <Logo className={`Logo`} isLink={true}/>
                 <span className={'GameName'}>{i18n.language === "en" ? game : i18n.language === "kr" ? game_kor : "i18n error"}</span>
             </span>
             <PageNavigator className="PageNavigator" pageNum={pageNum} pageEnd={pageEnd} parentCallback={callback} getFocusNow={genSetFocusNow("n")} />
@@ -197,13 +191,7 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
                 <Sheet dataStructure={pageData.ds} focusNow={focusNow} getFocusNow={genSetFocusNow("s")} viewMode={"learn"} />
                 {inputSubject()}
             </div>
-            <div className={"Language-Select-Learn"}>
-                {Object.keys(lngs).map((lng) => (
-                <button key={lng} className={i18n.language === lng ? "selected" : "unselected"} type="submit" onClick={() => i18n.changeLanguage(lng)}>
-                    {lngs[lng].nativeName}
-                </button>
-                ))}
-            </div>
+            <LanguageSelectButton className="Language-Select-Light"/>
         </div>
         :
         <InvalidPage history={history} />
