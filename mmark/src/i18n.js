@@ -69,14 +69,15 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     top_req: "Required Fields",
                     top_pro: "Account Profile",
                     username: "Username",
-                    username_inst: "Maximum of 10 Letters, in Roman Alphabet",
+                    username_inst: "Maximum of 10 Letters, in Alphabet and Numbers",
                     password: "Password",
                     password_inst: "Only Alphabet, Numbers, +, -, _, @, . can be used",
                     confirm_password: "Confirm Password",
+                    confirm_password_inst: "Password and Confirm Password should match",
                     image: "Profile Image",
                     image_inst: "Uploading Profile Images are currently under construction",
                     desc: "User Description",
-                    desc_inst: "Describe your account freely!~~",
+                    desc_inst: "Describe your account freely",
                     accept: "Since MmArk doesn't handle any of the user's private info, we regard Privacy Terms are accepted by all users",
                     back: "Back",
                     message: "Do you already have an account?",
@@ -150,10 +151,11 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     top_req: "필수 정보",
                     top_pro: "계정 프로필",
                     username: "계정 이름",
-                    username_inst: "영문 알파벳으로 최대 10자",
+                    username_inst: "영문 알파벳 및 숫자로 최대 10자",
                     password: "비밀번호",
                     password_inst: "영문 알파벳, 아라비아 숫자, +, -, _, @, . 만 사용 가능",
                     confirm_password: "비밀번호 확인",
+                    confirm_password_inst: "비밀번호와 비밀번호 확인은 동일해야 합니다",
                     image: "프로필 사진",
                     image_inst: "프로필 사진은 현재 업로드할 수 없습니다",
                     desc: "상태 메시지",
@@ -169,6 +171,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     message2: "메인 화면이나 이전 페이지로 돌아가세요.",
                     goback: "이전 페이지",
                     gohome: "메인 화면"
+
                 }
             }
         }

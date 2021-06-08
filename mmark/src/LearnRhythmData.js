@@ -600,7 +600,7 @@ const LearnRhythmData = [{
             "type": "b"
         }, {
             "objectType": "n",
-            "length": 4,
+            "length": 3,
             "extend": false,
             "rest": false,
             "height": [0],
@@ -648,7 +648,7 @@ const LearnRhythmData = [{
             "noteDecoration": ["x"]
         }, {
             "objectType": "n",
-            "length": 4,
+            "length": 3,
             "extend": false,
             "rest": false,
             "height": [0],
@@ -668,7 +668,7 @@ const LearnRhythmData = [{
         }
     ],
     "checkType": "Input",
-    "checkAnswer": ["10"],
+    "checkAnswer": ["9"],
     "inputMode": "text"
 }, {
     "pageId": 9,

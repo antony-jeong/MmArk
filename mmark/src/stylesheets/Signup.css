@@ -3,25 +3,317 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h3 {
+    color: white;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+h4 {
+    color: white;
+    margin: 20px 0px 20px 0px;
+}
+
+.Logo {
+    zoom: 0.5;
+}
+
+.Logo path {
+    stroke: white;
+    fill: white;
+}
+
 label {
     color: rgb(219, 219, 219);
+}
+
+input {
+    box-shadow: inset 1px 1px 3px 1px rgb(175, 175, 175);
+    font-size: 1.1rem;
+    width: 150px;
+    margin-left: 5px;
+    padding: 3px;
+    padding-left: 5px;
+    outline: none;
+    border-radius: 4px;
+    border: none;
+}
+
+input[type="checkbox"] {
+    box-shadow: none;
+    width: auto;
+}
+
+.embedded-signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    display: center;
+    align-items: center;
 }
 
 .requiredWrapper {
     display: flex;
     flex-direction: column;
+    width: 70vw;
+}
+
+.requiredWrapper label {
+    width: 25%;
+    font-size: 1rem;
+}
+
+.requiredWrapper input {
+    width: 25%;
+}
+
+.requiredWrapper .inst {
+    margin: 0px 10% 0px 10%;
+    width: 30%;
+    font-size: 0.875rem;
+}
+
+.requiredWrapper .usernameWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 10px auto 10px auto;
+    padding-left: 20%;
+}
+
+.requiredWrapper .usernameWrapper .username-context {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.requiredWrapper .passwordWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 10px auto 10px auto;
+    padding-left: 20%;
+}
+
+.requiredWrapper .passwordWrapper .password-context {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.requiredWrapper .confirmPasswordWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 10px auto 10px auto;
+    padding-left: 20%;
+}
+
+.requiredWrapper .confirmPasswordWrapper label {
+    font-size: 1rem;
+}
+
+.requiredWrapper .confirmPasswordWrapper .confirm-context {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .profileWrapper {
     display: flex;
     flex-direction: column;
+    width: 70vw;
+    margin: 0px 0px 20px 0px;
+}
+
+.profileWrapper label {
+    width: 25%;
+    font-size: 1rem;
+}
+
+.profileWrapper input {
+    width: 25%;
+}
+
+.profileWrapper .inst {
+    margin: 0px 10% 0px 10%;
+    width: 30%;
+    font-size: 0.875rem;
+}
+
+.profileWrapper .descWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 10px auto 10px auto;
+    padding-left: 20%;
+}
+
+.profileWrapper .descWrapper .desc-context {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profileWrapper .acceptWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 10px 5% 10px 5%;
+}
+
+.profileWrapper .acceptWrapper label {
+    font-size: 0.8rem;
+    width: 90%;
+}
+
+.profileWrapper .acceptWrapper input {
+    width: 5%;
+}
+
+.buttonWrapper button {
+    background: none;
+    font-size: 1rem;
+    color: rgb(219, 219, 219);
+    border: solid 2px white;
+    padding: 10px 15px 10px 15px;
+    border-radius: 15px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.buttonWrapper label {
+    font-size: 1rem;
+    border: solid 2px white;
+    padding: 10px 15px 10px 15px;
+    border-radius: 15px;
+    margin: 10px;
+    cursor: pointer;
 }
 
 .embedded-signup form input[type="submit"] {
     display: none;
 }
 
-label svg {
-    cursor: pointer;
-    margin-right: 20px;
+.username-length {
+    visibility: hidden;
+    align-self: flex-end;
+    height: 0;
+    z-index: 1;
+    overflow: visible;
+}
+
+.username-empty {
+    visibility: hidden;
+    align-self: flex-end;
+    height: 0;
+    z-index: 1;
+    overflow: visible;
+}
+
+.username-char {
+    position: relative;
+    visibility: hidden;
+    align-self: flex-end;
+    height: 0;
+    z-index: 1;
+    overflow: visible;
+    top: -17px;
+}
+
+.password-empty {
+    visibility: hidden;
+    align-self: flex-end;
+    height: 0;
+    z-index: 1;
+    overflow: visible;
+}
+
+.password-char {
+    position: relative;
+    visibility: hidden;
+    align-self: flex-end;
+    height: 0;
+    z-index: 1;
+    overflow: visible;
+}
+
+.show {
+    visibility: visible;
+}
+
+.speech-bubble-up {
+    text-align: center;
+    color: rgb(194, 18, 18);
+    position: relative;
+    font-size: 0.9rem;
+    font-weight: bold;
+    width: fit-content;
+    height: fit-content;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    height: fit-content;
+    box-sizing: border-box;
+    box-shadow: 0 0 .0625rem 0.0625rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    margin-right: 5px;
+    bottom: 45px;
+}
+
+.speech-bubble-up::after {
+    position: absolute;
+    bottom: -16px;
+    right: 5px;
+    width: 0;
+    height: 0;
+    content: '';
+    border: 0.5rem solid transparent;
+    border-top-color: rgba(255, 255, 255, 0.9);
+    filter: drop-shadow(0, 0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+}
+
+.speech-bubble-down {
+    text-align: center;
+    color: rgb(194, 18, 18);
+    position: relative;
+    font-size: 0.9rem;
+    font-weight: bold;
+    width: fit-content;
+    height: fit-content;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    height: fit-content;
+    box-sizing: border-box;
+    box-shadow: 0 0 .0625rem 0.0625rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    margin-right: 5px;
+    top: 13px;
+}
+
+.speech-bubble-down::after {
+    position: absolute;
+    top: -16px;
+    right: 5px;
+    width: 0;
+    height: 0;
+    content: '';
+    border: 0.5rem solid transparent;
+    border-bottom-color: rgba(255, 255, 255, 0.9);
+    filter: drop-shadow(0, 0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+}
+
+.login-signup {
+    margin: 20px 0px 0px 0px;
 }
