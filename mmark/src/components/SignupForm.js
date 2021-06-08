@@ -101,7 +101,7 @@ class SignupForm extends React.Component {
 			return;
 		}
 		this.props.history.add("/");
-		
+		this.props.post_signup(e, this.state);
 	}
 	
 	render() {
@@ -109,7 +109,7 @@ class SignupForm extends React.Component {
 		return (
 		<>
 			<span className={`LogoContainer`}>
-                <Logo className={`Logo`}isLink={true}/>
+                <Logo className={`Logo`} isLink={true}/>
             </span>
 			<h3>{t("signup.signup")}</h3>
 				<form onSubmit={e => this.handleSubmit(e)}>
