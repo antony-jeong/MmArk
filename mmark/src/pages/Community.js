@@ -12,6 +12,7 @@ import Sheet from '../components/Sheet';
 import LanguageSelectButton from '../components/LanguageSelectButton'
 import '../stylesheets/Community.css';
 import '../stylesheets/Popup.css';
+import MyProfile from '../components/MyProfile';
 
 class Community extends Component {
 
@@ -220,6 +221,7 @@ class Community extends Component {
                     ?<CommunityBlock className="listWrapper" articles={this.state.articles} users={this.state.users} curUser={this.state.curUser} tags={this.state.tags} handleDelete={this.handleDelete} handleFav={this.handleFav}/>
                     :<CommunityBlock className="listWrapper" articles={this.state.articles} users={this.state.users} tags={this.state.tags} handleFav={this.handleFav}/>
                 }
+                <MyProfile className="community-myprofile"/>
             </div>
             
         );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withCookies } from 'react-cookie';
 import '../stylesheets/MyProfile.css';
+import {Link} from 'react-router-dom';
 
 class MyProfile extends Component {
 
@@ -42,6 +43,9 @@ class MyProfile extends Component {
             <div className = {"my-profile"}>
                 <div className = "profile-pic"><div className = "profile-pic-initial">{cookies.get('name')[0].toUpperCase()}</div></div>
                 <div>{cookies.get('name')}</div>
+                <Link to={`/logout`} >
+                    <button className="logoutButton">Log Out</button>
+                </Link>
             </div>
         );
     }
