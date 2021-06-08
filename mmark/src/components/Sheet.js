@@ -163,11 +163,14 @@ const Sheet = ({ dataStructure, className, updateDS, focusNow, getFocusNow, view
         }
     });
     const [margin, setMargin] = useState(false);
+    const [sheetWidth, setSheetWidth] = useState(2000);
     useEffect(() => {
         if(ds){
-            setMargin(calcSheetObjectMargin(ds, minMargin));
+            const r = calcSheetObjectMargin(ds, minMargin);
+            setSheetWidth(r[0]);
+            setMargin(r[1]);
         }
-    }, [minMargin]);
+    }, [ds, minMargin]);
     //document.getElementById("sheetwrapper").clientWidth
     //document.getElementById("sheetwrapper").clientWidth-2
     const [isBeingEdited, setIsBeingEdited] = useState(false);
@@ -202,7 +205,6 @@ const Sheet = ({ dataStructure, className, updateDS, focusNow, getFocusNow, view
                 break;
         }
     });
-    const sheetMargin = minMargin;
     return (
         <div className={
             "sheet-top-wrapper"+(viewMode==="read"?"--read":viewMode==="create"?"--create":"")+(focusNow==="s"?" focused":"")
@@ -253,7 +255,7 @@ const Sheet = ({ dataStructure, className, updateDS, focusNow, getFocusNow, view
             </div>
         </div>
         <div id="sheet-length-standard" className={isBeingEdited?"sheet-wrapper":"sheet-wrapper being-viewed"} ref={sheetLengthStandard}>
-            <div className={"sheet-lengthener"} style={{height: "100%", width: sheetMargin+"px", marginLeft: "15px", marginRight: "15px"}}>
+            <div className={"sheet-lengthener"} style={{height: "100%", width: sheetWidth+"px", marginLeft: "15px", marginRight: "15px"}}>
                 <div className={"sheet-horizons-wrapper"} style={{position: "relative", height: "0", width: "100%"}}>
                     <div className={"sheet-horizon"} style={{marginTop: "55px", height: "0px", width: "100%", borderBottom: "1px solid black"}}></div>
                     <div className={"sheet-horizon"} style={{height: "12.25px", width: "100%", boxSizing: "border-box", borderBottom: "1px solid black"}}></div>
