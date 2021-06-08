@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
+
 .my-profile .profile-pic{
     font-family: "Roboto Mono", sans-serif;
     width: 0;
     height: 0;
     padding: 25px;
     font-size: 1.4rem;
-
+    margin: auto;
     border-radius: 25px;
     text-align: center;
     justify-content: center;
@@ -15,7 +16,7 @@
     color: white;
 }
 
-.my-profile .profile-pic-initial{
+.my-profile .profile-pic-initial {
     display: flex;
     align-items: center;
     justify-content: center;

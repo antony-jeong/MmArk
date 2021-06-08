@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-
 body {
     margin: 0;
 }
@@ -64,8 +63,13 @@ body {
     vertical-align: baseline;
 }
 
-.Logo {
+.LearnLayout .Logo {
     zoom: 0.3;
+}
+
+.LearnLayout .Logo path {
+    stroke: black;
+    fill: black;
 }
 
 .GameName {
@@ -100,6 +104,7 @@ body {
     background-color: rgb(237, 231, 240);
     font-size: 0.95rem;
     text-align: right;
+    box-shadow: none;
 }
 
 .PageNavigator input:hover,
@@ -127,7 +132,7 @@ body {
 }
 
 .GoLeft.Hide,
-.GoRight.Hide{
+.GoRight.Hide {
     opacity: 0.3;
     cursor: default;
 }
@@ -136,11 +141,10 @@ body {
     zoom: 0.7;
 }
 
-.progress-bar-wrapper-wrapper{
+.progress-bar-wrapper-wrapper {
     flex: 0 0 55px;
     display: flex;
     align-items: flex-end;
-
 }
 
 .ProgressBarWrapper {
@@ -153,7 +157,7 @@ body {
     padding: 0;
 }
 
-.ProgressBarText{
+.ProgressBarText {
     color: white;
     text-align: center;
     opacity: 0;
@@ -161,12 +165,12 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.Next .ProgressBarText{
+.Next .ProgressBarText {
     transition: opacity 0.2s 2s;
     opacity: 1;
 }
 
-.ProgressBar{
+.ProgressBar {
     display: grid;
     grid-auto-flow: column;
     align-self: center;
@@ -176,65 +180,70 @@ body {
     border-radius: 5px;
 }
 
-.Next .ProgressBar{
+.Next .ProgressBar {
     transition-delay: 1s;
     background-color: #7147CB;
 }
 
-.ProgressBar .ProgressBefore{
+.ProgressBar .ProgressBefore {
     background-color: #7147CB;
 }
-.ProgressBar .ProgressCur{
+
+.ProgressBar .ProgressCur {
     background-color: #7147CB;
     border-radius: 0px 5px 5px 0px;
     animation: progress 1s normal forwards;
 }
 
-
 @keyframes progress {
-    0% {width: 0;}
-    90% {width: 110%;}
-    100% {width: 100%;}
+    0% {
+        width: 0;
+    }
+    90% {
+        width: 110%;
+    }
+    100% {
+        width: 100%;
+    }
 }
 
-
 .PlayButton,
-.StopButton{
+.StopButton {
     transform: translateX(-10px) translateY(2px);
     opacity: 0.8;
     transition: opacity 0.2s;
 }
 
 .PlayButton:hover,
-.StopButton:hover{
+.StopButton:hover {
     transition: opacity 0.2s;
     opacity: 1;
 }
 
-.Next{
+.Next {
     animation: toNextButton 1.5s 1s forwards;
     cursor: pointer;
 }
 
 @keyframes toNextButton {
-    50%{
+    50% {
         margin-top: 0;
         width: 0px;
         height: 10px;
         border: 0px;
     }
-    80%{
+    80% {
         margin-top: 0;
         width: 0px;
         height: 10px;
         border: 0px;
     }
-    90%{
+    90% {
         width: 65px;
         height: 45px;
         border: 0px;
     }
-    100%{
+    100% {
         margin-top: 10px;
         width: 70px;
         height: 40px;
@@ -248,7 +257,7 @@ body {
     animation: wrong-shake 0.2s;
 }
 
-.InputHistory{
+.InputHistory {
     flex: 0 0 25px;
     align-self: center;
     text-align: center;
@@ -258,7 +267,6 @@ body {
 
 .InputHistory span {
     z-index: 1;
-
     padding: 1px 4px;
     margin: 3px;
     font-weight: bold;
@@ -267,7 +275,7 @@ body {
     color: #9b9b9b;
 }
 
-.InputHistory.Hide{
+.InputHistory.Hide {
     transition: opacity ease-in .3s 1s;
     opacity: 0;
 }
@@ -308,7 +316,6 @@ body {
         transform: translate(1px, -2px) rotate(-1deg);
     }
 }
-
 
 .Language-Select-Learn {
     position: fixed;
@@ -379,12 +386,15 @@ body {
     box-sizing: border-box;
     border: rgba(113, 71, 203, 0) solid 6px;
 }
+
 .sheet-top-wrapper.focused {
     border: rgba(113, 71, 203, 0.5) solid 6px;
 }
+
 .sheet-top-wrapper:hover {
     border: rgba(113, 71, 203, 0.2) solid 6px;
 }
+
 .sheet-top-wrapper.focused:hover {
     border: rgba(113, 71, 203, 0.5) solid 6px;
 }
@@ -399,12 +409,15 @@ body {
     box-sizing: border-box;
     border: rgba(113, 71, 203, 0) solid 6px;
 }
+
 .sheet-top-wrapper--create.focused {
     border: rgba(113, 71, 203, 0.5) solid 6px;
 }
+
 .sheet-top-wrapper--create:hover {
     border: rgba(113, 71, 203, 0.2) solid 6px;
 }
+
 .sheet-top-wrapper--create.focused:hover {
     border: rgba(113, 71, 203, 0.5) solid 6px;
 }
@@ -429,6 +442,7 @@ body {
     padding: 5px;
     box-shadow: 0 0 5px #a692d3;
 }
+
 .sheet-top.being-viewed {
     background: transparent;
     box-shadow: 0 0 0 transparent;
@@ -506,7 +520,9 @@ body {
     overflow: hidden;
 }
 
-.sheet-edit-control-dropup .content .option-cell:hover {background-color: #ccc}
+.sheet-edit-control-dropup .content .option-cell:hover {
+    background-color: #ccc
+}
 
 .sheet-edit-control-dropup .content.chosen {
     display: grid;
@@ -571,9 +587,10 @@ body {
     height: 30px;
     text-align: center;
     border-radius: 5px;
-    color:rgb(237, 231, 240);
+    color: rgb(237, 231, 240);
     cursor: pointer;
 }
+
 .sheet-reset-button.disappeared {
     display: none;
 }
@@ -591,18 +608,22 @@ body {
     overflow-x: scroll;
     overflow-y: hidden;
 }
+
 .sheet-wrapper::-webkit-scrollbar {
     height: 15px;
 }
+
 .sheet-wrapper::-webkit-scrollbar-track {
     background: transparent;
 }
+
 .sheet-wrapper::-webkit-scrollbar-thumb {
     background: rgba(113, 71, 203, 0.5);
     border-radius: 8px;
     border: 4px solid transparent;
     background-clip: content-box;
 }
+
 .sheet-wrapper::-webkit-scrollbar-thumb:hover {
     background: #7147CB;
     border-radius: 8px;
@@ -615,63 +636,64 @@ body {
     box-shadow: inset 0 0 0 #a692d3;
 }
 
-.sheet-edit-control-button-delete {
-    height: 30px;
-    border-radius: 5px;
-    cursor: pointer;
-    vertical-align: middle;
-    background: #ffd4c1;
-}
+@media screen and (max-width: 900px) {
 
-.sheet-edit-control-button-delete:hover {
-    background: #ffc2a7;
-}
+    .sheet-edit-control-button-delete {
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        vertical-align: middle;
+        background: #ffd4c1;
+    }
 
-@media screen and (max-width: 900px){
+    .sheet-edit-control-button-delete:hover {
+        background: #ffc2a7;
+    }
+
     .LearnPage {
         width: 90vw;
         margin: 0 auto;
     }
-    .Instruction{
+    .Instruction {
         font-size: 1.2rem;
         width: 90vw;
         margin: 0 auto;
     }
-    .Sheet{
+    .Sheet {
         width: 100%;
     }
 }
 
-@media screen and (max-width: 700px){
-    .LogoContainer{
+@media screen and (max-width: 700px) {
+    .LogoContainer {
         zoom: 0.8;
     }
-    .Language-Select-Learn{
+    .Language-Select-Learn {
         zoom: 0.9;
     }
-    .PageNavigator{
+    .PageNavigator {
         zoom: 0.9;
     }
-    .ProgressBarWrapper{
+    .ProgressBarWrapper {
         zoom: 0.8;
     }
-    .Sheet{
+    .Sheet {
         zoom: 0.7;
     }
-    .piano-container{
+    .piano-container {
         zoom: 0.8;
     }
-    .textInputWrapper{
+    .textInputWrapper {
         zoom: 0.8;
         margin-bottom: 20vh;
     }
-    .Instruction{
+    .Instruction {
         font-size: 0.9rem;
     }
 }
 
-@media screen and (max-width: 400px){
-    .PageNavigator{
+@media screen and (max-width: 400px) {
+    .PageNavigator {
         position: fixed;
         top: 30px;
         zoom: 0.8;
