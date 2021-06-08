@@ -88,6 +88,9 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH, focus
             case 190:  // .
               setEditExtend(!editExtend);
               break;
+            case 75:  // k
+              setIsStacking(!isStacking);
+              break;
             case 13:  // Enter
               addNote(false);
               break;
