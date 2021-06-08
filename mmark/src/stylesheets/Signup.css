@@ -33,7 +33,7 @@ label {
     color: rgb(219, 219, 219);
 }
 
-input {
+.sign-up input {
     box-shadow: inset 1px 1px 3px 1px rgb(175, 175, 175);
     font-size: 1.1rem;
     width: 150px;

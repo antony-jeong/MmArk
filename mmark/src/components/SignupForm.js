@@ -107,7 +107,7 @@ class SignupForm extends React.Component {
 	render() {
 		const { t } = this.props;
 		return (
-		<>
+		<div className="sign-up">
 			<span className={`LogoContainer`}>
                 <Logo className={`Logo`} isLink={true}/>
             </span>
@@ -202,7 +202,7 @@ class SignupForm extends React.Component {
 					</label>
 				</div>
 			</form>
-			</>
+			</div>
 		);
 	}
 }

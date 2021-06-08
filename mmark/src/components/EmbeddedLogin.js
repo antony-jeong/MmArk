@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import React, { Component } from 'react';
 import LoginNav from '../components/LoginNav';
 import LoginForm from '../components/LoginForm';
+import { withTranslation } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
 import { withCookies, Cookies } from "react-cookie";
 
@@ -63,14 +64,15 @@ class EmbeddedLogin extends Component {
     });
   };
 
-    render() {
+  render() {
+        const { t } = this.props;
         return (
             <div className="embedded-login">
                 {
                   this.state.logged_in?
                   <div className="embedded-login-logined">
                     <Link to={`/logout`} >
-                      <button className="logoutButton">Log Out</button>
+                      <button className="logoutButton">{t("login.logout")}</button>
                     </Link>
                     {`Hello, ${this.state.username}`}
                   </div>
@@ -78,9 +80,9 @@ class EmbeddedLogin extends Component {
                   <div className="embedded-login-loggedout">
                     <LoginForm handle_login={this.handle_login} />
                     <div className="login-signup">
-                      <div>Ain't got an account?</div>
+                      <div>{t("login.message")}</div>
                       <Link to = {`/signup`}>
-                        <button className="signupButton">Sign Up</button>
+                        <button className="signupButton">{t("login.signup")}</button>
                       </Link>
                     </div>
                   </div>
@@ -90,4 +92,4 @@ class EmbeddedLogin extends Component {
     }
 }
 
-export default withCookies(withRouter(EmbeddedLogin));
+export default withCookies(withRouter(withTranslation()(EmbeddedLogin)));

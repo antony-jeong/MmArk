@@ -82,6 +82,18 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     back: "Back",
                     message: "Do you already have an account?",
                     login: "Log In"
+                },
+                login: {
+                    message: "Don't you have an account?",
+                    signup: "Sign Up",
+                    logout: "Logout",
+                    username: "Username",
+                    password: "Password",
+                    wrong_account: "Invalid Username or Password",
+                    user_empty: "Username can't be empty",
+                    user_char: "Username only includes English alphabets and Numbers",
+                    password_empty: "Password can't be empty",
+                    password_char: "Password only includes English alphabets, numbers, ., -, +, _, @."
                 }
             }
         },
@@ -157,6 +169,18 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     back: "뒤로",
                     message: "계정이 이미 있으신가요?",
                     login: "로그인하기",
+                },
+                login: {
+                    message: "아직도 계정이 없으신가요?",
+                    signup: "회원가입하기",
+                    logout: "로그아웃",
+                    username: "유저 이름",
+                    password: "비밀먼호",
+                    wrong_account: "잘못된 유저 이름 또는 비밀번호입니다",
+                    user_empty: "유저 이름이 비어있습니다",
+                    user_char: "유저 이름은 영문 알파벳 혹은 숫자만 가능합니다",
+                    password_empty: "비밀번호가 비어있습니다",
+                    password_char: "비밀번호는 영문 알파벳, 숫자, ., -, +, _, @ 만 가능합니다"
                 }
             }
         }
