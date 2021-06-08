@@ -3,6 +3,7 @@ import GameSelectButton from '../components/GameSelectButton';
 import LoginNav from "../components/LoginNav";
 import Logo from '../components/Logo';
 import { Trans, useTranslation } from 'react-i18next';
+import Cookies from 'universal-cookie';
 import { withCookies, useCookies } from 'react-cookie';
 import {BrowserRouter, Link} from 'react-router-dom';
 import '../stylesheets/Main.css';
@@ -13,8 +14,14 @@ import LanguageSelectButton from '../components/LanguageSelectButton';
 
 const Main = () => {
   const { t, i18n } = useTranslation();
-  const [Cookie, setCookie, removeCookie] = useCookies(['token', 'name']);
+  const [Cookie, setCookie, removeCookie] = useCookies(['token', 'name', 'language']);
   const [isLoggedIn, setIsLoggedIn] = useState(Cookie.token !== undefined);
+  const cookies = new Cookies();
+  const [language, setLanguage] = useState(cookies.get('language'));
+  useEffect(()=>{
+      i18n.changeLanguage(language);
+      cookies.set('language', language, { path: '/' });
+  }, [language]);
 
     return (
       <div className={'Main-Container'}>
