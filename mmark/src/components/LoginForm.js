@@ -44,7 +44,7 @@ class LoginForm extends React.Component {
     }
 
 
-    if(username.match(/[^a-zA-Z0-9.+_@-]+/)){
+    if(username.match(/[^a-zA-Z0-9]+/)){
       formIsValid = false;
       document.querySelector('.username-char').classList.add('show');
     }else{
@@ -79,7 +79,7 @@ class LoginForm extends React.Component {
           <form onSubmit={e =>{ e.preventDefault(); if (this.handleValidation(this.state)) this.props.handle_login(e, this.state)}}>
             <div className="login-form">
               <div className="username-empty"><div className="username-empty-text speech-bubble-up">Username can't be empty</div></div>
-              <div className="username-char"><div className="username-char-text speech-bubble-up">Username only includes English alphabets, numbers, ., -, +, _, @. </div></div>
+              <div className="username-char"><div className="username-char-text speech-bubble-up">Username only includes English alphabets and Numbers</div></div>
               <div className="login-username">
                 <label htmlFor="username">Username</label>
                 <input
