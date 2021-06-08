@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withCookies } from 'react-cookie';
 import '../stylesheets/MyProfile.css';
 import {Link} from 'react-router-dom';
+import { withTranslation } from 'react-i18next';
 
 class MyProfile extends Component {
 
@@ -38,17 +39,18 @@ class MyProfile extends Component {
         document.querySelector('.profile-pic').setAttribute('style', `background: ${randomColor}`)
     }
     render() {
+        const { t } = this.props;
         const {cookies} = this.props;
         return (
             <div className = {"my-profile"}>
                 <div className = "profile-pic"><div className = "profile-pic-initial">{cookies.get('name')[0].toUpperCase()}</div></div>
                 <div>{cookies.get('name')}</div>
                 <Link to={`/logout`} >
-                    <button className="logoutButton">Log Out</button>
+                    <button className="logoutButton">{t('login.logout')}</button>
                 </Link>
             </div>
         );
     }
 }
 
-export default withCookies(MyProfile);
+export default withCookies(withTranslation()(MyProfile));
