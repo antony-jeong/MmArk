@@ -33,9 +33,46 @@ import {ReactComponent as CursorBig} from "../musical_symbols_svg/cursor_big.svg
 
 
 const BarlineObj = ({ className, barlineDecoration, margin, cursorHeight }) => {
+    var deco = "no";
+    if (barlineDecoration === "ds") deco = "dalsegno";
+    else if (barlineDecoration === "se") deco = "segno";
+    else if (barlineDecoration === "dc") deco = "dacapo";
+    else if (barlineDecoration === "fi") deco = "fine";
+    else if (barlineDecoration === "co") deco = "coda";
+    else if (barlineDecoration === "fe") deco = "deco_f";
+    const decoH = {
+        "segno": "30",
+        "dalsegno": "15",
+        "dacapo": "15",
+        "fine": "15",
+        "coda": "25",
+        "deco_f": "12"
+
+    }
+    const decoTop = {
+        "segno": 0,
+        "dalsegno": 100,
+        "dacapo": 100,
+        "fine": 100,
+        "coda": 0,
+        "deco_f": 0
+    }
+    const decoLeft = {
+        "segno": 0,
+        "dalsegno": -35,
+        "dacapo": -35,
+        "fine": -45,
+        "coda": 0,
+        "deco_f": -8
+    }
     switch (className) {
         case "b":
             return (<div className="bar" style = {{width: "1px", display: "inline", "margin-right": margin}}>
+                        {deco === "no"
+                            ? <></>
+                            : <div style = {{width: "0px", display: "inline-flex", position: "relative", top :  -19.5 - 6.1225 + "px"}}>
+                                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/" + deco + ".svg"} style = {{position : "relative", top: -61 + decoTop[deco]  + "px", left: decoLeft[deco]}} height = {decoH[deco] + "px"}/>
+                            </div>}
                         <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/>
                         <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
                             <div>
@@ -50,6 +87,11 @@ const BarlineObj = ({ className, barlineDecoration, margin, cursorHeight }) => {
                     </div>)
         case "o":
             return (<div className="open" style = {{width: "14px", display: "inline", "margin-right": margin }}>
+                        {deco === "no"
+                            ? <></>
+                            : <div style = {{width: "0px", display: "inline-flex", position: "relative", top :  -19.5 - 6.1225 + "px"}}>
+                                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/" + deco + ".svg"} style = {{position : "relative", top: -61 + decoTop[deco]  + "px", left: decoLeft[deco]}} height = {decoH[deco] + "px"}/>
+                            </div>}
                         <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_repeat_open.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/>
                         <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
                             <div>
@@ -64,6 +106,11 @@ const BarlineObj = ({ className, barlineDecoration, margin, cursorHeight }) => {
                     </div>)
         case "c":
             return (<div className="close" style = {{width: "14px", display: "inline", "margin-right": margin }}>
+                        {deco === "no"
+                            ? <></>
+                            : <div style = {{width: "0px", display: "inline-flex", position: "relative", top :  -19.5 - 6.1225 + "px"}}>
+                                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/" + deco + ".svg"} style = {{position : "relative", top: -61 + decoTop[deco]  + "px", left: decoLeft[deco]}} height = {decoH[deco] + "px"}/>
+                            </div>}
                         <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_repeat_close.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/>
                         <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
                             <div>
@@ -78,6 +125,11 @@ const BarlineObj = ({ className, barlineDecoration, margin, cursorHeight }) => {
                     </div>)
         case "d":
             return (<div className="double" style = {{width: "3px", display: "inline", "margin-right": margin }}>
+                        {deco === "no"
+                            ? <></>
+                            : <div style = {{width: "0px", display: "inline-flex", position: "relative", top :  -19.5 - 6.1225 + "px"}}>
+                                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/" + deco + ".svg"} style = {{position : "relative", top: -61 + decoTop[deco]  + "px", left: decoLeft[deco]}} height = {decoH[deco] + "px"}/>
+                            </div>}
                         <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_double.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/>
                         <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
                             <div>
@@ -92,6 +144,11 @@ const BarlineObj = ({ className, barlineDecoration, margin, cursorHeight }) => {
                     </div>)
         case "t":
             return (<div className="terminate" style = {{width: "6px", display: "inline", "margin-right": margin }}>
+                        {deco === "no"
+                            ? <></>
+                            : <div style = {{width: "0px", display: "inline-flex", position: "relative", top :  -19.5 - 6.1225 + "px"}}>
+                                <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/" + deco + ".svg"} style = {{position : "relative", top: -61 + decoTop[deco]  + "px", left: decoLeft[deco]}} height = {decoH[deco] + "px"}/>
+                            </div>}
                         <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/barline_terminal.svg"} style = {{position : "relative", top: "-31px"}} height = "50px"/>
                         <div style = {{width: "0px", display: "inline-flex", position: "relative", top : -19.5 - 6.1225 * (cursorHeight + 1) + "px"}}>
                             <div>

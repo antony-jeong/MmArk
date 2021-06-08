@@ -56,7 +56,6 @@ class Community extends Component {
                     }
                 });
                 const searchText = document.getElementById("searchInput");
-                console.log(this.state.total_articles, this.state.search, searchText, this.state.articles)
                 searchText.value = this.props.match.params.keyword;
             } else {
                 this.setState(prevState => {

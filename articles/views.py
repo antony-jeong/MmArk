@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework import permissions, generics
+from rest_framework import permissions, generics, status
+from rest_framework.response import Response
 from .serializers import ArticleSerializer, TagSerializer
 from .models import Article, Tag
 from .permissions import IsOwnerOrReadOnly
@@ -52,6 +53,31 @@ def new_post(request):
                 new_article.tags.add(tag_obj)
         new_article.save()
         return HttpResponse("post success")
+
+    elif request.method == 'PUT':
+        form_data = json.loads(request.body.decode())
+        try:
+            article = Article.objects.get(
+                id=form_data['id']
+            )
+        except Article.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+            
+        author=user_models.User.objects.get(
+            username=form_data['username']
+        )
+        article.title = form_data['title']
+        article.description=form_data['description']
+        article.sheet_ds=form_data['sheet_ds']
+        article.author=author
+        for tag in form_data['tags']:
+            if (tag != ""):
+                tag_obj = Tag.objects.get(
+                    id=tag
+                )
+            article.tags.add(tag_obj)
+        article.save()
+        return HttpResponse("patch success")
 
     elif request.method == 'DELETE':
         toDelete = Article.objects.get(id=request.body)

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useHistory} from "react-router";
 import { Trans, useTranslation } from 'react-i18next';
 import { withCookies, useCookies } from 'react-cookie';
 import Sheet from './Sheet';
@@ -6,7 +7,8 @@ import Sheet from './Sheet';
 const CommunityBlock = ({articles, users, tags, curUser, handleDelete, handleFav}) => {
     const [Cookie, setCookie, removeCookie] = useCookies(['token', 'name']);
     const { t, i18n } = useTranslation();
-    
+    const history = useHistory();
+
     for (var i=0; i<articles.length; i++) {
         const raw_time = articles[i].modified_time.toString();
         articles[i].year = raw_time.split("T")[0].split("-")[0];
@@ -72,7 +74,7 @@ const CommunityBlock = ({articles, users, tags, curUser, handleDelete, handleFav
     }
 
     const handleEdit = function (item) {
-        return;
+        history.push(`/Community/edit/${item.id}`);
     }
 
     return (
@@ -86,7 +88,7 @@ const CommunityBlock = ({articles, users, tags, curUser, handleDelete, handleFav
                         <div className="titleSub">
                             <div className="date">{handleDate(item)}</div>
                             {Cookie.name == item.author_name ?
-                                <div className="editWrapper" onClick={handleEdit(item)}>
+                                <div className="editWrapper" onClick={()=>handleEdit(item)}>
                                     <svg version="1.1" id="Layer_1" x="0px" y="0px" height="1.25rem" width="1.25rem" viewBox="0 0 512 512">
                                         <g>
                                             <g>
