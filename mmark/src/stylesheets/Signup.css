@@ -20,6 +20,15 @@ h4 {
     margin: 20px 0px 20px 0px;
 }
 
+.Logo {
+    zoom: 0.5;
+}
+
+.Logo path {
+    stroke: white;
+    fill: white;
+}
+
 label {
     color: rgb(219, 219, 219);
 }
@@ -180,6 +189,7 @@ form {
     padding: 10px 15px 10px 15px;
     border-radius: 15px;
     margin: 10px;
+    cursor: pointer;
 }
 
 .buttonWrapper label {
@@ -188,6 +198,7 @@ form {
     padding: 10px 15px 10px 15px;
     border-radius: 15px;
     margin: 10px;
+    cursor: pointer;
 }
 
 .embedded-signup form input[type="submit"] {
