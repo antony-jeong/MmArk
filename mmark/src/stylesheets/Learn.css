@@ -245,7 +245,7 @@ body {
 }
 
 .Wrong:not(.updated):not(.started):not(.Next) {
-    animation: shake 0.2s;
+    animation: wrong-shake 0.2s;
 }
 
 .InputHistory{
@@ -273,7 +273,7 @@ body {
 }
 
 
-@keyframes shake {
+@keyframes wrong-shake {
     0% {
         transform: translate(1px, 1px) rotate(0deg);
     }

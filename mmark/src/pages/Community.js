@@ -9,6 +9,7 @@ import Popup from 'react-popup';
 import Logo from '../components/Logo';
 import CommunityBlock from "../components/CommunityBlock";
 import Sheet from '../components/Sheet';
+import LanguageSelectButton from '../components/LanguageSelectButton'
 import '../stylesheets/Community.css';
 import '../stylesheets/Popup.css';
 
@@ -202,6 +203,7 @@ class Community extends Component {
             <div className='Community'>
                 <Popup />
                 <Logo className="logo" isLink={true} />
+                <LanguageSelectButton className={"Language-Select-Dark"}/>
                 <div className="searchWrapper">
                     <form className="search" onSubmit={this.handleSubmit}>
                         <input type="text" className="searchInput" id="searchInput" placeholder="Search Title, Author, and Description in English"></input>
