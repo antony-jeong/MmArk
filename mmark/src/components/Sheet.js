@@ -146,9 +146,7 @@ const Sheet = ({ dataStructure, className, updateDS, focusNow, getFocusNow, view
 
     useEffect(()=>{
         if (document.querySelector('.cursor')){
-            var el = document.querySelector(".cursor");
-            window.scroll({left: el.offsetleft});
-        }
+            document.querySelector('.cursor').scrollIntoViewIfNeeded({block: "center", inline: "center"});}
     }, [cursorIndex])
 
     const [playingIndex, setPlayingIndex] = useState(-1);
