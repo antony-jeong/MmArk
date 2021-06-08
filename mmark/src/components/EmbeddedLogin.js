@@ -73,9 +73,6 @@ class EmbeddedLogin extends Component {
                   this.state.logged_in?
                   <div className="embedded-login-logined">
                     <MyProfile />
-                    <Link to={`/logout`} >
-                      <button className="logoutButton">{t("login.logout")}</button>
-                    </Link>
                   </div>
                   :
                   <div className="embedded-login-loggedout">

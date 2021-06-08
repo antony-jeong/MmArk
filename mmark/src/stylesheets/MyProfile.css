@@ -1,15 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
-.my-profile {
-    align-items: center;
-    flex-flow: column;
-    margin: 10px;
-    color: black;
-    text-align: center;
-    justify-content: center;
-    text-shadow: rgba(0, 0, 0, 0.4) 0 0 10px;
-}
 
-.my-profile .profile-pic {
+
+.my-profile .profile-pic{
     font-family: "Roboto Mono", sans-serif;
     width: 0;
     height: 0;
@@ -33,4 +25,29 @@
     position: relative;
     top: -15px;
     left: -15px;
+}
+
+.my-profile{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    background-color: white;
+    width: 200px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+}
+
+.logoutButton{
+    cursor: pointer;
+    outline: none;
+    border: none;
+    padding: 8px 15px;
+    background: rgb(161, 59, 59);
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
 }

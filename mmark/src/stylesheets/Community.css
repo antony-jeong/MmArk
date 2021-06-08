@@ -306,3 +306,9 @@ html {
 .favved.favWrapper svg {
     fill: #ffe135
 }
+
+.Community .my-profile{
+    position: absolute;
+    top: 60px;
+    right: 20px;
+}
