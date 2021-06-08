@@ -83,6 +83,18 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     message: "Do you already have an account?",
                     login: "Log In"
                 },
+                login: {
+                    message: "Don't you have an account?",
+                    signup: "Sign Up",
+                    logout: "Logout",
+                    username: "Username",
+                    password: "Password",
+                    wrong_account: "Invalid Username or Password",
+                    user_empty: "Username can't be empty",
+                    user_char: "Username only includes English alphabets and Numbers",
+                    password_empty: "Password can't be empty",
+                    password_char: "Password only includes English alphabets, numbers, ., -, +, _, @."
+                },
                 page404: {
                     title: "Page not found",
                     message1: "The page you're looking for doesn't exist or other error occured.",
@@ -163,7 +175,20 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     accept: "MmArk는 사용자의 어떠한 개인 정보도 다루지 않기 때문에, 회원가입시 개인정보 관련 취급 동의를 받은 것으로 간주합니다",
                     back: "뒤로",
                     message: "계정이 이미 있으신가요?",
-                    login: "로그인하기"
+                    login: "로그인하기",
+                },
+                login: {
+                    message: "아직도 계정이 없으신가요?",
+                    signup: "회원가입하기",
+                    logout: "로그아웃",
+                    username: "유저 이름",
+                    password: "비밀먼호",
+                    wrong_account: "잘못된 유저 이름 또는 비밀번호입니다",
+                    user_empty: "유저 이름이 비어있습니다",
+                    user_char: "유저 이름은 영문 알파벳 혹은 숫자만 가능합니다",
+                    password_empty: "비밀번호가 비어있습니다",
+                    password_char: "비밀번호는 영문 알파벳, 숫자, ., -, +, _, @ 만 가능합니다",
+                  login: "로그인하기"
                 },
                 page404: {
                     title: "페이지를 찾을 수 없습니다.",
@@ -171,7 +196,6 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     message2: "메인 화면이나 이전 페이지로 돌아가세요.",
                     goback: "이전 페이지",
                     gohome: "메인 화면"
-
                 }
             }
         }

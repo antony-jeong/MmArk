@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import "../stylesheets/Login.css";
 
 class LoginForm extends React.Component {
@@ -74,14 +75,15 @@ class LoginForm extends React.Component {
   }
 
   render() {
+    const { t } = this.props;
     return (
       <div className="login-form-with-message">
           <form onSubmit={e =>{ e.preventDefault(); if (this.handleValidation(this.state)) this.props.handle_login(e, this.state)}}>
             <div className="login-form">
-              <div className="username-empty"><div className="username-empty-text speech-bubble-up">Username can't be empty</div></div>
-              <div className="username-char"><div className="username-char-text speech-bubble-up">Username only includes English alphabets and Numbers</div></div>
+              <div className="username-empty"><div className="username-empty-text speech-bubble-up">{t("login.user_empty")}</div></div>
+              <div className="username-char"><div className="username-char-text speech-bubble-up">{t("login.user_char")}</div></div>
               <div className="login-username">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="username">{t("login.username")}</label>
                 <input
                   type="text"
                   name="username"
@@ -90,7 +92,7 @@ class LoginForm extends React.Component {
                 />
               </div>
               <div className="login-password">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">{t("login.password")}</label>
                 <div className="password-input">
                   <input
                     type="password"
@@ -103,8 +105,8 @@ class LoginForm extends React.Component {
                   </svg>
                 </div>
               </div>
-              <div className="password-empty"><div className="password-empty-text speech-bubble-down">Password can't be empty</div></div>
-              <div className="password-char"><div className="password-char-text speech-bubble-down">Password only includes English alphabets, numbers, ., -, +, _, @. </div></div>
+              <div className="password-empty"><div className="password-empty-text speech-bubble-down">{t("login.password_empty")}</div></div>
+              <div className="password-char"><div className="password-char-text speech-bubble-down">{t("login.password_char")}</div></div>
             </div>
             <label>
             <input type="submit"/>
@@ -114,10 +116,10 @@ class LoginForm extends React.Component {
             </svg>
             </label>
           </form>
-        <div className="wrong-account">Invalid Username or Password</div>
+        <div className="wrong-account">{t("login.wrong_account")}</div>
       </div>
     );
   }
 }
 
-export default LoginForm;
+export default withTranslation()(LoginForm);

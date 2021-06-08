@@ -134,6 +134,10 @@ html {
     margin-right: 10px;
 }
 
+.login-form-with-message form {
+    flex-direction: row;
+}
+
 @keyframes shake {
     0% {
         transform: translate(2px, 0);
@@ -172,6 +176,10 @@ html {
 
 .login-form.shake {
     animation: shake 0.2s
+}
+
+.embedded-login input {
+    box-shadow: none;
 }
 
 .embedded-login input[type="submit"] {
