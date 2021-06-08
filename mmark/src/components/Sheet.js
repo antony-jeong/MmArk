@@ -145,8 +145,10 @@ const Sheet = ({ dataStructure, className, updateDS, focusNow, getFocusNow, view
     }, [ds]);
 
     useEffect(()=>{
-        if (document.querySelector('.cursor'))
-            document.querySelector('.cursor').scrollIntoViewIfNeeded({inline: "center"});
+        if (document.querySelector('.cursor')){
+            var el = document.querySelector(".cursor");
+            window.scroll({left: el.offsetleft});
+        }
     }, [cursorIndex])
 
     const [playingIndex, setPlayingIndex] = useState(-1);
@@ -170,8 +172,8 @@ const Sheet = ({ dataStructure, className, updateDS, focusNow, getFocusNow, view
         }
     });
     useEffect(()=>{
-        if (document.querySelector('.skyBlue'))
-            document.querySelector('.skyBlue').scrollIntoView({block: "center", inline: "center"});
+        if (document.querySelector('.skyBlue')){
+            document.querySelector('.skyBlue').scrollIntoViewIfNeeded({block: "center", inline: "center"});}
     }, [playingIndex])
     const [margin, setMargin] = useState(false);
     const [sheetWidth, setSheetWidth] = useState(2000);
