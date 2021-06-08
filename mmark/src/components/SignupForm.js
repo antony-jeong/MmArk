@@ -56,51 +56,48 @@ class SignupForm extends React.Component {
 	}
 
 	handleSubmit = (e) => {
-		e.preventDefault();
-		const checkUsername = this.checkUsername(this.state.username);
-		var errorType = "";
-		if (checkUsername === "no_username" || checkUsername == "alphabet" || checkUsername ==="length") {
-			errorType = checkUsername;
-			return;
-		}
-		if (this.state.password == undefined) {
-			errorType = "no_password";
-			return;
-		}
-		if (!this.checkPassword(this.state.password)) {
-			errorType = "password";
-			return;
-		}
-		if (this.state.password != this.state.confirm_password) {
-			errorType = "confirm";
-			return;
-		}
-		if (errorType) {
-			switch (errorType) {
-				case "no_username":
-					document.querySelector('.username-empty').classList.add('show');
-				case "alphabet":
-					document.querySelector('.username-char').classList.add('show');
-				case "length":
-					document.querySelector('.username-length').classList.add('show');
-				case "no_password":
-					document.querySelector('.password-empty').classList.add('show');
-				case "password":
-					document.querySelector('.password-char').classList.add('show');
-				case "confirm":
-					document.querySelector('.password-confirm').classList.add('show');
-				default:
-					document.querySelector('.username-empty').classList.remove('show');
-					document.querySelector('.username-char').classList.remove('show');
-					document.querySelector('.username-length').classList.remove('show'); 
-					document.querySelector('.password-empty').classList.remove('show');
-					document.querySelector('.password-char').classList.remove('show');
-					document.querySelector('.password-confirm').classList.remove('show');
-			}
-			console.log(errorType);
-			return;
-		}
-		this.props.history.add("/");
+		// const checkUsername = this.checkUsername(this.state.username);
+		// var errorType = "";
+		// if (checkUsername === "no_username" || checkUsername == "alphabet" || checkUsername ==="length") {
+		// 	errorType = checkUsername;
+		// 	return;
+		// }
+		// if (this.state.password == undefined) {
+		// 	errorType = "no_password";
+		// 	return;
+		// }
+		// if (!this.checkPassword(this.state.password)) {
+		// 	errorType = "password";
+		// 	return;
+		// }
+		// if (this.state.password != this.state.confirm_password) {
+		// 	errorType = "confirm";
+		// 	return;
+		// }
+		// if (errorType) {
+		// 	switch (errorType) {
+		// 		case "no_username":
+		// 			document.querySelector('.username-empty').classList.add('show');
+		// 		case "alphabet":
+		// 			document.querySelector('.username-char').classList.add('show');
+		// 		case "length":
+		// 			document.querySelector('.username-length').classList.add('show');
+		// 		case "no_password":
+		// 			document.querySelector('.password-empty').classList.add('show');
+		// 		case "password":
+		// 			document.querySelector('.password-char').classList.add('show');
+		// 		case "confirm":
+		// 			document.querySelector('.password-confirm').classList.add('show');
+		// 		default:
+		// 			document.querySelector('.username-empty').classList.remove('show');
+		// 			document.querySelector('.username-char').classList.remove('show');
+		// 			document.querySelector('.username-length').classList.remove('show'); 
+		// 			document.querySelector('.password-empty').classList.remove('show');
+		// 			document.querySelector('.password-char').classList.remove('show');
+		// 			document.querySelector('.password-confirm').classList.remove('show');
+		// 	}
+		// 	console.log(errorType);
+		// }
 		this.props.post_signup(e, this.state);
 	}
 	

@@ -54,7 +54,11 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     year_plural: " years ago",
                     new_post: "+ NEW POST",
                     show_description: "Show Description ▽",
-                    hide_description: "Hide Description △"
+                    hide_description: "Hide Description △",
+                    popup_fav_desc: "Please Log In to use Like",
+                    popup_cancel: "Cancel",
+                    popup_move_login: "Move to Login Page",
+                    popup_post_desc: "Please Log In to Post",
                 }, 
                 post: {
                     discard: "Discard and Go Back",
@@ -148,7 +152,11 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     year_plural: " 년 전",
                     new_post: "+ 글쓰기",
                     show_description: "더보기 ▽",
-                    hide_description: "접기 △"
+                    hide_description: "접기 △",
+                    popup_fav_desc: "좋아요 하려면 로그인하세요",
+                    popup_cancel: "취소",
+                    popup_move_login: "로그인하러 가기",
+                    popup_post_desc: "글을 쓰려면 로그인하세요",
                 }, 
                 post: {
                     discard: "취소",

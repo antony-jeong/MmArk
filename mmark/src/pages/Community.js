@@ -118,6 +118,7 @@ class Community extends Component {
     };
 
     handleFav = (e) => {
+        const { t } = this.props;
         e.preventDefault();
         const { cookies } = this.props;
         const articleId = Number(e.currentTarget.getAttribute('value'));
@@ -150,16 +151,16 @@ class Community extends Component {
             });
         });}
         else {Popup.create({
-            content: 'Please Log In to use Favorites',
+            content: t("community.popup_fav_desc"),
             buttons: {
                 left: [{
-                    text: 'Cancel',
+                    text: t("community.popup_cancel"),
                     action: function () {
                         Popup.close();
                     }
                 }],
                 right: [{
-                    text: 'Move to Login Page',
+                    text: t("community.popup_move_login"),
                     className: 'success',
                     action: this.goToLogin
                 }]
@@ -169,20 +170,21 @@ class Community extends Component {
     }
 
     handleNewPost = () => {
+        const { t } = this.props;
         if (this.props.cookies.get('name'))
             this.props.history.push('/Community/newPost/');
         else {
             {Popup.create({
-                content: 'Please Log In to Post',
+                content: t("community.popup_post_desc"),
                 buttons: {
                     left: [{
-                        text: 'Cancel',
+                        text: t("community.popup_cancel"),
                         action: function () {
                             Popup.close();
                         }
                     }],
                     right: [{
-                        text: 'Move to Login Page',
+                        text: t("community.popup_move_login"),
                         className: 'success',
                         action: this.goToLogin
                     }]
@@ -206,7 +208,7 @@ class Community extends Component {
                 <LanguageSelectButton className={"Language-Select-Dark"}/>
                 <div className="searchWrapper">
                     <form className="search" onSubmit={this.handleSubmit}>
-                        <input type="text" className="searchInput" id="searchInput" placeholder="Search Title, Author, and Description in English"></input>
+                        <input type="text" className="searchInput" id="searchInput" placeholder={t("community.search_placeholder")}></input>
                     </form>
                     <div className="searchButtonWrapper" onClick={this.handleSubmit}>
                         <svg className="searchButton" width="33" height="31" viewBox="0 0 33 31" fill="none" xmlns="http://www.w3.org/2000/svg">
