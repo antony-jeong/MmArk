@@ -201,6 +201,7 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH, focus
       accidental: [editAccidental], noteDecoration: ["x"]
     });
     setEditAccidental("x");
+    setIsStacking(false);
     setEditExtend(false);
   };
   const TimeSignatureCell = (n, d, area) => {
