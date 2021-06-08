@@ -286,7 +286,7 @@ const LearnRoadmapSignData = [{
     "inst": 
             `A <term>fermata</term>${Img_fermata} on a <term>double barline</term>${Img_dBarline} works same as fine <term>fine</term>${Img_fine}.<br></br>
             Play the sheet in the correct order!`,
-    "inst_kr": `반복 도중에 <term>피네</term>${Img_fine} 를 만났을 때는 연주를 멈춥니다. <br></br>
+    "inst_kr": `<term>겹세로줄</term>${Img_dBarline} 위의 <term>페르마타</term>${Img_fermata} 는 <term>피네</term>${Img_fine} 와 같습니다. <br></br>
                 악보를 알맞은 순서로 연주해보세요!`,
         "ds": [{
             "objectType": "p",
