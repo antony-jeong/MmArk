@@ -141,7 +141,6 @@ const calcSheetObjectMargin = (sheet, totalWidth, isBeingEdited) => {
         break;
     }
   }
-  console.log(dim);
   let fixed = 0;
   let ration64 = 0;
   for (let i = 0; i < dim.length; i++) {
@@ -165,6 +164,17 @@ const calcSheetObjectMargin = (sheet, totalWidth, isBeingEdited) => {
     resultTotalWidth = sheetWidth;
   }
   let remainingWidth = resultTotalWidth-fixed;
+  if (isBeingEdited) {
+    remainingWidth = sheetWidth-fixed;
+  } else {
+    if (totalLength === 0) {
+      remainingWidth = resultTotalWidth;
+      for (let i = 0; i < dim.length; i++) {
+        dim[i].al = 1;
+      }
+      totalLength = dim.length;
+    }
+  }
   let remainingLength = totalLength;
   const resultArray = [];
   for (let i = 0; i < dim.length; i++) {

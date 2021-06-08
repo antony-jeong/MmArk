@@ -98,6 +98,7 @@ const Sheet = ({ dataStructure, className, updateDS, focusNow, getFocusNow, view
     const getState = (playState) => setIsPlaying(playState);
     const [ds, setDs] = useState(false);
     const [isMutated, setIsMutated] = useState(false);
+    const [isBeingEdited, setIsBeingEdited] = useState(false);
     const propSetDs = (newDs) => {
         setDs(newDs);
         if (updateDS) { updateDS(newDs); }
@@ -166,14 +167,19 @@ const Sheet = ({ dataStructure, className, updateDS, focusNow, getFocusNow, view
     const [sheetWidth, setSheetWidth] = useState(2000);
     useEffect(() => {
         if(ds){
-            const r = calcSheetObjectMargin(ds, minMargin);
-            setSheetWidth(r[0]);
-            setMargin(r[1]);
+            if (isBeingEdited !== undefined) {
+                const r = calcSheetObjectMargin(ds, minMargin, isBeingEdited);
+                setSheetWidth(r[0]);
+                setMargin(r[1]);
+            } else {
+                const r = calcSheetObjectMargin(ds, minMargin, false);
+                setSheetWidth(r[0]);
+                setMargin(r[1]);
+            }
         }
-    }, [ds, minMargin]);
+    }, [ds, minMargin, isBeingEdited]);
     //document.getElementById("sheetwrapper").clientWidth
     //document.getElementById("sheetwrapper").clientWidth-2
-    const [isBeingEdited, setIsBeingEdited] = useState(false);
     const data = ds || dataStructure;
     var trebled = true;
     const returnValue = data.map((obj, index) => {
