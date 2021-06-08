@@ -185,7 +185,7 @@ const CommunityBlock = ({articles, users, tags, curUser, handleDelete, handleFav
                                             </div>
                                         }
                                             <div className="tagWrapper">{item.tags.length > 0 ? item.tags.map(i => (
-                                                <div className="tag">#{tags[i - 1] != undefined ? tags[i - 1].name + " " : ""}</div>
+                                                <div className="tag" style={{background: `${tags[i-1].color}`}}>#{tags[i - 1] != undefined ? tags[i - 1].name + " " : ""}</div>
                                                 )) : ""}
                                             </div>
                                             <div className="descButtonWrapper" id="descButtonWrapper">
