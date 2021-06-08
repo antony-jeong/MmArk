@@ -21,6 +21,7 @@ const isControlKey = (e) => {
 const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH, focusNow, setIsMutated}) => {
   const [editLength, setEditLength] = useState(2);
   const [editExtend, setEditExtend] = useState(false);
+  const [isStacking, setIsStacking] = useState(false);
   const [editAccidental, setEditAccidental] = useState("x");
   const [activeDD, setActiveDD] = useState("x");
   const handleMouseDown = (e) => {
@@ -175,6 +176,23 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH, focus
     setIsMutated(true);
   }
   const addNote = (isRest) => {
+    if (isStacking) {
+      if (ds[ds.length-1].objectType === "n") {
+        if (!ds[ds.length-1].rest) {
+          if(!ds[ds.length-1].height.includes(h)) {
+            const noteobj = {
+              objectType: "n", rest: false, height: [...ds[ds.length-1].height, h], length: ds[ds.length-1].length, extend: ds[ds.length-1].extend,
+              accidental: [...ds[ds.length-1].accidental, editAccidental], noteDecoration: ["x"]
+            };
+            setDs([...ds.slice(0, ds.length-1), noteobj]);
+            setIsMutated(true);
+            setIsStacking(false);
+            setEditAccidental("x");
+            return;
+          }
+        }
+      }
+    }
     addObj({
       objectType: "n", rest: isRest, height: [h], length: editLength, extend: editExtend,
       accidental: [editAccidental], noteDecoration: ["x"]
@@ -248,6 +266,17 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH, focus
       <div className={"sheet-edit-control-button"}>stack</div>
     </div> */}
     <div className={"sheet-edit-control-bundle"}>
+      <div
+        className={"sheet-edit-control-button"+(editExtend?" chosen":"")}
+        onClick={()=>setEditExtend(!editExtend)}
+        style={{width: "30px", textAlign: "center", font: "Roboto"}}
+      >
+        <div style={{display: "flex", justifyContent: "center", alignItems: "flex-end", height: "100%", boxSizing: "border-box", paddingBottom: "3px"}}>
+        <div style={{width: "6px", height: "6px", borderRadius: "3px", backgroundColor: "black"}}></div>
+        </div>
+      </div>
+    </div>
+    <div className={"sheet-edit-control-bundle"}>
       <div className={"sheet-edit-control-button"+(editLength===0?" chosen":"")} onClick={()=>setEditLength(0)} style={{width: "30px"}}
       ><div style={{transform: "translate(30%, 10%)"}}><NoteIcon_1 className={"black"} height={"24px"} /></div></div>
       <div className={"sheet-edit-control-button"+(editLength===1?" chosen":"")} onClick={()=>setEditLength(1)} style={{width: "30px"}}
@@ -286,16 +315,12 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH, focus
     </div>
     <div className={"sheet-edit-control-bundle"}>
       <div
-        className={"sheet-edit-control-button"+(editExtend?" chosen":"")}
-        onClick={()=>setEditExtend(!editExtend)}
-        style={{width: "30px", textAlign: "center", font: "Roboto"}}
+        className={"sheet-edit-control-button"+(isStacking?" chosen":"")}
+        onClick={()=>{setIsStacking(!isStacking);}}
+        style={{width: "30px", textAlign: "center", font: "Roboto", fontSize: "12px", color: "black", boxSizing: "border-box", paddingTop: "7px"}}
       >
-        <div style={{display: "flex", justifyContent: "center", alignItems: "flex-end", height: "100%", boxSizing: "border-box", paddingBottom: "3px"}}>
-        <div style={{width: "6px", height: "6px", borderRadius: "3px", backgroundColor: "black"}}></div>
-        </div>
+        Stack
       </div>
-    </div>
-    <div className={"sheet-edit-control-bundle"}>
       <div
         className={"sheet-edit-control-button"}
         onClick={()=>addNote(false)}

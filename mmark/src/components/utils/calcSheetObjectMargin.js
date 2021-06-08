@@ -163,16 +163,20 @@ const calcSheetObjectMargin = (sheet, totalWidth, isBeingEdited) => {
   if (sheetWidth > totalWidth) {
     resultTotalWidth = sheetWidth;
   }
-  let remainingWidth = resultTotalWidth-fixed;
+  let remainingWidth = resultTotalWidth-fixed-1;
   if (isBeingEdited) {
     remainingWidth = sheetWidth-fixed;
   } else {
     if (totalLength === 0) {
-      remainingWidth = resultTotalWidth;
+      remainingWidth = resultTotalWidth-1;
       for (let i = 0; i < dim.length; i++) {
-        dim[i].al = 1;
+        if (sheet[i].objectType !== "b" || sheet[i].type !== "t") {
+          totalLength++;
+          dim[i].al = 1;
+        } else {
+          remainingWidth -= wTermBar;
+        }
       }
-      totalLength = dim.length;
     }
   }
   let remainingLength = totalLength;
