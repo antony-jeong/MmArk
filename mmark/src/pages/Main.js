@@ -50,7 +50,7 @@ const Main = () => {
           <GameSelectButton src={'LearnChord'} name={t("main.name_chord")}>
             <Trans i18nKey="main.desc_chord"/>
           </GameSelectButton>
-          <GameSelectButton /*src={'LearnRoadmapSign'}*/ name={t("main.name_roadmap")}>
+          <GameSelectButton src={'LearnRoadmapSign'} name={t("main.name_roadmap")}>
             <Trans i18nKey="main.desc_roadmap"/>  
           </GameSelectButton>
         </div>
