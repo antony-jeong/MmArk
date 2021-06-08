@@ -17,6 +17,12 @@ html {
     left: 50px;
 }
 
+.Community .Language-Select-Dark{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
 .searchWrapper {
     display: flex;
     width: 60vw;

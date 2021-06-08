@@ -254,7 +254,7 @@ body {
 }
 
 .Wrong:not(.updated):not(.started):not(.Next) {
-    animation: shake 0.2s;
+    animation: wrong-shake 0.2s;
 }
 
 .InputHistory {
@@ -280,7 +280,8 @@ body {
     opacity: 0;
 }
 
-@keyframes shake {
+
+@keyframes wrong-shake {
     0% {
         transform: translate(1px, 1px) rotate(0deg);
     }
@@ -395,7 +396,7 @@ body {
 }
 
 .sheet-top-wrapper.focused:hover {
-    border: rgba(113, 71, 203, 1) solid 6px;
+    border: rgba(113, 71, 203, 0.5) solid 6px;
 }
 
 .sheet-top-wrapper--create {
@@ -418,7 +419,7 @@ body {
 }
 
 .sheet-top-wrapper--create.focused:hover {
-    border: rgba(113, 71, 203, 1) solid 6px;
+    border: rgba(113, 71, 203, 0.5) solid 6px;
 }
 
 .sheet-top-wrapper--read {
@@ -636,6 +637,19 @@ body {
 }
 
 @media screen and (max-width: 900px) {
+
+    .sheet-edit-control-button-delete {
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        vertical-align: middle;
+        background: #ffd4c1;
+    }
+
+    .sheet-edit-control-button-delete:hover {
+        background: #ffc2a7;
+    }
+
     .LearnPage {
         width: 90vw;
         margin: 0 auto;

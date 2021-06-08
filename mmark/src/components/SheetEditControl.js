@@ -289,44 +289,58 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH, focus
         className={"sheet-edit-control-button"+(editExtend?" chosen":"")}
         onClick={()=>setEditExtend(!editExtend)}
         style={{width: "30px", textAlign: "center", font: "Roboto"}}
-      >Dot</div>
+      >
+        <div style={{display: "flex", justifyContent: "center", alignItems: "flex-end", height: "100%", boxSizing: "border-box", paddingBottom: "3px"}}>
+        <div style={{width: "6px", height: "6px", borderRadius: "3px", backgroundColor: "black"}}></div>
+        </div>
+      </div>
     </div>
     <div className={"sheet-edit-control-bundle"}>
       <div
         className={"sheet-edit-control-button"}
         onClick={()=>addNote(false)}
-        style={{width: "70px", textAlign: "center", font: "Roboto"}}
-      >Put note</div>
-      <div
-        className={"sheet-edit-control-button"}
-        onClick={()=>addNote(true)}
-        style={{width: "70px", textAlign: "center", font: "Roboto"}}
-      >Put rest</div>
-      <div
-        className={"sheet-edit-control-button"}
-        onClick={()=>addObj({objectType: "b", type: "b"})}
-        style={{width: "60px", textAlign: "center", font: "Roboto"}}
+        style={{width: "30px", textAlign: "center", font: "Roboto", fontSize: "12px", color: "black"}}
       >
-        Barline
+        Put<br/>Note
       </div>
       <div
         className={"sheet-edit-control-button"}
+        onClick={()=>addNote(true)}
+        style={{width: "30px", textAlign: "center", font: "Roboto", fontSize: "12px", color: "black"}}
+      >
+        Put<br/>Rest
+      </div>
+      <div
+        className={"sheet-edit-control-button"}
+        onClick={()=>addObj({objectType: "b", type: "b"})}
+        style={{width: "30px", textAlign: "center", font: "Roboto", fontSize: "23px", color: "black"}}
+      >
+        |
+      </div>
+      <div
+        className={"sheet-edit-control-button-delete"}
         onClick={()=>{if (idx > 0) { delObj(); }}}
-        style={{width: "60px", textAlign: "center", font: "Roboto", background: "#ffc2a7"}}
+        style={{width: "50px", textAlign: "center", font: "Roboto", fontSize: "15px", paddingTop: "5px", boxSizing: "border-box", color: "black"}}
       >
         Delete
       </div>
     </div>
     <div className={"sheet-edit-control-bundle"}>
-      {/* <div className={"sheet-edit-control-button"} style={{width: "30px"}}>p</div> */}
       <div className={"sheet-edit-control-dropup"}>
         <div
           className={"button"+(activeDD==="c"?" chosen":"")}
           onClick={()=>{setActiveDD(activeDD==="c"?"x":"c")}}
-          style={{width: "130px", textAlign: "center", font: "Roboto"}}
+          style={{width: "40px", textAlign: "center", font: "Roboto", display: "flex", justifyContent: "center"}}
           ddtype="c"
         >
-          Clef / Time Sign
+          <img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/clef_g.svg"} style = {{position: "relative", top: "0px", left: "0px"}} height = "30px" ddtype="c"/>
+          <div
+            style={{flexDirection: "column"}} ddtype="c"
+          >
+            <div style = {{width: "0px"}} ddtype="c"><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/numerator_4.svg"} style = {{position: "relative", top: "0px", left: "3px"}} height = "15px" ddtype="c"/></div>
+            <div style = {{position: "relative", top: "-4px", left: "3px", width: "20px", height: "1px", borderTop: "1px solid black"}} ddtype="c"></div>
+            <div style = {{width: "0px"}} ddtype="c"><img src = {process.env.PUBLIC_URL + "/musical_symbols_svg/denominator_4.svg"} style = {{position: "relative", top: "-7px", left: "3px"}} height = "15px" ddtype="c"/></div>
+          </div>
         </div>
         <div
           className={"content"+(activeDD==="c"?" chosen":"")}
@@ -373,10 +387,10 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH, focus
         <div
           className={"button"+(activeDD==="k"?" chosen":"")}
           onClick={()=>{setActiveDD(activeDD==="k"?"x":"k")}}
-          style={{width: "75px", textAlign: "center", font: "Roboto"}}
+          style={{width: "40px", textAlign: "center", font: "Roboto", fontSize: "12px", color: "black"}}
           ddtype="k"
         >
-          Key sign
+          Key<br/>Sign.
         </div>
         <div
           className={"content"+(activeDD==="k"?" chosen":"")}
@@ -400,7 +414,7 @@ const SheetEditControl = ({isBeingEdited, ds, setDs, idx, setIdx, h, setH, focus
           {KeySignatureCell(7, "2 / 7 / 3 / 8")}
         </div>
       </div>
-      <span style={{color: "red"}}>*Arrow keys to move cursor</span>
+      {/* <span style={{color: "red"}}>*Arrow keys to move cursor</span> */}
       {/* <div className={"sheet-edit-control-dropup"}>
       <div
           className={"button"+(activeDD==="b"?" chosen":"")}

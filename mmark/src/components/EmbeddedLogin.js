@@ -6,6 +6,7 @@ import LoginForm from '../components/LoginForm';
 import { withTranslation } from 'react-i18next';
 import { withRouter } from 'react-router-dom';
 import { withCookies, Cookies } from "react-cookie";
+import MyProfile from './MyProfile';
 
 
 function handleErrors(response) {
@@ -71,10 +72,10 @@ class EmbeddedLogin extends Component {
                 {
                   this.state.logged_in?
                   <div className="embedded-login-logined">
+                    <MyProfile />
                     <Link to={`/logout`} >
                       <button className="logoutButton">{t("login.logout")}</button>
                     </Link>
-                    {`Hello, ${this.state.username}`}
                   </div>
                   :
                   <div className="embedded-login-loggedout">

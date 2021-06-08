@@ -5,6 +5,7 @@ import { Trans, useTranslation, withTranslation } from 'react-i18next';
 import Sheet from '../components/Sheet';
 import Logo from '../components/Logo';
 import '../stylesheets/NewPost.css';
+import LanguageSelectButton from '../components/LanguageSelectButton';
 
 class NewPost extends Component {
 
@@ -112,6 +113,7 @@ class NewPost extends Component {
         return (
             <div className='NewPost'>
                 <Logo className='logo' isLink={true}/>
+                <LanguageSelectButton className="Language-Select-Dark" />
                 <div className='Form'>
                     <form onSubmit={(e) => {this.handlePost(e, this.state)}}>
                         {t("post.title")}<br/>

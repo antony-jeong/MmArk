@@ -8,11 +8,8 @@ import {BrowserRouter, Link} from 'react-router-dom';
 import '../stylesheets/Main.css';
 import Login from './Login';
 import EmbeddedLogin from '../components/EmbeddedLogin';
+import LanguageSelectButton from '../components/LanguageSelectButton';
 
-const lngs = {
-  en: { nativeName: "English" },
-  kr: { nativeName: "한국어" }
-};
 
 const Main = () => {
   const { t, i18n } = useTranslation();
@@ -28,13 +25,7 @@ const Main = () => {
           <GameSelectButton src={"Community"} name={t("main.name_community")}>
             <Trans i18nKey="main.desc_community"/>
           </GameSelectButton>
-          <div className={'Language-Select'}>
-            {Object.keys(lngs).map((lng) => (
-              <button key={lng} className={i18n.language === lng ? "selected" : ""} type="submit" onClick={() => i18n.changeLanguage(lng)}>
-                {lngs[lng].nativeName}
-              </button>
-            ))}
-          </div>
+          <LanguageSelectButton className={"Language-Select-Dark"}/>
           <div className={'Made-by'}>{t("main.madeby")} ∙ <a href="https://github.com/antony-jeong/MmArk" target="_blank">GitHub</a></div>
         </div>
         <div className={'Main-Button-Container'}>
@@ -50,7 +41,7 @@ const Main = () => {
           <GameSelectButton src={'LearnChord'} name={t("main.name_chord")}>
             <Trans i18nKey="main.desc_chord"/>
           </GameSelectButton>
-          <GameSelectButton /*src={'LearnRoadmapSign'}*/ name={t("main.name_roadmap")}>
+          <GameSelectButton src={'LearnRoadmapSign'} name={t("main.name_roadmap")}>
             <Trans i18nKey="main.desc_roadmap"/>  
           </GameSelectButton>
         </div>

@@ -27,19 +27,20 @@ function App() {
     return (
         <div>
             <Switch>
-                <Route path="/LearnNote/:pagenum" component={LearnNote}/>
-                <Route path="/LearnRhythm/:pagenum" component={LearnRhythm}/>
-                <Route path="/LearnInterval/:pagenum" component={LearnInterval}/>
-                <Route path="/LearnChord/:pagenum" component={LearnChord}/>
-                <Route path="/LearnRoadmapSign/:pagenum" component={LearnRoadmapSign} />
-                <Route path="/Community/NewPost" component={NewPost} />
-                <Route path="/Community/edit/:id" component={CommunityEdit} />
-                <Route path="/Community/:keyword" component={Community} />
-                <Route path="/Community" component={Community} />
-                <Route path="/login" component={Login} />
-                <Route path="/logout" component={Logout} />
-                <Route path="/signup" component={Signup}/>
-                <Route path="/" component={Main} />
+                <Route exact path="/LearnNote/:pagenum" component={LearnNote}/>
+                <Route exact path="/LearnRhythm/:pagenum" component={LearnRhythm}/>
+                <Route exact path="/LearnInterval/:pagenum" component={LearnInterval}/>
+                <Route exact path="/LearnChord/:pagenum" component={LearnChord}/>
+                <Route exact path="/LearnRoadmapSign/:pagenum" component={LearnRoadmapSign} />
+                <Route exact path="/Community/NewPost" component={NewPost} />
+                <Route exact path="/Community/:keyword" component={Community} />
+                <Route exact path="/Community/edit/:id" component={CommunityEdit} />
+                <Route exact path="/Community" component={Community} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/logout" component={Logout} />
+                <Route exact path="/signup" component={Signup}/>
+                <Route exact path="/" component={Main} />
+                <Route component={InvalidPage} />
             </Switch>
         </div>
     );

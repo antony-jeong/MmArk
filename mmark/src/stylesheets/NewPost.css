@@ -30,6 +30,12 @@ html {
     border-bottom: none;
 }
 
+.NewPost .Language-Select-Dark{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
 .logo {
     display: inline;
     zoom: 0.4;

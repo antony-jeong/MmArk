@@ -94,6 +94,13 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     user_char: "Username only includes English alphabets and Numbers",
                     password_empty: "Password can't be empty",
                     password_char: "Password only includes English alphabets, numbers, ., -, +, _, @."
+                },
+                page404: {
+                    title: "Page not found",
+                    message1: "The page you're looking for doesn't exist or other error occured.",
+                    message2: "Go back, or go to Main Page.",
+                    goback: "Go back",
+                    gohome: "Go to Main Page"
                 }
             }
         },
@@ -180,7 +187,15 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     user_empty: "유저 이름이 비어있습니다",
                     user_char: "유저 이름은 영문 알파벳 혹은 숫자만 가능합니다",
                     password_empty: "비밀번호가 비어있습니다",
-                    password_char: "비밀번호는 영문 알파벳, 숫자, ., -, +, _, @ 만 가능합니다"
+                    password_char: "비밀번호는 영문 알파벳, 숫자, ., -, +, _, @ 만 가능합니다",
+                  login: "로그인하기"
+                },
+                page404: {
+                    title: "페이지를 찾을 수 없습니다.",
+                    message1: "요청한 페이지가 존재하지 않거나, 다른 오류가 발생했을 수 있습니다.",
+                    message2: "메인 화면이나 이전 페이지로 돌아가세요.",
+                    goback: "이전 페이지",
+                    gohome: "메인 화면"
                 }
             }
         }
