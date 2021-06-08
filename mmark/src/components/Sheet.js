@@ -143,6 +143,12 @@ const Sheet = ({ dataStructure, className, updateDS, focusNow, getFocusNow, view
             setMargin(calcSheetObjectMargin(ds, minMargin));
         }
     }, [ds]);
+
+    useEffect(()=>{
+        if (document.querySelector('.cursor'))
+            document.querySelector('.cursor').scrollIntoViewIfNeeded({inline: "center"});
+    }, [cursorIndex])
+
     const [playingIndex, setPlayingIndex] = useState(-1);
     const [playingTripletIndex, setPlayingTripletIndex] = useState(-1);
     const changeHighlight = (index) => setPlayingIndex(index);
@@ -158,11 +164,15 @@ const Sheet = ({ dataStructure, className, updateDS, focusNow, getFocusNow, view
         setMinMargin(sheetLengthStandard.current.clientWidth-31);
     }, []);
     useEffect(() => {
-        window.addEventListener("resize", handleResize)
+        window.addEventListener("resize", handleResize);
         return() =>{
             window.removeEventListener("resize", handleResize)
         }
     });
+    useEffect(()=>{
+        if (document.querySelector('.skyBlue'))
+            document.querySelector('.skyBlue').scrollIntoView({block: "center", inline: "center"});
+    }, [playingIndex])
     const [margin, setMargin] = useState(false);
     const [sheetWidth, setSheetWidth] = useState(2000);
     useEffect(() => {
