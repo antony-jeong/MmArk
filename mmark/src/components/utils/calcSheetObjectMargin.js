@@ -199,6 +199,9 @@ const calcSheetObjectMargin = (sheet, totalWidth, isBeingEdited) => {
       }
     }
   }
+  if (isBeingEdited) {
+    resultTotalWidth += totalWidth;
+  }
   return [resultTotalWidth, resultArray];
 };
 
