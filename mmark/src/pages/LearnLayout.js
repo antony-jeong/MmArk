@@ -17,7 +17,7 @@ import LearnNoteData from '../LearnNoteData';
 import LearnRhythmData from '../LearnRhythmData';       
 import LearnIntervalData from '../LearnIntervalData';    
 import LearnChordData from '../LearnChordData';          //because the corresponding json is not written yet
-import LearnRoadmapSignData from '../LearnNoteData';    //
+import LearnRoadmapSignData from '../LearnRoadmapSignData';    //
 import Checker from '../Checker';
 
 
