@@ -17,7 +17,7 @@ const Main = () => {
   const [Cookie, setCookie, removeCookie] = useCookies(['token', 'name', 'language']);
   const [isLoggedIn, setIsLoggedIn] = useState(Cookie.token !== undefined);
   const cookies = new Cookies();
-  const [language, setLanguage] = useState(cookies.get('language'));
+  const [language, setLanguage] = useState(cookies.get('language')?cookies.get('language'):'en');
   useEffect(()=>{
       i18n.changeLanguage(language);
       cookies.set('language', language, { path: '/' });
