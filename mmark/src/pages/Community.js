@@ -196,7 +196,7 @@ class Community extends Component {
 
     goToLogin = () => {
         Popup.close();
-        this.props.history.push('/login');
+        this.props.history.push('/');
     }
 
     render() {
