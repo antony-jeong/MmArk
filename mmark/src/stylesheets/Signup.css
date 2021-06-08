@@ -9,27 +9,27 @@ body {
     justify-content: center;
 }
 
-h3 {
+.sign-up h3 {
     color: white;
     font-size: 2rem;
     font-weight: 300;
 }
 
-h4 {
+.sign-up h4 {
     color: white;
     margin: 20px 0px 20px 0px;
 }
 
-.Logo {
+.sign-up .Logo {
     zoom: 0.5;
 }
 
-.Logo path {
+.sign-up .Logo path {
     stroke: white;
     fill: white;
 }
 
-label {
+.sign-up label {
     color: rgb(219, 219, 219);
 }
 
@@ -56,7 +56,7 @@ input[type="checkbox"] {
     align-items: center;
 }
 
-form {
+.sign-up form {
     display: flex;
     flex-direction: column;
     display: center;
