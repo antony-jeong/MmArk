@@ -206,7 +206,7 @@ class Community extends Component {
                 <LanguageSelectButton className={"Language-Select-Dark"}/>
                 <div className="searchWrapper">
                     <form className="search" onSubmit={this.handleSubmit}>
-                        <input type="text" className="searchInput" id="searchInput" placeholder="Search Title, Author, and Description in English"></input>
+                        <input type="text" className="searchInput" id="searchInput" placeholder={t("community.search_placeholder")}></input>
                     </form>
                     <div className="searchButtonWrapper" onClick={this.handleSubmit}>
                         <svg className="searchButton" width="33" height="31" viewBox="0 0 33 31" fill="none" xmlns="http://www.w3.org/2000/svg">

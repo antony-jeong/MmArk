@@ -54,7 +54,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     year_plural: " years ago",
                     new_post: "+ NEW POST",
                     show_description: "Show Description ▽",
-                    hide_description: "Hide Description △"
+                    hide_description: "Hide Description △",
+                    search_placeholder: "Search Title, Author, and Description in English"
                 }, 
                 post: {
                     discard: "Discard and Go Back",
@@ -148,7 +149,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     year_plural: " 년 전",
                     new_post: "+ 글쓰기",
                     show_description: "더보기 ▽",
-                    hide_description: "접기 △"
+                    hide_description: "접기 △",
+                    search_placeholder: "제목, 작성자, 내용을 영어로 검색하세요."
                 }, 
                 post: {
                     discard: "취소",
@@ -175,20 +177,20 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                     accept: "MmArk는 사용자의 어떠한 개인 정보도 다루지 않기 때문에, 회원가입시 개인정보 관련 취급 동의를 받은 것으로 간주합니다",
                     back: "뒤로",
                     message: "계정이 이미 있으신가요?",
-                    login: "로그인하기",
+                    login: "로그인",
                 },
                 login: {
                     message: "아직도 계정이 없으신가요?",
                     signup: "회원가입하기",
                     logout: "로그아웃",
                     username: "유저 이름",
-                    password: "비밀먼호",
+                    password: "비밀번호",
                     wrong_account: "잘못된 유저 이름 또는 비밀번호입니다",
                     user_empty: "유저 이름이 비어있습니다",
                     user_char: "유저 이름은 영문 알파벳 혹은 숫자만 가능합니다",
                     password_empty: "비밀번호가 비어있습니다",
                     password_char: "비밀번호는 영문 알파벳, 숫자, ., -, +, _, @ 만 가능합니다",
-                  login: "로그인하기"
+                  login: "로그인"
                 },
                 page404: {
                     title: "페이지를 찾을 수 없습니다.",
