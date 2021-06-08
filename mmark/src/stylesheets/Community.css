@@ -17,7 +17,7 @@ html {
     left: 50px;
 }
 
-.Community .Language-Select-Dark{
+.Community .Language-Select-Dark {
     position: absolute;
     top: 0px;
     right: 0px;
@@ -273,7 +273,6 @@ html {
     font-size: 1.125rem;
     font-weight: 200;
     border-radius: 15px;
-    background-color: #70b8ce;
     display: inline-block;
     padding: 5px 20px 5px 20px;
 }

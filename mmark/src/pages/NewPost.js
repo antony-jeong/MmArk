@@ -122,7 +122,7 @@ class NewPost extends Component {
                         {t("post.tags")} <br />
                         <div className="tagWrapper">
                             {this.state.tags_total.map(item => (
-                                <div className="tagButton" style={{background: `${item.color}`}} onClick={this.handleTagClick}>{item.name}</div>
+                                <div className="tagButton" style={`background: ${item.color}`} onClick={this.handleTagClick}>{item.name}</div>
                             ))}
                         </div>
                         <Sheet className="Sheet" dataStructure={this.state.initialDs} updateDS={this.updateDS} viewMode={"create"} focusNow={this.state.focusNow} getFocusNow={this.genGetFocusNow("s")}/>
