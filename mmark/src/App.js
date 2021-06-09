@@ -36,7 +36,7 @@ function App() {
                 <Route exact path="/Community/:keyword" component={Community} />
                 <Route exact path="/Community/edit/:id" component={CommunityEdit} />
                 <Route exact path="/Community" component={Community} />
-                <Route exact path="/login" component={Login} />
+                {/* <Route exact path="/login" component={Login} /> */}
                 <Route exact path="/logout" component={Logout} />
                 <Route exact path="/signup" component={Signup}/>
                 <Route exact path="/" component={Main} />
