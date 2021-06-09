@@ -118,7 +118,7 @@ class NewPost extends Component {
                     <form onSubmit={(e) => {this.handlePost(e, this.state)}}>
                         {t("post.title")}<br/>
                         <input className='textInput' type={"text"} name={"title"} onChange={this.handleChange} onClick={this.genGetFocusNow("o")}/><br />
-                        {t("post.author")} {this.state.username}<br />
+                        {/* {t("post.author")} {this.state.username}<br /> */}
                         {t("post.tags")} <br />
                         <div className="tagWrapper">
                             {this.state.tags_total.map(item => (
