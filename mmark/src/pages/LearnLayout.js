@@ -87,7 +87,10 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
             clearTimeout(updateTimer);
             update();
             if (document.querySelector('.ProgressBarWrapper'))
+            {
                 document.querySelector('.ProgressBarWrapper').classList.remove('Next');
+                document.querySelector('.ProgressBarWrapper').classList.remove('Complete');
+            }
         }
         setPageNum(newPageNum);
         history.push(`/${gameName}/${newPageNum}`);
@@ -121,7 +124,9 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
         if (progressCur===newProgressCur) setProgressCur(0);
         setTimeout(setProgressCur, 10, newProgressCur);
         if (newProgressCur===progressEnd){
-            document.querySelector('.ProgressBarWrapper').classList.add('Next');
+            if (pageNum!==pageEnd)
+                document.querySelector('.ProgressBarWrapper').classList.add('Next');
+            else document.querySelector('.ProgressBarWrapper').classList.add('Complete');
             document.querySelector('.InputHistory').classList.add('Hide');
         };
         return;
@@ -144,6 +149,7 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
     }
 
     const handleOnClick = () => {
+        document.querySelector('.ProgressBarWrapper').classList.remove('updated');
         document.querySelector('.ProgressBarWrapper').classList.remove('Wrong');
         document.querySelector('.ProgressBarWrapper').classList.remove('started');
         let inputWrapper = document.getElementById("textInput");
@@ -186,7 +192,7 @@ const LearnLayout = ({game, gameName, pageNum, history}) => {
             <PageNavigator className="PageNavigator" pageNum={pageNum} pageEnd={pageEnd} parentCallback={callback} getFocusNow={genSetFocusNow("n")} />
             <div className={`LearnPage`}>
                 <Instruction className="Instruction" inst={i18n.language === "en" ? pageData.inst : (i18n.language === "kr"? pageData.inst_kr : "Internationalization Error")}/>
-                <ProgressBar cur={progressCur} end={progressEnd} onClick={handleNext}/>
+                <ProgressBar cur={progressCur} end={progressEnd} onClick={handleNext} isComplete={pageNum===pageEnd}/>
                 <div className="InputHistory">{slicedInput.map((item)=>{return <span>{item}</span>})}</div>
                 <Sheet dataStructure={pageData.ds} focusNow={focusNow} getFocusNow={genSetFocusNow("s")} viewMode={"learn"} />
                 {inputSubject()}

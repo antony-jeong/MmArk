@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProgressBar = ({cur, end, onClick}) => {
+const ProgressBar = ({cur, end, onClick, isComplete}) => {
     const arr=[];
     var i = 0;
     for(; i<cur-1; i++){
@@ -16,7 +16,7 @@ const ProgressBar = ({cur, end, onClick}) => {
                 <div className="ProgressBar">
                     {(cur > 0) ? arr : <div/>}
                 </div>
-                <div className="ProgressBarText">Next</div>
+                <div className="ProgressBarText">{isComplete?'Complete':'Next'}</div>
             </div>
         </div>
     );
