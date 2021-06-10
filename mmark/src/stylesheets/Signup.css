@@ -112,10 +112,9 @@ input[type="checkbox"] {
     align-items: center;
 }
 
-.password-input {
+.sign-up .password-input {
     display: flex;
     box-shadow: inset 1px 1px 3px 1px rgb(175, 175, 175);
-    width: 150px;
     margin-left: 5px;
     padding: 0 3px 0 5px;
     outline: none;
@@ -123,6 +122,7 @@ input[type="checkbox"] {
     border: none;
     background-color: white;
     height: 26px;
+    width: 25%
 }
 
 .sign-up .password-input input {
@@ -131,12 +131,12 @@ input[type="checkbox"] {
     font-size: 1.1rem;
     border: none;
     outline: none;
-    width: 128px;
+    width: 85%;
     background: none;
     box-shadow: none;
 }
 
-.password-input svg {
+.sign-up .password-input svg {
     padding-top: 1px;
     fill: gray;
     width: 22px;
