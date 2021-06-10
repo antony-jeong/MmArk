@@ -9,13 +9,15 @@ class SignupForm extends React.Component {
 
 	state = {
 		checked: true,
+		desc: ""
 	};
 
 	constructor(props) {
 		super(props);
 		const { cookies } = this.props;
 		this.state = {
-			signup_error: cookies.get('signup_error')
+			signup_error: cookies.get('signup_error'),
+			desc: "Default Description"
 		};
 	}
 
@@ -23,9 +25,9 @@ class SignupForm extends React.Component {
 		const name = e.target.name;
 		const value = e.target.value;
 		this.setState(prevstate => {
-		const newState = { ...prevstate };
-		newState[name] = value;
-		return newState;
+			const newState = { ...prevstate };
+			newState[name] = value;
+			return newState;
 		});
 	};
 
