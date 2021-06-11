@@ -65,6 +65,7 @@ body{
     border: none;
     margin: 10px;
     height: 3rem;
+    cursor: pointer;
 }
 
 .invalid-page-gohome{

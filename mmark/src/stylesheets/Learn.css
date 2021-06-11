@@ -165,7 +165,8 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.Next .ProgressBarText {
+.Next .ProgressBarText,
+.Complete .ProgressBarText {
     transition: opacity 0.2s 2s;
     opacity: 1;
 }
@@ -180,9 +181,10 @@ body {
     border-radius: 5px;
 }
 
-.Next .ProgressBar {
+.Next .ProgressBar,
+.Complete .ProgressBar {
     transition-delay: 1s;
-    background-color: #7147CB;
+    opacity: 0;
 }
 
 .ProgressBar .ProgressBefore {
@@ -225,6 +227,11 @@ body {
     cursor: pointer;
 }
 
+.Complete {
+    animation: toCompleteButton 1.5s 1s forwards;
+    cursor: pointer;
+}
+
 @keyframes toNextButton {
     50% {
         margin-top: 0;
@@ -253,7 +260,37 @@ body {
     }
 }
 
-.Wrong:not(.updated):not(.started):not(.Next) {
+@keyframes toCompleteButton {
+    50% {
+        margin-top: 0;
+        width: 0px;
+        height: 10px;
+        border: 0px;
+        background: #7147CB;
+    }
+    80% {
+        margin-top: 0;
+        width: 0px;
+        height: 10px;
+        border: 0px;
+        background: #7147CB;
+    }
+    90% {
+        width: 65px;
+        height: 45px;
+        border: 0px;
+    }
+    100% {
+        margin-top: 10px;
+        width: 90px;
+        height: 40px;
+        border-radius: 5px;
+        background: #33a6aa;
+        border: 0px;
+    }
+}
+
+.Wrong:not(.updated):not(.started):not(.Next):not(.Complete) {
     animation: wrong-shake 0.2s;
 }
 
